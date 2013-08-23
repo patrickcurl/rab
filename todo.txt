@@ -1,0 +1,14 @@
+
+
+ -- Finish users Controller.
+ -- Install Cart.
+ -- Finish Books Controller/Model with slugs.
+ -- Create View for BookBuyers.
+ -- Tweak layout.
+ -- Add mail queue/autoresponder for reminders/follow-up emails.
+ -- Add admin backend.
+ -- Integrate UPS Shipping label / Packing slips.
+ -- Install and import blog with new layout.
+ -- Add pages Controller/model  for static content.
+ --  Write / Add static content for about, faq, etc..
+ -- Make site SEO friendly and optimized with slugs, meta-tags, robots.txt, helpers, sitemap, siloing.
