@@ -4,7 +4,18 @@
 	"keywords": ["framework", "laravel"],
 	"require": {
 		"laravel/framework": "4.0.*",
-		"ecdo/backend": "dev-master"
+		"toddish/verify": "2.0.*",
+		"laravel/curl": "dev-master",
+		"cviebrock/eloquent-sluggable": "1.0.*",
+		"juy/profiler" : "dev-master",
+		"liebig/cron": "dev-master",
+		"intervention/validation": "dev-master",
+		"laravelbook/laravel4-powerpack": "dev-master",
+		"ceesvanegmond/minify": "dev-master",
+		"way/generators": "dev-master",
+		"vtalbot/less": "1.*",
+		"laravelbook/ardent": "dev-master"
+
 	},
 	"autoload": {
 		"classmap": [

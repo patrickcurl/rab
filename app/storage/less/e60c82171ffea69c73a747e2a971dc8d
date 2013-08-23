@@ -1,0 +1,21 @@
+.close {
+  float: right;
+  font-size:  * 1.5;
+  font-weight: ;
+  line-height: 1;
+  color: ;
+  text-shadow: ;
+}
+.close:hover,
+.close:focus {
+  color: ;
+  text-decoration: none;
+  cursor: pointer;
+}
+button.close {
+  padding: 0;
+  cursor: pointer;
+  background: transparent;
+  border: 0;
+  -webkit-appearance: none;
+}

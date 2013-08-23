@@ -1,0 +1,40 @@
+code,
+pre {
+  font-family: ;
+}
+code {
+  padding: 2px 4px;
+  font-size: 90%;
+  color: ;
+  background-color: ;
+  white-space: nowrap;
+  border-radius: ;
+}
+pre {
+  display: block;
+  padding:  - 1 / 2;
+  margin: 0 0  / 2;
+  font-size:  - 1;
+  line-height: ;
+  word-break: break-all;
+  word-wrap: break-word;
+  color: ;
+  background-color: ;
+  border: 1px solid ;
+  border-radius: ;
+}
+pre.prettyprint {
+  margin-bottom: ;
+}
+pre code {
+  padding: 0;
+  font-size: inherit;
+  color: inherit;
+  white-space: pre-wrap;
+  background-color: transparent;
+  border: 0;
+}
+.pre-scrollable {
+  max-height: ;
+  overflow-y: scroll;
+}

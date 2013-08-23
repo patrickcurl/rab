@@ -113,9 +113,14 @@ return array(
 		'Illuminate\Validation\ValidationServiceProvider',
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
-		'Former\FormerServiceProvider',
-		'Cartalyst\Sentry\SentryServiceProvider',
-		'Ecdo\Backend\BackendServiceProvider',
+		"LaravelBook\Laravel4Powerpack\Providers\PowerpackServiceProvider",
+		// Details: https://github.com/laravelbook/laravel4-powerpack
+		'Way\Generators\GeneratorsServiceProvider',
+		'CeesVanEgmond\Minify\MinifyServiceProvider',
+		'Toddish\Verify\VerifyServiceProvider',
+		'VTalbot\Less\LessServiceProvider',
+		'Juy\Profiler\Providers\ProfilerServiceProvider',
+
 	),
 
 	/*
@@ -158,9 +163,9 @@ return array(
 		'Eloquent'        => 'Illuminate\Database\Eloquent\Model',
 		'Event'           => 'Illuminate\Support\Facades\Event',
 		'File'            => 'Illuminate\Support\Facades\File',
-		'Form'            => 'Illuminate\Support\Facades\Form',
+		// 'Form'            => 'Illuminate\Support\Facades\Form',
 		'Hash'            => 'Illuminate\Support\Facades\Hash',
-		'HTML'            => 'Illuminate\Support\Facades\HTML',
+		// 'HTML'            => 'Illuminate\Support\Facades\HTML',
 		'Input'           => 'Illuminate\Support\Facades\Input',
 		'Lang'            => 'Illuminate\Support\Facades\Lang',
 		'Log'             => 'Illuminate\Support\Facades\Log',
@@ -176,13 +181,17 @@ return array(
 		'Schema'          => 'Illuminate\Support\Facades\Schema',
 		'Seeder'          => 'Illuminate\Database\Seeder',
 		'Session'         => 'Illuminate\Support\Facades\Session',
-		'Str'             => 'Illuminate\Support\Str',
+		// 'Str'             => 'Illuminate\Support\Str',
 		'URL'             => 'Illuminate\Support\Facades\URL',
 		'Validator'       => 'Illuminate\Support\Facades\Validator',
 		'View'            => 'Illuminate\Support\Facades\View',
-		'Former' => 'Former\Facades\Former',
-		'Sentry' => 'Cartalyst\Sentry\Facades\Laravel\Sentry',
-
+		'Former'          => 'Former\Facades\Former',
+		// Details : https://github.com/Anahkiasen/former
+		'HTML'            => 'LaravelBook\Laravel4Powerpack\Facades\HTMLFacade',
+		'Form'            => 'LaravelBook\Laravel4Powerpack\Facades\FormFacade',
+		'Str'             => 'LaravelBook\Laravel4Powerpack\Facades\StrFacade',
+		'Less'            => 'VTalbot\Less\Facades\Less',
+		'Profiler'      => 'Juy\Profiler\Facades\Profiler',
 
 	),
 

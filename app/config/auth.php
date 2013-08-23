@@ -15,7 +15,8 @@ return array(
 	|
 	*/
 
-	'driver' => 'eloquent',
+//	'driver' => 'eloquent',
+	'driver' => 'verify',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -28,8 +29,8 @@ return array(
 	|
 	*/
 
-	// 'model' => 'User',
-	'model' => 'Firalabs\Firadmin\Repository\Eloquent\UserRepository',
+	 'model' => 'User',
+	//'model' => 'Firalabs\Firadmin\Repository\Eloquent\UserRepository',
 
 	/*
 	|--------------------------------------------------------------------------
