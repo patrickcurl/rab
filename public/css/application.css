@@ -120,17 +120,13 @@ a {
   font-weight: bold;
   font-size: 100px;
 }
-.form-group-dd {
-  width: 220px;
-}
 .form-group-dd .form-control {
   padding-top: 10px;
 }
-data-alert {
-  padding-bottom: 20px;
-  padding-top: 0px;
-  padding-left: 150px;
+.alert {
+  padding: 10px 0 10px 20px;
+  margin-top: 20px;
 }
-div .alert {
-  padding-top: 20px;
+.anbu {
+  position: absolute !important;
 }

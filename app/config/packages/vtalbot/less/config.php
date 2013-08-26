@@ -9,7 +9,7 @@ return array(
     | Based on $app['path'] value.
     */
 
-    'paths' => array('/less'),
+    'paths' => array('less'),
 
     /*
     |--------------------------------------------------------------------------

@@ -6,8 +6,12 @@
 
 
         <div class="row-fluid">
-
+@include('layouts.notifications')
+      @if (Session::has('error'))
+    {{ trans(Session::get('reason')) }}
+@endif
             <div class="col-xs-10 col-xs-offset-1 col-sm-10 col-md-5 col-lg-5">
+
                     <ul class="unstyled hero_list">
                     <li>
                         <i class="icon-book icon-3x pull-left icon-border"></i><h3><span class="badge badge-success">1</span> GET A QUOTE</h3>Type the ISBNs from your books into the form.

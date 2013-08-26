@@ -45,15 +45,21 @@
 @endif
 
 @if ($message = Session::get('info'))
-<div data-alert class="alert alert-info">
+<div data-alert class="alert alert-info col-xs-10 col-xs-offset-1 col-sm-10 col-md-5 col-lg-5">
 <a class="close" data-dismiss="alert">x</a>
   {{{ $message }}}
-
 </div>
 @endif
 
 @if ($message = Session::get('message'))
-  <div data-alert class="alert alert-info">
+  <div data-alert class="alert alert-info
+        col-xs-12
+        col-sm-8
+        col-sm-offset-2
+        col-md-8
+        col-md-offset-2
+        col-lg-8
+        col-lg-offset-2   ">
   <a class="close" data-dismiss="alert">x</a>
     {{ $message }}
 

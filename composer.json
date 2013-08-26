@@ -2,6 +2,12 @@
 	"name": "laravel/laravel",
 	"description": "The Laravel Framework.",
 	"keywords": ["framework", "laravel"],
+	"repositories": [
+		{
+			"type": "vcs",
+			"url": "https://github.com/pixelgremlins/profiler.git"
+		}
+	],
 	"require": {
 		"laravel/framework": "4.0.*",
 		"toddish/verify": "2.0.*",
@@ -13,7 +19,7 @@
 		"laravelbook/laravel4-powerpack": "dev-master",
 		"ceesvanegmond/minify": "dev-master",
 		"way/generators": "dev-master",
-		"vtalbot/less": "1.*",
+		"hailwood/smartless4laravel": "*",
 		"laravelbook/ardent": "dev-master"
 
 	},

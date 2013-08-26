@@ -118,7 +118,8 @@ return array(
 		'Way\Generators\GeneratorsServiceProvider',
 		'CeesVanEgmond\Minify\MinifyServiceProvider',
 		'Toddish\Verify\VerifyServiceProvider',
-		'VTalbot\Less\LessServiceProvider',
+		// 'VTalbot\Less\LessServiceProvider',
+		'Hailwood\Smartless4laravel\Smartless4laravelServiceProvider',
 		'Juy\Profiler\Providers\ProfilerServiceProvider',
 
 	),
@@ -190,7 +191,7 @@ return array(
 		'HTML'            => 'LaravelBook\Laravel4Powerpack\Facades\HTMLFacade',
 		'Form'            => 'LaravelBook\Laravel4Powerpack\Facades\FormFacade',
 		'Str'             => 'LaravelBook\Laravel4Powerpack\Facades\StrFacade',
-		'Less'            => 'VTalbot\Less\Facades\Less',
+		// 'Less'            => 'VTalbot\Less\Facades\Less',
 		'Profiler'      => 'Juy\Profiler\Facades\Profiler',
 
 	),

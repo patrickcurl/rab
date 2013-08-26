@@ -8,13 +8,14 @@
 @show</title>
 
 
-
+<link rel="stylesheet" href="css/application.css">
     <link href="//netdna.bootstrapcdn.com/bootswatch/3.0.0/united/bootstrap.min.css" rel="stylesheet">
     <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Syncopate' rel='stylesheet' type='text/css'>
  <link href='http://fonts.googleapis.com/css?family=PT+Serif' rel='stylesheet' type='text/css'>
  <link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
- <link rel="stylesheet" href="css/application.css">
+
+
     @section('head')
     @show
 </head>
@@ -64,34 +65,37 @@
       @elseif (Auth::guest())
 
       <li class="dropdown">
-        <a href="#" style="margin-right: 15px;" data-toggle="dropdown" class="dropdown-toggle pull-right"><i class="icon-user"></i> Sign In<b class="caret"></b></a>
+        <a href="#" data-toggle="dropdown" class="dropdown-toggle"><i class="icon-user"></i> Sign In<b class="caret"></b></a>
         <?php // <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a> // ?>
-        <div class="dropdown-menu"  style="padding:10px;">
-
+        <ul class="dropdown-menu "  style="">
+        <li>
         <form method="POST" action="/users/login" accept-charset="UTF-8" class="form-inline" role="form">
           <input type="hidden" name="_token" value="{{{ Session::getToken() }}}">
             <div class="form-group form-group-dd">
               <label class="sr-only" for="email">Email address</label>
               <input type="email" class="form-control" name="email" id="email" placeholder="Enter email">
             </div>
-          <br /><br />
           <div class="form-group form-group-dd">
             <label class="sr-only" for="password">Password</label>
             <input type="password" class="form-control" name="password" id="password" placeholder="Password">
           </div>
-          <br />
-          <div class="checkbox" style="padding-top:10px;">
+
+          <div class="checkbox col-xs-5" >
             <label>
               <input type="checkbox"> Remember me
             </label>
           </div>
-          <small style="padding-top:10px;padding-left:15px;color:grey">
+          <div class="col-xs-5">
                         <a href="" style="color:grey">Forgot Password?</a>
-          </small>
-          <div style="padding-top:10px;"><button type="submit" class="btn btn-default">Sign in</button></div>
+          </div>
+          <div class=""><button type="submit" class="btn btn-default col-xs-12">Sign in</button></div>
+          </div>
         </form>
 
-        </div>
+
+        </li>
+        </ul>
+
       </li>
 
       @endif
@@ -112,10 +116,7 @@
                   </div>
     </div>
 
-			@include('layouts.notifications')
-      @if (Session::has('error'))
-    {{ trans(Session::get('reason')) }}
-@endif
+
 	    @yield('content')
 
 
