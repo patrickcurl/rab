@@ -121,6 +121,9 @@ return array(
 		// 'VTalbot\Less\LessServiceProvider',
 		'Hailwood\Smartless4laravel\Smartless4laravelServiceProvider',
 		'Juy\Profiler\Providers\ProfilerServiceProvider',
+		'Cviebrock\EloquentSluggable\SluggableServiceProvider',
+		'Intervention\Validation\ValidationServiceProvider',
+
 
 	),
 
@@ -182,7 +185,7 @@ return array(
 		'Schema'          => 'Illuminate\Support\Facades\Schema',
 		'Seeder'          => 'Illuminate\Database\Seeder',
 		'Session'         => 'Illuminate\Support\Facades\Session',
-		// 'Str'             => 'Illuminate\Support\Str',
+		'Str'             => 'Illuminate\Support\Str',
 		'URL'             => 'Illuminate\Support\Facades\URL',
 		'Validator'       => 'Illuminate\Support\Facades\Validator',
 		'View'            => 'Illuminate\Support\Facades\View',
@@ -190,10 +193,10 @@ return array(
 		// Details : https://github.com/Anahkiasen/former
 		'HTML'            => 'LaravelBook\Laravel4Powerpack\Facades\HTMLFacade',
 		'Form'            => 'LaravelBook\Laravel4Powerpack\Facades\FormFacade',
-		'Str'             => 'LaravelBook\Laravel4Powerpack\Facades\StrFacade',
+		'StrA'             => 'LaravelBook\Laravel4Powerpack\Facades\StrFacade',
 		// 'Less'            => 'VTalbot\Less\Facades\Less',
 		'Profiler'      => 'Juy\Profiler\Facades\Profiler',
-
+		'Sluggable' => 'Cviebrock\EloquentSluggable\Facades\Sluggable',
 	),
 
 );

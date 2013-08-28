@@ -91,10 +91,18 @@ a {
     li {
         line-height: 30px;
     }
-    .badge {
+   /* .badge {
         font-size: 23px;
         padding: 8px 9px 9px;
-    }
+    } */
+
+   .badge {
+border-radius: 15px 15px 15px 15px;
+-webkit-border-radius: 15px 15px 15px 15px;
+-moz-border-radius: 15px;
+font-size: 24px;
+padding: 8px 9px 9px;
+}
 }
 
 
@@ -112,6 +120,8 @@ a {
     li {
         list-style: none;
         text-align: left;
+        float-left;
+        margin-top:10px;
     }
     h3 {
         color:green;
@@ -126,6 +136,7 @@ a {
   font-weight: bold;
   font-size: 100px;
 }
+
 .form-group-dd {
  /* width: 220px; */
 }
@@ -137,7 +148,37 @@ a {
 padding: 10px 0 10px 20px;
 margin-top:20px;
 }
-.anbu{
-  position: absolute!important;
 
+.login-form-lg{
+  padding-right:10px;
+  padding-left:10px;
+}
+
+#login-form-large {
+  ul {
+    li {
+      width:220px;
+      .form-group {
+        padding: 5px 10px 0 10px;
+      }
+      .checkbox {
+        padding: 5px 10px 0 30px;
+        a{
+          font-size:10px;
+          float:left;
+          padding-left:15px;
+        }
+        button{
+          width: 80%;
+        }
+      }
+    }
+  }
+}
+
+.home-details-badge{
+  margin-left:20px;
+}
+.home-details-text{
+  margin-left:0px;
 }

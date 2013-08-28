@@ -8,7 +8,7 @@
 @show</title>
 
 
-<link rel="stylesheet" href="css/application.css">
+<link rel="stylesheet" href="{{ URL::asset('css/application.css') }}">
     <link href="//netdna.bootstrapcdn.com/bootswatch/3.0.0/united/bootstrap.min.css" rel="stylesheet">
     <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Syncopate' rel='stylesheet' type='text/css'>
@@ -51,54 +51,10 @@
           <li><a href="#">One more separated link</a></li>
         </ul>
       </li>
-    </ul>
-    <form class="navbar-form navbar-left" action="" role="search">
-      <div class="form-group">
-        <input type="text" class="form-control" placeholder="Search">
-      </div>
-      <button type="submit" class="btn btn-default">Submit</button>
-    </form>
-    <ul class="nav navbar-nav navbar-right">
+
       <li><a href="#">Link</a></li>
-      @if (Auth::check())
-        <li><a href="users/logout"><i class="icon-user"></i> Logout</a></li>
-      @elseif (Auth::guest())
 
-      <li class="dropdown">
-        <a href="#" data-toggle="dropdown" class="dropdown-toggle"><i class="icon-user"></i> Sign In<b class="caret"></b></a>
-        <?php // <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a> // ?>
-        <ul class="dropdown-menu "  style="">
-        <li>
-        <form method="POST" action="/users/login" accept-charset="UTF-8" class="form-inline" role="form">
-          <input type="hidden" name="_token" value="{{{ Session::getToken() }}}">
-            <div class="form-group form-group-dd">
-              <label class="sr-only" for="email">Email address</label>
-              <input type="email" class="form-control" name="email" id="email" placeholder="Enter email">
-            </div>
-          <div class="form-group form-group-dd">
-            <label class="sr-only" for="password">Password</label>
-            <input type="password" class="form-control" name="password" id="password" placeholder="Password">
-          </div>
-
-          <div class="checkbox col-xs-5" >
-            <label>
-              <input type="checkbox"> Remember me
-            </label>
-          </div>
-          <div class="col-xs-5">
-                        <a href="" style="color:grey">Forgot Password?</a>
-          </div>
-          <div class=""><button type="submit" class="btn btn-default col-xs-12">Sign in</button></div>
-          </div>
-        </form>
-
-
-        </li>
-        </ul>
-
-      </li>
-
-      @endif
+      {{ View::make('partials._login_form_lg') }}
 
 
       <li><a href="/main.php"><i class="icon-shopping-cart icon-white"></i> Seller Cart <span class="cart-total badge badge-info"></span></a></li>
@@ -107,13 +63,11 @@
   </div><!-- /.navbar-collapse -->
 </nav>
 <div class="logo-container">
-      <div class="container-fluid">
-        <div class="container">
-            <a href="/"><img src="/img/recycleabook.jpg" class="pull-left" id="logo" width="200"></a>
-       <h1>Want <span>CASH</span> for your <span>Used TextBooks?</span></h1><br>
+      <div class="container">
+            <a href="/"><img src="/img/recycleabook.jpg" class="pull-left hidden-sm hidden-xs" id="logo" width="200"></a>
+            <h1 class >Want <span>CASH</span> for your <span>Used TextBooks?</span></h1><br>
+      </div>
 
-                  </div>
-                  </div>
     </div>
 
 
