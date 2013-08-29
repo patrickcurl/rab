@@ -13,6 +13,7 @@
 		"toddish/verify": "2.0.*",
 		"laravel/curl": "dev-master",
 		"cviebrock/eloquent-sluggable": "1.0.*",
+		"gloudemans/shoppingcart": "dev-master",
 		"juy/profiler" : "dev-master",
 		"liebig/cron": "dev-master",
 		"intervention/validation": "dev-master",

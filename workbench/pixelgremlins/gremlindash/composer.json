@@ -1,0 +1,23 @@
+{
+    "name": "pixelgremlins/gremlindash",
+    "description": "",
+    "authors": [
+        {
+            "name": "pixelgremlins",
+            "email": "pixelgremlins@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.0",
+        "illuminate/support": "4.0.x"
+    },
+    "autoload": {
+        "classmap": [
+            "src/migrations"
+        ],
+        "psr-0": {
+            "Pixelgremlins\\Gremlindash": "src/"
+        }
+    },
+    "minimum-stability": "dev"
+}

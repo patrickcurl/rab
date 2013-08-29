@@ -113,7 +113,7 @@ return array(
 		'Illuminate\Validation\ValidationServiceProvider',
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
-		"LaravelBook\Laravel4Powerpack\Providers\PowerpackServiceProvider",
+
 		// Details: https://github.com/laravelbook/laravel4-powerpack
 		'Way\Generators\GeneratorsServiceProvider',
 		'CeesVanEgmond\Minify\MinifyServiceProvider',
@@ -123,7 +123,8 @@ return array(
 		'Juy\Profiler\Providers\ProfilerServiceProvider',
 		'Cviebrock\EloquentSluggable\SluggableServiceProvider',
 		'Intervention\Validation\ValidationServiceProvider',
-
+		'Pixelgremlins\Gremlindash\GremlindashServiceProvider',
+		'\Gloudemans\Shoppingcart\ShoppingcartServiceProvider',
 
 	),
 
@@ -167,9 +168,9 @@ return array(
 		'Eloquent'        => 'Illuminate\Database\Eloquent\Model',
 		'Event'           => 'Illuminate\Support\Facades\Event',
 		'File'            => 'Illuminate\Support\Facades\File',
-		// 'Form'            => 'Illuminate\Support\Facades\Form',
+		'Form'            => 'Illuminate\Support\Facades\Form',
 		'Hash'            => 'Illuminate\Support\Facades\Hash',
-		// 'HTML'            => 'Illuminate\Support\Facades\HTML',
+		'HTML'            => 'Illuminate\Support\Facades\HTML',
 		'Input'           => 'Illuminate\Support\Facades\Input',
 		'Lang'            => 'Illuminate\Support\Facades\Lang',
 		'Log'             => 'Illuminate\Support\Facades\Log',
@@ -191,12 +192,11 @@ return array(
 		'View'            => 'Illuminate\Support\Facades\View',
 		'Former'          => 'Former\Facades\Former',
 		// Details : https://github.com/Anahkiasen/former
-		'HTML'            => 'LaravelBook\Laravel4Powerpack\Facades\HTMLFacade',
-		'Form'            => 'LaravelBook\Laravel4Powerpack\Facades\FormFacade',
-		'StrA'             => 'LaravelBook\Laravel4Powerpack\Facades\StrFacade',
 		// 'Less'            => 'VTalbot\Less\Facades\Less',
 		'Profiler'      => 'Juy\Profiler\Facades\Profiler',
 		'Sluggable' => 'Cviebrock\EloquentSluggable\Facades\Sluggable',
+		//'Gremlindash' => 'Pixelgremlins\Gremlindash\Facades\Gremlindash',
+		'Cart'            => 'Gloudemans\Shoppingcart\Facades\Cart',
 	),
 
 );

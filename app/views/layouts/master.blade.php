@@ -77,12 +77,19 @@
 
 
      <!-- /container -->
-      <div class="container-fluid foot_container">
-        <div class="footer container">
+      <div class="container-fluid foot_container footer clearfix">
+     <div class="col-md-3">
+
+<p>&copy; RecycleABook.com 2013</p>
+      </div>
+  <div class="col-md-6">
+<p>Recycleabook.com retains the right to refuse any textbook purchase. If a textbook buyback order is refused the items will be returned.</p>
+  </div>
+
           @section('footer')
           @show
-          <p>&copy; RecycleABook.com 2013</p>
-        </div>
+
+
       </div>
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0-wip/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>

@@ -17,5 +17,10 @@ Route::get('/', function()
 	return View::make('hello');
 });
 
+Route::get('test', function(){
+        //echo Gremlindash::greeting();
+        phpinfo();
+});
 Route::controller('users', 'UserController');
 Route::controller('books', 'BookController');
+Route::controller('cart', 'CartController');

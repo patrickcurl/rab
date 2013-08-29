@@ -35,4 +35,5 @@ class BookController extends BaseController {
         return View::make('books.search', array('books' => $books) );
     }
 
+
 }
