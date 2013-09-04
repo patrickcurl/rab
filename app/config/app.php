@@ -123,7 +123,7 @@ return array(
 		'Juy\Profiler\Providers\ProfilerServiceProvider',
 		'Cviebrock\EloquentSluggable\SluggableServiceProvider',
 		'Intervention\Validation\ValidationServiceProvider',
-		'Pixelgremlins\Gremlindash\GremlindashServiceProvider',
+		//'Pixelgremlins\Gremlindash\GremlindashServiceProvider',
 		'\Gloudemans\Shoppingcart\ShoppingcartServiceProvider',
 		'Cartalyst\Sentry\SentryServiceProvider',
 		'Former\FormerServiceProvider',
