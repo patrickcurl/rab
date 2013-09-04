@@ -16,10 +16,10 @@ class CreateItemsTable extends Migration {
 		{
 			// We'll need to ensure that MySQL uses the InnoDB engine to
       // support the indexes, other engines aren't affected.
-      $t->engine = 'InnoDB';
+     		$t->engine = 'InnoDB';
 			$t->increments('id');
-			$t->unsignedInteger('book_id')->index();
-			$t->unsignedInteger('order_id')->index();
+			$t->integer('book_id')->unsigned();
+			$t->integer('order_id')->unsigned();
 			$t->integer('qty');
 			$t->integer('price');
 			$t->timestamps();
