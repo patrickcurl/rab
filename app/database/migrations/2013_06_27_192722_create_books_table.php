@@ -13,6 +13,7 @@ class CreateBooksTable extends Migration {
 	public function up()
 	{
 		Schema::create('Books', function(Blueprint $table) {
+			$table->engine = 'InnoDB';
 			$table->increments('id');
 			$table->string('title');
 			$table->string('author')->nullable();
