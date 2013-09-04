@@ -117,7 +117,7 @@ return array(
 		// Details: https://github.com/laravelbook/laravel4-powerpack
 		'Way\Generators\GeneratorsServiceProvider',
 		'CeesVanEgmond\Minify\MinifyServiceProvider',
-		'Toddish\Verify\VerifyServiceProvider',
+		// 'Toddish\Verify\VerifyServiceProvider',
 		// 'VTalbot\Less\LessServiceProvider',
 		'Hailwood\Smartless4laravel\Smartless4laravelServiceProvider',
 		'Juy\Profiler\Providers\ProfilerServiceProvider',
@@ -125,6 +125,8 @@ return array(
 		'Intervention\Validation\ValidationServiceProvider',
 		'Pixelgremlins\Gremlindash\GremlindashServiceProvider',
 		'\Gloudemans\Shoppingcart\ShoppingcartServiceProvider',
+		'Cartalyst\Sentry\SentryServiceProvider',
+		'Former\FormerServiceProvider',
 
 	),
 
@@ -192,11 +194,12 @@ return array(
 		'View'            => 'Illuminate\Support\Facades\View',
 		'Former'          => 'Former\Facades\Former',
 		// Details : https://github.com/Anahkiasen/former
-		// 'Less'            => 'VTalbot\Less\Facades\Less',
-		'Profiler'      => 'Juy\Profiler\Facades\Profiler',
-		'Sluggable' => 'Cviebrock\EloquentSluggable\Facades\Sluggable',
-		//'Gremlindash' => 'Pixelgremlins\Gremlindash\Facades\Gremlindash',
+		// 'Less'         => 'VTalbot\Less\Facades\Less',
+		'Profiler'        => 'Juy\Profiler\Facades\Profiler',
+		'Sluggable'       => 'Cviebrock\EloquentSluggable\Facades\Sluggable',
+		//'Gremlindash'   => 'Pixelgremlins\Gremlindash\Facades\Gremlindash',
 		'Cart'            => 'Gloudemans\Shoppingcart\Facades\Cart',
+		'Sentry'          => 'Cartalyst\Sentry\Facades\Laravel\Sentry',
 	),
 
 );

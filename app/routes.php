@@ -21,6 +21,8 @@ Route::get('test', function(){
         //echo Gremlindash::greeting();
         phpinfo();
 });
-Route::controller('users', 'UserController');
+Route::controller('users', 'UsersController');
 Route::controller('books', 'BookController');
 Route::controller('cart', 'CartController');
+Route::controller('orders', 'OrdersController');
+Route::controller('p','PageController');

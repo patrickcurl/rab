@@ -1,7 +1,13 @@
 
-@if (Auth::check())
-        <li><a href="users/logout"><i class="icon-user"></i> Logout</a></li>
-      @elseif (Auth::guest())
+@if (Sentry::check())
+        <li class="dropdown">
+          <a href="#" data-toggle="dropdown" class="dropdown-toggle"><i class="icon-user"></i> Account<b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><a href="{{URL::to('users/edit')}}">Edit Profile</a></li>
+            <li><a href="{{URL::to('users/logout')}}">Logout</a></li>
+            </ul>
+      @else
+
 
       <li id="login-form-large" class="dropdown hidden-xs">
         <a href="#" data-toggle="dropdown" class="dropdown-toggle"><i class="icon-user"></i> Sign In<b class="caret"></b></a>

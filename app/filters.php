@@ -35,13 +35,30 @@ App::after(function($request, $response)
 
 Route::filter('auth', function()
 {
-	if (Auth::guest()) return Redirect::guest('login');
+	// if (Auth::guest()) return Redirect::guest('login');
+	if (!Sentry::check()) return Redirect::to('users/login');
 });
 
 
 Route::filter('auth.basic', function()
 {
 	return Auth::basic();
+});
+
+Route::filter('admin_auth', function()
+{
+	if (!Sentry::check())
+	{
+		// if not logged in, redirect to login
+		return Redirect::to('users/login');
+	}
+
+	if (!Sentry::getUser()->hasAccess('admin'))
+	{
+		// has no access
+		//return Response::make('Access Forbidden', '403');
+		return Redirect::to('/')->with('message', 'You are not authorized to view this.');
+	}
 });
 
 /*
@@ -75,6 +92,7 @@ Route::filter('csrf', function()
 {
 	if (Session::token() != Input::get('_token'))
 	{
-		throw new Illuminate\Session\TokenMismatchException;
+		//throw new Illuminate\Session\TokenMismatchException;
+		return Redirect::back()->with('message', 'Token expired, please try again.');
 	}
 });

@@ -15,8 +15,8 @@ return array(
 	|
 	*/
 
-//	'driver' => 'eloquent',
-	'driver' => 'verify',
+	'driver' => 'eloquent',
+	// 'driver' => 'verify',
 
 	/*
 	|--------------------------------------------------------------------------

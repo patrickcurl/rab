@@ -28,7 +28,9 @@ class CartController extends BaseController {
                                 "author" => $item['author'],
                                 "edition" => $item['edition']
                                      );
-                    Cart::add($item['id'], $item['title'], $item['qty'], '99.55', $options);
+
+
+                    Cart::add($item['id'], $item['title'], $item['qty'], $item['price'], $options);
                 }
             }
         }
@@ -65,7 +67,11 @@ class CartController extends BaseController {
 		$cart = Cart::content();
 
 		if (Sentry::check()){
-			return View::make('cart.checkout', array('cart' => $cart, 'currentUser' => Sentry::getUser()));
+			return View::make('cart.checkout',
+			                  			array(
+			                  			      'cart' => $cart,
+			                  			      'currentUser' => 	Sentry::getUser()
+			                  ));
 
 		} else {
 			return View::make('users.login');
@@ -91,8 +97,9 @@ class CartController extends BaseController {
 			$lineitem->price = $item->price;
 			$lineitem->order_id = $order->id;
 			$lineitem->save();
-			$weight += number_format($item->options->Weight,2);
+			$weight += number_format($item->options->weight,2);
 		}
+		//return var_dump($weight);
     $ups = getLabel($currentUser, $weight);
 		$order->ups_label = $ups['label'];
     $order->tracking_number = $ups['tracking_number'];
@@ -101,4 +108,6 @@ class CartController extends BaseController {
 		return Redirect::to('/users/orders/' . $currentUser->getId());
 
 	}
+
+
 }

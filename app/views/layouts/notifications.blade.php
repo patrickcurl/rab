@@ -46,7 +46,7 @@
 
 @if ($message = Session::get('info'))
 <div data-alert class="alert alert-info col-xs-10 col-xs-offset-1 col-sm-10 col-md-5 col-lg-5">
-<a class="close" data-dismiss="alert">x</a>
+<a class="close" href="#" data-dismiss="alert" aria-hidden="true">&times;</a>
   {{{ $message }}}
 </div>
 @endif
@@ -60,7 +60,7 @@
         col-md-offset-2
         col-lg-8
         col-lg-offset-2   ">
-  <a class="close" data-dismiss="alert">x</a>
+  <a class="close" href="#" data-dismiss="alert" aria-hidden="true">&times;</a>
     {{ $message }}
 
   </div>
