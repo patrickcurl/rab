@@ -3,8 +3,9 @@ return array(
   'testVar' => "This is a test",
   'baseUrl' => 'http://rab.dev',
   //Database.php config vars.
-  'dbUser' => 'root',
-  'dbPass' => 'test123',
+  'db_name' => 'rab',
+  'db_user' => 'root',
+  'db_pass' => 'test123',
 
   //Mail.php config vars.
   'email_user' => 'patrickwcurl@gmail.com', //mandrill user

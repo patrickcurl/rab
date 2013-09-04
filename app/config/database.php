@@ -55,9 +55,9 @@ return array(
 		'mysql' => array(
 			'driver'    => 'mysql',
 			'host'      => 'localhost',
-			'database'  => 'rab',
-			'username'  => 'root',
-			'password'  => 'test123',
+			'database'  => Config::get('env_vars.db_name'),
+			'username'  => Config::get('env_vars.db_user'),
+			'password'  => Config::get('env_vars.db_pass'),
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',
