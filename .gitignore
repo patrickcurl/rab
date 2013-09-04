@@ -1,4 +1,6 @@
+/app/config/env_vars.php
 /bootstrap/compiled.php
 /vendor
+composer.json
 composer.lock
 .DS_Store
