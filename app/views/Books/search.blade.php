@@ -59,7 +59,7 @@
 	<div class="col-xs-12 col-sm-12 col-md-12">
 <button type="submit" class="col-xs-12 col-sm-12 col-md-12 btn btn-primary btn-lg">Add Items to Cart</button>
 <input type="image" src="img/addtocart.png" name="addToCart" />
-</div>{{ Form::close() }}
+</div>{{ Form::close() }} <!-- sell your textbooks -->
 	<div class="col-xs-12 col-md-12 clearfix pullright"><p>* Textbook buyback price is good for "U.S. STUDENT", "Instructor", "Exam Copy", or "Not for re-sale" editions. "Annotated instructors editions" will be purchased at a 50% discount. Textbook prices quoted are for textbooks in "good condition" or better, see condition guide for details.</p>
 <p>We do not currently purchase INTERNATIONAL edition textbooks.</p>
 
