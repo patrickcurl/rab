@@ -13,8 +13,8 @@ class AddFkToItems extends Migration {
 	public function up()
 	{
 		Schema::table('items', function(Blueprint $table) {
-			$table->foreign('book')->references('id')->on('books');
-			$table->foreign('order')->references('id')->on('orders');
+			$table->foreign('book_id')->references('id')->on('books');
+			$table->foreign('order_id')->references('id')->on('orders');
 		});
 	}
 
