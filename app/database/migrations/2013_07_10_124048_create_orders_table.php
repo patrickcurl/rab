@@ -16,7 +16,7 @@ class CreateOrdersTable extends Migration {
 		{
 			$t->engine = 'InnoDB';
 			$t->increments('id');
-			$t->integer('user')->unsigned();
+			$t->integer('user_id')->unsigned();
 			$t->string('tracking_number')->nullable();
 			$t->text('ups_label')->nullable();
 			$t->float('total_amount');
