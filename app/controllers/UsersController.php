@@ -195,7 +195,7 @@ catch (Cartalyst\Sentry\Throttling\UserBannedException $e)
                     // Send Welcome Email
 
                     Mail::send('emails.auth.welcome', $data, function($m) use($data){
-                        $m->to($data['email'])->subject('Welcome to TopBookPrices.com');
+                        $m->to($data['email'])->subject('Welcome to RecycleABook.com');
 
                     });
 
@@ -708,7 +708,7 @@ public function postEdit($id, $type="profile") {
         $email = Input::get('email');
         Mail::send('emails.auth.reminder', $data, function($message)
         {
-            $message->to($email)->subject('TopBookPrices.com :: Password Reset');
+            $message->to($email)->subject('RecycleABook.com :: Password Reset');
         });
 
         return View::make('users.password_reset');
