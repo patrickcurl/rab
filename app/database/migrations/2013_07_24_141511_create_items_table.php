@@ -23,6 +23,9 @@ class CreateItemsTable extends Migration {
 			$t->integer('qty');
 			$t->integer('price');
 			$t->timestamps();
+
+			$t->foreign('book_id')->references('id')->on('books');
+			$t->foreign('order_id')->references('id')->on('orders');
 		});
 	}
 
