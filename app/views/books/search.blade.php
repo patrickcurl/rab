@@ -32,7 +32,7 @@
 			        </dl>
 			    </td>
 			    <?php $tempbook = DB::table('retail_prices')->where('isbn', '=', $book->isbn13)->first();/* $price = $tempbook->price; */
-			    	$price = number_format(($tempbook->Price * 1.75), 2);
+			    	$price = number_format(($tempbook->Price * 1.7), 2);
 
 			     ?>
 			    <td><input type="hidden" name="item[{{$index}}][price]" value="{{$price}}" />{{ $price }}</td>
