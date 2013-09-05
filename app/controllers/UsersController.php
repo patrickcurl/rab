@@ -203,7 +203,7 @@ catch (Cartalyst\Sentry\Throttling\UserBannedException $e)
 
                     Session::flash('success', 'Your account has been created.');
                     Sentry::loginAndRemember($user);
-                    return Redirect::to('/');
+                    return Redirect::back();
                 }
                 catch (Cartalyst\Sentry\Users\LoginRequiredException $e){
                     Session::flash('error', 'Email is required.');
