@@ -32,7 +32,8 @@
 			        </dl>
 			    </td>
 			    <?php $tempbook = DB::table('retail_prices')->where('isbn', '=', $book->isbn13)->first();/* $price = $tempbook->price; */
-			    	$price = ($tempbook->Price * 1.75);
+			    	$price = number_format(($tempbook->Price * 1.75), 2);
+
 			     ?>
 			    <td><input type="hidden" name="item[{{$index}}][price]" value="{{$price}}" />{{ $price }}</td>
 			    <td><input type="text" name="item[{{$index}}][qty]" value="1" maxlength="3" style="width:25px;" /></td>
