@@ -31,8 +31,10 @@
 			            <dt class="hidden-xs">More info:</dt><dd class="hidden-xs"><a href="{{ $book->amazon_url }}" target="_blank">View Book Details on Amazon</a></dd>
 			        </dl>
 			    </td>
-			    <?php $tempbook = DB::table('retail_prices')->where('isbn', '=', $book->isbn13)->first();/* $price = $tempbook->price; */ ?>
-			    <td><input type="hidden" name="item[{{$index}}][price]" value="{{$tempbook->Price}}" />{{ $tempbook->Price }}</td>
+			    <?php $tempbook = DB::table('retail_prices')->where('isbn', '=', $book->isbn13)->first();/* $price = $tempbook->price; */
+			    	$price = ($tempbook->Price * 1.75);
+			     ?>
+			    <td><input type="hidden" name="item[{{$index}}][price]" value="{{$price}}" />{{ $price }}</td>
 			    <td><input type="text" name="item[{{$index}}][qty]" value="1" maxlength="3" style="width:25px;" /></td>
 				<td><input type="checkbox" name="item[{{$index}}][add]" value="yes" /></td>
 
