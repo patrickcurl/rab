@@ -14,12 +14,9 @@ class CreateOrdersTable extends Migration {
 	{
 		Schema::create('orders', function(Blueprint $t)
 		{
-			// We'll need to ensure that MySQL uses the InnoDB engine to
-      // support the indexes, other engines aren't affected.
-      $t->engine = 'InnoDB';
 			$t->engine = 'InnoDB';
 			$t->increments('id');
-			$t->integer('user_id')->unsigned();
+			$t->integer('user')->unsigned();
 			$t->string('tracking_number')->nullable();
 			$t->text('ups_label')->nullable();
 			$t->float('total_amount');

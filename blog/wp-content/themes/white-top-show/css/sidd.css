@@ -1,0 +1,18 @@
+/* CSS Document */
+@media (min-width: 979px) {
+	.topPaddingSid{padding-top:80px;}
+	#footer-sidd{padding-bottom:42px;}
+	 }
+@media (max-width: 979px) {
+	.navbar-fixed-bottom{ margin-top:0px !important;}
+	}	 
+#copyRight{ font-size:10px !important; margin:0 !important; padding:0 !important; text-align:center;}
+.form-allowed-tags{ display:none;}
+.children{ margin-top:20px;}
+.pull-left{ margin-right:8px !important;}
+.siddTags{ margin-bottom:2px;}
+.footerMenu .navbar-inner{background:#ffffff url('img_tree.png');}
+
+body.admin-bar .navbar-fixed-top {
+    padding-top: 28px;
+}
