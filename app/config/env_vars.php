@@ -5,7 +5,7 @@ return array(
   //Database.php config vars.
   'db_name' => 'rab',
   'db_user' => 'root',
-  'db_pass' => 'test123',
+  'db_pass' => 'test12345',
 
   //Mail.php config vars.
   'email_user' => 'patrickwcurl@gmail.com', //mandrill user
