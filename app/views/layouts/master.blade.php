@@ -27,7 +27,7 @@
   <div class="row">
 
     <div class="col-md-3  col-md-offset-0 col-sm-offset-1">
-      <a href="/"><img src="/img/sell-textbooks-logo.png" class="img-responsive" ></a>
+      <a href="/"><img src="/img/sell-textbooks-logo2.png" class="img-responsive" ></a>
     </div>
 
     <div class="navbar col-md-8 col-sm-11" role="navigation" style="margin-top:10px;">
