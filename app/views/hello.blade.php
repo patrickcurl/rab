@@ -36,8 +36,9 @@
                     <button type="submit" class="btn btn-success btn-block btn-large form-actions" style="margin-top:10px;margin-bottom:10px;">SELL YOUR BOOKS »</button>
 
             {{ Form::close() }}
+            <!--
 <span style="font-size:10px;">* ISBN is located on back of book or on the copyright page.</span><br />
-<span style="font-size:10px;">** Free shipping on orders of $15 or more.</span>
+<span style="font-size:10px;">** Free shipping on orders of $15 or more.</span>-->
 </div>
 
 
