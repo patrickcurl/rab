@@ -1,7 +1,14 @@
 
 @if (count($errors->all()) > 0)
 <div style="padding-top:10px;">
-<div class="alert alert-error alert-block">
+<div class="alert alert-error alert-block
+        col-xs-12
+        col-sm-8
+        col-sm-offset-2
+        col-md-8
+        col-md-offset-2
+        col-lg-8
+        col-lg-offset-2">
 	<a class="close" data-dismiss="alert">x</a>
 
   @if (Request::path() == "login" || Request::path() == "users/login")
@@ -21,7 +28,14 @@
 @endif
 
 @if ($message = Session::get('success'))
-<div data-alert class="alert alert-success">
+<div data-alert class="alert alert-success
+        col-xs-12
+        col-sm-8
+        col-sm-offset-2
+        col-md-8
+        col-md-offset-2
+        col-lg-8
+        col-lg-offset-2">
 <a class="close" data-dismiss="alert">x</a>
   {{{ $message }}}
 
@@ -29,7 +43,13 @@
 @endif
 
 @if ($message = Session::get('error'))
-<div data-alert class="alert alert-error">
+<div data-alert class="alert alert-error
+        col-xs-12
+        col-sm-8
+        col-sm-offset-2
+        col-md-8
+        col-md-offset-2
+        col-lg-8">
 <a class="close" data-dismiss="alert">x</a>
   {{{ $message }}}
 
@@ -37,7 +57,14 @@
 @endif
 
 @if ($message = Session::get('warning'))
-<div data-alert class="alert alert-block">
+<div data-alert class="alert alert-warning
+        col-xs-12
+        col-sm-8
+        col-sm-offset-2
+        col-md-8
+        col-md-offset-2
+        col-lg-8
+        col-lg-offset-2">
 <a class="close" data-dismiss="alert">x</a>
   {{{ $message }}}
 
@@ -45,12 +72,31 @@
 @endif
 
 @if ($message = Session::get('info'))
-<div data-alert class="alert alert-info col-xs-10 col-xs-offset-1 col-sm-10 col-md-5 col-lg-5">
+<div data-alert class="alert alert-info
+        col-xs-12
+        col-sm-8
+        col-sm-offset-2
+        col-md-8
+        col-md-offset-2
+        col-lg-8
+        col-lg-offset-2">
 <a class="close" href="#" data-dismiss="alert" aria-hidden="true">&times;</a>
   {{{ $message }}}
 </div>
 @endif
-
+@if ($message = Session::get('danger'))
+<div data-alert class="alert alert-danger
+        col-xs-12
+        col-sm-8
+        col-sm-offset-2
+        col-md-8
+        col-md-offset-2
+        col-lg-8
+        col-lg-offset-2">
+<a class="close" href="#" data-dismiss="alert" aria-hidden="true">&times;</a>
+  {{{ $message }}}
+</div>
+@endif
 @if ($message = Session::get('message'))
   <div data-alert class="alert alert-info
         col-xs-12
