@@ -39,9 +39,9 @@
 
     </div>
      <div class="col-xs-1 col-sm-2  hidden-md hidden-lg"></div>
-     <div class="col-xs-10 col-sm-8 col-md-5 col-lg-6" >
+     <div class="col-xs-12 col-sm-12 col-md-5 col-lg-6 well well-lg" >
 
-     <h2>Sell your textbooks and get paid CASH - Free Shipping</h2>
+     <h3><span class="alert-warning">Find out how much your used textbooks are worth.</span><br /> <br /><span class="alert-danger">Get paid CASH for your textbooks today!</span></h3>
      </div>
     <div class="col-xs-1 col-sm-2 hidden-md hidden-lg"></div>
              <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6"><textarea name="isbns" id="isbns" class="form-control" rows="10" data-original-title="" title=""></textarea>
@@ -57,7 +57,7 @@
             </div>
             <div class="container">
             <div class="col-md-1"></div>
-<div class="col-md-10">Our mission is simple: To help students  receive the most affordable textbooks on  the market. <br />Please join our cause. You  can make a difference.</div>
+<div class="col-md-10 well well-lg">Our mission is simple: To help students  receive the most affordable textbooks on  the market. <br />Please join our cause. You  can make a difference.</div>
 <div class="col-md-1"></div>
 </div>
     </div>
