@@ -21,48 +21,46 @@
 </head>
 
 <body @section('body_tag')
-@show>
-<nav class="navbar" role="navigation">
-  <!-- Brand and toggle get grouped for better mobile display -->
-<div class="container col-md-offset-1 col-md-11">
-  <div class="navbar-header">
-    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-      <span class="sr-only">Toggle navigation</span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-    </button>
-    <a class="navbar-brand" href="{{URL::to('/')}}">RecycleABook</a>
-  </div>
+@show >
 
-  <!-- Collect the nav links, forms, and other content for toggling -->
-  <div class="collapse navbar-collapse navbar-ex1-collapse">
-    <ul class="nav navbar-nav">
-
-      <li class="{{Request::is('/') ? 'active' : ''}}"><a href="{{ URL::to( '/') }}">Home</a></li>
-      <li class="{{Request::is('p/join-our-team*') ? 'active' : ''}}"><a href="{{ URL::to( '/p/join-our-team') }}">Join Our Team</a></li>
-      <li class="{{Request::is('p/how-to-save*') ? 'active' : ''}}"><a href="{{ URL::to( '/p/how-to-save') }}">How to Save</a></li>
-      <li class="{{Request::is('/contact*') ? 'active' : ''}}"><a href="{{ URL::to( '/contact') }}">Contact Us</a></li>
-
-
-
-
-      {{ View::make('partials._login_form_lg') }}
-
-
-      <li><a href="{{ URL::to('/cart') }}"><i class="icon-shopping-cart icon-white"></i> Seller Cart <span class="cart-total badge badge-info"></span></a></li>
-
-    </ul>
-  </div><!-- /.navbar-collapse -->
-  </div>
-</nav>
-<div class="logo-container visible-md visible-lg">
-      <div class="container">
-            <a href="/"><img src="/img/recycleabook.jpg" class="pull-left hidden-sm hidden-xs" id="logo" width="200"></a>
-            <h1 class >Want <span>CASH</span> for your <span>Used TextBooks?</span></h1><br>
-      </div>
-
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <a href="/"><img src="/img/sell-textbooks-logo.png" class="img-responsive" ></a>
     </div>
+
+    <div class="navbar col-md-9" role="navigation" >
+      <div class="container" >
+        <div class="navbar-header" >
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+           </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+          <ul class="nav navbar-nav">
+
+            <li class="{{Request::is('/') ? 'active' : ''}}"><a href="{{ URL::to( '/') }}">Home</a></li>
+            <li class="{{Request::is('p/join-our-team*') ? 'active' : ''}}"><a href="{{ URL::to( '/p/join-our-team') }}">Join Our Team</a></li>
+            <li class="{{Request::is('p/how-to-save*') ? 'active' : ''}}"><a href="{{ URL::to( '/p/how-to-save') }}">How to Save</a></li>
+            <li class="{{Request::is('/contact*') ? 'active' : ''}}"><a href="{{ URL::to( '/contact') }}">Contact Us</a></li>
+
+            {{ View::make('partials._login_form_lg') }}
+
+            <li><a href="{{ URL::to('/cart') }}"><i class="icon-shopping-cart icon-white"></i> Seller Cart <span class="cart-total badge badge-info"></span></a></li>
+
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </div>
+    </div>
+  </div>
+</div>
+
+
 
 
 	    @yield('content')
@@ -74,10 +72,10 @@
       <div class="container-fluid foot_container footer clearfix">
      <div class="col-md-3">
 
-<p>&copy; RecycleABook.com 2013</p>
+
       </div>
   <div class="col-md-6">
-<p>Recycleabook.com retains the right to refuse any textbook purchase. <br />If a textbook buyback order is refused the items will be returned.</p>
+<p>&copy; RecycleABook.com 2013</p>
   </div>
 
           @section('footer')

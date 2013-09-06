@@ -31,8 +31,20 @@
             <div class="col-xs-1 col-sm-2 hidden-md hidden-lg"></div>
 -->
             {{ Form::open(array('action' => 'BookController@postSearch', 'id' => 'price-books-form', 'class' => 'form-inline')) }}
+<div class="logo-container visible-md visible-lg">
+      <div class="container">
+      <!-- <h1>Sell <span>Used Textbooks</span> Earn <span>CASH</span> for your New or <span>Used Textbooks</span>!</h1>
+-->
+      </div>
 
-             <div class="col-xs-12 col-sm-12 col-md-5 col-lg-6"><textarea name="isbns" id="isbns" class="form-control" rows="10" data-original-title="" title=""></textarea>
+    </div>
+     <div class="col-xs-1 col-sm-2  hidden-md hidden-lg"></div>
+     <div class="col-xs-10 col-sm-8 col-md-5 col-lg-6" >
+
+     <h2>Sell your textbooks and get paid CASH - Free Shipping</h2>
+     </div>
+    <div class="col-xs-1 col-sm-2 hidden-md hidden-lg"></div>
+             <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6"><textarea name="isbns" id="isbns" class="form-control" rows="10" data-original-title="" title=""></textarea>
                     <button type="submit" class="btn btn-success btn-block btn-large form-actions" style="margin-top:10px;margin-bottom:10px;">SELL YOUR BOOKS »</button>
 
             {{ Form::close() }}
@@ -43,8 +55,11 @@
 
 
             </div>
-
-
+            <div class="container">
+            <div class="col-md-1"></div>
+<div class="col-md-10">Our mission is simple: To help students  receive the most affordable textbooks on  the market. <br />Please join our cause. You  can make a difference.</div>
+<div class="col-md-1"></div>
+</div>
     </div>
 </div>
 
