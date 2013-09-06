@@ -7,7 +7,7 @@
 {{ Config::get('env_vars.global_title') }}
 @show</title>
 
-
+<link rel="shortcut icon" href="<?php echo URL::to('favicon.ico'); ?>">
 <link rel="stylesheet" href="{{ URL::asset('css/application.css') }}">
 <link href="//netdna.bootstrapcdn.com/bootswatch/3.0.0/cerulean/bootstrap.min.css" rel="stylesheet">
     <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
@@ -23,13 +23,14 @@
 <body @section('body_tag')
 @show >
 
-<div class="container">
+<div class="container-fluid">
   <div class="row">
-    <div class="col-md-3">
+
+    <div class="col-md-3  col-md-offset-0 col-sm-offset-1">
       <a href="/"><img src="/img/sell-textbooks-logo.png" class="img-responsive" ></a>
     </div>
 
-    <div class="navbar col-md-9" role="navigation" >
+    <div class="navbar col-md-8 col-sm-11" role="navigation" style="margin-top:10px;">
       <div class="container" >
         <div class="navbar-header" >
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
@@ -62,7 +63,10 @@
 
 
 
-
+@include('layouts.notifications')
+      @if (Session::has('error'))
+    {{ trans(Session::get('reason')) }}
+@endif
 	    @yield('content')
 
 

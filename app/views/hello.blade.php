@@ -7,10 +7,7 @@
 
 
 
-@include('layouts.notifications')
-      @if (Session::has('error'))
-    {{ trans(Session::get('reason')) }}
-@endif
+
          <!--   <div class="col-xs-1 col-sm-2  hidden-md hidden-lg"></div>
             <div class="col-xs-10 col-sm-8 col-md-5 col-lg-6" >
 

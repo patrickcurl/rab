@@ -546,9 +546,12 @@ public function postEdit($id, $type="profile") {
         }
     } */
 
-    public function getOrders($id){
+
+    public function getOrders($id=0){
+
         if (Sentry::check()){
             $currentUser = Sentry::getUser();
+                if ($id == 0){$id = $currentUser->getId();}
                 if( $currentUser->hasAccess('admin') || $currentUser->getId()== $id){
                     Event::listen('laravel.query', function($sql) {
     dd($sql);});
@@ -628,7 +631,7 @@ public function postEdit($id, $type="profile") {
                 // Email the reset code to the user
                     Mail::send('emails.auth.reset', $data, function($m) use($data)
                     {
-                        $m->from('patrick@recycleabook.com', 'RecycleABook')->to($data['email'])->subject('Password Reset Confirmation | Laravel4 With Sentry');
+                        $m->from('info@recycleabook.com', 'RecycleABook')->to($data['email'])->subject('Password Reset Confirmation | Laravel4 With Sentry');
                         });
                     Session::flash('success', 'Check your email for password reset information.');
                 return Redirect::back();
