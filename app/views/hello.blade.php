@@ -11,7 +11,7 @@
       @if (Session::has('error'))
     {{ trans(Session::get('reason')) }}
 @endif
-            <div class="col-xs-1 col-sm-2  hidden-md hidden-lg"></div>
+         <!--   <div class="col-xs-1 col-sm-2  hidden-md hidden-lg"></div>
             <div class="col-xs-10 col-sm-8 col-md-5 col-lg-6" >
 
                     <ul class="unstyled hero_list clearfix" >
@@ -19,9 +19,7 @@
                     <li>
                         <i class="icon-book icon-2x pull-left icon-border"></i><h4><span class="badge badge-success">1</span>  GET A QUOTE</h4><span class="home-details-text">Type the ISBNs from your books into the form. *</span>
                  </li>
-<!--
-                    <li class="hidden-md hidden-lg" style="margin-top:10px;padding-top:20px;"><i class="icon-book icon-1x pull-left icon-border"></i><h5><span class="badge badge-success home-details-badge">1</span> GET A QUOTE</h3><span class="home-details-text">Type the ISBNs from your books into the form.</span>
-                    </li> -->
+
                     <li >
                         <i class="icon-truck icon-2x pull-left icon-border"></i><h4><span class="badge badge-success">2</span> SHIP BOOKS</h4><span class="home-details-text">FREE shipping via UPS. **</span>
                     </li>
@@ -31,7 +29,7 @@
                 </ul>
             </div>
             <div class="col-xs-1 col-sm-2 hidden-md hidden-lg"></div>
-
+-->
             {{ Form::open(array('action' => 'BookController@postSearch', 'id' => 'price-books-form', 'class' => 'form-inline')) }}
 
              <div class="col-xs-12 col-sm-12 col-md-5 col-lg-6"><textarea name="isbns" id="isbns" class="form-control" rows="10" data-original-title="" title=""></textarea>
