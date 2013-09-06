@@ -56,9 +56,9 @@
 
             </div>
             <div class="container">
-            <div class="col-md-1"></div>
-<div class="col-md-10 well well-lg">Our mission is simple: To help students  receive the most affordable textbooks on  the market. <br />Please join our cause. You  can make a difference.</div>
-<div class="col-md-1"></div>
+            <div class="col-md-2"></div>
+<div class="col-md-7 well well-lg"><span class="alert-info">Our mission is simple: To help students  receive the most affordable textbooks on  the market. <br /><br />Please join our cause. You  can make a difference.</span></div>
+<div class="col-md-2"></div>
 </div>
     </div>
 </div>
