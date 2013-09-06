@@ -14,7 +14,7 @@
 
 Route::get('/', function()
 {
-	Session::flash('error', 'this is a test');
+
 	return View::make('hello');
 });
 
