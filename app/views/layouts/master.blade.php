@@ -97,5 +97,7 @@
 <script>
   $('.dropdown-toggle').dropdown()
 </script>
+@section('footer')
+@show
   </body>
 </html>

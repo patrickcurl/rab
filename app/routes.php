@@ -36,4 +36,5 @@ Route::controller('books', 'BookController');
 Route::controller('cart', 'CartController');
 Route::controller('orders', 'OrdersController');
 Route::controller('p','PageController');
+Route::controller('admin', 'AdminController');
 
