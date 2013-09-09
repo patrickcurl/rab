@@ -64,7 +64,7 @@
                 {{ Form::close() }}
 </div>
 <div class="tab-pane" id="users">
-    <table class="table-striped col-md-10 table-bordered">
+    <table class="table-striped  col-md-12 table-bordered">
             <thead>
               <tr>
                 <th>Name</th>
