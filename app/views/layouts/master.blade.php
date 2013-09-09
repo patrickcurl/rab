@@ -67,26 +67,26 @@
       @if (Session::has('error'))
     {{ trans(Session::get('reason')) }}
 @endif
+<div id="wrap">
 	    @yield('content')
-
-
+</div>
 
 
      <!-- /container -->
-      <div class="container-fluid foot_container footer clearfix">
-     <div class="col-md-3">
+<div class="navbar navbar-fixed-bottom ">
+    <div class="navbar-inner">
+        <div class="width-constraint clearfix">
+            <p class="pull-left muted credit">RecycleABook v2.0.0</p>
+
+            <p class="pull-right muted credit">©2013 • Recycleabook.com ALL RIGHTS RESERVED</p>
+        </div>
+    </div>
+</div>
 
 
-      </div>
-  <div class="col-md-6">
-<p>&copy; RecycleABook.com 2013</p>
-  </div>
-
-          @section('footer')
-          @show
 
 
-      </div><script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0-wip/js/bootstrap.min.js"></script>
 
 {{ javascript(array(

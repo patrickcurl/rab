@@ -4,7 +4,29 @@ body {
   background: #ededed;
   font-family: 'PT Serif', serif;
   padding: 0px;
+  padding-bottom:50px;
+  height: 100%;
 }
+
+
+.footer {
+position: fixed;
+bottom: 0;
+left: 0;
+right: 0;
+height: 120px;
+background-color:gray;
+}
+@media (max-width: 767px) {
+    .navbar-fixed-bottom {
+        margin-left: -20px;
+        margin-right: -20px;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
+
+
 .logo-container {
   background: #ffffff;
   color: #2d2d2d;
@@ -68,6 +90,17 @@ a {
   background-color: #555555;
   color: #eeeeee;
 }
+ .navbar-fixed-bottom {
+      font-size: 12px;
+      line-height: 18px;
+      margin-top:50px;
+    }
+    .navbar-fixed-bottom .navbar-inner {
+        min-height: 22px;
+    }
+    .navbar-fixed-bottom .p {
+        margin: 2px 0 2px;
+    }
 .hero-unit {
     margin-left: -5px;
     background-color: #ffffff;
