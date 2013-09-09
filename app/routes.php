@@ -11,11 +11,20 @@
 |
 */
 
+Route::group(array('domain' => '{single}.rab.dev'), function()
+{
 
+    Route::get('/', function()
+    {
+    	return View::make('single');
+        //
+    });
+
+});
 Route::get('/', function()
 {
 
-	return View::make('hello');
+	return View::make('index');
 });
 
 Route::get('test', function(){
@@ -27,3 +36,4 @@ Route::controller('books', 'BookController');
 Route::controller('cart', 'CartController');
 Route::controller('orders', 'OrdersController');
 Route::controller('p','PageController');
+

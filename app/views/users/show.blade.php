@@ -12,47 +12,46 @@ Home
   @if (Sentry::check())
   <h4>Account Profile</h4>
 
-    <div class="well clearfix">
-      <div class="row">
+
+      <div class="container"><div class="well clearfix col-md-7">
         @if ($user->first_name)
-          <div class="span4"><strong>First Name:</strong> {{ $user->first_name }}</div>
+          <div class="col-md-6"><strong>First Name:</strong> {{ $user->first_name }}</div>
       @endif
       @if ($user->last_name)
-          <div class="span4"><strong>Last Name:</strong> {{ $user->last_name }}</div>
+          <div class="col-md-6"><strong>Last Name:</strong> {{ $user->last_name }}</div>
       @endif
-        <div class="span4"><strong>Email:</strong> {{ $user->email }}</div>
+        <div class="col-md-6"><strong>Email:</strong> {{ $user->email }}</div>
       @if ($user->phone)
-        <div class="span4"><strong>Phone:</strong> {{ $user->phone }}</div>
+        <div class="col-md-6"><strong>Phone:</strong> {{ $user->phone }}</div>
       @endif
       @if ($user->address)
-        <div class="span4"><strong>Address:</strong> {{ $user->address }}</div>
+        <div class="col-md-6"><strong>Address:</strong> {{ $user->address }}</div>
       @endif
       @if ($user->city)
-        <div class="span4"><strong>City:</strong> {{ $user->city }}</div>
+        <div class="col-md-6"><strong>City:</strong> {{ $user->city }}</div>
       @endif
       @if ($user->state)
-        <div class="span4"><strong>State:</strong> {{ $user->state }}</div>
+        <div class="col-md-6"><strong>State:</strong> {{ $user->state }}</div>
       @endif
       @if ($user->zip)
-        <div class="span4"><strong>Zip Code:</strong> {{ $user->paypal_email }}</div>
+        <div class="col-md-6"><strong>Zip Code:</strong> {{ $user->paypal_email }}</div>
       @endif
       @if ($user->payment_method)
-        <div class="span4"><strong>Payment Method:</strong> {{ $user->payment_method }}</div>
+        <div class="col-md-6"><strong>Payment Method:</strong> {{ $user->payment_method }}</div>
       @endif
       @if ($user->paypal_email)
-       <div class="span4"><strong>Paypal Email:</strong> {{ $user->paypal_email }}</div>
+       <div class="col-md-6"><strong>Paypal Email:</strong> {{ $user->paypal_email }}</div>
       @endif
       @if ($user->name_on_cheque)
-        <div class="span4"><strong>Name on Cheque:</strong> {{ $user->name_on_cheque }}</div>
+        <div class="col-md-6"><strong>Name on Cheque:</strong> {{ $user->name_on_cheque }}</div>
       @endif
-        <button class="span6 btn btn-info" onClick="location.href='{{ URL::to('users/edit') }}/{{ $user->id}}'">Edit Profile</button>
+        <button class="col-md-12 btn btn-info" onClick="location.href='{{ URL::to('users/edit') }}/{{ $user->id}}'">Edit Profile</button>
 
-    <div class="span4">
-      <p><em>Account created: {{ $user->created_at }}</em></p>
-      <br /><em>Last Updated: {{ $user->updated_at }}</em>
+    <div class="col-md-12">
+      <em>Account created: {{ $user->created_at }} | </em><em>Last Updated: {{ $user->updated_at }}</em>
     </div></div>
   </div>
-
+@if ($user->hasAccess('admin'))
   <h4>Group Memberships:</h4>
   <div class="well">
       <ul>
@@ -65,7 +64,7 @@ Home
       @endif
       </ul>
   </div>
-
+@endif
  <!-- <h4>User Object</h4>
   <div>
     <p>-->{{-- var_dump($user) --}}<!--</p>

@@ -34,6 +34,24 @@ class BookController extends BaseController {
         //return $isbn;
         return View::make('books.search', array('books' => $books) );
     }
+    public function postSearchSingle()
+    {
+        $isbns =  str_replace("\r", "", Input::get('isbns'));
+        $isbns = explode(",", $isbns);
+        $isbns = array_unique($isbns);
+        $books = array();
+        //return var_dump($isbns);
+        foreach($isbns as $isbn){
+            if(\Intervention\Validation\Validator::isIsbn($isbn)){
+                $book = Book::find_or_create($isbn);
+                array_push($books, $book);
+            }
+
+        }
+
+        //return $isbn;
+        return View::make('books.search_single', array('books' => $books) );
+    }
 
 
 }

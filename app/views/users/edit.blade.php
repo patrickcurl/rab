@@ -9,178 +9,221 @@ Edit Profile
 {{-- Content --}}
 @section('content')
 <div class="container">
-	<h4 class="col-md-offset-1">Edit
-	@if ($user->email == Sentry::getUser()->email)
-		Your
-	@else
-		{{ $user->email }}'s
-	@endif
+	<div class="col-md-6">
+		<h4 class="col-md-offset-1">Edit
+			@if ($user->email == Sentry::getUser()->email)
+				Your
+			@else
+				{{ $user->email }}'s
+			@endif
+			Profile
+		</h4>
+		<br />
+		{{ Form::open(array('action' => array('UsersController@postEdit', $user->id, 'profile'), 'method' => 'POST', 'class' => 'form-horizontal', 'role'=>'form')) }}
+			<div class="form-group <?php if($errors->has('first_name')){echo "alert alert-danger";} ?>">
+				<label for="first_name" class="col-lg-4 control-label">First Name</label>
+					<div class="col-lg-6">
+						{{Form::text('first_name', $user->first_name, array('class' => 'form-control')) }}
 
-	Profile</h4>
-	<div class="well">
-		<form class="form-horizontal" action="{{ URL::to('users/edit') }}/{{ $user->id }}" method="post">
-	        {{ Form::token() }}
-	        <div class="row">
+  			     		@foreach($errors->get('first_name') as $message)
+  			     			<p class="alert-danger">{{$message}}</p>
+  			     		@endforeach
 
-		        <div class="col-md-5 control-group {{ ($errors->has('first_name')) ? 'error' : '' }}" for="first_name">
-		        	<label class="control-label" for="first_ame">First Name:</label>
-			    		<div class="controls">
-								<input name="first_name" value="{{ (Request::old('first_name')) ? Request::old("first_name") : $user->first_name }}" type="text" class="input-xlarge" placeholder="First Name">
-				    		{{ ($errors->has('first_name') ? $errors->first('first_name') : '') }}
-		    			</div>
-	    			</div>
+				    </div>
+				</div>
+			<div class="form-group <?php if($errors->has('last_name')){echo "alert alert-danger";} ?>">
+			    <label for="last_name" class="col-lg-4 control-label">Last Name</label>
+			    <div class="col-lg-6">
 
-		        <div class="col-md-4 control-group {{ $errors->has('last_name') ? 'error' : '' }}" for="last_name">
-		        	<label class="control-label" for="last_name">Last Name:</label>
-			    		<div class="controls">
-							<input name="last_name" value="{{ (Request::old('last_name')) ? Request::old("last_name") : $user->last_name }}" type="text" class="input-xlarge" placeholder="Last Name">
-			    			{{ ($errors->has('last_name') ?  $errors->first('last_name') : '') }}
-			    		</div>
-		    		</div>
-	    		</div>
+			      {{ Form::text('last_name', $user->last_name, array('class' => 'form-control')) }}
 
-	        <div class="row">
-		        <div class="col-md-5 control-group {{ ($errors->has('email')) ? 'error' : '' }}" for="email">
-		        	<label class="control-label" for="email">E-mail Address:</label>
-			    		<div class="controls">
-								<input name="email" value="{{ (Request::old('email')) ? Request::old("email") : $user->email }}" type="text" class="input-xlarge" placeholder="E-mail Address">
-				    		{{ ($errors->has('email') ? $errors->first('email') : '') }}
-		    			</div>
-	    			</div>
+			     		@foreach($errors->get('last_name') as $message)
+			     			<p class="alert-danger">{{$message}}</p>
+			     		@endforeach
 
-		        <div class="col-md-4 control-group {{ $errors->has('phone') ? 'error' : '' }}" for="phone">
-		        	<label class="control-label" for="phone">Phone:</label>
-			    		<div class="controls">
-							<input name="phone" value="{{ (Request::old('phone')) ? Request::old("phone") : $user->phone }}" type="text" class="input-xlarge" placeholder="Phone #">
-			    			{{ ($errors->has('phone') ?  $errors->first('phone') : '') }}
-			    		</div>
-		    		</div>
-	    		</div>
+			    </div>
+			</div>
 
-	    		<div class="row">
-		        <div class="col-md-5 control-group {{ ($errors->has('address')) ? 'error' : '' }}" for="address">
-		        	<label class="control-label" for="address">Address:</label>
-			    		<div class="controls">
-								<input name="address" value="{{ (Request::old('address')) ? Request::old("address") : $user->address }}" type="text" class="input-xlarge" placeholder="Address">
-				    		{{ ($errors->has('address') ? $errors->first('address') : '') }}
-		    			</div>
-	    			</div>
+				<div class="form-group <?php if($errors->has('email')){echo "alert alert-danger";} ?>">
+				    <label for="email" class="col-lg-4 control-label">EMail</label>
+				    <div class="col-lg-6">
 
-		        <div class="col-md-4 control-group {{ $errors->has('city') ? 'error' : '' }}" for="city">
-		        	<label class="control-label" for="city">City:</label>
-			    		<div class="controls">
-							<input name="city" value="{{ (Request::old('city')) ? Request::old("city") : $user->city }}" type="text" class="input-xlarge" placeholder="City">
-			    			{{ ($errors->has('city') ?  $errors->first('city') : '') }}
-			    		</div>
-		    		</div>
-	    		</div>
-	    		<div class="row">
-		        <div class="col-md-5 control-group {{ ($errors->has('state')) ? 'error' : '' }}" for="state">
-		        	<label class="control-label" for="state">State:</label>
-			    		<div class="controls">
-								{{ Form::select('state', $state_list, $user->state) }}
-				    		{{ ($errors->has('state') ? $errors->first('state') : '') }}
-		    			</div>
-	    			</div>
+				      {{Form::email('email', $user->email, array('class' => 'form-control')) }}
 
-		        <div class="col-md-4 control-group {{ $errors->has('zip') ? 'error' : '' }}" for="zip">
-		        	<label class="control-label" for="zip">Zip Code:</label>
-			    		<div class="controls">
-							<input name="zip" value="{{ (Request::old('zip')) ? Request::old("zip") : $user->zip }}" type="text" class="input-xlarge" placeholder="Zip Code">
-			    			{{ ($errors->has('zip') ?  $errors->first('zip') : '') }}
-			    		</div>
-		    		</div>
-	    		</div>
+  			     		@foreach($errors->get('email') as $message)
+  			     			<p class="alert-danger">{{$message}}</p>
+  			     		@endforeach
+
+				    </div>
+				</div>
 
 
-	    	<div class="form-actions col-md-offset-1">
-		    	<input class="btn-primary btn" type="submit" value="Update Profile">
-		    	<input class="btn-inverse btn" type="reset" value="Reset">
-		    </div>
-	    </form>
-	</div>
-	<h4 class="col-md-offset-1">Payment Method</h4>
-	<div class="well">
-			<form class="form-horizontal" action="{{ URL::to('users/edit') }}/{{ $user->id }}/payment" method="post">
-	      {{ Form::token() }}
-				<div class="control-group col-md-offset-2">
-						<label class="control-label" for="payment_method">Payment Method:</label>
-						<div class="controls">
-							<label class="radio inline">
+				<div class="form-group <?php if($errors->has('phone')){echo "alert alert-danger";} ?>">
+				    <label for="phone" class="col-lg-4 control-label">Phone</label>
+				    <div class="col-lg-6">
+
+				      {{Form::text('phone', $user->phone, array('class' => 'form-control')) }}
+
+  			     		@foreach($errors->get('phone') as $message)
+  			     			<p class="alert-danger">{{$message}}</p>
+  			     		@endforeach
+
+				    </div>
+				</div>
+
+				<div class="form-group <?php if($errors->has('address')){echo "alert alert-danger";} ?>">
+				    <label for="address" class="col-lg-4 control-label">Address</label>
+				    <div class="col-lg-6">
+
+				      {{Form::text('address', $user->address, array('class' => 'form-control')) }}
+
+  			     		@foreach($errors->get('address') as $message)
+  			     			<p class="alert-danger">{{$message}}</p>
+  			     		@endforeach
+
+				    </div>
+				</div>
+
+				<div class="form-group <?php if($errors->has('city')){echo "alert alert-danger";} ?>">
+				    <label for="city" class="col-lg-4 control-label">City</label>
+				    <div class="col-lg-6">
+
+				      {{Form::text('city', $user->city, array('class' => 'form-control')) }}
+
+  			     		@foreach($errors->get('city') as $message)
+  			     			<p class="alert-danger">{{$message}}</p>
+  			     		@endforeach
+
+				    </div>
+				</div>
+
+				<div class="form-group <?php if($errors->has('state')){echo "alert alert-danger";} ?>">
+				    <label for="state" class="col-lg-4 control-label">State</label>
+				    <div class="col-lg-6">
+
+
+				      {{ Form::select('state', $state_list, $user->state, array('class' => 'form-control')) }}
+
+  			     		@foreach($errors->get('state') as $message)
+  			     			<p class="alert-danger">{{$message}}</p>
+  			     		@endforeach
+
+				    </div>
+				</div>
+
+
+				<div class="form-group <?php if($errors->has('zip')){echo "alert alert-danger";} ?>">
+				    <label for="zip" class="col-lg-4 control-label">Zip code</label>
+				    <div class="col-lg-6">
+
+				      {{Form::text('zip', $user->zip, array('class' => 'form-control')) }}
+
+				      @foreach($errors->get('zip') as $message)
+  			     			<p class="alert-danger">{{$message}}</p>
+  			     		@endforeach
+
+				    </div>
+				</div>
+
+				<div class="form-group <?php if($errors->has('payment_method')){echo "alert alert-danger";} ?>">
+				    <label for="payment_method" class="col-lg-4 control-label">Payment Method</label>
+				    <div class="col-lg-6">
+
+						<label class="radio checkbox-inline">
 									@if ($user->payment_method == "Check")
 											<input type="radio" name="payment_method" name="payment_method" value="Check" checked="checked"/>Check
 									@else
 											<input type="radio" name="payment_method" name="payment_method" value="Check"/>Check
 									@endif
 							</label>
-							<label class="radio inline">
+							<label class="radio checkbox-inline">
 									@if ($user->payment_method == "Paypal")
 										<input type="radio" name="payment_method" name="payment_method" value="Paypal" checked="checked" />Paypal
 									@else
 										<input type="radio" name="payment_method" name="payment_method" value="Paypal" />Paypal
 									@endif
 							</label>
-						</div>
-					</div>
 
-				<div class="control-group col-md-offset-2" for="paypal_email">
-					<label class="control-label" for="paypal_email">Paypal Email Address:</label>
-					<div class="controls">
-						<input type="text" id="paypal_email" name="paypal_email" placeholder="Paypal Email Address" value="{{ $user->paypal_email }}">
-					</div>
+  			     		@foreach($errors->get('payment_method') as $message)
+  			     			<p class="alert-danger">{{$message}}</p>
+  			     		@endforeach
+
+				    </div>
+				</div>
+				<div class="form-group <?php if($errors->has('paypal_email')){echo "alert alert-danger";} ?>">
+				    <label for="paypal_email" class="col-lg-4 control-label">Paypal Email</label>
+				    <div class="col-lg-6">
+
+				      {{Form::text('paypal_email', $user->paypal_email, array('class' => 'form-control')) }}
+
+  			     		@foreach($errors->get('paypal_email') as $message)
+  			     			<p class="alert-danger">{{$message}}</p>
+  			     		@endforeach
+
+				    </div>
+				</div>
+
+				<div class="form-group <?php if($errors->has('name_on_cheque')){echo "alert alert-danger";} ?>">
+				    <label for="name_on_cheque" class="col-lg-4 control-label">Name on Cheque</label>
+				    <div class="col-lg-6">
+
+				      {{Form::text('name_on_cheque', $user->name_on_cheque, array('class' => 'form-control')) }}
+
+  			     		@foreach($errors->get('name_on_cheque') as $message)
+  			     			<p class="alert-danger">{{$message}}</p>
+  			     		@endforeach
+
+				    </div>
 				</div>
 
 
-					<div class="control-group col-md-offset-2" for="name_on_cheque"></div>
-					<div class="control-group col-md-offset-2" for="name_on_cheque">
-						<label class="control-label" for="name_on_cheque">Make Check Payable to:</label>
-						<div class="controls">
-							<input type="text" id="name_on_cheque" name="name_on_cheque" placeholder="Check Payable to" value="{{ $user->name_on_cheque }}">
-						</div>
-					</div>
 
-				<div class="form-actions col-md-offset-1">
-		    	<input class="btn-primary btn" type="submit" value="Update Payment Method">
-		    	<input class="btn-inverse btn" type="reset" value="Reset">
-		    </div>
-			</form>
-			</div>
 
+			  <div class="form-group">
+			  <div class="col-lg-4"></div>
+			  <div class="col-lg-6"><button type="submit" class="btn btn-primary col-lg-12" >Edit Profile</button></div>
+			   	</div>
+			{{ Form::close() }}
+		</div>
+
+		<div class="col-md-6">
 	<h4 class="col-md-offset-1">Change Password</h4>
-	<div class="well">
+
 		<form class="form-horizontal" action="{{ URL::to('users/edit') }}/{{ $user->id }}/password" method="post">
 	        {{ Form::token() }}
 
-	        <div class="control-group col-md-offset-1 {{ $errors->has('oldPassword') ? 'error' : '' }}" for="oldPassword">
-	        	<label class="control-label" for="oldPassword">Old Password</label>
-	    		<div class="controls">
-					<input name="oldPassword" value="" type="password" class="input-xlarge" placeholder="Old Password">
-	    			{{ ($errors->has('oldPassword') ? $errors->first('oldPassword') : '') }}
-	    		</div>
-	    	</div>
 
-	        <div class="control-group col-md-offset-1 {{ $errors->has('password') ? 'error' : '' }}" for="password">
-	        	<label class="control-label" for="password">New Password</label>
-	    		<div class="controls">
-					<input name="password" value="" type="password" class="input-xlarge" placeholder="New Password">
-	    			{{ ($errors->has('password') ?  $errors->first('password') : '') }}
-	    		</div>
-	    	</div>
+	    	<div class="form-group <?php if($errors->has('oldPassword')){echo "alert alert-danger";} ?>">
+				<label for="oldPassword" class="col-lg-4 control-label">Old Password</label>
+				<div class="col-lg-6">
+					<input type="password" class="form-control" name="oldPassword" id="oldPassword" placeholder="Old Password" >
+					<p class="alert-danger">{{ ($errors->has('oldPassword') ? $errors->first('oldPassword') : '') }}</p>
+				    </div>
+				</div>
 
-	    	<div class="control-group  col-md-offset-1 {{ $errors->has('password_confirmation') ? 'error' : '' }}" for="password_confirmation">
-	        	<label class="control-label" for="password_confirmation">Confirm New Password</label>
-	    		<div class="controls">
-					<input name="password_confirmation" value="" type="password" class="input-xlarge" placeholder="New Password Again">
-	    			{{ ($errors->has('password_confirmation') ? $errors->first('password_confirmation') : '') }}
-	    		</div>
-	    	</div>
+			<div class="form-group <?php if($errors->has('password')){echo "alert alert-danger";} ?>">
+				<label for="password" class="col-lg-4 control-label">New Password</label>
+				<div class="col-lg-6">
+					<input type="password" class="form-control" name="password" id="password" placeholder="New Password" >
+					<p class="alert-danger">{{ ($errors->has('password') ? $errors->first('password') : '') }}</p>
+				</div>
+			</div>
+
+			<div class="form-group <?php if($errors->has('password_confirmation')){echo "alert alert-danger";} ?>">
+				<label for="password_confirmation" class="col-lg-4 control-label">Confirm New Password</label>
+				<div class="col-lg-6">
+					<input type="password_confirmation" class="form-control" name="password_confirmation" id="password_confirmation" placeholder="Confirm New Password" >
+					<p class="alert-danger">{{ ($errors->has('password_confirmation') ? $errors->first('password_confirmation') : '') }}</p>
+				</div>
+			</div>
+
+
 
 		    <div class="form-actions col-md-offset-1">
 		    	<input class="btn-primary btn" type="submit" value="Change Password">
-		    	<input class="btn-inverse btn" type="reset" value="Reset">
-		    </div>
+		  </div>
 	      </form>
-	  </div>
+</div>
 
 	@if (Sentry::check() && Sentry::getUser()->hasAccess('admin'))
 	<h4>User Group Memberships</h4>
