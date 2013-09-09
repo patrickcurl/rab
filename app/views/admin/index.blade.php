@@ -3,10 +3,12 @@
 <link href="{{ URL::asset('css/datepicker.css') }}" rel="stylesheet">
 @stop
 @section('content')
+<p>Date: <input type="text" id="datepicker" /></p>
 <h3>Dashboard</h3>
  <div class="row">
+ <div style="padding-left:30px;">
    Total Users: {{{ $totalUsers }}} | Online:  {{{ $onlineUsers }}} | Guests:  {{{ $onlineGuests }}}
-
+</div>
   </div>
 <ul class="nav nav-tabs" id="myTab">
   <li><a href="#orders" data-toggle="tab">Orders</a></li>
@@ -38,7 +40,7 @@
               <td> <?php $itemCount = Item::where('order_id', '=', $order->id)->count(); echo $itemCount ?></td>
               <td>{{ $order->tracking_number}}</td>
               <td>{{ number_format($order->total_amount, 2) }}</td>
-              <td class="col-md-2"><div class="input-append date" id="dp_received_{{$count}}" data-date="<?php echo date("m/d/Y"); ?>" data-date-format="mm/dd/yyyy">
+              <td class="col-md-2"><div class="input-append date" id="received_date_{{$count}}" data-date="<?php echo date("m/d/Y"); ?>" data-date-format="mm/dd/yyyy">
                 <input id="received_date_{{$count}}" name="orders[{{$count}}][received_date]" class="col-md-5" size="16" type="text" value="<?php if ($order->received_date){echo date('m/d/Y', strtotime($order->received_date));/*$date = date_create($order->received_date); echo $date->format('m/d/Y'); */} ?>" readonly>
                 @if ($order->received_date)
                   <input type="hidden" name="orders[{{$count}}][old_received_date]" value="{{$order->received_date}}" />
@@ -48,7 +50,7 @@
                 @endif
 
                 <span class="add-on"><i class="icon-calendar" style="margin-left:10px;"></i></span>
-                </br ><br /><div class="input-append date" id="dp_paid_{{$count}}" data-date="<?php echo date("m/d/Y"); ?>" data-date-format="mm/dd/yyyy">
+                </br ><br /><div class="input-append date"  id="paid_date_{{$count}}" data-date="<?php echo date("m/d/Y"); ?>" data-date-format="mm/dd/yyyy">
                 <input id="paid_date_{{$count}}" name="orders[{{$count}}][paid_date]" class="col-md-5" size="16" type="text" value="<?php if ($order->paid_date){echo date('m/d/Y', strtotime($order->paid_date)); } ?>" readonly>
                 <span class="add-on"><i class="icon-calendar" style="margin-left:10px;"></i></span> </td>
               <td class="col-md-2"><textarea name="orders[{{$count}}][comments]" rows="3" cols="60"/>{{ $order->comments }}</textarea></td>
@@ -133,17 +135,21 @@
     </div>
 @stop
 @section('footer')
-<script src="{{ URL::to('js/bootstrap-datepicker.js') }}"></script>
+<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+<script>
+  $(function() {
+    $( "#datepicker" ).datepicker();
+  });
 <?php
 $count = 0;
  foreach ($orders as $order){
 ?><script>
 $(function(){
-  $("#dp_received_<?php echo $count; ?>").datepicker();
+  $("#received_date_<?php echo $count; ?>").datepicker();
 
 });
 $(function(){
-$("#dp_paid_<?php echo $count; ?>").datepicker();
+$("#paid_date_<?php echo $count; ?>").datepicker();
 });
 </script>
 <?php
@@ -154,5 +160,7 @@ $count++;
 <script>$('#myTab a').click(function (e) {
   e.preventDefault()
   $(this).tab('show')
-})</script>
+})
+
+</script>
 @stop
