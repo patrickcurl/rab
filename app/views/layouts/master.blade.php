@@ -60,7 +60,7 @@
 
             <li><a href="{{ URL::to('/cart') }}"><i class="icon-shopping-cart icon-white"></i> Seller Cart <span class="cart-total badge badge-info"></span></a></li>
             <?php $user = Sentry::getUser(); ?>
-            @if ($user->hasAccess('admin'))
+            @if ($user && $user->hasAccess('admin'))
               <li><a href="{{ URL::to('/admin') }}"> <span class="glyphicon glyphicon-wrench"></span> Admin Dashboard</a></li>
               @endif
 
