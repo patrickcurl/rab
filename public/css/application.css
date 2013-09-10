@@ -5969,6 +5969,18 @@ body {
 #logo {
   padding-right: 40px;
 }
+.navbar-nav > li > .dropdown-menu {
+  background-image: -webkit-gradient(linear,0 0,0 100%,from(#6caf69),color-stop(60%,#569C53),to(#4f8f4c));
+  background-image: -webkit-linear-gradient(#6caf69,#569C53 60%,#4f8f4c);
+  background-image: -moz-linear-gradient(top,#6caf69,#569C53 60%,#4f8f4c);
+  background-image: linear-gradient(#6caf69,#569C53 60%,#4f8f4c);
+  background-repeat: no-repeat;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff6baf68',endColorstr='#ff4e8e4b',GradientType=0);
+  border-bottom: 1px solid #447b41;
+  filter: none;
+  -webkit-box-shadow: 0 1px 10px rgba(0,0,0,0.1);
+  box-shadow: 0 1px 10px rgba(0,0,0,0.1);
+}
 .navbar {
   color: #CCC;
   margin-bottom: 0px;
