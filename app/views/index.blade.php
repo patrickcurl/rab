@@ -19,7 +19,7 @@
             </div>
 
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-              <div class="col-md-7"><textarea name="isbns" id="isbns" class="form-control" rows="10" data-original-title="" title="" >Enter ISBN numbers 1 per line.</textarea>
+              <div class="col-md-7"><textarea name="isbns" id="isbns" class="form-control" rows="10" data-original-title="" title="" placeholder="Enter ISBN numbers 1 per line.."></textarea>
                 <button type="submit" class="btn btn-success btn-block btn-large form-actions" style="margin-top:10px;margin-bottom:10px;">SELL YOUR BOOKS »</button>
                 </div>
                  <div class="col-md-5 hidden-sm hidden-xs"><img src="{{URL::to('img/sell-textbooks.jpg')}}"  class="img-responsive" style="max-height:250px;"/></div>
