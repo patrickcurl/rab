@@ -21,6 +21,16 @@ Route::group(array('domain' => '{single}.rab.dev'), function()
     });
 
 });
+Route::group(array('domain' => '{single}.recycleabook.com'), function()
+{
+
+    Route::get('/', function()
+    {
+    	return View::make('single');
+        //
+    });
+
+});
 Route::get('/', function()
 {
 
