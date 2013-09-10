@@ -69,13 +69,91 @@
         </div><!--/.nav-collapse -->
       </div>
     </div>
+<!--
+<div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container-fluid">
+      <a href="/" class="brand"><img alt="" src="/img/sell-textbooks-logo2.png" /></a>
+      <div class="navbar-header" >
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+           </div>
+                   <div class="collapse navbar-collapse navbar-ex1-collapse">
+          <ul class="nav navbar-nav">
+
+            <li class="{{Request::is('/') ? 'active' : ''}}"><a href="{{ URL::to( '/') }}">Home</a></li>
+            <li class="{{Request::is('p/join-our-team*') ? 'active' : ''}}"><a href="{{ URL::to( '/p/join-our-team') }}">Join Our Team</a></li>
+            <!-- <li class="{{Request::is('p/how-to-save*') ? 'active' : ''}}"><a href="{{ URL::to( '/p/how-to-save') }}">How to Save</a></li> -->
+            <!-- <li class="{{Request::is('/contact*') ? 'active' : ''}}"><a href="{{ URL::to( '/contact') }}">Contact Us</a></li> -->
+-->
+    <!--        {{ View::make('partials._login_form_lg') }}
+
+            <li><a href="{{ URL::to('/cart') }}"><i class="icon-shopping-cart icon-white"></i> Seller Cart <span class="cart-total badge badge-info"></span></a></li>
+            <?php // $user = Sentry::getUser(); ?>
+            @if ($user && $user->hasAccess('admin'))
+              <li><a href="{{ URL::to('/admin') }}"> <span class="glyphicon glyphicon-wrench"></span> Admin Dashboard</a></li>
+              @endif
+
+          </ul>
+        </div><
+    </div>
+
+  </div>
+</div>
+-->
+<div class="container-fluid" style="border-bottom:1px solid black;">
+  <div class="row">
+
+    <div class="col-md-3  col-md-offset-0 col-sm-offset-1">
+      <a href="/"><img src="/img/sell-textbooks-logo2.png" class="img-responsive" ></a>
+    </div>
+
+    <div class="navbar col-md-8 col-sm-11" role="navigation" style="margin-top:10px;">
+      <div class="container" >
+        <div class="navbar-header" >
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+           </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+          <ul class="nav navbar-nav">
+
+            <li class="{{Request::is('/') ? 'active' : ''}}"><a href="{{ URL::to( '/') }}">Home</a></li>
+            <li class="{{Request::is('p/join-our-team*') ? 'active' : ''}}"><a href="{{ URL::to( '/p/join-our-team') }}">Join Our Team</a></li>
+            <!-- <li class="{{Request::is('p/how-to-save*') ? 'active' : ''}}"><a href="{{ URL::to( '/p/how-to-save') }}">How to Save</a></li> -->
+            <!-- <li class="{{Request::is('/contact*') ? 'active' : ''}}"><a href="{{ URL::to( '/contact') }}">Contact Us</a></li> -->
+
+            {{ View::make('partials._login_form_lg') }}
+
+            <li><a href="{{ URL::to('/cart') }}"><i class="icon-shopping-cart icon-white"></i> Seller Cart <span class="cart-total badge badge-info"></span></a></li>
+            <?php $user = Sentry::getUser(); ?>
+            @if ($user && $user->hasAccess('admin'))
+              <li><a href="{{ URL::to('/admin') }}"> <span class="glyphicon glyphicon-wrench"></span> Admin Dashboard</a></li>
+              @endif
+
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </div>
+    </div>
+  </div>
+</div>
+
 
 
 @include('layouts.notifications')
       @if (Session::has('error'))
     {{ trans(Session::get('reason')) }}
 @endif
-<div id="wrap" style="margin-top:100px;">
+<div id="wrap" style="margin-top:5px;">
 	    @yield('content')
 </div>
 
