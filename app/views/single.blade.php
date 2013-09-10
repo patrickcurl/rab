@@ -3,7 +3,7 @@
 @section('content')
 
 
-<div class="col-xs-12" style="margin-top:100px;">
+<div class="col-xs-12" style="padding-top:50px;margin-top:100px;">
             {{ Form::open(array('action' => 'BookController@postSearchSingle', 'id' => 'price-books-form', 'class' => 'form-inline')) }}
             <div class="container clearfix" >
                 <div class='col-xs-12'>
