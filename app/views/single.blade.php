@@ -9,8 +9,8 @@
                 <div class='col-md-12'>
                     <input name="isbns" type="tel" id="isbns" class="form-control input-lg" placeholder="Enter ISBNs separate by commas no spaces." />
                 </div>
-                <div class='col-md-12' style="margin-top:2px;">
-                    <button type="submit" class="btn btn-danger btn-lg col-md-12">SELL YOUR BOOKS »</button>
+                <div class='col-xs-12' style="margin-top:2px;">
+                    <button type="submit" class="btn btn-danger btn-lg col-xs-12">SELL YOUR BOOKS »</button>
                     </div>
             </div>
 
