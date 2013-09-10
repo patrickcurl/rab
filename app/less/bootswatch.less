@@ -1,87 +1,82 @@
-// Readable 3.0.0
+// Cerulean 3.0.0
 // Bootswatch
 // -----------------------------------------------------
 
-@font-face {
-  font-family: 'Lora';
-  font-style: normal;
-  font-weight: 400;
-  src: local('Lora'), url(http://themes.googleusercontent.com/static/fonts/lora/v5/5-AYViExptypIdFoLKAxTA.woff) format('woff');
-}
-@font-face {
-  font-family: 'Lora';
-  font-style: normal;
-  font-weight: 700;
-  src: local('Lora Bold'), local('Lora-Bold'), url(http://themes.googleusercontent.com/static/fonts/lora/v5/XpaepWHcooQHSRnzoohUng.woff) format('woff');
-}
-@font-face {
-  font-family: 'Lora';
-  font-style: italic;
-  font-weight: 400;
-  src: local('Lora Italic'), local('Lora-Italic'), url(http://themes.googleusercontent.com/static/fonts/lora/v5/wXeMvRh7Gui36p_I04Ex6g.woff) format('woff');
-}
-@font-face {
-  font-family: 'Lora';
-  font-style: italic;
-  font-weight: 700;
-  src: local('Lora Bold Italic'), local('Lora-BoldItalic'), url(http://themes.googleusercontent.com/static/fonts/lora/v5/_IxjUs2lbQSu0MyFEAfa7T8E0i7KZn-EPnyo3HZu7kw.woff) format('woff');
-}
-
 .btn-shadow(@color) {
-	#gradient > .vertical-three-colors(lighten(@color, 10%), @color, 6%, darken(@color, 4%));
-	border: 1px solid darken(@color, 10%);
+	#gradient > .vertical-three-colors(lighten(@color, 8%), @color, 60%, darken(@color, 4%));
+	border-bottom: 1px solid darken(@color, 10%);
 }
 
 // Navbar =====================================================================
 
 .navbar {
-	.box-shadow(0 1px 4px rgba(0, 0, 0, 0.2));
+	.btn-shadow(@navbar-default-bg);
+	filter: none;
+	.box-shadow(0 1px 10px rgba(0, 0, 0, 0.1));
 
-	&-nav > li > a {
-		padding-top: @navbar-padding-vertical + 6px;
-	}
-
+	.navbar-nav > li > a,
 	&-brand {
-		padding-top: @navbar-padding-vertical + 5px;
+		text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
 	}
+}
+
+.navbar-inverse {
+	#gradient > .vertical-three-colors(lighten(@navbar-inverse-bg, 8%), @navbar-inverse-bg, 60%, darken(@navbar-inverse-bg, 4%));
+	border-bottom: 1px solid darken(@navbar-inverse-bg, 10%);
 }
 
 // Buttons ====================================================================
 
-.btn-default,
-.btn-default:hover {
+.btn {
+
+	text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+
+	.caret {
+		border-top-color: #fff;
+	}
+}
+
+.btn-default {
+	
+	.btn-shadow(@btn-default-bg);
+
+	&:hover {
+		color: @btn-default-color;
+	}
+
+	.caret {
+		border-top-color: @text-color;
+	}
+}
+
+.btn-default {
 	.btn-shadow(@btn-default-bg);
 }
 
-.btn-primary,
-.btn-primary:hover {
+.btn-primary {
 	.btn-shadow(@btn-primary-bg);
 }
 
-.btn-success,
-.btn-success:hover {
+.btn-success {
 	.btn-shadow(@btn-success-bg);
 }
 
-.btn-info,
-.btn-info:hover {
+.btn-info {
 	.btn-shadow(@btn-info-bg);
 }
 
-.btn-warning,
-.btn-warning:hover {
+.btn-warning {
 	.btn-shadow(@btn-warning-bg);
 }
 
-.btn-danger,
-.btn-danger:hover {
+.btn-danger {
 	.btn-shadow(@btn-danger-bg);
 }
 
 // Typography =================================================================
 
 h1, h2, h3, h4, h5, h6 {
-	font-weight: bold;
+	color: #317EAC;
 }
 
 // Tables =====================================================================
@@ -90,8 +85,71 @@ h1, h2, h3, h4, h5, h6 {
 
 // Navs =======================================================================
 
+.pagination {
+
+	.active > a,
+	.active > a:hover {
+		border-color: #ddd;
+	}
+}
+
 // Indicators =================================================================
 
 // Progress bars ==============================================================
 
 // Containers =================================================================
+
+.panel-primary {
+
+	.panel-title {
+		color: #fff;
+	}
+}
+
+.panel-success {
+
+	.panel-heading {
+		background-color: @brand-success;
+		color: #fff;
+	}
+	
+	.panel-title {
+		color: #fff;
+	}
+}
+
+.panel-warning {
+
+	.panel-heading {
+		background-color: @brand-warning;
+		color: #fff;
+	}
+
+	.panel-title {
+		color: #fff;
+	}
+}
+
+.panel-danger {
+
+	.panel-heading {
+		background-color: @brand-danger;
+		color: #fff;
+	}
+	
+	.panel-title {
+		color: #fff;
+	}
+}
+
+.panel-info {
+
+	.panel-heading {
+		background-color: @brand-info;
+		color: #fff;
+	}
+
+	.panel-title {
+		color: #fff;
+	}
+}

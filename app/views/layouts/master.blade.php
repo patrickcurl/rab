@@ -15,7 +15,7 @@
 
 
 <link rel="stylesheet" href="{{ URL::asset('css/application.css') }}">
-<link href="//netdna.bootstrapcdn.com/bootswatch/3.0.0/cerulean/bootstrap.min.css" rel="stylesheet">
+
     <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Syncopate' rel='stylesheet' type='text/css'>
  <link href='http://fonts.googleapis.com/css?family=PT+Serif' rel='stylesheet' type='text/css'>
@@ -29,7 +29,7 @@
 <body @section('body_tag')
 @show >
 
-<div class="container-fluid">
+<div class="container-fluid" style="border-bottom:1px solid black;">
   <div class="row">
 
     <div class="col-md-3  col-md-offset-0 col-sm-offset-1">
@@ -53,8 +53,8 @@
 
             <li class="{{Request::is('/') ? 'active' : ''}}"><a href="{{ URL::to( '/') }}">Home</a></li>
             <li class="{{Request::is('p/join-our-team*') ? 'active' : ''}}"><a href="{{ URL::to( '/p/join-our-team') }}">Join Our Team</a></li>
-            <li class="{{Request::is('p/how-to-save*') ? 'active' : ''}}"><a href="{{ URL::to( '/p/how-to-save') }}">How to Save</a></li>
-            <li class="{{Request::is('/contact*') ? 'active' : ''}}"><a href="{{ URL::to( '/contact') }}">Contact Us</a></li>
+            <!-- <li class="{{Request::is('p/how-to-save*') ? 'active' : ''}}"><a href="{{ URL::to( '/p/how-to-save') }}">How to Save</a></li> -->
+            <!-- <li class="{{Request::is('/contact*') ? 'active' : ''}}"><a href="{{ URL::to( '/contact') }}">Contact Us</a></li> -->
 
             {{ View::make('partials._login_form_lg') }}
 
@@ -77,7 +77,7 @@
       @if (Session::has('error'))
     {{ trans(Session::get('reason')) }}
 @endif
-<div id="wrap">
+<div id="wrap" style="margin-top:5px;">
 	    @yield('content')
 </div>
 
