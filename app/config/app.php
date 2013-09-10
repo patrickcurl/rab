@@ -115,7 +115,7 @@ return array(
 		'Illuminate\Workbench\WorkbenchServiceProvider',
 
 		// Details: https://github.com/laravelbook/laravel4-powerpack
-		'Way\Generators\GeneratorsServiceProvider',
+
 		'CeesVanEgmond\Minify\MinifyServiceProvider',
 		// 'Toddish\Verify\VerifyServiceProvider',
 		// 'VTalbot\Less\LessServiceProvider',
@@ -126,7 +126,7 @@ return array(
 		//'Pixelgremlins\Gremlindash\GremlindashServiceProvider',
 		'\Gloudemans\Shoppingcart\ShoppingcartServiceProvider',
 		'Cartalyst\Sentry\SentryServiceProvider',
-		'Former\FormerServiceProvider',
+
 
 	),
 
@@ -192,7 +192,7 @@ return array(
 		'URL'             => 'Illuminate\Support\Facades\URL',
 		'Validator'       => 'Illuminate\Support\Facades\Validator',
 		'View'            => 'Illuminate\Support\Facades\View',
-		'Former'          => 'Former\Facades\Former',
+
 		// Details : https://github.com/Anahkiasen/former
 		// 'Less'         => 'VTalbot\Less\Facades\Less',
 		'Profiler'        => 'Juy\Profiler\Facades\Profiler',
