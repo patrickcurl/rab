@@ -24,12 +24,11 @@
                  <label class="sr-only" for="password">Password</label>
                  <input type="password" class="form-control" name="password" id="password" placeholder="Password">
                </div>
-
                <div class="checkbox" >
                  <label>
                    <input type="checkbox"> Remember me
                  </label>
-                  <a href="" style="color:grey">Forgot Password?</a>
+                  <a href="" style="color:#F3ED66;min-height:15px;">Forgot Password?</a>
                </div>
                <button type="submit" class="btn btn-default col-md-10 col-md-offset-1">Sign in</button>
 
