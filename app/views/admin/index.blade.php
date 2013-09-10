@@ -1,9 +1,23 @@
 @extends('layouts.master')
 @section('head')
-<link href="{{ URL::asset('css/datepicker.css') }}" rel="stylesheet">
+  <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+  <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+  <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+  <script>
+  $(function() {
+    $( "#datepicker" ).datepicker();
+  });
+  </script>
+   <script>
+  $(function() {
+    $( "#datepicker2" ).datepicker();
+  });
+  </script>
 @stop
 @section('content')
-<p>Date: <input type="text" id="datepicker" /></p>
+
+
+
 <h3>Dashboard</h3>
  <div class="row">
  <div style="padding-left:30px;">
@@ -17,7 +31,8 @@
 </ul>
 <div class="tab-content">
 <div class="tab-pane active" id="orders">
-<table class="table-striped table-bordered">
+<div class="col-md-1"></div>
+<table class="table table-striped table-bordered">
     <thead>
     <tr>
       <th>User</th>
@@ -36,25 +51,41 @@
             @foreach ($orders as $order)
             <tr>
             <input type="hidden" name ="orders[{{$count}}][id]" value="{{$order->id}}" />
-              <td class="col-md-1">{{ $order->user->first_name }} {{ $order->user->last_name }}</td>
+              <td >{{ $order->user->first_name }} {{ $order->user->last_name }}</td>
               <td> <?php $itemCount = Item::where('order_id', '=', $order->id)->count(); echo $itemCount ?></td>
               <td>{{ $order->tracking_number}}</td>
               <td>{{ number_format($order->total_amount, 2) }}</td>
-              <td class="col-md-2"><div class="input-append date" id="received_date_{{$count}}" data-date="<?php echo date("m/d/Y"); ?>" data-date-format="mm/dd/yyyy">
-                <input id="received_date_{{$count}}" name="orders[{{$count}}][received_date]" class="col-md-5" size="16" type="text" value="<?php if ($order->received_date){echo date('m/d/Y', strtotime($order->received_date));/*$date = date_create($order->received_date); echo $date->format('m/d/Y'); */} ?>" readonly>
-                @if ($order->received_date)
-                  <input type="hidden" name="orders[{{$count}}][old_received_date]" value="{{$order->received_date}}" />
-                @endif
-                @if ($order->paid_date)
-                  <input type="hidden" name="orders[{{$count}}][old_paid_date]" value="{{$order->paid_date}}" />
-                @endif
+              <td class="col-md-3">
+                  <div class="container">
+                  <script>
+                    $(function() {
+                    $( "<?php echo "#orders-{$count}-received_date"; ?>" ).datepicker();
+                    });
+                  </script>
+                  <script>
+                    $(function() {
+                    $( "<?php echo "#orders-{$count}-paid_date"; ?>" ).datepicker();
+                    });
+                  </script>
+                  <div class="input-group">
+                    <span class="input-group-btn">
+                      <button class="btn btn-default" type="button">Date Received:</button>
+                    </span>
+                    <input type="text" class="form-control" id="orders-{{$count}}-received_date" name="orders[{{$count}}][received_date]" readonly>
+                    <span class="input-group-addon glyphicon glyphicon-calendar"></span>
+                  </div><br />
+                  <div class="input-group ">
+                    <div class="input-group-btn" >
+                      <button class="btn btn-default" type="button" style="padding-right:50px;">Date Paid:</button>
+                    </div>
+                    <input type="text" class="form-control col-md-6" id="orders-{{$count}}-paid_date" name="orders[{{$count}}][paid_date]" readonly>
+                    <span class="input-group-addon glyphicon glyphicon-calendar"></span>
+                  </div>
+                  </div>
+              </td>
 
-                <span class="add-on"><i class="icon-calendar" style="margin-left:10px;"></i></span>
-                </br ><br /><div class="input-append date"  id="paid_date_{{$count}}" data-date="<?php echo date("m/d/Y"); ?>" data-date-format="mm/dd/yyyy">
-                <input id="paid_date_{{$count}}" name="orders[{{$count}}][paid_date]" class="col-md-5" size="16" type="text" value="<?php if ($order->paid_date){echo date('m/d/Y', strtotime($order->paid_date)); } ?>" readonly>
-                <span class="add-on"><i class="icon-calendar" style="margin-left:10px;"></i></span> </td>
-              <td class="col-md-2"><textarea name="orders[{{$count}}][comments]" rows="3" cols="60"/>{{ $order->comments }}</textarea></td>
-              <td style="width:90px;">{{date_format($order->created_at, 'm-d-Y') }}</td>
+              <td ><textarea name="orders[{{$count}}][comments]" rows="3" cols="60"/>{{ $order->comments }}</textarea></td>
+              <td >{{date_format($order->created_at, 'm-d-Y') }}</td>
             </tr>
             <?php $count++; ?>
             @endforeach
@@ -141,26 +172,27 @@
     $( "#datepicker" ).datepicker();
   });
 <?php
-$count = 0;
- foreach ($orders as $order){
-?><script>
-$(function(){
-  $("#received_date_<?php echo $count; ?>").datepicker();
+// $count = 0;
+//  foreach ($orders as $order){
+?><!-- <script>
+// $(function(){
+//   $("#received_date_<?php echo $count; ?>").datepicker();
 
-});
-$(function(){
-$("#paid_date_<?php echo $count; ?>").datepicker();
-});
-</script>
+// });
+// $(function(){
+// $("#paid_date_<?php echo $count; ?>").datepicker();
+// });
+</script> -->
 <?php
-$count++;
-}
+//  $count++;
+// }
 
 ?>
-<script>$('#myTab a').click(function (e) {
-  e.preventDefault()
-  $(this).tab('show')
-})
+ <script>
+ //$('#myTab a').click(function (e) {
+//   e.preventDefault()
+//   $(this).tab('show')
+// })
 
 </script>
 @stop

@@ -6,8 +6,14 @@
     <title>@section('title')
 {{ Config::get('env_vars.global_title') }}
 @show</title>
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="../ico/apple-touch-icon-144-precomposed.png" />
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="../ico/apple-touch-icon-114-precomposed.png" />
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="../ico/apple-touch-icon-72-precomposed.png" />
+<link rel="apple-touch-icon-precomposed" href="../ico/apple-touch-icon-57-precomposed.png" />
+<link rel="shortcut icon" href="../ico/favicon.png" />
 
-<link rel="shortcut icon" href="<?php echo URL::to('favicon.ico'); ?>">
+
+
 <link rel="stylesheet" href="{{ URL::asset('css/application.css') }}">
 <link href="//netdna.bootstrapcdn.com/bootswatch/3.0.0/cerulean/bootstrap.min.css" rel="stylesheet">
     <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
@@ -53,6 +59,10 @@
             {{ View::make('partials._login_form_lg') }}
 
             <li><a href="{{ URL::to('/cart') }}"><i class="icon-shopping-cart icon-white"></i> Seller Cart <span class="cart-total badge badge-info"></span></a></li>
+            <?php $user = Sentry::getUser(); ?>
+            @if ($user->hasAccess('admin'))
+              <li><a href="{{ URL::to('/admin') }}"> <span class="glyphicon glyphicon-wrench"></span> Admin Dashboard</a></li>
+              @endif
 
           </ul>
         </div><!-- /.navbar-collapse -->
