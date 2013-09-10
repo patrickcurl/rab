@@ -5,7 +5,7 @@
 
 <div class="col-xs-12" style="margin-top:100px;">
             {{ Form::open(array('action' => 'BookController@postSearchSingle', 'id' => 'price-books-form', 'class' => 'form-inline')) }}
-            <div class="container clearfix" style="margin-top: 20px; margin-bottom: 30px;">
+            <div class="container clearfix" >
                 <div class='col-xs-12'>
                     <input name="isbns" type="tel" id="isbns" class="form-control input-lg" placeholder="Enter ISBNs separate by commas no spaces." />
                 </div>
