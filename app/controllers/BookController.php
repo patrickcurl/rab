@@ -100,11 +100,13 @@ class BookController extends BaseController {
             $details->appendChild($offer);
             $offer->appendChild($buyback_text);
             $output = $dom->saveXML();
-            return $output;
+            $headers['Content-Type'] = 'application/xml';
+            return Response::make($output, 200, $headers);
+            //print($output);
         }
         else
         {
-            return "the funky bunch";
+            return "tough titty said the kitty...";
         }
     }
 
