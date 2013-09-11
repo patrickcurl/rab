@@ -32,6 +32,7 @@
     <div class="navbar navbar-default navbar-fixed-top">
       <div class="container-fluid">
         <div class="navbar-header">
+        <a href="/" class="navbar-brand"><img alt="" src="/img/sell-textbooks-logo2.png" class="logo"/></a>
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
@@ -39,7 +40,7 @@
           </button>
 
 
-          <a href="/" class="navbar-brand"><img alt="" src="/img/sell-textbooks-logo2.png" class="logo"/></a>
+
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
