@@ -17,7 +17,7 @@
 			</div>
 			<div class="col-xs-12 well" style="margin-top:10px;">
 					<dl class="dl-horizontal" style="display: inline-block !important; vertical-align: middle !important;">
-						<dt class="hidden-xs" style="color:rgb(201, 90, 90);font-size:17px;">Buyback Price:</dt><dd style="color:#317EAC;font-size:17px;font-weight:bold;"><strong>{{ $price }}</strong></dd>
+						<dt class="" style="color:rgb(201, 90, 90);font-size:17px;">Buyback Price:</dt><dd style="color:#317EAC;font-size:17px;font-weight:bold;"><strong>{{ $price }}</strong></dd>
 			            <dt class="hidden-xs">Author:</dt><dd>{{  $book->author }}</dd>
 			            <dt class="hidden-xs">Publisher:</dt><dd>{{  $book->publisher }}</dd>
 			            <dt class="hidden-xs">Edition:</dt><dd class="hidden-xs">{{  $book->edition }}</dd>
