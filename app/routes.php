@@ -36,7 +36,7 @@ Route::get('/', function()
 
 	return View::make('index');
 });
-
+Route::get('search_isbn.php', 'BookController@searchISBN');
 Route::get('test', function(){
         //echo Gremlindash::greeting();
         //phpinfo();

@@ -52,6 +52,25 @@ class BookController extends BaseController {
         //return $isbn;
         return View::make('books.search_single', array('books' => $books) );
     }
+    public function searchISBN(){
+        $isbn = Input::get('isbn');
+        if(\Intervention\Validation\Validator::isIsbn($isbn)){
+            $book = Book::find_or_create($isbn);
+        }
+        if($book){
+            $tempbook = DB::table('retail_prices')
+                ->where('isbn', '=', $book->isbn13)->first();
 
+            $price = number_format(($tempbook->Price * 1.7), 2);
+
+            $string ="<books><details><title>{$book->title}</title><author>{$book->author}</author><image>{$book->image_url}</image><isbn>{$book->isbn13}</isbn><buyback>{$price}</buyback></details></books>";
+            $xml = new SimpleXMLElement($string);
+            return $xml->asXML();
+        }
+        else
+        {
+            return "the funky bunch";
+        }
+    }
 
 }
