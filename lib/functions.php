@@ -125,8 +125,10 @@ function ordinalize($int){
 	$pass = Config::get('env_vars.ups_pass');
 	$company = Config::get('env_vars.ups_company');
 
-	$ups_confirm_url = "https://wwwcie.ups.com/ups.app/xml/ShipConfirm";
-	$ups_accept_url = "https://wwwcie.ups.com/ups.app/xml/ShipAccept";
+	// $ups_confirm_url = "https://wwwcie.ups.com/ups.app/xml/ShipConfirm"; // Testing
+ 	// $ups_accept_url = "https://wwwcie.ups.com/ups.app/xml/ShipAccept";  // Testing
+  	$ups_confirm_url = "https://onlinetools.ups.com/ups.app/xml/ShipConfirm"; // Production
+  	$ups_accept_url = "https://onlinetools.ups.com/ups.app/xml/ShipAccept";  // Production
 
 	$ups_confirm_request = "
 				<?xml version='1.0'?>
