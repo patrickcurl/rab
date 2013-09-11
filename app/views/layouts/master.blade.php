@@ -33,7 +33,7 @@
       <div class="container-fluid">
         <div class="navbar-header">
         <a href="/" class="navbar-brand-logo"><img alt="" src="/img/sell-textbooks-logo2.png" class="logo img-responsive hidden-xs "/></a>
-        <a href="/" class="navbar-brand">RecycleABook</a>
+        <a href="/" class="navbar-brand" style="font-size:28px">RecycleABook</a>
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
