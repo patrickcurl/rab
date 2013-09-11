@@ -5945,6 +5945,11 @@ body {
 }
 .logo {
   max-height: 100%;
+  max-width: 100%;
+  height: auto !important;
+  width: auto !important;
+  display: block;
+  vertical-align: middle;
 }
 .page-content {
   background-color: #ffffff;

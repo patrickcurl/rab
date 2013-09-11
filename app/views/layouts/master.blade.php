@@ -39,7 +39,7 @@
           </button>
 
 
-          <a href="/" class="navbar-brand"><img alt="" src="/img/sell-textbooks-logo2.png" class="img-responsive logo"/></a>
+          <a href="/" class="navbar-brand"><img alt="" src="/img/sell-textbooks-logo2.png" class="logo"/></a>
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
