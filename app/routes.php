@@ -11,7 +11,7 @@
 |
 */
 
-Route::group(array('domain' => '{single}.rab.dev'), function()
+Route::group(array('domain' => 'single.rab.dev'), function()
 {
 
     Route::get('/', function()
