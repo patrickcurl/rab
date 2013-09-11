@@ -17,15 +17,15 @@
 			</div>
 			<div class="col-xs-12 well" style="margin-top:10px;">
 					<dl class="dl-horizontal" style="display: inline-block !important; vertical-align: middle !important;">
-						<dt class="col-xs-4" style="color:rgb(201, 90, 90);font-size:16px;">Buyback Price:</dt>
-						<dd class="col-xs-6" style="color:#317EAC;font-size:16px;font-weight:bold;margin-left:20px;">{{ $price }}</dd>
-			            <dt class="col-xs-4">Author:</dt><dd class="col-xs-6" style="margin-left:20px;">{{  $book->author }}</dd>
-			            <dt class="col-xs-4">Publisher:</dt><dd class="col-xs-6" style="margin-left:20px;">{{  $book->publisher }}</dd>
-			            <dt class="col-xs-4">Edition:</dt><dd class="col-xs-6" style="margin-left:20px;">{{  $book->edition }}</dd>
-			            <dt class="col-xs-4">Weight:</dt><dd class="col-xs-6" style="margin-left:20px;">{{ number_format($book->weight, 2) }} lbs</dd>
-			            <dt class="col-xs-4">ISBN10:</dt><dd class="col-xs-6" style="margin-left:20px;">{{ $book->isbn10 }} </dd>
-			            <dt class="col-xs-4">ISBN13:</dt><dd class="col-xs-6" style="margin-left:20px;">{{ $book->isbn13 }}</dd>
-			            <dt class="col-xs-4">More info:</dt><dd class="col-xs-6" style="margin-left:20px;"><a href="{{ $book->amazon_url }}" target="_blank">View Book Details on Amazon</a></dd>
+						<dt class="col-xs-6" style="color:rgb(201, 90, 90);font-size:16px;">Buyback Price:</dt>
+						<dd class="col-xs-4" style="color:#317EAC;font-size:16px;font-weight:bold;margin-left:10px;">{{ $price }}</dd>
+			            <dt class="col-xs-6">Author:</dt><dd class="col-xs-4" style="margin-left:10px;">{{  $book->author }}</dd>
+			            <dt class="col-xs-6">Publisher:</dt><dd class="col-xs-4" style="margin-left:10px;">{{  $book->publisher }}</dd>
+			            <dt class="col-xs-6">Edition:</dt><dd class="col-xs-4" style="margin-left:10px;">{{  $book->edition }}</dd>
+			            <dt class="col-xs-6">Weight:</dt><dd class="col-xs-4" style="margin-left:10px;">{{ number_format($book->weight, 2) }} lbs</dd>
+			            <dt class="col-xs-6">ISBN10:</dt><dd class="col-xs-4" style="margin-left:10px;">{{ $book->isbn10 }} </dd>
+			            <dt class="col-xs-6">ISBN13:</dt><dd class="col-xs-4" style="margin-left:10px;">{{ $book->isbn13 }}</dd>
+			            <dt class="col-xs-6">More info:</dt><dd class="col-xs-4" style="margin-left:10px;"><a href="{{ $book->amazon_url }}" target="_blank">View Book Details on Amazon</a></dd>
 			        </dl>
 </div>
 
