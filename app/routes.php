@@ -39,7 +39,8 @@ Route::get('/', function()
 
 Route::get('test', function(){
         //echo Gremlindash::greeting();
-        phpinfo();
+        //phpinfo();
+	return View::make('test');
 });
 Route::controller('users', 'UsersController');
 Route::controller('books', 'BookController');
@@ -47,4 +48,5 @@ Route::controller('cart', 'CartController');
 Route::controller('orders', 'OrdersController');
 Route::controller('p','PageController');
 Route::controller('admin', 'AdminController');
+
 
