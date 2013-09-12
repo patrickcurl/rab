@@ -36,12 +36,12 @@ function floorToFraction($number, $denominator = 1)
 
 					    	$price = number_format($price, 2);
 					    	?>
-					<h3 class="alert-warning" style="font-size:15px;">{{ substr($book->title, 0, 30) }}...</h3>
+					<h3 class="alert-warning" style="font-size:15px;">{{ substr($book->title, 0, 50) }}...</h3>
 					<div class="row">
 						<div class="col-xs-4">
 							<img src="<?php if ($book->image_url) {echo $book->image_url; } else {echo URL::asset('img/no_image.png'); } ?>"  class="img-thumbnail img-responsive" >
 						</div>
-						<div class="col-xs-7" style="padding-top:40px;"><span style="color:rgb(201, 90, 90);font-size:16px;">Buyback Price:</span> <span style="color:#317EAC;font-size:16px;font-weight:bold;">{{ $price }}</span>
+						<div class="col-xs-7" style="padding-top:40px;"><span style="color:rgb(255, 245, 0);font-size:16px;">Buyback Price:</span> <span style="color:#317EAC;font-size:16px;font-weight:bold;">{{ $price }}</span>
 						</div>
 					</div>
 					<dl class="dl-horizontal" style="display: inline-block !important; vertical-align: middle !important;">
