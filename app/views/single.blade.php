@@ -1,6 +1,8 @@
 @extends('layouts.master')
-
-@section('content-fluid')
+@section('container_class')
+class="container-fluid page-content"
+@stop
+@section('content')
 
 
 <!-- <div class="container-fluid" style="padding:50px;"> -->
@@ -11,7 +13,7 @@
                     <input name="isbns" type="tel" id="isbns" class="form-control input-lg" placeholder="Enter ISBNs separate by commas no spaces."  id="single-input"/>
                 </div>
                 <div class='col-xs-12' style="margin-top:5px;">
-                    <button type="submit" class="btn btn-danger btn-lg col-xs-12">SELL YOUR BOOKS »</button>
+                    <button type="submit" class="btn btn-cart btn-lg col-xs-12">SELL YOUR BOOKS »</button>
                     </div>
 
 

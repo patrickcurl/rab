@@ -5995,6 +5995,8 @@ body {
   left: 0;
 }
 .page-content {
+  background-color: #819b81;
+  padding-top: 5px;
   border-radius: 5px;
   color: #ffffff;
 }

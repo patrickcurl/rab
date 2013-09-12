@@ -1,17 +1,19 @@
 @extends('layouts.master')
-
+@section('container_class')
+class="container-fluid page-content"
+@stop
 @section('content')
 
-<div class="container" style="background-color: #6B9B65;padding-top: 10px;padding-bottom:10px;">
+
     {{ Form::open(array('action' => 'BookController@postSearchSingle', 'id' => 'price-books-form', 'class' => 'form-inline')) }}
-      <div class='col-xs-12'>
+      <div class='col-xs-12' style="margin-top:10px;">
 		    <input name="isbns" type="tel" id="isbns" class="form-control input-lg" placeholder="Enter ISBNs separate by commas no spaces."  id="single-input"/>
       </div>
       <div class='col-xs-12' style="margin-top:5px;">
-          <button type="submit" class="btn btn-danger btn-lg col-xs-12">Check Prices »</button>
+          <button type="submit" class="btn btn-cart btn-lg col-xs-12">Check Prices »</button>
       </div>
     {{ Form::close() }}
-</div>
+
 
 <?php
 function floorToFraction($number, $denominator = 1)
@@ -24,8 +26,8 @@ function floorToFraction($number, $denominator = 1)
 ?>
 
 			@foreach ($books as $index => $book)
-			<div class="container" style="background-color: #6B9B65;padding-top: 10px;padding-bottom:10px;">
-				<div class="well" style="margin-top:10px;padding-bottom:10px;">
+
+				<div class="well" style="margin:10px;padding:10px;background-color: rgb(139, 139, 66)">
 					<?php $tempbook = DB::table('single_prices')->where('isbn', '=', $book->isbn13)->first();/* $price = $tempbook->price; */
 
 							$price = $tempbook->Price;
@@ -59,7 +61,7 @@ function floorToFraction($number, $denominator = 1)
 					</dl>
 				</div>
 
-								    </div>
+
 
 
 			     @endforeach
@@ -68,7 +70,6 @@ function floorToFraction($number, $denominator = 1)
 
 </div> <!-- sell your textbooks -->
 	<div class="col-xs-12 col-md-12 clearfix pullright">
-</div>
 </div>
 
 @stop
