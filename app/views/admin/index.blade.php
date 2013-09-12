@@ -51,7 +51,7 @@
             @foreach ($orders as $order)
             <tr>
             <input type="hidden" name ="orders[{{$count}}][id]" value="{{$order->id}}" />
-              <td >@if (order->user) {{ $order->user->first_name }} {{ $order->user->last_name }} @endif</td>
+              <td >@if ($order->user) {{ $order->user->first_name }} {{ $order->user->last_name }} @endif</td>
               <td> <?php $itemCount = Item::where('order_id', '=', $order->id)->count(); echo $itemCount ?></td>
               <td>{{ $order->tracking_number}}</td>
               <td>{{ number_format($order->total_amount, 2) }}</td>
