@@ -4,6 +4,7 @@
           <a href="#" data-toggle="dropdown" class="dropdown-toggle"><i class="icon-user"></i> Account<b class="caret"></b></a>
           <ul class="dropdown-menu">
             <li><a href="{{URL::to('users/edit')}}">Edit Profile</a></li>
+            <li><a href="{{URL::to('users/orders')}}">View Orders</a></li>
             <li><a href="{{URL::to('users/logout')}}">Logout</a></li>
             </ul>
       @else
