@@ -98,6 +98,7 @@
          {{ Form::close() }}
 </div>
 <div class="tab-pane" id="users">
+{{ Form::open(array('action' => 'AdminController@postUpdateUsers', 'method' => 'post', )) }}
     <table class="table-striped  col-md-12 table-bordered">
             <thead>
               <tr>
