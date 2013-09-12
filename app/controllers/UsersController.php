@@ -61,7 +61,12 @@ class UsersController extends BaseController {
 
             $user = Sentry::authenticate($input, false);
             if ($user){
-                return Redirect::back()->with('success', 'You have logged in successfully.');
+                if ($user->hasAccess('admin')){
+                    return Redirect::to('admin')->with('success', 'You have logged in successfully.');
+                } else {
+                    return Redirect::to('users/orders')->with('success', 'You have logged in successfully.');
+                }
+
             }
         } catch (Cartalyst\Sentry\Users\LoginRequiredException $e)
 {
