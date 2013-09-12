@@ -48,10 +48,10 @@
 @section('content')
 <?php $currentUser = Sentry::getUser(); ?>
 <br />
-<div class="container">
-<table class="table table-condensed table-hover  table-striped">
+
+<table class="table">
   <thead class="success">
-    <tr style="background-color:gray;color:white;" >
+    <tr>
       <th>#</th>
       <th>Total</th>
       <th>Items</th>
@@ -66,18 +66,15 @@
         <td>{{ $orderNum }}</td>
         <td>  ${{ number_format($order['total_amount'],2) }} </td>
 
-        <td>
+        <td >
           @foreach($order['items'] as $i => $item)
-          <table class="table table-hover table-condensed">
+            <div style="border-bottom: 1px solid #E0F126;">
+              <div class="col-md-12">{{ $item['title'] }}</div>
+              <div class="col-md-6">
+                <img src="{{ $item['image_url'] }}" width="100" >
 
-
-
-
-            <tr><td colspan="3">{{ $item['title'] }}</td>
-            <tr>
-              <td></td>
-              <td><img src="{{ $item['image_url'] }}" width="100" ></td>
-              <td>
+              </div>
+              <div class="col-md-6">
                 Author: {{ $item['author'] }}
                 <br />Publisher: {{ $item['publisher'] }}
 
@@ -86,12 +83,14 @@
                 <br />Edition: {{ $item['edition'] }}
                 <br />Quantity: {{ $item['qty'] }}
                 <br />Price: ${{ number_format($item['price'],2) }}
-              </td>
-            </tr>
+              </div>
+            </div>
+
+
 
             @endforeach
 
-          </table>
+
         </td>
           <td>
 
@@ -116,7 +115,7 @@
 </tbody>
 
 </table>
-</div>
+
 
 
 

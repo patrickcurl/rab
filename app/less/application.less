@@ -68,21 +68,32 @@ min-height: 60px;
 }
 
 .page-content {
-  li {
-  padding-left: 1.2em;
-  list-style-type:none;
-}
 
-li:before {
-content:"\f046";
-font-family: FontAwesome;
-margin-right: .5em;
-}
+
+  .container{
+    border-radius:5px;
+  }
+  border-radius: 5px;
+  .check-list{
+      li {
+      padding-left: 1.2em;
+      list-style-type:none;
+    }
+      li:before {
+    content:"\f046";
+    font-family: FontAwesome;
+    margin-right: .5em;
+    }
+  }
+
   h1{
-    color: #D8E457;
+    color: #E0F126;;
+  }
+  h2{
+    color: #EEEE2A;
   }
   h4 {
-    color: #D8E457;
+    color: #E0F126;;
   }
   a:hover{
     color: #02D6FF;
@@ -91,8 +102,9 @@ margin-right: .5em;
     color: #E93C3C;
   }
   a{
-    color: #D8E457;
+    color: #E0F126;;
   }
+
   color: #ffffff;
 }
 .logo-container {
@@ -115,6 +127,25 @@ margin-right: .5em;
 #logo {
   padding-right: 40px;
 }
+.dropdown-menu > li > a {
+  color: #E0F126;
+}
+.table thead > tr > th {
+  color: #E0F126;
+}
+.table {
+  background-color: #2C4D28;
+  border-radius: 5px;
+
+  tr{
+    padding:3px;
+  }
+}
+.nav > li > a:hover, .nav > li > a:focus {
+min-height: 10px;
+background-color: rgb(93, 111, 92);
+color: yellow;
+}
 .navbar-nav > li > .dropdown-menu {
 background-image: -webkit-gradient(linear,0 0,0 100%,from(#6caf69),color-stop(60%,#569C53),to(#4f8f4c));
 background-image: -webkit-linear-gradient(#6caf69,#569C53 60%,#4f8f4c);
@@ -127,6 +158,7 @@ border-bottom: 1px solid #447b41;
 filter: none;
 -webkit-box-shadow: 0 1px 10px rgba(0,0,0,0.1);
 box-shadow: 0 1px 10px rgba(0,0,0,0.1);
+color:yellow;
 
  }
 
@@ -143,7 +175,10 @@ box-shadow: 0 1px 10px rgba(0,0,0,0.1);
 }
 .nav > li > a:hover, .nav > li > a:focus {
 
-min-height:60px;
+min-height:10px;
+.admin-tabs{
+  min-height:10px;
+}
 }
 .navbar-inverse .navbar-inner {
   background-color: #353535;
@@ -290,8 +325,31 @@ margin-top:20px;
   }
 }
 
+.user-admin-form-input{
+  float:right;margin-right:30px;padding:10px;
+}
 
+.user-admin-form-label{
+  clear:both;float:left;padding:0 10px 0 10px;
+}
 .home-details-text{
   margin-left:0px;
 }
+.admin-tabs {
+  margin-left:20px;
+  border: none;
+  li{
+    padding-left:5px;
+    padding-bottom:1px;
 
+  }
+  li > a{
+        background-color: rgb(80, 94, 71);
+  }
+
+}
+  .tab-pane {
+    padding-right:20px;
+    padding-left:20px;
+    padding-bottom:20px;
+  }

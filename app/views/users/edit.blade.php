@@ -181,7 +181,7 @@ Edit Profile
 
 			  <div class="form-group">
 			  <div class="col-lg-4"></div>
-			  <div class="col-lg-6"><button type="submit" class="btn btn-primary col-lg-12" >Edit Profile</button></div>
+			  <div class="col-lg-6"><button type="submit" class="btn btn-cart col-lg-12" >Edit Profile</button></div>
 			   	</div>
 			{{ Form::close() }}
 		</div>
@@ -220,11 +220,12 @@ Edit Profile
 
 
 		    <div class="form-actions col-md-offset-1">
-		    	<input class="btn-primary btn" type="submit" value="Change Password">
+		    	<input class="btn-cart btn" type="submit" value="Change Password">
 		  </div>
 	      </form>
 </div>
-
+</div>
+<div class="col-md-12">
 	@if (Sentry::check() && Sentry::getUser()->hasAccess('admin'))
 	<h4>User Group Memberships</h4>
 
@@ -250,10 +251,10 @@ Edit Profile
 	            </tbody>
 	        </table>
 	        <div class="form-actions">
-	            <input class="btn-primary btn" type="submit" value="Update Memberships">
+	            <input class="btn-cart btn" type="submit" value="Update Memberships">
 	        </div>
 	    </form>
 	</div>
 	@endif
-</div>
+
 @stop

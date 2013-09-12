@@ -67,13 +67,14 @@
     {{ trans(Session::get('reason')) }}
 @endif
 <div id="wrap" style="margin-top:80px;margin-bottom:40px;">
-    <div class="container" style="background-color:#6B9B65;padding:20px;">
+    <div
+    @section('container_class')
+    class="container page-content"
+    @show  >
 	    @yield('content')
       </div>
-    </div>
-    <div class="container-fluid" style="background-color:#6B9B65;">
-      @yield('content-fluid')
-      </div>
+
+
 </div>
 
 

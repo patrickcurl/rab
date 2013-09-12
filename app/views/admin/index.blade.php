@@ -14,6 +14,9 @@
   });
   </script>
 @stop
+@section('container_class')
+class="container-fluid page-content"
+@stop
 @section('content')
 
 
@@ -24,7 +27,7 @@
    Total Users: {{{ $totalUsers }}} | Online:  {{{ $onlineUsers }}} | Guests:  {{{ $onlineGuests }}}
 </div>
   </div>
-<ul class="nav nav-tabs" id="myTab">
+<ul class="nav nav-tabs admin-tabs" id="myTab">
   <li><a href="#orders" data-toggle="tab">Orders</a></li>
   <li><a href="#users" data-toggle="tab">Users</a></li>
 
@@ -33,7 +36,7 @@
 <div class="tab-pane active" id="orders">
   {{ Form::open(array('action' => 'AdminController@postUpdateOrders', 'method' => 'post')) }}
     <div class="col-md-1"></div>
-    <table class="table table-striped table-bordered">
+    <table class="table">
         <thead>
         <tr>
           <th>User</th>
@@ -73,14 +76,14 @@
                           <button class="btn btn-default" type="button">Date Received:</button>
                         </span>
                         <input type="text" class="form-control" id="orders-{{$count}}-received_date" name="orders[{{$count}}][received_date]" readonly>
-                        <span class="input-group-addon glyphicon glyphicon-calendar"></span>
+                        <span class="input-group-addon glyphicon glyphicon-calendar" style="background-color: #488A46;"></span>
                       </div><br />
                       <div class="input-group ">
                         <div class="input-group-btn" >
                           <button class="btn btn-default" type="button" style="padding-right:50px;">Date Paid:</button>
                         </div>
                         <input type="text" class="form-control col-md-6" id="orders-{{$count}}-paid_date" name="orders[{{$count}}][paid_date]" readonly>
-                        <span class="input-group-addon glyphicon glyphicon-calendar"></span>
+                        <span class="input-group-addon glyphicon glyphicon-calendar" style="background-color: #488A46;"></span>
                       </div>
 
                   </td>
@@ -92,73 +95,53 @@
                 @endforeach
                 @endif
                 </tbody>
-    </table>
+    </table><div ><button type="submit" name="update_orders" class="btn btn-lg btn-cart">Update Orders</button></div>
     <div style="clear:left;float:left;"><?php echo $orders->links(); ?></div>
-    <div style="float:left;margin-top:20px;margin-left:50px;"><button type="submit" name="update_orders" class="btn btn-primary">Update Orders</button></div>
+
          {{ Form::close() }}
 </div>
 <div class="tab-pane" id="users">
-{{ Form::open(array('action' => 'AdminController@postUpdateUsers', 'method' => 'post', )) }}
-    <table class="table-striped  col-md-12 table-bordered">
+
+    <table class="table  col-md-12">
             <thead>
               <tr>
                 <th>Name</th>
-                <th>Contact</th>
-                <th>Payment Method</th>
-                <th>Date Joined</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Address</th>
+                <th>Payment Info</th>
+                <th>Status</th>
+                <th>Action</th>
               </tr>
             </thead>
             <tbody>
             <?php $count = 0; ?>
             @foreach ($users as $user)
             <tr>
-            <input type="hidden" name ="users[{{$count}}][id]" value="{{$user->id}}" />
-            <td class="col-md-3">
-                <div style="clear:both;float:left;padding:0 10px 0 10px "><label for="first_name">First</label></div>
-                <div style="float:right;margin-right:30px;"><input type="text" value="{{$user->first_name}}" name="users[{{$count}}][first_name]" class="input-medium"/></div>
-                 <div style="clear:both;float:left;padding:0 10px 0 10px "><label for="last_name">Last</label></div>
-                <div style="float:right;margin-right:30px;"><input type="text" value="{{$user->last_name}}" name="users[{{$count}}][last_name]" class="input-medium"/></div>
-            </td>
-            <td class="col-md-3"> <div style="clear:both;float:left;padding:0 10px 0 10px "><label for="email">Email</label></div>
-                 <div style="float:right;margin-right:30px"><input type="text" value="{{$user->email}}" name="users[{{$count}}][email]" class="input-medium"/></div>
-
-                 <div style="clear:both;float:left;padding:0 10px 0 10px "><label for="phone">Phone</label></div>
-                 <div style="float:right;margin-right:30px"><input type="text" value="{{$user->phone}}" name="users[{{$count}}][phone]" class="input-medium"/></div>
-
-                 <div style="clear:both;float:left;padding:0 10px 0 10px "><label for="address">Address</label></div>
-                 <div style="float:right;margin-right:30px"><input type="text" value="{{$user->address}}" name="users[{{$count}}][address]" class="input-medium"/></div>
-
-                 <div style="clear:both;float:left;padding:0 10px 0 10px "><label for="city">City</label></div>
-                 <div style="float:right;margin-right:30px"><input type="text" value="{{$user->city}}" name="users[{{$count}}][city]" class="input-medium"/></div>
-
-                 <div style="clear:both;float:left;padding:0 10px 0 10px "><label for="state">State</label></div>
-                 <div style="float:right;margin-right:30px"><input type="text" value="{{$user->state}}" name="users[{{$count}}][state]" class="input-medium"/></div>
-
-                 <div style="clear:both;float:left;padding:0 10px 0 10px "><label for="zip">Zip</label></div>
-                 <div style="float:right;margin-right:30px"><input type="text" value="{{$user->zip}}" name="users[{{$count}}][zip]" class="input-medium"/></div>
-            </td>
-            <td class="col-md-3">
-                 <div style="clear:both;float:left;padding:0 10px 0 10px "><label for="payment_method">Method</label></div>
-                 <div style="float:right;margin-right:30px"><input type="text" value="{{$user->payment_method}}" name="users[{{$count}}][payment_method]" class="input-medium"/></div>
-                 <div style="clear:both;float:left;padding:0 10px 0 10px "><label for="paypal_email">Paypal</label></div>
-                 <div style="float:right;margin-right:30px"><input type="text" value="{{$user->paypal_email}}" name="users[{{$count}}][paypal_email]" class="input-medium"/></div>
-                 <div style="clear:both;float:left;padding:0 10px 0 10px "><label for="name_on_cheque">Cheque</label></div>
-                 <div style="float:right;margin-right:30px"><input type="text" value="{{$user->name_on_cheque}}" name="users[{{$count}}][name_on_cheque]" class="input-medium"/></div>
-
-
-
-
-
-            </td>
-            <td class="col-md-1">{{ date('m/d/Y', strtotime($user->created_at)) }}</td>
-            </tr>
+                <td>{{ $user->first_name }} {{ $user->last_name }}</td>
+                <td>{{ $user->email }}</td>
+                <td>{{ $user->phone }}</td>
+                <td>
+                    {{ $user->address }}
+                    <br />{{ $user->city }}, {{ $user->state }}
+                    <br />{{ $user->zip }}
+                </td>
+                <td>Method: {{ $user->payment_method }}
+                    <br />Paypal Email: {{ $user->paypal_email }}
+                    <br />Name on Cheque: {{ $user->name_on_cheque }}
+                </td>
+                <td>Joined: {{ date('m/d/Y', strtotime($user->created_at)) }}</td>
+                <td><a href="{{ url('users/edit') }}/{{$user->id}}">Edit user</a></td>
+               </tr>
             <?php $count++; ?>
             @endforeach
+
             </tbody>
           </table>
-         <div style="clear:left;float:left;"><?php echo $users->links(); ?></div>
-        <div style="float:left;margin-top:20px;margin-left:50px;"><button type="submit" name="update_users" class="btn btn-primary">Update Users</button>
+           <div ><button type="submit" name="update_users" class="btn btn-lg btn-cart">Update Users</button>
         </div>
+         <div style="clear:left;float:left;"><?php echo $users->links(); ?></div>
+
                 {{ form::close() }}
 </div>
 </div>

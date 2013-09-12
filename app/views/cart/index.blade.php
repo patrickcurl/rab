@@ -1,10 +1,10 @@
 @extends('layouts.master')
 @section('content')
-  <div class="container">
+
     <h2>Your Cart</h2>
     {{ Form::open(array('url' => 'cart/update', 'method' => 'post')) }}
 
-    <table class="table table-striped">
+    <table class="table">
       <tr>
           <td>Book</td>
           <td>Price</td>
@@ -60,5 +60,4 @@
     </tr>
   </table>
 
-  </div>
 @stop

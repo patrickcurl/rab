@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section('content')
 
-	<div class="container">
+
 	<h3>Checkout</h3>
 
 
@@ -93,7 +93,7 @@
 
 		</div>
 
-	</div>
+
 
 
 @stop
