@@ -21,7 +21,7 @@ class="container-fluid page-content"
 
 
 
-<h3>Dashboard</h3>
+<h1>Dashboard</h1>
  <div class="row">
  <div style="padding-left:30px;">
    Total Users: {{{ $totalUsers }}} | Online:  {{{ $onlineUsers }}} | Guests:  {{{ $onlineGuests }}}
