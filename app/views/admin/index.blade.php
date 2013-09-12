@@ -31,71 +31,71 @@
 </ul>
 <div class="tab-content">
 <div class="tab-pane active" id="orders">
-<div class="col-md-1"></div>
-<table class="table table-striped table-bordered">
-    <thead>
-    <tr>
-      <th>User</th>
-      <th>Items</th>
-      <th>Tracking Number</th>
-      <th>Total</th>
-      <th>Date Received / Date Paid</th>
+  {{ Form::open(array('action' => 'AdminController@postUpdateOrders', 'method' => 'post')) }}
+    <div class="col-md-1"></div>
+    <table class="table table-striped table-bordered">
+        <thead>
+        <tr>
+          <th>User</th>
+          <th>Items</th>
+          <th>Tracking Number</th>
+          <th>Total</th>
+          <th>Date Received / Date Paid</th>
 
-      <th>Comments</th>
-      <th>Date Created</th>
-    </tr>
-  </thead>
+          <th>Comments</th>
+          <th>Date Created</th>
+        </tr>
+      </thead>
 
-  <tbody> @if ($orders)
-            <?php $count = 0; ?>
-            @foreach ($orders as $order)
-            <tr>
-            <input type="hidden" name ="orders[{{$count}}][id]" value="{{$order->id}}" />
-              <td >@if ($order->user) {{ $order->user->first_name }} {{ $order->user->last_name }} @endif</td>
-              <td> <?php $itemCount = Item::where('order_id', '=', $order->id)->count(); echo $itemCount ?></td>
-              <td>{{ $order->tracking_number}}</td>
-              <td>{{ number_format($order->total_amount, 2) }}</td>
-              <td class="col-md-3">
-                  <div class="container">
-                  <script>
-                    $(function() {
-                    $( "<?php echo "#orders-{$count}-received_date"; ?>" ).datepicker();
-                    });
-                  </script>
-                  <script>
-                    $(function() {
-                    $( "<?php echo "#orders-{$count}-paid_date"; ?>" ).datepicker();
-                    });
-                  </script>
-                  <div class="input-group">
-                    <span class="input-group-btn">
-                      <button class="btn btn-default" type="button">Date Received:</button>
-                    </span>
-                    <input type="text" class="form-control" id="orders-{{$count}}-received_date" name="orders[{{$count}}][received_date]" readonly>
-                    <span class="input-group-addon glyphicon glyphicon-calendar"></span>
-                  </div><br />
-                  <div class="input-group ">
-                    <div class="input-group-btn" >
-                      <button class="btn btn-default" type="button" style="padding-right:50px;">Date Paid:</button>
-                    </div>
-                    <input type="text" class="form-control col-md-6" id="orders-{{$count}}-paid_date" name="orders[{{$count}}][paid_date]" readonly>
-                    <span class="input-group-addon glyphicon glyphicon-calendar"></span>
-                  </div>
-                  </div>
-              </td>
+      <tbody> @if ($orders)
+                <?php $count = 0; ?>
+                @foreach ($orders as $order)
+                <tr>
+                <input type="hidden" name ="orders[{{$count}}][id]" value="{{$order->id}}" />
+                  <td >@if ($order->user) {{ $order->user->first_name }} {{ $order->user->last_name }} @endif</td>
+                  <td> <?php $itemCount = Item::where('order_id', '=', $order->id)->count(); echo $itemCount ?></td>
+                  <td>{{ $order->tracking_number}}</td>
+                  <td>{{ number_format($order->total_amount, 2) }}</td>
+                  <td class="col-md-3">
+                      <div class="container">
+                      <script>
+                        $(function() {
+                        $( "<?php echo "#orders-{$count}-received_date"; ?>" ).datepicker();
+                        });
+                      </script>
+                      <script>
+                        $(function() {
+                        $( "<?php echo "#orders-{$count}-paid_date"; ?>" ).datepicker();
+                        });
+                      </script>
+                      <div class="input-group">
+                        <span class="input-group-btn">
+                          <button class="btn btn-default" type="button">Date Received:</button>
+                        </span>
+                        <input type="text" class="form-control" id="orders-{{$count}}-received_date" name="orders[{{$count}}][received_date]" readonly>
+                        <span class="input-group-addon glyphicon glyphicon-calendar"></span>
+                      </div><br />
+                      <div class="input-group ">
+                        <div class="input-group-btn" >
+                          <button class="btn btn-default" type="button" style="padding-right:50px;">Date Paid:</button>
+                        </div>
+                        <input type="text" class="form-control col-md-6" id="orders-{{$count}}-paid_date" name="orders[{{$count}}][paid_date]" readonly>
+                        <span class="input-group-addon glyphicon glyphicon-calendar"></span>
+                      </div>
 
-              <td ><textarea name="orders[{{$count}}][comments]" rows="3" cols="60"/>{{ $order->comments }}</textarea></td>
-              <td >{{date_format($order->created_at, 'm-d-Y') }}</td>
-            </tr>
-            <?php $count++; ?>
-            @endforeach
-            @endif
-            </tbody>
-</table>
+                  </td>
 
-<div style="clear:left;float:left;"><?php echo $orders->links(); ?></div>
-  <div style="float:left;margin-top:20px;margin-left:50px;"><button type="submit" name="update_orders" class="btn btn-primary">Update Orders</button></div>
-                {{ Form::close() }}
+                  <td ><textarea name="orders[{{$count}}][comments]" rows="3" cols="60"/>{{ $order->comments }}</textarea></td>
+                  <td >{{date_format($order->created_at, 'm-d-Y') }}</td>
+                </tr>
+                <?php $count++; ?>
+                @endforeach
+                @endif
+                </tbody>
+    </table>
+    <div style="clear:left;float:left;"><?php echo $orders->links(); ?></div>
+    <div style="float:left;margin-top:20px;margin-left:50px;"><button type="submit" name="update_orders" class="btn btn-primary">Update Orders</button></div>
+         {{ Form::close() }}
 </div>
 <div class="tab-pane" id="users">
     <table class="table-striped  col-md-12 table-bordered">
