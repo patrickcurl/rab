@@ -67,7 +67,7 @@
     {{ trans(Session::get('reason')) }}
 @endif
 <div id="wrap" style="margin-top:80px;margin-bottom:40px;">
-    <div class="container" style="background-color:#6B9B65;">
+    <div class="container" style="background-color:#6B9B65;padding:20px;">
 	    @yield('content')
       </div>
     </div>

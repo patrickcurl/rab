@@ -5958,7 +5958,31 @@ body {
   left: 0;
 }
 .page-content {
-  background-color: #ffffff;
+  color: #ffffff;
+}
+.page-content li {
+  padding-left: 1.2em;
+  list-style-type: none;
+}
+.page-content li:before {
+  content: "\f046";
+  font-family: FontAwesome;
+  margin-right: .5em;
+}
+.page-content h1 {
+  color: #D8E457;
+}
+.page-content h4 {
+  color: #D8E457;
+}
+.page-content a:hover {
+  color: #02D6FF;
+}
+.page-content a:active {
+  color: #E93C3C;
+}
+.page-content a {
+  color: #D8E457;
 }
 .logo-container {
   background: #ffffff;

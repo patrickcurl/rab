@@ -4,7 +4,7 @@
 @stop
 @section('content')
 
-    <div class="container-fluid  clearfix" style="padding-top:30px;background-color:#d2d3cb;">
+
         {{ Form::open(array('action' => 'BookController@postSearch', 'id' => 'price-books-form', 'class' => 'form-inline')) }}
         <div class="container" >
 
@@ -32,8 +32,6 @@
                 <span class="alert-info">Our mission is simple: To help students  receive the most affordable textbooks on  the market. <br /><br />Please join our cause. You  can make a difference.</span>
             </div>
             </div>
-        </div>
-        </div>
 
 
 

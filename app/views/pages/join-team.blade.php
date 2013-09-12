@@ -1,8 +1,7 @@
 @extends('layouts.master')
 @section('content')
-<div class="container">
-<div class="col-md-2"></div>
-<div class="col-md-10 page-content">
+
+<div class="col-md-12 page-content">
 <h1>Now Hiring: Book Buyers</h1>
 <p>Recycleabook.com, Inc. is now hiring both full-time and part-time sales representatives. Our company buys textbooks and recirculates them to students at discounted prices. The Field Sales Rep, working as an independent book vendor, will be responsible for buying books at college campuses and shipping them to our corporate office in Dayton, Ohio. The representative will buy books by canvassing campuses and pre-set appointments via email and corporate support. Entry level reps earn between $750-$1,250 per week.</p>
 
@@ -39,7 +38,5 @@ Blake Nolan
 <br />Director of Sales & Marketing
 <br />Recycleabook.com
 <a href="mailto://blake@recycleabook.com">blake&#64recycleabook.com</a>
-</div>
-<div class="col-md-2"></div>
 </div>
 @stop
