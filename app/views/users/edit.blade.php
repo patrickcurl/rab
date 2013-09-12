@@ -227,7 +227,7 @@ Edit Profile
 
 	@if (Sentry::check() && Sentry::getUser()->hasAccess('admin'))
 	<h4>User Group Memberships</h4>
-	<div class="well">
+
 	    <form class="form-horizontal" action="{{ URL::to('users/updatememberships') }}/{{ $user->id }}" method="post">
 	        {{ Form::token() }}
 

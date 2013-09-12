@@ -46,7 +46,7 @@
     </tr>
   </thead>
 
-  <tbody>
+  <tbody> @if ($orders)
             <?php $count = 0; ?>
             @foreach ($orders as $order)
             <tr>
@@ -89,6 +89,7 @@
             </tr>
             <?php $count++; ?>
             @endforeach
+            @endif
             </tbody>
 </table>
 
