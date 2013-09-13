@@ -1,6 +1,16 @@
+<?php
+$expire=time()+60*60*24*120;
+$aff = Input::get('aff');
+if ($aff){
+  setcookie('referred_by', $aff, $expire);
+}
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<?php  ?>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@section('title')
@@ -27,7 +37,9 @@
 </head>
 
 <body @section('body_tag')
+
 @show >
+
  <!-- Fixed navbar -->
     <div class="navbar navbar-default navbar-fixed-top">
       <div class="container-fluid">
@@ -71,6 +83,7 @@
     @section('container_class')
     class="container page-content clearfix"
     @show  >
+
 	    @yield('content')
       </div>
 

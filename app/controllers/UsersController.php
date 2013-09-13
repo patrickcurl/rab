@@ -123,9 +123,17 @@ catch (Cartalyst\Sentry\Throttling\UserBannedException $e)
         $city = Input::get('city');
         $state = Input::get('state');
         $zip = Input::get('zip');
+        $username = Input::get('username');
         $payment_method = Input::get('payment_method');
         $paypal_email = Input::get('paypal_email');
         $name_on_cheque = Input::get('name_on_cheque');
+        if(isset($_COOKIE["referred_by"])){
+            $referred_by = $_COOKIE["referred_by"];
+            $ref_id = DB::select('select id from users where username = ?', array($referred_by));
+            $ref_id  = $ref_id['0']->id;
+        } else {
+            $ref_id = 1;
+        }
 
         $input = array(
                 'first_name' => $first_name,
@@ -138,9 +146,11 @@ catch (Cartalyst\Sentry\Throttling\UserBannedException $e)
                 'city' => $city,
                 'state' => $state,
                 'zip' => $zip,
+                'username' => $username,
                 'payment_method' => $payment_method,
                 'paypal_email' => $paypal_email,
-                'name_on_cheque' => $name_on_cheque
+                'name_on_cheque' => $name_on_cheque,
+                'referred_by' => $ref_id
             );
         $rules = array(
             #validation rules.
@@ -153,7 +163,8 @@ catch (Cartalyst\Sentry\Throttling\UserBannedException $e)
                 "address" => "Required",
                 "city" => "Required",
                 "state" => "Required",
-                "zip" => "Required"
+                "zip" => "Required",
+                "username" => "Required|Alpha_Dash"
                 );
 
         $messages = array(
@@ -169,7 +180,9 @@ catch (Cartalyst\Sentry\Throttling\UserBannedException $e)
                 'address.required' => 'Address is required.',
                 'city.required' => 'City is required.',
                 'state.required' => 'State is required.',
-                'zip.required' => 'Zip is required.'
+                'zip.required' => 'Zip is required.',
+                'username.required' => 'Username is required.',
+                'username.alpha_dash' => 'Please use numbers, letters, and underscores only.'
                 );
 
         $v = Validator::make($input, $rules, $messages);
@@ -189,9 +202,11 @@ catch (Cartalyst\Sentry\Throttling\UserBannedException $e)
                             'city' => $city,
                             'state' => $state,
                             'zip' => $zip,
+                            'username' => $username,
                             'payment_method' => $payment_method,
                             'paypal_email' => $paypal_email,
-                            'name_on_cheque' => $name_on_cheque
+                            'name_on_cheque' => $name_on_cheque,
+                            'referred_by' => $ref_id
                         ), true);
                         $customerGroup = Sentry::getGroupProvider()->findByName('customers');
                         $user->addGroup($customerGroup);

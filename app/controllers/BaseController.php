@@ -17,6 +17,7 @@ class BaseController extends Controller {
 
 		public function __construct(){
 		$this->beforeFilter("csrf", array("on"=>array("post", "put", "patch", "delete")));
+
     $state_list = array(
           "" => "", // Base or Default case.
           "AL"=>"Alabama", "AK"=>"Alaska",

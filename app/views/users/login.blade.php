@@ -3,14 +3,14 @@
 	<div class="container">
 
 		<div class="col-md-6">
-			<h2>Register</h2>
+			<h2 style="text-align:center">Register</h2>
 			<br />
 			{{ Form::open(array('action' => 'UsersController@postRegister', 'method' => 'POST', 'class' => 'form-horizontal', 'role'=>'form')) }}
 				<div class="form-group <?php if($errors->has('first_name')){echo "alert alert-danger";} ?>">
 				    <label for="first_name" class="col-lg-4 control-label">First Name</label>
 				    <div class="col-lg-6">
 
-				      <input type="text" class="form-control" id="first_name" placeholder="First Name">
+				      {{ Form::text('first_name', null, array('id' => 'first_name', 'class'=>'form-control', 'placeholder' =>'First Name')) }}
 				      @if (Request::path()=="users/register")
   			     		@foreach($errors->get('first_name') as $message)
   			     			<p class="alert-danger">{{$message}}</p>
@@ -22,7 +22,7 @@
 				    <label for="last_name" class="col-lg-4 control-label">Last Name</label>
 				    <div class="col-lg-6">
 
-				      <input type="text" class="form-control" id="last_name" placeholder="Last Name">
+				      {{ Form::text('last_name', null, array('id' => 'last_name', 'class'=>'form-control', 'placeholder' =>'Last Name')) }}
 				      @if (Request::path()=="users/register")
   			     		@foreach($errors->get('last_name') as $message)
   			     			<p class="alert-danger">{{$message}}</p>
@@ -35,7 +35,7 @@
 				    <label for="email" class="col-lg-4 control-label">EMail</label>
 				    <div class="col-lg-6">
 
-				      <input type="email" class="form-control" id="email" placeholder="Email">
+				     {{ Form::text('email', null, array('id' => 'email', 'class'=>'form-control', 'placeholder' =>'Email')) }}
 				      @if (Request::path()=="users/register")
   			     		@foreach($errors->get('email') as $message)
   			     			<p class="alert-danger">{{$message}}</p>
@@ -48,7 +48,7 @@
 				    <label for="password" class="col-lg-4 control-label">Password</label>
 				    <div class="col-lg-6">
 
-				      <input type="password" class="form-control" id="password" placeholder="Password">
+				      {{ Form::input('password', 'password', Input::old('password'), array('id' => 'password', 'class'=>'form-control', 'placeholder' =>'Password')) }}
 				      @if (Request::path()=="users/register")
   			     		@foreach($errors->get('password') as $message)
   			     			<p class="alert-danger">{{$message}}</p>
@@ -61,7 +61,7 @@
 				    <label for="password_confirmation" class="col-lg-4 control-label">Confirm Password</label>
 				    <div class="col-lg-6">
 
-				      <input type="password" class="form-control" id="password_confirmation" placeholder="Password Confirmation">
+				      {{ Form::input('password', 'password_confirmation', Input::old('password_confirmation'), array('id' => 'password', 'class'=>'form-control', 'placeholder' =>'Password')) }}
 				      @if (Request::path()=="users/register")
   			     		@foreach($errors->get('password_confirmation') as $message)
   			     			<p class="alert-danger">{{$message}}</p>
@@ -73,7 +73,7 @@
 				    <label for="phone" class="col-lg-4 control-label">Phone</label>
 				    <div class="col-lg-6">
 
-				      <input type="text" class="form-control" id="phone" placeholder="Phone">
+				      {{ Form::text('phone', null, array('id' => 'phone', 'class'=>'form-control', 'placeholder' =>'Phone')) }}
 				      @if (Request::path()=="users/register")
   			     		@foreach($errors->get('phone') as $message)
   			     			<p class="alert-danger">{{$message}}</p>
@@ -86,7 +86,7 @@
 				    <label for="address" class="col-lg-4 control-label">Address</label>
 				    <div class="col-lg-6">
 
-				      <input type="text" class="form-control" id="address" placeholder="Address">
+				      {{ Form::text('address', null, array('id' => 'address', 'class'=>'form-control', 'placeholder' =>'Address')) }}
 				      @if (Request::path()=="users/register")
   			     		@foreach($errors->get('address') as $message)
   			     			<p class="alert-danger">{{$message}}</p>
@@ -99,7 +99,8 @@
 				    <label for="city" class="col-lg-4 control-label">City</label>
 				    <div class="col-lg-6">
 
-				      <input type="text" class="form-control" id="city" placeholder="City">
+
+				      {{ Form::text('city', null, array('id' => 'city', 'class'=>'form-control', 'placeholder' =>'City')) }}
 				      @if (Request::path()=="users/register")
   			     		@foreach($errors->get('city') as $message)
   			     			<p class="alert-danger">{{$message}}</p>
@@ -113,7 +114,7 @@
 				    <div class="col-lg-6">
 
 
-				      {{ Form::select('state', $state_list, Input::get('state')) }}
+				      {{ Form::select('state', $state_list, Input::get('state'), array('id' => 'state', 'class'=>'form-control')) }}
 				      @if (Request::path()=="users/register")
   			     		@foreach($errors->get('state') as $message)
   			     			<p class="alert-danger">{{$message}}</p>
@@ -127,9 +128,22 @@
 				    <label for="zip" class="col-lg-4 control-label">Zip code</label>
 				    <div class="col-lg-6">
 
-				      <input type="text" class="form-control" id="zip" placeholder="Zip code">
+
+				    {{ Form::text('zip', null, array('id' => 'zip', 'class'=>'form-control', 'placeholder' =>'Zip Code')) }}
 				      @if (Request::path()=="users/register")
   			     		@foreach($errors->get('zip') as $message)
+  			     			<p class="alert-danger">{{$message}}</p>
+  			     		@endforeach
+            		  @endif
+				    </div>
+				</div>
+				<div class="form-group <?php if($errors->has('username')){echo "alert alert-danger";} ?>">
+				    <label for="username" class="col-lg-4 control-label">Username</label>
+				    <div class="col-lg-6">
+
+				      {{ Form::text('username', null, array('id' => 'username', 'class'=>'form-control', 'placeholder' =>'Username')) }}
+				      @if (Request::path()=="users/register")
+  			     		@foreach($errors->get('username') as $message)
   			     			<p class="alert-danger">{{$message}}</p>
   			     		@endforeach
             		  @endif
@@ -159,7 +173,7 @@
 				    <label for="paypal_email" class="col-lg-4 control-label">Paypal Email</label>
 				    <div class="col-lg-6">
 
-				      <input type="text" class="form-control" id="paypal_email" placeholder="Paypal Email">
+				      {{ Form::text('paypal_email', null, array('id' => 'paypal_email', 'class'=>'form-control', 'placeholder' =>'Paypal Email')) }}
 				      @if (Request::path()=="users/register")
   			     		@foreach($errors->get('paypal_email') as $message)
   			     			<p class="alert-danger">{{$message}}</p>
@@ -172,7 +186,7 @@
 				    <label for="name_on_cheque" class="col-lg-4 control-label">Name on Cheque</label>
 				    <div class="col-lg-6">
 
-				      <input type="text" class="form-control" id="name_on_cheque" placeholder="Name on Cheque">
+				      {{ Form::text('name_on_cheque', null, array('id' => 'name_on_cheque', 'class'=>'form-control', 'placeholder' =>'Name on Cheque')) }}
 				      @if (Request::path()=="users/register")
   			     		@foreach($errors->get('name_on_cheque') as $message)
   			     			<p class="alert-danger">{{$message}}</p>
@@ -186,46 +200,62 @@
 
 			  <div class="form-group">
 			  <div class="col-lg-4"></div>
-			  <div class="col-lg-6"><button type="submit" class="btn btn-primary col-lg-12" >Register</button></div>
+			  <div class="col-lg-6"><button type="submit" class="btn btn-cart btn-lg col-lg-12" >Register</button></div>
 			   	</div>
 			{{ Form::close() }}
 		</div>
 
-		<div class="col-md-4">
+
+
+					<!--
+					    #
+						# LOGIN FORM
+						#
+					-->
+
+		<div class="col-md-6">
 			<h2 style="text-align:center">Login</h2>
 			<br />
 			{{ Form::open(array('action' => 'UsersController@postLogin', 'method' => 'POST', 'class' => 'form-horizontal')) }}
 
-                <div class="control-group <?php if($errors->has('email')  && Request::path()=="users/login"){echo "error";} ?>" >
-          <label class="control-label" for="email">Email</label>
-          <div class="controls">
-            {{ Form::email('email', Input::get('email'), array('id' => 'email', 'placeholder' => 'E-mail Address')) }}
-              @if (Request::path()=="users/login")
-                @foreach($errors->get('email') as $message)
-                <p class="text-error" style="width:200px;">{{$message}}</p>
-                @endforeach
-              @endif
-          </div>
-        </div>
-			 <div class="control-group <?php if($errors->has('password') && Request::path()=="users/login"){echo "error";} ?>">
-          <label class="control-label" for="password">Password</label>
-          <div class="controls">
-            {{ Form::password('password', Input::get('password'), array('id' => 'password', 'placeholder' => 'Password'))}}
-            @if (Request::path()=="users/login")
-              @foreach($errors->get('password') as $message)
-                <p class="text-error" style="width:200px;">{{$message}}</p>
-              @endforeach
-            @endif
-          </div>
-        </div>
-			  <div class="control-group">
-			   	<div class="controls">
-			     	<label class="checkbox">
-			       	<input type="checkbox"> Remember me
-			     	</label>
-			     	<button type="submit" class="btn btn-primary">Sign in</button>
-			   	</div>
-			  </div>
+			<div class="form-group <?php if($errors->has('email')){echo "alert alert-danger";} ?>">
+				<label for="email" class="col-lg-4 control-label">EMail</label>
+				<div class="col-lg-6">
+					{{ Form::text('email', null, array('id' => 'email', 'class'=>'form-control', 'placeholder' =>'Email')) }}
+					@if (Request::path()=="users/register")
+						@foreach($errors->get('email') as $message)
+							<p class="alert-danger">{{$message}}</p>
+						@endforeach
+					@endif
+				</div>
+			</div>
+			<div class="form-group <?php if($errors->has('password') && Request::path()=="users/register"){echo "alert alert-danger";} ?>">
+				<label for="password" class="col-lg-4 control-label">Password</label>
+				<div class="col-lg-6">
+					{{ Form::input('password', 'password', Input::old('password'), array('id' => 'password', 'class'=>'form-control', 'placeholder' =>'Password')) }}
+						@if (Request::path()=="users/register")
+							@foreach($errors->get('password') as $message)
+								<p class="alert-danger">{{$message}}</p>
+							@endforeach
+						@endif
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-lg-10">
+					<div class="checkbox" style="margin-left:200px;">
+						<label>
+							<input type="checkbox"> Remember me
+						</label>
+					</div>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<div class="col-lg-offset-2 col-lg-10">
+					<button type="submit" class="btn btn-cart btn-lg col-lg-10">Sign in</button>
+				    </div>
+				</div>
+
 			{{ Form::close() }}
 
 	   @if (Session::has('error'))
@@ -233,16 +263,25 @@
 @elseif (Session::has('success'))
     An e-mail with the password reset has been sent.
 @endif
-			<h2 style="text-align:right">Password Reset</h2>
+
+			<h2 style="text-align:center;padding-top:80px;">Password Reset</h2>
 				{{ Form::open(array('action' => 'UsersController@postResetPassword', 'method' => 'POST', 'class' => 'form-horizontal')) }}
-				<div class="control-group">
-					<label class="control-label" for="email">Email</label>
-					<div class="controls">
-						<input type="text" name="email"><br /><br />
-						<button type="submit" class="btn btn-primary">Reset Password</button>
+				<div class="form-group <?php if($errors->has('email')){echo "alert alert-danger";} ?>">
+					<label for="email" class="col-lg-4 control-label">EMail</label>
+					<div class="col-lg-6">
+						{{ Form::text('email', null, array('id' => 'email', 'class'=>'form-control', 'placeholder' =>'Email')) }}
+						@if (Request::path()=="users/register")
+							@foreach($errors->get('email') as $message)
+								<p class="alert-danger">{{$message}}</p>
+							@endforeach
+						@endif
 					</div>
 				</div>
-
+				<div class="form-group">
+					<div class="col-lg-offset-2 col-lg-10">
+						<button type="submit" class="btn btn-cart btn-lg col-lg-10">Reset Password</button>
+					    </div>
+					</div>
 		</div>
 
 	</div>

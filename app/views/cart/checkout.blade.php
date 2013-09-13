@@ -1,13 +1,12 @@
 @extends('layouts.master')
+
 @section('content')
 
 
-	<h3>Checkout</h3>
+		<div class="col-md-12"><h2>Checkout</h2>
 
 
 	Welcome : {{ $currentUser->first_name }}
-<br />
-		<div class="col-md-8">
 			<table class="table">
 				<thead>
 					<th>Item</th>
@@ -21,14 +20,19 @@
 						<td>
 						<div class="row-fluid">
 
-						<div class="col-md-3"><img src="{{ $item->options->image_url }}" width="175" /></div>
-            <div class="col-md-9">
-              <strong>{{ $item->options->Title }}</strong><br />
-              Author: {{ $item->options->Author }}<br />
-              Publisher: {{ $item->options->Publisher }}<br />
-              Edition: {{ $item->options->Edition }}<br />
-              ISBN10: {{ $item->options->ISBN10 }}<br />
-              ISBN13: {{ $item->options->ISBN13 }}</div></div>
+
+            <div class="col-md-9 cart-checkout">
+              <h4 style="color:#06FF56;">{{ $item->options->title }}</h4><br />
+              <img src="{{ $item->options->image_url }}" width="175" class="img-responsive col-md-3" />
+
+
+	              <dl class="col-md-8 dl-horizontal cart-dl">
+		              <dt>Author:</dt><dd>{{ $item->options->author }}</dd>
+		              <dt>Publisher:</dt><dd>{{ $item->options->publisher }}</dd>
+		              <dt>Edition:</dt><dd>{{ $item->options->edition }}</dd>
+		              <dt>ISBN10:</dt><dd>{{ $item->options->isbn10 }}</dd>
+		              <dt>ISBN13:</dt><dd>{{ $item->options->isbn13 }}</dd>
+	              </dl>
             </td>
             <td>${{ $item->price }}</td>
             <td>{{ $item->qty }}</td>
@@ -46,7 +50,7 @@
 			</table>
 		</div>
 		<div class="col-md-4">
-			<table class="table table-striped">
+			<table class="table">
 				<thead>
 					<tr><th colspan="2">Customer Profile</th></tr>
 				</thead>
