@@ -126,7 +126,7 @@ return array(
 		//'Pixelgremlins\Gremlindash\GremlindashServiceProvider',
 		'\Gloudemans\Shoppingcart\ShoppingcartServiceProvider',
 		'Cartalyst\Sentry\SentryServiceProvider',
-		'Way\Generators\GeneratorsServiceProvider',
+		//'Way\Generators\GeneratorsServiceProvider',
 
 
 	),
