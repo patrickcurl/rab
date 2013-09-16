@@ -6,9 +6,19 @@ class User extends SentryUserModel {
     return $this->hasMany('Order');
   }
 
-  public function ref(){
+  public function aff(){
   	return $this->belongsTo('User', 'referred_by');
   }
+
+  public function refs(){
+  	return $this->hasMany('User', 'referred_by');
+  }
+
+
+
+
+
+
 
   public static function getCommissions($id){
   	// $commData = array(

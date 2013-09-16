@@ -46,7 +46,7 @@
 			    		}
 
 			    	}
-			    	var_dump($multiplier);
+			    	// var_dump($multiplier);
 			    	$tempbook = DB::table('retail_prices')->where('isbn', '=', $book->isbn13)->first();
 			    	$price = number_format(($tempbook->Price * $multiplier), 2);
 

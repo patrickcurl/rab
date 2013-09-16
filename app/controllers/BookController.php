@@ -78,10 +78,13 @@ class BookController extends BaseController {
             $book = Book::find_or_create($isbn);
         }
         if($book){
+
             $tempbook = DB::table('retail_prices')
                 ->where('isbn', '=', $book->isbn13)->first();
 
-            $price = number_format(($tempbook->Price * 1.7), 2);
+
+
+
 
             // $string ="<books><details><title>{$book->title}</title><author>{$book->author}</author><image>{$book->image_url}</image><isbn>{$book->isbn13}</isbn><buyback>{$price}</buyback></details></books>";
             // $xml = new SimpleXMLElement($string);
@@ -115,14 +118,24 @@ class BookController extends BaseController {
             $details->appendChild($isbn);
             $isbn->appendChild($isbn_text);
 
+            if($tempbook){
+            $price = number_format(($tempbook->Price * 1.7), 2);
             $buyback_text = $dom->createTextNode($price);
             $offer = $dom->createElement("buyback");
             $details->appendChild($offer);
             $offer->appendChild($buyback_text);
+            } else {
+                //$price = number_format(($tempbook->Price * 1.7), 2);
+                $buyback_text = $dom->createTextNode("Not Currently Buying");
+                $offer = $dom->createElement("buyback");
+                $details->appendChild($offer);
+                $offer->appendChild($buyback_text);
+            }
             $output = $dom->saveXML();
             $headers['Content-Type'] = 'application/xml';
             return Response::make($output, 200, $headers);
             //print($output);
+            }
         }
         else
         {
