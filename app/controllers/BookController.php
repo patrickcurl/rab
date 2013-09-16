@@ -79,8 +79,7 @@ class BookController extends BaseController {
         }
         if($book){
 
-            $tempbook = DB::table('retail_prices')
-                ->where('isbn', '=', $book->isbn13)->first();
+
 
 
 
@@ -117,6 +116,8 @@ class BookController extends BaseController {
             $isbn = $dom->createElement("isbn");
             $details->appendChild($isbn);
             $isbn->appendChild($isbn_text);
+            $tempbook = DB::table('retail_prices')
+                ->where('isbn', '=', $book->isbn13)->first();
 
             if($tempbook){
             $price = number_format(($tempbook->Price * 1.7), 2);
@@ -135,7 +136,7 @@ class BookController extends BaseController {
             $headers['Content-Type'] = 'application/xml';
             return Response::make($output, 200, $headers);
             //print($output);
-            }
+
         }
         else
         {
