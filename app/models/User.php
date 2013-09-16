@@ -11,21 +11,21 @@ class User extends SentryUserModel {
   }
 
   public static function getCommissions($id){
-  	$commData = array(
-  	                        orders => array(
-			                	'pending' => 0,
-			                	'approved' => 0,
-			                ),
-  	                        commissions => array(
-	  	                    'pending' => 0.00,
-	  	                    'approved' => 0.00
-  	                        	                     ),
-  	                        payments => array(
+  	// $commData = array(
+  	//                         orders => array(
+			//                 	'pending' => 0,
+			//                 	'approved' => 0,
+			//                 ),
+  	//                         commissions => array(
+	  // 	                    'pending' => 0.00,
+	  // 	                    'approved' => 0.00
+  	//                         	                     ),
+  	//                         payments => array(
 
-  	                        )
+  	//                         )
 
-  	                        );
-  	$commData['orders']['pending'] = Order->where()
+  	//                         );
+  	// $commData['orders']['pending'] = Order->where()
 
   }
 }
