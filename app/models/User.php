@@ -21,21 +21,46 @@ class User extends SentryUserModel {
 
 
   public static function getCommissions($id){
-  	// $commData = array(
-  	//                         orders => array(
-			//                 	'pending' => 0,
-			//                 	'approved' => 0,
-			//                 ),
-  	//                         commissions => array(
-	  // 	                    'pending' => 0.00,
-	  // 	                    'approved' => 0.00
-  	//                         	                     ),
-  	//                         payments => array(
 
-  	//                         )
+  	$commissions = array(
+  	                        'orders' => array(
+			                	'pending' => array('amount' => 0.00, 'count' => 0),
+			                	'approved' => array('amount' => 0.00, 'count' => 0),
+			                	'total' => array('amount' => 0.00, 'count' => 0)
+			                ),
+	                        'earnings' => array(
+	                        	'total_commissions' => 0.00,
+	                        	'amount_paid' => 0.00,
+	                        	'amount_owed' => 0.00,
+	                        	'last_payment_amount' => 0.00,
+	                        	'last_payment_date' => null
+	                                       )
 
-  	//                         );
-  	// $commData['orders']['pending'] = Order->where()
+  	                        );
+  	$refs = User::find($id)->refs()->get();
+  	if($refs){
+  		foreach($refs as $ref){
+  			$orders = $ref->orders()->get();
+  			if($orders){
+  				foreach($orders as $order){
+  					if($order->received_date == null){
+  						$commissions['orders']['pending']['amount'] += $order->total_amount;
+  						$commissions['orders']['pending']['count'] += 1;
+  					}
+  					if($order->received_date != null){
+  						$commissions['orders']['approved']['amount'] += $order->total_amount;
+  						$commissions['orders']['approved']['count'] += 1;
+  					}
+  					$commissions['orders']['total']['amount'] += $order->total_amount;
+  					$commissions['orders']['total']['count'] += 1;
+  				}
+  			}
+  		}
+  	}
+
+
+
+  	return $commissions;
 
   }
 }

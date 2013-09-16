@@ -68,12 +68,14 @@ Home
   <div class="col-md-6">
     <h4>Referral Earnings</h4>
     <dl class="dl-horizontal cart-dl">
-      <dt>Pending Orders:</dt><dd>test</dd>
-      <dt>Pending Commissions:</dt><dd>test</dd>
-      <dt>Approved Orders:</dt><dd>test</dd>
+      <dt>Pending Buybacks:</dt><dd>{{ $commissions['orders']['pending']['count'] }}</dd>
+      <dt>Pending Buyback Totals:</dt><dd>${{ number_format($commissions['orders']['pending']['amount'], 2)}}</dd>
+      <dt>Pending Commissions:</dt><dd>${{ number_format(($commissions['orders']['pending']['amount'] * .06), 2)}}</dd>
+      <dt>Approved Buyback:</dt><dd>{{ $commissions['orders']['approved']['count'] }}</dd>
+      <dt>Approved Buyback Totals:</dt><dd>${{ number_format($commissions['orders']['approved']['amount'], 2)}}</dd>
       <dt>Approved Commissions:</dt><dd>test</dd>
-      <dt>Total Paid: </dt><dd>test</dd>
-      <dt>Last payment: </dt><dd>test</dd>
+      <dt>Total Paid: </dt><dd>N/A</dd>
+      <dt>Last payment: </dt><dd>N/A</dd>
     </dl>
   </div>
 

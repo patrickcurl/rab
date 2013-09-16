@@ -20,15 +20,43 @@
 //
 
 
-$refs = User::find(9)->refs()->get();
-foreach($refs as $ref){
-	$orders = $ref->orders()->get();
-	 foreach ($orders as $order) {
-	 	//var_dump($order);
-	 	if ($order->received_date == null){
-	 		echo "{$order->total_amount} - {$order->received_date} <br />";
-	 	}
+// $refs = User::find(9)->refs()->get();
+// $pending_orders_total = 0.00;
+// $pending_orders_count = 0;
+// $accepted_orders_total = 0.00;
+// $accepted_orders_count = 0;
+// $total_orders_count = 0;
+// $total_orders_amount = 0.00;
+// foreach($refs as $ref){
+// 	$orders = $ref->orders()->get();
 
-	 }
-}
+// 	 foreach ($orders as $order) {
+// 	 	//var_dump($order);
+// 	 	if ($order->received_date == null){
+// 	 		$pending_orders_total += $order->total_amount;
+// 	 		$pending_orders_count += 1;
+// 	 		// echo "{$order->total_amount} - {$order->received_date} <br />";
+// 	 	}
+
+// 	 	if ($order->received_date != null){
+// 	 		$accepted_orders_total += $order->total_amount;
+// 	 		$accepted_orders_count += 1;
+// 	 		// echo "{$order->total_amount} - {$order->received_date} <br />";
+// 	 	}
+// 	 	$total_orders_count += 1;
+// 	 	$total_orders_amount += $order->total_amount;
+
+// 	 }
+// }
+
+// echo "{$pending_orders_total}<br />";
+// echo "{$pending_orders_count}<br />";
+// echo "{$accepted_orders_total}<br />";
+// echo "{$accepted_orders_count}<br />";
+// echo "{$total_orders_amount}<br />";
+// echo "{$total_orders_count}<br />";
+//
+
+$comm = User::getCommissions(9);
+var_dump($comm);
 ?>
