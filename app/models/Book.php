@@ -10,7 +10,7 @@ class Book extends Eloquent {
         'save_to'    => 'slug',
     );
     public function getSlugAttribute(){
-      return $this->title . ' ' . $this->author;
+      return $this->isbn . ' ' . $this->title . ' ' . $this->author . ' '. $this->publisher;
     }
     public static function getBook($isbn){
       $region = "com";
