@@ -10,47 +10,73 @@ Home
 @section('content')
 
   @if (Sentry::check())
+  <div class="col-md-6">
   <h4>Account Profile</h4>
 
+    <dl class="cart-dl">
 
-      <div class="container"><div class="well clearfix col-md-7">
         @if ($user->first_name)
-          <div class="col-md-6"><strong>First Name:</strong> {{ $user->first_name }}</div>
+        <dt>First Name:</dt><dd>{{ $user->first_name }}</dd>
+
       @endif
       @if ($user->last_name)
-          <div class="col-md-6"><strong>Last Name:</strong> {{ $user->last_name }}</div>
+          <dt>Last Name:</dt><dd>{{ $user->last_name }}</dd>
+
       @endif
-        <div class="col-md-6"><strong>Email:</strong> {{ $user->email }}</div>
+        <dt>Email:</dt><dd>{{ $user->email }}</dd>
+
       @if ($user->phone)
-        <div class="col-md-6"><strong>Phone:</strong> {{ $user->phone }}</div>
+        <dt>Phone:</dt><dd>{{ $user->phone }}</dd>
+
       @endif
       @if ($user->address)
-        <div class="col-md-6"><strong>Address:</strong> {{ $user->address }}</div>
+        <dt>Address:</dt><dd>{{ $user->address }}</dd>
+
       @endif
       @if ($user->city)
-        <div class="col-md-6"><strong>City:</strong> {{ $user->city }}</div>
+        <dt>City:</dt><dd>{{ $user->city }}</dd>
+
       @endif
       @if ($user->state)
-        <div class="col-md-6"><strong>State:</strong> {{ $user->state }}</div>
+        <dt>State:</dt><dd>{{ $user->state }}</dd>
+
       @endif
       @if ($user->zip)
-        <div class="col-md-6"><strong>Zip Code:</strong> {{ $user->paypal_email }}</div>
+        <dt>Zip Code:</dt><dd>{{ $user->paypal_email }}</dd>
+
       @endif
       @if ($user->payment_method)
-        <div class="col-md-6"><strong>Payment Method:</strong> {{ $user->payment_method }}</div>
+        <dt>Payment Method:</dt><dd>{{ $user->payment_method }}</dd>
+
       @endif
+
       @if ($user->paypal_email)
-       <div class="col-md-6"><strong>Paypal Email:</strong> {{ $user->paypal_email }}</div>
+       <dt>Paypal Email:</dt><dd>{{ $user->paypal_email }}</dd>
+
       @endif
       @if ($user->name_on_cheque)
-        <div class="col-md-6"><strong>Name on Cheque:</strong> {{ $user->name_on_cheque }}</div>
+        <dt>Name on Cheque:</dt><dd>{{ $user->name_on_cheque }}</dd>
+
       @endif
+      </dl>
         <button class="col-md-12 btn btn-info" onClick="location.href='{{ URL::to('users/edit') }}/{{ $user->id}}'">Edit Profile</button>
 
     <div class="col-md-12">
       <em>Account created: {{ $user->created_at }} | </em><em>Last Updated: {{ $user->updated_at }}</em>
-    </div></div>
+    </div>
   </div>
+  <div class="col-md-6">
+    <h4>Referral Earnings</h4>
+    <dl class="dl-horizontal cart-dl">
+      <dt>Pending Orders:</dt><dd>test</dd>
+      <dt>Pending Commissions:</dt><dd>test</dd>
+      <dt>Approved Orders:</dt><dd>test</dd>
+      <dt>Approved Commissions:</dt><dd>test</dd>
+      <dt>Total Paid: </dt><dd>test</dd>
+      <dt>Last payment: </dt><dd>test</dd>
+    </dl>
+  </div>
+
 @if ($user->hasAccess('admin'))
   <h4>Group Memberships:</h4>
   <div class="well">

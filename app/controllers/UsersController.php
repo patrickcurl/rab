@@ -19,6 +19,8 @@ class UsersController extends BaseController {
                     //Either they are an admin, or:
                     //They are not an admin, but they are viewing their own profile.
                     $data['user'] = Sentry::getUserProvider()->findById($id);
+                    //$date['commissions'] User->getCommissions($id);
+
                     $data['myGroups'] = $data['user']->getGroups();
                     return View::make('users.show')->with($data);
                 } else {

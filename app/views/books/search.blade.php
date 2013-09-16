@@ -18,21 +18,37 @@
 			@foreach ($books as $index => $book)
 
 			<tr>
-				<td class="col-md-8">
-					<h2>{{ substr($book->title, 0, 110) }}...</h2>
-					<img src="<?php if ($book->image_url) {echo $book->image_url; } else {echo URL::asset('img/no_image.png'); } ?>" width="200" height="300" class="img-thumbnail img-responsive">
-					<dl class="dl-horizontal" style="display: inline-block !important; vertical-align: middle !important;">
-			            <dt class="hidden-xs">Author:</dt><dd>{{  $book->author }}</dd>
-			            <dt class="hidden-xs">Publisher:</dt><dd>{{  $book->publisher }}</dd>
-			            <dt class="hidden-xs">Edition:</dt><dd class="hidden-xs">{{  $book->edition }}</dd>
-			            <dt class="hidden-xs">Weight:</dt><dd>{{ number_format($book->weight, 2) }} lbs</dd>
-			            <dt class="hidden-xs">ISBN10:</dt><dd>{{ $book->isbn10 }} </dd>
-			            <dt class="hidden-xs">ISBN13:</dt><dd>{{ $book->isbn13 }}</dd>
-			            <dt class="hidden-xs">More info:</dt><dd class="hidden-xs"><a href="{{ $book->amazon_url }}" target="_blank">View Book Details on Amazon</a></dd>
-			        </dl>
+				<td>
+
+			           <div class="col-md-9 cart-checkout">
+              <h4 style="color:#06FF56;">{{ $book->title }}</h4><br />
+              <img src="{{ $book->image_url }}" width="175" class="img-responsive col-md-3" />
+
+
+	              <dl class="col-md-8 dl-horizontal cart-dl">
+		              <dt>Author:</dt><dd>{{ $book->author }}</dd>
+		              <dt>Publisher:</dt><dd>{{ $book->publisher }}</dd>
+		              <dt>Edition:</dt><dd>{{ $book->edition }}</dd>
+		              <dt>Weight:</dt><dd>{{ number_format($book->weight, 2) }} lbs</dd>
+		              <dt>ISBN10:</dt><dd>{{ $book->isbn10 }}</dd>
+		              <dt>ISBN13:</dt><dd>{{ $book->isbn13 }}</dd>
+		              <dt class="hidden-xs">More info:</dt><dd class="hidden-xs"><a href="{{ $book->amazon_url }}" target="_blank">View Book Details on Amazon</a></dd>
+	              </dl>
+	         </div>
 			    </td>
-			    <?php $tempbook = DB::table('retail_prices')->where('isbn', '=', $book->isbn13)->first();/* $price = $tempbook->price; */
-			    	$price = number_format(($tempbook->Price * 1.7), 2);
+			    <?php
+			    	$multiplier = 1.65;
+			    	$aff = Input::get('aff');
+			    	if(isset($aff)){
+			    		$referrer = User::where('username', '=', $aff)->first();
+			    		if (isset($referrer)){
+			    			$multiplier = number_format($referrer->price_level, 2);
+			    		}
+
+			    	}
+			    	var_dump($multiplier);
+			    	$tempbook = DB::table('retail_prices')->where('isbn', '=', $book->isbn13)->first();
+			    	$price = number_format(($tempbook->Price * $multiplier), 2);
 
 			     ?>
 			    <td><input type="hidden" name="item[{{$index}}][price]" value="{{$price}}" />{{ $price }}</td>

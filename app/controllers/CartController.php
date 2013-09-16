@@ -13,6 +13,7 @@ class CartController extends BaseController {
     public function postAdd(){
         $items = Input::get('item');
         $a = array();
+
         foreach($items as $item){
 
             if(isset($item['add']) && $item['add'] == "yes"){

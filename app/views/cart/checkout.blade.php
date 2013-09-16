@@ -18,7 +18,7 @@
 					@foreach($cart as $item)
 					<tr>
 						<td>
-						<div class="row-fluid">
+
 
 
             <div class="col-md-9 cart-checkout">
@@ -33,6 +33,7 @@
 		              <dt>ISBN10:</dt><dd>{{ $item->options->isbn10 }}</dd>
 		              <dt>ISBN13:</dt><dd>{{ $item->options->isbn13 }}</dd>
 	              </dl>
+	         </div>
             </td>
             <td>${{ $item->price }}</td>
             <td>{{ $item->qty }}</td>

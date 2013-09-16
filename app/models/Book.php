@@ -6,9 +6,12 @@ class Book extends Eloquent {
 	public static $rules = array();
 
     public static $sluggable = array(
-        'build_from' => 'title',
+        'build_from' => 'slug',
         'save_to'    => 'slug',
     );
+    public function getSlugAttribute(){
+      return $this->title . ' ' . $this->author;
+    }
     public static function getBook($isbn){
       $region = "com";
       $method = 'GET';
