@@ -10,11 +10,9 @@
 
 
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" >
-                <h3>
-                    <span class="alert-warning">Find out how much your used textbooks are worth.
-                    </span>
-                    <br /> <br />
-                    <span class="alert-danger">Get paid CASH for your textbooks today!</span>
+                <h3 style="text-align:center;">
+
+                    <span class="alert-danger text-centered">Get paid CASH for your textbooks today! Fast Cash via Paypal  + Free Shipping!</span>
                 </h3>
 
               <div class="col-md-7"><textarea name="isbns" id="isbns" class="form-control" rows="10" data-original-title="" title="" placeholder="Enter ISBN numbers 1 per line.."></textarea>
