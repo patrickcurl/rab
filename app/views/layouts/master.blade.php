@@ -79,6 +79,7 @@ if ($aff){
     {{ trans(Session::get('reason')) }}
 @endif
 <div id="wrap" style="margin-top:80px;margin-bottom:40px;">
+
     <div
     @section('container_class')
     class="container page-content clearfix"
