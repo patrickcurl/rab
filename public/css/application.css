@@ -2027,7 +2027,7 @@ fieldset[disabled] .btn-info.active {
 }
 .btn-cart {
   color: #fff;
-  background-color: #CC3E49;
+  background-color: #50CF1E;
   border-color: #CF181F;
 }
 .btn-cart:hover,
@@ -2036,7 +2036,7 @@ fieldset[disabled] .btn-info.active {
 .btn-cart.active,
 .open .dropdown-toggle.btn-cart {
   color: #fff;
-  background-color: #b22f39;
+  background-color: #42ab19;
   border-color: #981217;
 }
 .btn-cart:active,
@@ -2059,7 +2059,7 @@ fieldset[disabled] .btn-cart:hover,
 fieldset[disabled] .btn-cart:focus,
 fieldset[disabled] .btn-cart:active,
 fieldset[disabled] .btn-cart.active {
-  background-color: #CC3E49;
+  background-color: #50CF1E;
   border-color: #CF181F;
 }
 .btn-link {
