@@ -61,8 +61,8 @@
 // var_dump($comm);
 //
 
-$b = Book::getBook('1234567888');
+$b = Book::getBook('0802404936');
 var_dump($b);
-$c = Book::find_or_create('1234567888');
+$c = Book::find_or_create('0802404936');
 var_dump($c);
 ?>

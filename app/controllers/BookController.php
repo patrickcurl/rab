@@ -24,10 +24,10 @@ class BookController extends BaseController {
         $books = array();
         //return var_dump($isbns);
         foreach($isbns as $isbn){
-            if(\Intervention\Validation\Validator::isIsbn($isbn)){
+            // if(\Intervention\Validation\Validator::isIsbn($isbn)){
                 $book = Book::find_or_create($isbn);
                 array_push($books, $book);
-            }
+            // }
 
         }
 
@@ -43,11 +43,11 @@ class BookController extends BaseController {
         $books = array();
        // return var_dump($isbn);
         foreach($isbns as $isbn){
-            if(\Intervention\Validation\Validator::isIsbn($isbn)){
+           // if(\Intervention\Validation\Validator::isIsbn($isbn)){
                 $book = Book::find_or_create($isbn);
 
                 array_push($books, $book);
-            }
+           // }
 
         }
 
@@ -74,9 +74,9 @@ class BookController extends BaseController {
     }
     public function searchISBN(){
         $isbn = Input::get('isbn');
-        if(\Intervention\Validation\Validator::isIsbn($isbn)){
+       // if(\Intervention\Validation\Validator::isIsbn($isbn)){
             $book = Book::find_or_create($isbn);
-        }
+       // }
         if($book){
 
 

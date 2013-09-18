@@ -4,8 +4,8 @@ class Book extends Eloquent {
 	protected $guarded = array();
 
 	public static $rules = array(
-    'isbn10' => 'alpha_num|between:10,10',
-    'isbn13' => 'alpha_num|between:13,13',
+   // 'isbn10' => 'alpha_num|between:10,10',
+   // 'isbn13' => 'alpha_num|between:13,13',
    );
 
     public static $sluggable = array(
@@ -13,7 +13,12 @@ class Book extends Eloquent {
         'save_to'    => 'slug',
     );
     public function getSlugAttribute(){
-      return $this->isbn . ' ' . $this->title . ' ' . $this->author . ' '. $this->publisher;
+      if($this->isbn13 != null){
+        $isbn = $this->isbn13;
+      } else {
+        $isbn = $this->isbn10;
+      }
+      return $isbn . ' ' . $this->title . ' ' . $this->author . ' '. $this->publisher;
     }
     public static function getBook($isbn){
       $region = "com";
@@ -104,8 +109,21 @@ class Book extends Eloquent {
 
 
                   $book = new Book();
-                  $book->isbn10 = $book_info['isbn10'];
-                  $book->isbn13 = $book_info['isbn13'];
+                 // $book->isbn10 = $book_info['isbn10'];
+                  //check if $book_info['isbn10'] exists
+                  if(isset($book_info['isbn10']) && $book_info['isbn10'] != null){
+                    //if it does set attribute.
+                    $book->isbn10 = $book_info['isbn10'];
+                  } else {
+                    // if it doesn't set it equal to first 7 digits of isbn + nax
+                    $book->isbn10 = substr($book_info['isbn13'], 0, 7) . "nax";
+                  }
+                  if(isset($book_info['isbn13']) && $book_info['isbn13'] != null){
+                    $book->isbn13 = $book_info['isbn13'];
+                  } else {
+                    $book->isbn13 = $book_info['isbn10'] . "nax";
+                  }
+
                   $book->title = $book_info['title'];
                   $book->author = $book_info['author'];
                   $book->publisher = $book_info['publisher'];
