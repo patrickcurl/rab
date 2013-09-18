@@ -3,7 +3,10 @@
 class Book extends Eloquent {
 	protected $guarded = array();
 
-	public static $rules = array();
+	public static $rules = array(
+    'isbn10' => 'alpha_num|between:10,10',
+    'isbn13' => 'alpha_num|between:13,13',
+   );
 
     public static $sluggable = array(
         'build_from' => 'slug',
@@ -51,8 +54,10 @@ class Book extends Eloquent {
       $xml = simplexml_load_file($url);
       $xml->registerXpathNamespace("xmlns", "http://webservices.amazon.com/AWSECommerceService/2011-08-01");
 
-
-      $book = array(
+      if (isset($xml->Items->Request->Errors->Error->Code) && $xml->Items->Request->Errors->Error->Code == 'AWS.InvalidParameterValue'){
+        return null;
+      } else {
+        $book = array(
                     'isbn10' => (string) $xml->Items->Item->ASIN,
                     'isbn13' => (string) $xml->Items->Item->ItemAttributes->EAN,
                     'title' => (string) $xml->Items->Item->ItemAttributes->Title,
@@ -66,34 +71,96 @@ class Book extends Eloquent {
 
 
       return $book;
+      }
+
     }
 
     public static function find_or_create($isbn){
-        $book = Book::where('isbn10', '=', $isbn)
-                      ->orWhere('isbn13', '=', $isbn)
-                      ->first();
-        if ($book){
-            return $book;
-        } else
-        {
-            $book_info = self::getBook($isbn);
-            if ($book_info)
-            {
-                $book = new Book();
-                $book->isbn10 = $book_info['isbn10'];
-                $book->isbn13 = $book_info['isbn13'];
-                $book->title = $book_info['title'];
-                $book->author = $book_info['author'];
-                $book->publisher = $book_info['publisher'];
-                $book->edition = $book_info['edition'];
-                $book->image_url = $book_info['image_url'];
-                $book->amazon_url = $book_info['amazon_url'];
-                $book->weight = $book_info['weight'];
-                $book->save();
+        // First we check if isbn is right size.
+        $nullBook = new Book();
+        $nullBook->isbn10 = '0000000000';
+        $nullBook->isbn13 = '0000000000000';
+        $nullBook->title = 'Not valid.';
+        $nullBook->author = 'Not valid.';
+        $nullBook->publisher = 'Not valid.';
+        $nullBook->edition = 'Not valid.';
+        //$nullBook->image_url = 'Not valid.';
+        $nullBook->amazon_url = 'Not valid.';
+        $nullBook->weight = 0.00;
+        $nullBook->singlePrice = 0.00;
+        $nullBook->retailPrice = 0.00;
+
+        if(strlen($isbn) != 13 && strlen($isbn) != 10){
+          return $nullBook;
+        } else {
+          $book = Book::where('isbn10', '=', $isbn)
+                        ->orWhere('isbn13', '=', $isbn)
+                        ->first();
+          if (!isset($book) || $book == null){
+
+             $book_info = self::getBook($isbn);
+             if (isset($book_info) && $book_info != null)
+              {
+
+
+                  $book = new Book();
+                  $book->isbn10 = $book_info['isbn10'];
+                  $book->isbn13 = $book_info['isbn13'];
+                  $book->title = $book_info['title'];
+                  $book->author = $book_info['author'];
+                  $book->publisher = $book_info['publisher'];
+                  $book->edition = $book_info['edition'];
+                  $book->image_url = $book_info['image_url'];
+                  $book->amazon_url = $book_info['amazon_url'];
+                  $book->weight = $book_info['weight'];
+                  $book->save();
+              }
             }
-            if ($book){
-                return $book;
-            } else {return Null;}
+            if (isset($book) && $book != null){
+
+              $single = DB::table('single_prices')->where('isbn', '=', $isbn)->first();
+              if(isset($single) || $single != null){
+                  $singlePrice = $single->Price;
+                  $singlePrice = $singlePrice - ($singlePrice * .1);
+                  $singlePrice = self::floorToFraction($singlePrice, 2);
+                  $book->singlePrice = $singlePrice;
+              } else{
+                $book->singlePrice = 0.00;
+              }
+
+              $retail = DB::table('retail_prices')->where('isbn', '=', $isbn)->first();
+              if(isset($retail) || $retail != null){
+              $retailPrice = $retail->Price;
+              $book->retailPrice = $retailPrice;
+              }
+
+
+                 return $book;
+              } else {
+                  // $book = new Book();
+                  // $book->isbn10 = '0000000000';
+                  // $book->isbn13 = '0000000000000';
+                  // $book->title = 'Not valid.';
+                  // $book->author = 'Not valid.';
+                  // $book->publisher = 'Not valid.';
+                  // $book->edition = 'Not valid.';
+                  // $book->image_url = 'Not valid.';
+                  // $book->amazon_url = 'Not valid.';
+                  // $book->weight = 0.00;
+                  // $book->singlePrice = 0.00;
+                  // $book->retailPrice = 0.00;
+
+                return $nullBook;
+              }
+
         }
+
+    }
+  public static function floorToFraction($number, $denominator = 1)
+    {
+        $x = $number * $denominator;
+        $x = floor($x);
+        $x = $x / $denominator;
+        return $x;
     }
 }

@@ -57,6 +57,12 @@
 // echo "{$total_orders_count}<br />";
 //
 
-$comm = User::getCommissions(9);
-var_dump($comm);
+// $comm = User::getCommissions(9);
+// var_dump($comm);
+//
+
+$b = Book::getBook('1234567888');
+var_dump($b);
+$c = Book::find_or_create('1234567888');
+var_dump($c);
 ?>

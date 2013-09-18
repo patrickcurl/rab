@@ -19,7 +19,7 @@ class BookController extends BaseController {
      public function postSearch()
     {
         $isbns =  str_replace("\r", "", Input::get('isbns'));
-        $isbns = explode("\n", $isbns);
+        $isbns = explode(",", $isbns);
         $isbns = array_unique($isbns);
         $books = array();
         //return var_dump($isbns);
@@ -62,10 +62,10 @@ class BookController extends BaseController {
         $books = array();
         //return var_dump($isbns);
         foreach($isbns as $isbn){
-            if(\Intervention\Validation\Validator::isIsbn($isbn)){
+           // if(\Intervention\Validation\Validator::isIsbn($isbn)){
                 $book = Book::find_or_create($isbn);
                 array_push($books, $book);
-            }
+          //  }
 
         }
 

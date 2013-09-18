@@ -68,20 +68,21 @@ if ($aff){
               @endif
               <li><a href="mailto:info@recycleabook.com" data-rel="tooltip" data-position="bottom" data-original-title="Email Us"><i class="icon-envelope nav-icon"></i> info@recycleabook.com</a></li>
                 <li><a href="#" data-rel="tooltip" data-position="bottom" data-original-title="Call Us Now"><i class="icon-phone nav-icon"></i> (937) 439-4848</a></li>
-                <li><a href="http://www.twitter.com/recycleabook" data-rel="tooltip" data-position="bottom" data-original-title="Twitter" class="social-link"><i class="icon-twitter" style="margin-left:10px;"></i></a></li>
-                 <li> <a href="https://www.facebook.com/pages/RecycleAbookcom/256102557767102" data-rel="tooltip" data-position="bottom" data-original-title="Facebook" class="social-link"><i class="icon-facebook"></i></a></li>
-          </ul>
+                <li></li>
+
+          </ul> <a href="https://www.facebook.com/pages/RecycleAbookcom/256102557767102" data-rel="tooltip" data-position="bottom" data-original-title="Facebook" class="navbar-link social-link"><i class="icon-facebook"></i></a>
+          <a href="http://www.twitter.com/recycleabook" data-rel="tooltip" data-position="bottom" data-original-title="Twitter" class="social-link"><i class="navbar-link icon-twitter" ></i></a>
         </div><!--/.nav-collapse -->
       </div>
     </div>
 
 
 
-  <div class="row clear-fix hidden-xs" style="padding-top:15px;">
+  <div class="row clear-fix hidden-xs" style="padding-top:15px;background-color: rgba(230, 230, 230, 0.6);">
   <div class="container">
     <div class="logo col-sm-3">
         <a href="http://blog.recycleabook.com" title="Home">
-          <img src="http://blog.recycleabook.com/wp-content/uploads/2013/09/sell-textbooks-logo2.png" width="520" height="101" data-original="http://blog.recycleabook.com/wp-content/uploads/2013/09/sell-textbooks-logo2.png" class="img-responsive" style="opacity: 1;">                </a>
+          <img src="http://blog.recycleabook.com/wp-content/uploads/2013/09/sell-textbooks-logo2.png" width="520" height="101" data-original="http://blog.recycleabook.com/wp-content/uploads/2013/09/sell-textbooks-logo2.png" class="img-responsive" style="opacity: 1;margin-bottom:20px;">                </a>
     </div>
     <div class="col-sm-9">
 

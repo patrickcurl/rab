@@ -21,17 +21,15 @@
 				<td>
 
 			           <div class="col-md-9 cart-checkout">
-              <h4 style="color:#06FF56;">{{ $book->title }}</h4><br />
-              <img src="{{ $book->image_url }}" width="175" class="img-responsive col-md-3" />
+              <h4 style="color:#E0F126;font-size:14px;font-weight:bold;">{{ $book->title }}</h4>
+              <img src="{{ $book->image_url }}" class="img-responsive col-md-3" style="width:100px;" />
 
 
 	              <dl class="col-md-8 dl-horizontal cart-dl">
 		              <dt>Author:</dt><dd>{{ $book->author }}</dd>
 		              <dt>Publisher:</dt><dd>{{ $book->publisher }}</dd>
-		              <dt>Edition:</dt><dd>{{ $book->edition }}</dd>
-		              <dt>Weight:</dt><dd>{{ number_format($book->weight, 2) }} lbs</dd>
-		              <dt>ISBN10:</dt><dd>{{ $book->isbn10 }}</dd>
-		              <dt>ISBN13:</dt><dd>{{ $book->isbn13 }}</dd>
+		              <dt>ISBN:</dt><dd>{{ $book->isbn10 }} / {{ $book->isbn13 }}</dd>
+
 		              <dt class="hidden-xs">More info:</dt><dd class="hidden-xs"><a href="{{ $book->amazon_url }}" target="_blank">View Book Details on Amazon</a></dd>
 	              </dl>
 	         </div>
@@ -68,19 +66,27 @@
 
 
 			</tr>
-	    	@endforeach
 
+	    	@endforeach
+<tr>
+				<td colspan="4">
+				<div class="col-xs-12 col-sm-12 col-md-12">
+<button type="submit" class="col-xs-12 col-sm-12 col-md-12 btn btn-cart btn-lg">Add Items to Cart</button>
+
+</div>
+<div class="col-xs-12 col-md-12 clearfix pullright"><p>* Textbook buyback price is good for "U.S. STUDENT", "Instructor", "Exam Copy", or "Not for re-sale" editions. <br />"Annotated instructors editions" will be purchased at a 50% discount. <br />Textbook prices quoted are for textbooks in "good condition" or better, see condition guide for details.</p>
+<p>We do not currently purchase INTERNATIONAL edition textbooks.</p>
+
+</div>
+				</td>
+
+			</tr>
 		</tbody>
 
 
 	</table>
 
-	<div class="col-xs-12 col-sm-12 col-md-12">
-<button type="submit" class="col-xs-12 col-sm-12 col-md-12 btn btn-cart btn-lg">Add Items to Cart</button>
-
-</div>{{ Form::close() }} <!-- sell your textbooks -->
-	<div class="col-xs-12 col-md-12 clearfix pullright"><p>* Textbook buyback price is good for "U.S. STUDENT", "Instructor", "Exam Copy", or "Not for re-sale" editions. <br />"Annotated instructors editions" will be purchased at a 50% discount. <br />Textbook prices quoted are for textbooks in "good condition" or better, see condition guide for details.</p>
-<p>We do not currently purchase INTERNATIONAL edition textbooks.</p>
+	{{ Form::close() }} <!-- sell your textbooks -->
 
 </div>
 </div>

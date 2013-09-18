@@ -5,7 +5,7 @@
 @section('content')
 
 
-        {{ Form::open(array('action' => 'BookController@postSearch', 'id' => 'price-books-form', 'class' => 'form-inline')) }}
+<!--         {{ Form::open(array('action' => 'BookController@postSearch', 'id' => 'price-books-form', 'class' => 'form-inline')) }}
 
 
 
@@ -27,11 +27,23 @@
             <div class="well well-lg" style="margin-top:30px;">
                 <span class="alert-info">Our mission is simple: To help students  receive the most affordable textbooks on  the market. <br /><br />Please join our cause. You  can make a difference.</span>
             </div>
-            </div>
+            </div> -->
 
 
 
+        <div style="padding:20px;">
+                    {{ Form::open(array('action' => 'BookController@postSearch', 'id' => 'price-books-form', 'class' => 'form-inline')) }}
 
+                        <div class='col-xs-9' style="padding-top:7px;">
+                            <input name="isbns" type="tel" id="isbns" class="form-control input-lg" placeholder="Enter ISBNs separate by commas no spaces."  id="single-input"  style="height:46px;"/>
+                        </div>
+                        <div class='col-xs-3' style="margin-top:5px;">
+                            <button type="submit" class="btn btn-cart btn-lg col-xs-7">FIND BOOKS »</button>
+                            </div>
+
+
+                    {{ Form::close() }}
+        </div>
 
 
 
