@@ -2,6 +2,12 @@
 
 @section('content')
 
+@section('hero-start')
+View Your
+@stop
+@section('hero-end')
+Cart
+@stop
 
 		<div class="col-md-12"><h2>Checkout</h2>
 
@@ -21,12 +27,14 @@
 
 
 
-            <div class="col-md-9 cart-checkout">
-              <h4 style="color:#06FF56;">{{ $item->options->title }}</h4><br />
-              <img src="{{ $item->options->image_url }}" width="175" class="img-responsive col-md-3" />
+            <div class="span10">
+              <h4>{{ $item->options->title }}</h4><br />
+              </div>
+              <div class="span3">
+              <img src="{{ $item->options->image_url }}" width="175" class="img-responsive span3" />
+					</div>
 
-
-	              <dl class="col-md-8 dl-horizontal cart-dl">
+	              <dl class="dl-horizontal span8">
 		              <dt>Author:</dt><dd>{{ $item->options->author }}</dd>
 		              <dt>Publisher:</dt><dd>{{ $item->options->publisher }}</dd>
 		              <dt>Edition:</dt><dd>{{ $item->options->edition }}</dd>
@@ -50,8 +58,8 @@
 				</tbody>
 			</table>
 		</div>
-		<div class="col-md-4">
-			<table class="table">
+		<div class="span4">
+			<table class="table table-bordered">
 				<thead>
 					<tr><th colspan="2">Customer Profile</th></tr>
 				</thead>
@@ -97,7 +105,6 @@
 			 </table>
 
 		</div>
-
 
 
 

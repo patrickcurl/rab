@@ -8,14 +8,18 @@ if ($aff){
 
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<!--[if IE 8 ]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if (gt IE 8)]><!--> <html lang="en"> <!--<![endif]-->
 <head>
-<?php  ?>
 <meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@section('title')
-{{ Config::get('env_vars.global_title') }}
+<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+  <title>@section('title')
+RecycleABook.com - Sell Textbooks, Buy Textbooks, Discounted Textbooks
 @show</title>
+  <meta content="Bootsrap based theme" name="description">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta content="yes" name="apple-mobile-web-app-capable">
+
 <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../ico/apple-touch-icon-144-precomposed.png" />
 <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../ico/apple-touch-icon-114-precomposed.png" />
 <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../ico/apple-touch-icon-72-precomposed.png" />
@@ -24,14 +28,23 @@ if ($aff){
 
 
 
-<link rel="stylesheet" href="{{ URL::asset('css/application.css') }}">
+<?php
+ /* <link rel="stylesheet" href="{{ URL::asset('css/application.css') }}">
+
+
 
     <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Syncopate' rel='stylesheet' type='text/css'>
  <link href='http://fonts.googleapis.com/css?family=PT+Serif' rel='stylesheet' type='text/css'>
  <link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
-
-
+ */
+?>
+  <link href="{{ URL::asset('stylesheets/bootstrap.css') }}" media="screen" rel="stylesheet" type="text/css" />
+  <link href="{{ URL::asset('stylesheets/responsive.css') }}" media="screen" rel="stylesheet" type="text/css" />
+  <link href="{{ URL::asset('stylesheets/font-awesome-all.css') }}" media="screen" rel="stylesheet" type="text/css" />
+  <link href="{{ URL::asset('stylesheets/fancybox.css') }}" media="screen" rel="stylesheet" type="text/css" />
+  <link href="{{ URL::asset('stylesheets/theme.css') }}" media="screen" rel="stylesheet" type="text/css" />
+  <link href="{{ URL::asset('stylesheets/fonts.css') }}" media="screen" rel="stylesheet" type="text/css" />
     @section('head')
     @show
 </head>
@@ -40,91 +53,232 @@ if ($aff){
 
 @show >
 
- <!-- Fixed navbar -->
-<div class="navbar navbar-default">
-      <div class="container">
-        <div class="navbar-header">
-        <!--<a href="/" class="navbar-brand-logo"><img alt="" src="/img/sell-textbooks-logo2.png" class="logo img-responsive hidden-xs "/></a>-->
-        <a href="/" class="navbar-brand" style="font-size:12px">RecycleABook : Cash for Used Textbooks</a>
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
+  <div class="wrapper">
+    <header id="masthead">
 
 
+          <nav class="navbar navbar-static-top" style="margin-bottom:10px;">
+            <div class="navbar-inner">
+              <div class="container-fluid">
+                <a class="btn btn-navbar" data-target=".nav-collapse" data-toggle="collapse">
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                </a>
 
-        </div>
-        <div class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
 
-             <!-- <li class="{{Request::is('p/how-to-save*') ? 'active' : ''}}"><a href="{{ URL::to( '/p/how-to-save') }}">How to Save</a></li> -->
-            <!-- <li class="{{Request::is('/contact*') ? 'active' : ''}}"><a href="{{ URL::to( '/contact') }}">Contact Us</a></li> -->
-            {{ View::make('partials._login_form_lg') }}
-              <li><a href="{{ URL::to('/cart') }}"><i class="icon-shopping-cart nav-icon"></i> Seller Cart <span class="cart-total badge badge-info"></span></a></li>
+                <div class="nav-collapse collapse">
+                  <ul class="nav pull-right">
+                    <li class="dropdown">
+                      <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        About Us
+                        <span class="caret"></span>
+                      </a>
+                      <!-- Link or button to toggle dropdown -->
+                      <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                        <li><a tabindex="-1" href="{{URL::to('/p/our_story')}}">Our Story</a></li>
+                         <li><a tabindex="-1" href="{{URL::to('/p/community')}}">Community</a></li>
+                         <li><a tabindex="-1" href="{{URL::to('/p/how_to_pack')}}">How to Pack</a></li>
+                        <li class="divider"></li>
+                        <li><a tabindex="-1" href="{{URL::to('/p/contact')}}">Contact Us</a></li>
+                      </ul>
+                    </li>
+                    <li class=""><a href="{{URL::to('/p/save_students_money')}}">How to Save</a></li>
+                    <!-- <li class=""><a href="publishers.html">Publishers</a></li>
+                    <li class=""><a href="affiliate.html">Affiliates</a></li>
+                    <li class=""><a href="blog.html">Blog</a></li>-->
+                    <li class=""><a href="{{URL::to('/p/join_our_team')}}">Join Our Team</a></li>
+                    {{ View::make('partials._login_form_lg') }}
+                     <li><a href="{{ URL::to('/cart') }}"><i class="icon-shopping-cart nav-icon"></i> Seller Cart <span class="cart-total badge badge-info"></span></a></li>
             <?php $user = Sentry::getUser(); ?>
             @if ($user && $user->hasAccess('admin'))
-              <li><a href="{{ URL::to('/admin') }}"> <span class="glyphicon glyphicon-wrench"></span> Admin Dashboard</a></li>
+              <li><a href="{{ URL::to('/admin') }}"> <span class="icon-wrench"></span> Admin</a></li>
               @endif
-              <li><a href="mailto:info@recycleabook.com" data-rel="tooltip" data-position="bottom" data-original-title="Email Us"><i class="icon-envelope nav-icon"></i> info@recycleabook.com</a></li>
-                <li><a href="#" data-rel="tooltip" data-position="bottom" data-original-title="Call Us Now"><i class="icon-phone nav-icon"></i> (937) 439-4848</a></li>
-                <li></li>
-
-          </ul> <a href="https://www.facebook.com/pages/RecycleAbookcom/256102557767102" data-rel="tooltip" data-position="bottom" data-original-title="Facebook" class="navbar-link social-link"><i class="icon-facebook"></i></a>
-          <a href="http://www.twitter.com/recycleabook" data-rel="tooltip" data-position="bottom" data-original-title="Twitter" class="social-link"><i class="navbar-link icon-twitter" ></i></a>
-        </div><!--/.nav-collapse -->
-      </div>
-    </div>
 
 
-
-  <div class="row clear-fix hidden-xs" style="padding-top:15px;background-color: rgba(230, 230, 230, 0.6);">
-  <div class="container">
-    <div class="logo col-sm-3">
-        <a href="http://blog.recycleabook.com" title="Home">
-          <img src="http://blog.recycleabook.com/wp-content/uploads/2013/09/sell-textbooks-logo2.png" width="520" height="101" data-original="http://blog.recycleabook.com/wp-content/uploads/2013/09/sell-textbooks-logo2.png" class="img-responsive" style="opacity: 1;margin-bottom:20px;">                </a>
-    </div>
-    <div class="col-sm-9">
-
-    <nav class="navbar navbar-inverse" role="navigation">
-      <!-- Brand and toggle get grouped for better mobile display -->
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-
-      </div>
-
-      <!-- Collect the nav links, forms, and other content for toggling -->
-      <div class="collapse navbar-collapse navbar-ex1-collapse">
-        <ul class="nav navbar-nav">
-        <li class="dropdown">
-            <a href="http://blog.recycleabook.com/about-us/" class="dropdown-toggle" data-toggle="dropdown">About Us<b class="caret"></b></a>
-            <ul class="dropdown-menu">
-              <li><a href="http://blog.recycleabook.com/contact-us/">Contact Us</a></li>
-              <li><a href="http://blog.recycleabook.com/privacy-policy/">Privacy Policy</a></li>
-
-            </ul>
-          </li>
-
-          <li><a href="http://blog.recycleabook.com/affiliate/">Affiliate</a></li>
-          <li><a href="http://blog.recycleabook.com/">Blog</a></li>
-          <li><a href="http://blog.recycleabook.com/join-our-team/">Join Our Team</a></li>
-          <li><a href="http://blog.recycleabook.com/publisher-list/">Publisher List</a></li>
-          <li><a href="http://blog.recycleabook.com/how-to-pack/">How to Pack</a></li>
-          <li><a href="http://blog.recycleabook.com/condition-guide/">Condition Guide</a></li>
-        </ul>
+                  </ul>
 
 
-      </div><!-- /.navbar-collapse -->
-    </nav>
+                </div>
+
+</div>
+            </div>
+
+          </nav>
+
+<div class="container-fluid visible-desktop"><div class="span3" >
+                  <a href="{{URL::to('/')}}">
+                    <img src="{{ URL::asset('images/assets/misc/logo.png')}}" style="display:block;max-width:90%;height:auto;position:relative;bottom:40px;"></a>
+                </div>
+                {{ Form::open(array('action' => 'BookController@postSearch', 'id' => 'price-books-form', 'class' => 'form-inline')) }}
+               <div class="input-append pull-right visible-desktop">
+  <input class="span6" id="appendedInputButton" name="isbns" placeholder="Enter Isbns, separate multiples by comma."type="text">
+
+  <button class="btn btn-success" type="submit">Find Books!</button>
+</div> {{ Form::close() }}
+</div>
+<div class="container-fluid visible-tablet" style="position: relative;top: -50px;width: 80%;"><div class="span4" >
+                  <a href="{{URL::to('/')}}">
+                    <img src="{{ URL::asset('images/assets/misc/logo.png')}}" style="display:block;max-width:90%;height:auto;position:relative;bottom:40px;"></a>
+                </div>
+               <div class="input-append">
+  <input class="span5" id="appendedInputButton" name="isbns" placeholder="Enter Isbns, separate multiples by comma."type="text">
+  <button class="btn btn-success" type="button">Find Books!</button>
+
+</div>
+</div>
+<div class="container-fluid visible-phone">
+<div class="span12" >
+                  <a href="{{URL::to('/')}}">
+                    <img src="{{ URL::asset('images/assets/misc/logo.png')}}" style="display:block;max-width:90%;height:auto;position:relative;bottom:90px;left:120px;"></a>
+                </div>
+
+               <div class="input-append" style="width:80%" >
+  <input  class="input-xxlarge" id="appendedInputButton" name="isbns" placeholder="Enter Isbns, separate multiples by comma."type="text" style="width: 100%;">
+  <button class="btn btn-success" type="button">Find Books!</button>
+
+</div>
+</div>
+         <div class="row-fluid"><p class="text-center"><em>Our Mission is simple: To help students receive the most affordable textbooks on the market. Please Join our cause. You can make a difference.</em></p></div>
+    </header>
+
+@section('hero-unit')
+<section class="section section-alt section-padded section-dark">
+        <div class="row-fluid">
+          <div class="super-hero-unit">
+            <h1 class="super animated fadeinup delayed">
+            @section('hero-start')
+              Get Cash 4
+            @show
+              <span class="lighter">
+              @section('hero-end')
+                Textbooks
+              @show
+              </span>
+            </h1>
+          </div>
         </div>
+</section>
+@show
+<section class="section section-padded">
+<div class="container-fluid">
+  @include('layouts.notifications')
+      @if (Session::has('error'))
+    {{ trans(Session::get('reason')) }}
+@endif
+ @yield('content')
+
+</div>
+      </section>
+
+
+
+
+
+<section class="section section-padded section-alt">
+       <div class="container-fluid">
+          <div class="section-header">
+            <h1>
+             Sell Your
+              <small class="light">Books</small>
+            </h1>
+            <p> Do you have textbooks that you'd like to sell? Click the button below! </p>
+            <a href="cash-for-books.html" class="btn btn-success btn-large">
+                  Get Started
+                                 </a>
+          </div>
+
+
+
+
+       </div>
+      </section>
+<section class="section section-padded">
+        <div class="container-fluid">
+          <div class="section-header">
+            <h1>
+              Latest
+              <small class="light">news?</small>
+            </h1>
+          </div>
+          <ul class="unstyled row-fluid">
+
+            <!-- Begin Blog Post-->
+    <div class="row-fluid">
+    <div class="container-fluid">
+            @foreach($posts as $post)
+
+
+              <div class="postbg">
+                <div class="postimage"><a href="{{ $post['url'] }}" title="{{ $post['title'] }}" rel="bookmark"><img src="{{ $post['image'] }}" /></a></div>
+                <div class="postcontent">
+                <h3><a href="{{ $post['url'] }}" title="{{ $post['title'] }}" rel="bookmark">{{ $post['title'] }}</a></h3>
+                <div class="posttext"><p>{{$post['excerpt']}}</p>
+                </div>
+                </div>
+                <div class="postreadmore"><h5><a href="{{ $post['url'] }}" title="Read more on Worth A Thousand Words" rel="bookmark">Read more</a></h5></div>
+
+</div>
+
+            @endforeach
+            </div></div>
+
+            <!-- End Blog Post-->
+
+        </div>
+      </section>
   </div>
 
-  </div>
+ <!-- Page Footer -->
+  <footer id="footer" role="contentinfo">
+    <div class="wrapper wrapper-transparent">
+      <div class="container-fluid">
+        <div class="row-fluid">
+          <div class="span6 small-screen-center">
+            <h3>
+              Recycle A
+              <span class="light">
+                Book
+              </span>
+            </h3>
+            <p>
+              Office:(937) 439-4848 <br> Fax:(866) 224-1262   <br>Email:<a href="mailto:info@RecycleABook.com">info@RecycleABook.com</a>
+              <br>
+             561 Congress Park Drive. Centerville, OH 45459
+              <br>
+             RecycleABook.com, INC &copy; Copyright 2013
+            </p>
+          </div>
+          <div class="span6">
+            <ul class="unstyled inline text-right small-screen-center big social-icons">
+              <li>
+                <a data-iconcolor="#00a0d1" href="http://www.twitter.com/recycleabook">
+                  <i class="icon-twitter"></i>
+                </a>
+              </li>
+              <li>
+                <a data-iconcolor="#3b5998" href="https://www.facebook.com/pages/RecycleAbookcom/256102557767102">
+                  <i class="icon-facebook"></i>
+                </a>
+              </li>
+                         </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="javascripts/jquery.min.js" type="text/javascript"></script>
+  <script src="javascripts/bootstrap.js" type="text/javascript"></script>
+  <script src="javascripts/jquery.flexslider-min.js" type="text/javascript"></script>
+  <script src="javascripts/jquery.tweet.js" type="text/javascript"></script>
+  <script src="javascripts/jquery.fancybox.pack.js" type="text/javascript"></script>
+  <script src="javascripts/jquery.fancybox-media.js" type="text/javascript"></script>
+  <script src="javascripts/script.js" type="text/javascript"></script>
+
+
+
+
+
 @include('layouts.notifications')
       @if (Session::has('error'))
     {{ trans(Session::get('reason')) }}
@@ -136,7 +290,7 @@ if ($aff){
     class="container page-content clearfix"
     @show  >
 
-	    @yield('content')
+
       </div>
 
 
@@ -144,15 +298,7 @@ if ($aff){
 
 
      <!-- /container -->
-<div class="navbar navbar-fixed-bottom ">
-    <div class="navbar-inner">
-        <div class="width-constraint clearfix">
-            <p class="pull-left muted credit">RecycleABook v2.0.0</p>
 
-            <p class="pull-right muted credit">©2013 • Recycleabook.com ALL RIGHTS RESERVED</p>
-        </div>
-    </div>
-</div>
 
 
 

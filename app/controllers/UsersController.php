@@ -56,7 +56,7 @@ class UsersController extends BaseController {
         $messages = array();
          $v = Validator::make($input, $rules, $messages);
         if ($v->fails()){
-            return Redirect::back()->withErrors($v)->withInput();
+            return Redirect::to('users/login')->withErrors($v)->withInput();
         } else {
 
             try {
@@ -604,6 +604,7 @@ public function postEdit($id, $type="profile") {
                             $orderArray[$i]['items'][$j]['publisher'] = $item->publisher;
                             $orderArray[$i]['items'][$j]['isbn10'] = $item->isbn10;
                             $orderArray[$i]['items'][$j]['isbn13'] = $item->isbn13;
+                            $orderArray[$i]['items'][$j]['slug'] = $item->slug;
                             $j++;
                         }
 

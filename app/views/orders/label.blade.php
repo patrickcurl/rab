@@ -1,5 +1,4 @@
-@extends('layouts.master')
-@section('content')
+
 <body onload="window.print();">
 <img src="data:image/gif;base64,{{ $ups_label }}" width="651" style="transform: rotate(90deg);-webkit-transform: rotate(90deg); -ms-transform: rotate(90deg);-moz-transform: rotate(90deg);margin-top:150px;"/>
 <br />
@@ -60,4 +59,3 @@ $currentUser = Sentry::getUser();
 
 @endif
 </body>
-@stop

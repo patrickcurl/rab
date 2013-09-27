@@ -1,5 +1,5 @@
 <?php
-
+use Guzzle\Http\Client;
 class BaseController extends Controller {
 
 	/**
@@ -9,6 +9,29 @@ class BaseController extends Controller {
 	 */
 	protected function setupLayout()
 	{
+         // $client = new Guzzle\Http\Client('http://blog.recycleabook.com/api/');
+         // $request = $client->get('get_recent_posts/?count=6');
+         // $response = $request->send();
+         // $data = $response->json();
+         // $data = $data['posts'];
+         // $posts = array();
+
+         // foreach($data as $i => $post){
+         //     $posts[$i]['title'] = $post['title'];
+         //     $posts[$i]['url'] = $post['url'];
+         //     if (isset($post['attachments']) && $post['attachments'] != null){
+         //         $posts[$i]['image'] = $post['attachments'][0]['url'];
+         //     } else {
+         //         $posts[$i]['image'] = URL::to('images/assets/landscapes/landscape-2-e-300x300.jpg');
+         //     }
+         //     if(isset($post['excerpt'])){
+         //         $posts[$i]['excerpt'] = $post['excerpt'];
+         //     } else {
+         //         $posts[$i]['excerpt'] = 'Click below ot read more...';
+         //     }
+
+         //      }
+         //       View::share("posts", $posts);
 		if ( ! is_null($this->layout))
 		{
 			$this->layout = View::make($this->layout);
@@ -17,6 +40,9 @@ class BaseController extends Controller {
 
 		public function __construct(){
 		$this->beforeFilter("csrf", array("on"=>array("post", "put", "patch", "delete")));
+
+
+
 
     $state_list = array(
           "" => "", // Base or Default case.

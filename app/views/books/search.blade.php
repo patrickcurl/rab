@@ -1,9 +1,15 @@
 @extends('layouts.master')
-
+@section('hero-start')
+Sell Textbooks Get
+@stop
+@section('hero-end')
+Cash
+@stop
 @section('content')
 
-<div class="container">
+
 {{ Form::open(array('action' => 'CartController@postAdd', 'method' => 'post')) }}
+
 	<table class="table table-responsive">
 		<thead>
 			<tr>
@@ -21,7 +27,7 @@
 				<td>
 
 			           <div class="col-md-9 cart-checkout">
-              <h4 style="color:#E0F126;font-size:14px;font-weight:bold;">{{ $book->title }}</h4>
+              <h4 style="">{{ $book->title }}</h4>
               <img src="{{ $book->image_url }}" class="img-responsive col-md-3" style="width:100px;" />
 
 
@@ -74,7 +80,7 @@
 <button type="submit" class="col-xs-12 col-sm-12 col-md-12 btn btn-cart btn-lg">Add Items to Cart</button>
 
 </div>
-<div class="col-xs-12 col-md-12 clearfix pullright"><p>* Textbook buyback price is good for "U.S. STUDENT", "Instructor", "Exam Copy", or "Not for re-sale" editions. <br />"Annotated instructors editions" will be purchased at a 50% discount. <br />Textbook prices quoted are for textbooks in "good condition" or better, see condition guide for details.</p>
+<div class="clearfix pullright"><p>* Textbook buyback price is good for "U.S. STUDENT", "Instructor", "Exam Copy", or "Not for re-sale" editions. <br />"Annotated instructors editions" will be purchased at a 50% discount. <br />Textbook prices quoted are for textbooks in "good condition" or better, see condition guide for details.</p>
 <p>We do not currently purchase INTERNATIONAL edition textbooks.</p>
 
 </div>
@@ -88,7 +94,5 @@
 
 	{{ Form::close() }} <!-- sell your textbooks -->
 
-</div>
-</div>
 
 @stop

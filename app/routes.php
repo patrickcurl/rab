@@ -16,7 +16,7 @@ Route::group(array('domain' => 'single.rab.dev'), function()
 
     Route::get('/', function()
     {
-    	return View::make('single');
+    	return View::make('single.index');
         //
     });
 
@@ -26,7 +26,7 @@ Route::group(array('domain' => 'single.recycleabook.com'), function()
 
     Route::get('/', function()
     {
-    	return View::make('single');
+    	return View::make('single.index');
         //
     });
 
@@ -34,7 +34,11 @@ Route::group(array('domain' => 'single.recycleabook.com'), function()
 Route::get('/', function()
 {
 
-	return View::make('index');
+
+    return View::make('index');
+});
+Route::get('p/{slug}', function($slug){
+    return View::make("pages." . $slug);
 });
 Route::get('isbn-results','BookController@getIsbnResults');
 Route::get('search_isbn.php', 'BookController@searchISBN');
@@ -45,6 +49,7 @@ Route::get('test', function(){
 });
 Route::controller('users', 'UsersController');
 Route::controller('books', 'BookController');
+Route::controller('book', 'BookController');
 Route::controller('cart', 'CartController');
 Route::controller('orders', 'OrdersController');
 Route::controller('p','PageController');

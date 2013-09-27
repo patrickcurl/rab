@@ -14,11 +14,31 @@ class BookController extends BaseController {
     |   Route::get('/', 'HomeController@showWelcome');
     |
     */
+    public function missingMethod($params)
+{
+    //return $params;
+    return call_user_func_array( array($this, 'getIndex'), $params );
+}
 
+public function getIndex($slug=null){
+        if (empty($slug)){
+            return Redirect::back()->with('message', 'Book not found.');
+        } else {
+            if (isset($slug) && $slug != null)
+            {
+                $book = Book::where('slug', '=', $slug)->first();
+                    return View::make('books.index', array('book' => $book));
+            } else
+            {
+                    Redirect::back()->with('message', 'Book not found.');
+            }
+        }
+}
     //public function getSearch($isbn)
      public function postSearch()
     {
-        $isbns =  str_replace("\r", "", Input::get('isbns'));
+        // $isbns =  str_replace("\r", "", Input::get('isbns'));
+        $isbns = preg_replace('/[^a-z\d,]/i', '', Input::get('isbns'));
         $isbns = explode(",", $isbns);
         $isbns = array_unique($isbns);
         $books = array();
@@ -36,7 +56,8 @@ class BookController extends BaseController {
     }
     public function getIsbnResults()
     {
-        $isbns =  str_replace("\r", "", Input::get('isbn'));
+        //$isbns =  str_replace("\r", "", Input::get('isbn'));
+        $isbns = preg_replace('/[^a-z\d,]/i', '', Input::get('isbn'));
         $isbns = explode(",", $isbns);
         $isbns = array_unique($isbns);
 
@@ -56,7 +77,8 @@ class BookController extends BaseController {
     }
     public function postSearchSingle()
     {
-        $isbns =  str_replace("\r", "", Input::get('isbns'));
+        // $isbns =  str_replace("\r", "", Input::get('isbns'));
+        $isbns = preg_replace('/[^a-z\d,]/i', '', Input::get('isbns'));
         $isbns = explode(",", $isbns);
         $isbns = array_unique($isbns);
         $books = array();
@@ -70,7 +92,7 @@ class BookController extends BaseController {
         }
 
         //return $isbn;
-        return View::make('books.search_single', array('books' => $books) );
+        return View::make('single.search', array('books' => $books) );
     }
     public function searchISBN(){
         $isbn = Input::get('isbn');

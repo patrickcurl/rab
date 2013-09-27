@@ -28,14 +28,7 @@
 @endif
 
 @if ($message = Session::get('success'))
-<div data-alert class="alert alert-success
-        col-xs-12
-        col-sm-8
-        col-sm-offset-2
-        col-md-8
-        col-md-offset-2
-        col-lg-8
-        col-lg-offset-2">
+<div data-alert class="alert alert-success">
 <a class="close" data-dismiss="alert">x</a>
   {{{ $message }}}
 
@@ -43,13 +36,7 @@
 @endif
 
 @if ($message = Session::get('error'))
-<div data-alert class="alert alert-error
-        col-xs-12
-        col-sm-8
-        col-sm-offset-2
-        col-md-8
-        col-md-offset-2
-        col-lg-8">
+<div data-alert class="alert alert-error">
 <a class="close" data-dismiss="alert">x</a>
   {{{ $message }}}
 
@@ -57,14 +44,7 @@
 @endif
 
 @if ($message = Session::get('warning'))
-<div data-alert class="alert alert-warning
-        col-xs-12
-        col-sm-8
-        col-sm-offset-2
-        col-md-8
-        col-md-offset-2
-        col-lg-8
-        col-lg-offset-2">
+<div data-alert class="alert alert-warning">
 <a class="close" data-dismiss="alert">x</a>
   {{{ $message }}}
 
@@ -72,40 +52,19 @@
 @endif
 
 @if ($message = Session::get('info'))
-<div data-alert class="alert alert-info
-        col-xs-12
-        col-sm-8
-        col-sm-offset-2
-        col-md-8
-        col-md-offset-2
-        col-lg-8
-        col-lg-offset-2">
+<div data-alert class="alert alert-info">
 <a class="close" href="#" data-dismiss="alert" aria-hidden="true">&times;</a>
   {{{ $message }}}
 </div>
 @endif
 @if ($message = Session::get('danger'))
-<div data-alert class="alert alert-danger
-        col-xs-12
-        col-sm-8
-        col-sm-offset-2
-        col-md-8
-        col-md-offset-2
-        col-lg-8
-        col-lg-offset-2">
+<div data-alert class="alert alert-danger">
 <a class="close" href="#" data-dismiss="alert" aria-hidden="true">&times;</a>
   {{{ $message }}}
 </div>
 @endif
 @if ($message = Session::get('message'))
-  <div data-alert class="alert alert-info
-        col-xs-12
-        col-sm-8
-        col-sm-offset-2
-        col-md-8
-        col-md-offset-2
-        col-lg-8
-        col-lg-offset-2   ">
+  <div data-alert class="alert alert-info">
   <a class="close" href="#" data-dismiss="alert" aria-hidden="true">&times;</a>
     {{ $message }}
 

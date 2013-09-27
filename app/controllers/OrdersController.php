@@ -32,6 +32,7 @@ public function view_orders(){
 					$orderArray[$i]['items'][$j]['publisher'] = $item->publisher;
 					$orderArray[$i]['items'][$j]['isbn10'] = $item->isbn10;
 					$orderArray[$i]['items'][$j]['isbn13'] = $item->isbn13;
+					$orderArray[$i]['items'][$j]['slug'] = $item->slug;
 				$j++;
 				}
 

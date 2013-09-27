@@ -1,4 +1,19 @@
 <?php
+use Guzzle\Http\Client;
+
+$client = new Client('http://blog.recycleabook.com/api/');
+$request = $client->get('get_recent_posts/?count=6');
+//echo $request->getUrl();
+$response = $request->send();
+$data = $response->json();
+var_dump($data['posts'][0]);
+// $request = Requests::get('http://blog.recycleabook.com/api/get_recent_posts/?count=6', array('Accept' => 'application/json'));
+
+
+// var_dump($request->status_code);
+// var_dump($request->headers['content-type']);
+// var_dump($request->body);
+
 // function floorToFraction($number, $denominator = 1)
 // {
 //     $x = $number * $denominator;
@@ -61,8 +76,8 @@
 // var_dump($comm);
 //
 
-$b = Book::getBook('0802404936');
-var_dump($b);
-$c = Book::find_or_create('0802404936');
-var_dump($c);
+// $b = Book::getBook('0802404936');
+// var_dump($b);
+// $c = Book::find_or_create('0802404936');
+// var_dump($c);
 ?>

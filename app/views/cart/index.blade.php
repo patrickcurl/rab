@@ -1,7 +1,13 @@
 @extends('layouts.master')
+@section('hero-start')
+View Your
+@stop
+@section('hero-end')
+Cart
+@stop
 @section('content')
 
-    <h2>Your Cart</h2>
+
     {{ Form::open(array('url' => 'cart/update', 'method' => 'post')) }}
 
     <table class="table">
