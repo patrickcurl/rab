@@ -87,7 +87,7 @@ RecycleABook.com - Sell Textbooks, Buy Textbooks, Discounted Textbooks
       @if (Session::has('error'))
     {{ trans(Session::get('reason')) }}
 @endif
- @yield('content')
+
 
 <div class="row-fluid">
 <div class="span10" >
@@ -101,7 +101,7 @@ RecycleABook.com - Sell Textbooks, Buy Textbooks, Discounted Textbooks
 </div>
 </div>
 </div>
-
+@yield('content')
 </div>
       </section>
 

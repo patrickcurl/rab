@@ -18,29 +18,29 @@
 							<h3 class="alert-warning" style="font-size:15px;">{{ substr($book->title, 0, 50) }}...</h3>
 						</div>
 						</div>
-						<div class="row-fluid">
-							<div class="span2">
-								<img src="<?php if ($book->image_url) {echo $book->image_url; } else {echo URL::asset('img/no_image.png'); } ?>"  style="display: block;max-width: 120px;height: auto;" class="span4">
-						</div>
-						<div class="span7" ><span style=";font-size:16px;">Buyback Price:</span> <span style="font-size:16px;font-weight:bold;">${{number_format($book->singlePrice,2) }}</span>
 
-						<dl class="dl-horizontal" >
-						<dt>Author:</dt>
-						<dd>{{  $book->author }}</dd>
+							<div class="row-fluid">
+							<table class="table">
+								<tr>
+									<td width="20%"><img src="<?php if ($book->image_url) {echo $book->image_url; } else {echo URL::asset('img/no_image.png'); } ?>"  style="display: block;max-width: 120px;height: auto;"></td>
+									<td>
+									<span style="background-color: #329911;">
+									<span style="#F6FF17;">Buyback Price:</span> <span style="color: #0AFD13;font-weight:bold;">${{number_format($book->singlePrice,2) }}</span></span><br />
+									<strong>Author:</strong>{{  $book->author }}<br />
 
-						<dt>Publisher:</dt>
-						<dd>{{  $book->publisher }}</dd>
-						<dt>Edition:</dt>
-						<dd>{{  $book->edition }}</dd>
-						<dt>Weight:</dt>
-						<dd>{{ number_format($book->weight, 2) }} lbs</dd>
-						<dt>ISBN10:</dt>
-						<dd>{{ $book->isbn10 }} </dd>
-						<dt>ISBN13:</dt>
-						<dd>{{ $book->isbn13 }}</dd>
-					</dl>
-						</div>
+									<strong>Publisher:</strong>{{  $book->publisher }}<br />
+									<strong>Edition:</strong>{{  $book->edition }}<br />
+									<strong>Weight:</strong>{{ number_format($book->weight, 2) }} lbs<br />
+									<strong>ISBN10:</strong>{{ $book->isbn10 }}<br />
+									<strong>ISBN13:</strong>{{ $book->isbn13 }}<br />
+
+									</td>
+								</tr>
+
+							</table>
+
 					</div>
+
 
 
 
