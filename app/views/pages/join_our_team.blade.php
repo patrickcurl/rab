@@ -37,7 +37,7 @@ level reps earn between $500-$850+ per week.</p>
 
 <li>Some sales background / ability to negotiate</li>
 
-<li>Early-late 20's, able to blend in on campus</li>
+<li>Able to blend in on campus.</li>
 </ul>
 <p><strong>Requirements and tools of the trade:</strong></p>
 <img class="pull-right" src="{{ URL::to('images/assets/misc/image.jpeg') }}">
