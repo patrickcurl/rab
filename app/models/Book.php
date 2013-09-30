@@ -81,7 +81,7 @@ class Book extends Eloquent {
     }
 
     public static function find_or_create($isbn){
-        // First we check if isbn is right size.
+        // Create a nulled object
         $nullBook = new Book();
         $nullBook->isbn10 = '0000000000';
         $nullBook->isbn13 = '0000000000000';
@@ -95,6 +95,7 @@ class Book extends Eloquent {
         $nullBook->singlePrice = 0.00;
         $nullBook->retailPrice = 0.00;
 
+        // First we check if isbn is right size.
         if(strlen($isbn) != 13 && strlen($isbn) != 10){
           return $nullBook;
         } else {
@@ -155,18 +156,7 @@ class Book extends Eloquent {
 
                  return $book;
               } else {
-                  // $book = new Book();
-                  // $book->isbn10 = '0000000000';
-                  // $book->isbn13 = '0000000000000';
-                  // $book->title = 'Not valid.';
-                  // $book->author = 'Not valid.';
-                  // $book->publisher = 'Not valid.';
-                  // $book->edition = 'Not valid.';
-                  // $book->image_url = 'Not valid.';
-                  // $book->amazon_url = 'Not valid.';
-                  // $book->weight = 0.00;
-                  // $book->singlePrice = 0.00;
-                  // $book->retailPrice = 0.00;
+
 
                 return $nullBook;
               }

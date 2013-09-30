@@ -3,6 +3,9 @@ $expire=time()+60*60*24*120;
 $aff = Input::get('aff');
 if ($aff){
   setcookie('referred_by', $aff, $expire);
+  Session::put('referred_by', $aff);
+} else{
+
 }
 
 
@@ -116,6 +119,7 @@ RecycleABook.com - Sell Textbooks, Buy Textbooks, Discounted Textbooks
 
   <button class="btn btn-success" type="submit">Find Books!</button>
 </div> {{ Form::close() }}
+
 </div>
 <div class="container-fluid visible-tablet" style="position: relative;top: -50px;width: 80%;"><div class="span4" >
                   <a href="{{URL::to('/')}}">
@@ -182,12 +186,17 @@ RecycleABook.com - Sell Textbooks, Buy Textbooks, Discounted Textbooks
              Sell Your
               <small class="light">Books</small>
             </h1>
-            <p> Do you have textbooks that you'd like to sell? Click the button below! </p>
-            <a href="cash-for-books.html" class="btn btn-success btn-large">
-                  Get Started
-                                 </a>
-          </div>
+            <p> Do you have textbooks that you'd like to sell? Enter ISBNs below, separate multiples by comma. </p>
+            <div class="row-fluid">
+            {{ Form::open(array('action' => 'BookController@postSearch', 'id' => 'price-books-form', 'class' => 'form-inline')) }}
+               <div class="input-append visible-desktop">
+  <input class="span6" id="appendedInputButton" name="isbns" placeholder="Enter Isbns, separate multiples by comma."type="text">
 
+  <button class="btn btn-success" type="submit">Get Started</button>
+  </div>
+</div> {{ Form::close() }}
+
+          </div>
 
 
 

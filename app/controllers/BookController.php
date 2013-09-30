@@ -35,24 +35,61 @@ public function getIndex($slug=null){
         }
 }
     //public function getSearch($isbn)
-     public function postSearch()
+
+    public static function searchBook($isbns)
     {
-        // $isbns =  str_replace("\r", "", Input::get('isbns'));
-        $isbns = preg_replace('/[^a-z\d,]/i', '', Input::get('isbns'));
+        $isbns = Input::get('isbns');
+        $isbns = preg_replace('/[^a-z\d,]/i', '', $isbns);
         $isbns = explode(",", $isbns);
         $isbns = array_unique($isbns);
         $books = array();
-        //return var_dump($isbns);
+
         foreach($isbns as $isbn){
-            // if(\Intervention\Validation\Validator::isIsbn($isbn)){
-                $book = Book::find_or_create($isbn);
+            $book = Book::find_or_create($isbn);
+            $multiplier = self::getMultiplier();
+            $price = $book->retailPrice * $multiplier;
+            $book->price = round($price, 0, PHP_ROUND_HALF_DOWN);
+
+            if($book->isbn10 != '0000000000'){
                 array_push($books, $book);
-            // }
+            }
 
         }
 
-        //return $isbn;
-        return View::make('books.search', array('books' => $books) );
+        return $books;
+    }
+
+    public static function getMultiplier(){
+        $multiplier = 1.75;
+        if(isset($_COOKIE['referred_by']) && $_COOKIE['referred_by'] != null){
+             $aid = $_COOKIE['referred_by'];
+        }
+         elseif(Session::get('referred_by')
+                && Session::get('referred_by') !=null)
+        {
+              $aid = Session::get('referred_by');
+        }
+        if(isset($aid) && $aid != null){
+            $aff = User::where('username', '=', $aid)->first();
+            if (isset($aff) && $aff != null){
+                if($aff->price_level && $aff->price_level != null){
+                    $multiplier = number_format($aff->price_level, 2);
+
+                }
+            }
+        }
+        return $multiplier;
+    }
+    public function postSearch()
+    {
+
+        $books = self::searchBook(Input::get('isbns'));
+        if(isset($books) && $books != null){
+            return View::make('books.search', array('books' => $books) );
+        } else {
+            return View::make('books.not_found');
+        }
+
     }
     public function getIsbnResults()
     {

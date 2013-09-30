@@ -40,22 +40,8 @@ Cash
 	              </dl>
 	         </div>
 			    </td>
-			    <?php
-			    	$multiplier = 1.65;
-			    	$aff = Input::get('aff');
-			    	if(isset($aff)){
-			    		$referrer = User::where('username', '=', $aff)->first();
-			    		if (isset($referrer)){
-			    			$multiplier = number_format($referrer->price_level, 2);
-			    		}
 
-			    	}
-			    	// var_dump($multiplier);
-			    	$tempbook = DB::table('retail_prices')->where('isbn', '=', $book->isbn13)->first();
-			    	$price = number_format(($tempbook->Price * $multiplier), 2);
-
-			     ?>
-			    <td><input type="hidden" name="item[{{$index}}][price]" value="{{$price}}" />{{ $price }}</td>
+			    <td><input type="hidden" name="item[{{$index}}][price]" value="{{$book->price}}" />${{ $book->price }}.00</td>
 			    <td><input type="text" name="item[{{$index}}][qty]" value="1" maxlength="3" style="width:25px;" /></td>
 				<td><input type="checkbox" name="item[{{$index}}][add]" value="yes" checked="checked"/></td>
 
