@@ -117,7 +117,7 @@ RecycleABook.com - Sell Textbooks, Buy Textbooks, Discounted Textbooks
                <div class="input-append pull-right visible-desktop">
   <input class="span6" id="appendedInputButton" name="isbns" placeholder="Enter Isbns, separate multiples by comma."type="text">
 
-  <button class="btn btn-success" type="submit">Find Books!</button>
+  <button class="btn btn-success" type="submit">Sell Your Books!</button>
 </div> {{ Form::close() }}
 
 </div>
@@ -127,7 +127,7 @@ RecycleABook.com - Sell Textbooks, Buy Textbooks, Discounted Textbooks
                 </div>
                <div class="input-append">
   <input class="span5" id="appendedInputButton" name="isbns" placeholder="Enter Isbns, separate multiples by comma."type="text">
-  <button class="btn btn-success" type="submit">Find Books!</button>
+  <button class="btn btn-success" type="submit">Sell Your Books!</button>
 
 </div>
 </div>
@@ -139,7 +139,7 @@ RecycleABook.com - Sell Textbooks, Buy Textbooks, Discounted Textbooks
 
                <div class="input-append" style="width:80%" >
   <input  class="input-xxlarge" id="appendedInputButton" name="isbns" placeholder="Enter Isbns, separate multiples by comma."type="text" style="width: 100%;">
-  <button class="btn btn-success" type="submit">Find Books!</button>
+  <button class="btn btn-success" type="submit">Sell Your Books!</button>
 
 </div>
 </div>
