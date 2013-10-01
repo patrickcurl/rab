@@ -1,8 +1,9 @@
 <?php
-$book_info = Book::getBook('0440243831');
-$isbns = array('10' => $book_info['isbn10'], '13' => $book_info['isbn13']);
-$book = Book::bookExists($isbns);
-var_dump($book);
+// $book_info = Book::getBook('0440243831');
+// $isbns = array('10' => $book_info['isbn10'], '13' => $book_info['isbn13']);
+// $book = Book::bookExists($isbns);
+// var_dump($book);
+var_dump(app()->environment());
 // $book = Book::find_or_create('0440243831');
 // $book = self::bookExists($isbns);
 
