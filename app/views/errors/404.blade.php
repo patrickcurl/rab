@@ -1,9 +1,9 @@
 @extends('layouts.master')
 @section('hero-start')
-Join Our
+
 @stop
 @section('hero-end')
-Team
+
 @stop
 
 @section('content')
