@@ -29,7 +29,7 @@ $app->redirectIfTrailingSlash();
 $env = $app->detectEnvironment(array(
 
 	'local' => array('rab.dev'),
-
+	'production' => array('recycleabook.com')
 ));
 
 /*
