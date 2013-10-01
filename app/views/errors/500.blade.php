@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('hero-start')
-403
+505
 @stop
 
 @section('hero-end')
@@ -11,7 +11,7 @@ Error
 
 <div class="row-fluid">
 <div class="span5">
-	<img src="{{URL::asset('images/403_error.jpg')}}">
+	<img src="{{URL::asset('images/500_error.jpg')}}">
 </div>
 <div class="span5">
 	Our developers have been notified and will try to fix the issue, meanwhile - why don't you try another search?

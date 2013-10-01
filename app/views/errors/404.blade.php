@@ -1,12 +1,20 @@
 @extends('layouts.master')
 @section('hero-start')
-That page cannot be found, please try again.
+404
 @stop
-@section('hero-end')
 
+@section('hero-end')
+Error
 @stop
 
 @section('content')
 
-<h1>Whoops, I seem to be lost...I just cannot find that page.</h1>
+<div class="row-fluid">
+<div class="span5">
+	<img src="{{URL::asset('images/page_not_found.jpg')}}">
+</div>
+<div class="span5">
+	Our developers have been notified and will try to fix the issue, meanwhile - why don't you try another search?
+</div>
+</div>
 @stop

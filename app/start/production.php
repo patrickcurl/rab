@@ -14,6 +14,6 @@ App::error(function($exception, $code)
             return Response::view('errors.500', array(), 500);
 
         default:
-            return Response::view('errors.default', array(), $code);
+            return Response::view('errors.500', array(), $code);
     }
 });
