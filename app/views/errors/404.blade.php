@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('hero-start')
-
+That page cannot be found, please try again.
 @stop
 @section('hero-end')
 
