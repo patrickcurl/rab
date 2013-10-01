@@ -60,7 +60,7 @@ level reps earn between $500-$850+ per week.</p>
  </p><p><br>
 Blake Nolan<br>
 Director of Sales & Marketing<br>
-<a href="mailto:blake@recycleabook.com">blake@recycleabook.com</a>
+<a href="mailto:hiring@recycleabook.com">hiring@recycleabook.com</a>
 </p>
 
 @stop
