@@ -94,7 +94,7 @@ RecycleABook.com - Sell Textbooks, Buy Textbooks, Discounted Textbooks
 <div class="container">
 {{ Form::open(array('action' => 'BookController@postSearchSingle', 'id' => 'price-books-form', 'class' => 'form-inline')) }}
                <div class="input-append" style="width:80%" >
-  <input  class="input-xxlarge" id="appendedInputButton" name="isbns" placeholder="Enter Isbns, separate multiples by comma."type="text" style="width: 80%;">
+  <input  class="input-xxlarge" id="appendedInputButton" name="isbns" placeholder="Enter Isbns, separate multiples by comma." type="number" style="width: 80%;">
   <button class="btn btn-success" type="submit">Find Books!</button>
 {{ Form::close(); }}
 </div>
