@@ -189,7 +189,7 @@ RecycleABook.com - Sell Textbooks, Buy Textbooks, Discounted Textbooks
             <p> Do you have textbooks that you'd like to sell? Enter ISBNs below, separate multiples by comma. </p>
             <div class="row-fluid">
             {{ Form::open(array('action' => 'BookController@postSearch', 'id' => 'price-books-form', 'class' => 'form-inline')) }}
-               <div class="input-append visible-desktop">
+               <div class="input-append" style="display: block;">
   <input class="span6" id="appendedInputButton" name="isbns" placeholder="Enter Isbns, separate multiples by comma."type="text">
 
   <button class="btn btn-success" type="submit">Get Started</button>

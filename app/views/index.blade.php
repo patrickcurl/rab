@@ -14,10 +14,10 @@
               <li>
                 <div class="super-hero-unit">
                   <figure>
-                   <a href="save-students-money.html"> <img alt="some image" src="{{ URL::asset('images/assets/homeslides/girlholdingbooks.jpg') }}"></a>
+                   <a href="{{URL::to('/p/save_students_money')}}"> <img alt="some image" src="{{ URL::asset('images/assets/homeslides/girlholdingbooks.jpg') }}"></a>
                     <figcaption class="flex-caption">
                       <h1 class="super">
-                      <a href="save-students-money.html"> How To<br> Save</a>
+                      <a href="{{URL::to('/p/save_students_money')}}"> How To<br> Save</a>
 
                       </h1>
                     </figcaption>
@@ -27,10 +27,10 @@
               <li>
                 <div class="super-hero-unit">
                   <figure>
-                    <a href="join-our-team.html"><img alt="some image" src="{{ URL::asset('images/assets/homeslides/cashbook.jpg') }}"></a>
+                    <a href="{{URL::to('/p/join_our_team')}}"><img alt="some image" src="{{ URL::asset('images/assets/homeslides/cashbook.jpg') }}"></a>
                     <figcaption class="flex-caption">
                       <h1 class="super">
-                      <a href="join-our-team.html"> Join Our<br> Team</a>
+                      <a href="{{URL::to('/p/join_our_team')}}"> Join Our<br> Team</a>
 
                       </h1>
                     </figcaption>
@@ -40,10 +40,10 @@
               <li>
                 <div class="super-hero-unit">
                   <figure>
-                    <a href="cash-for-books.html"><img alt="some image" src="{{ URL::asset('images/assets/homeslides/bookscatchingair.jpg')}}"></a>
+                    <a href="{{URL::to('/p/save_students_money')}}"><img alt="some image" src="{{ URL::asset('images/assets/homeslides/bookscatchingair.jpg')}}"></a>
                     <figcaption class="flex-caption">
                       <h1 class="super">
-                      <a href="cash-for-books.html">Ca$h For<br> Books</a>
+                      <a href="{{URL::to('/p/save_students_money')}}">Ca$h For<br> Books</a>
 
                       </h1>
                     </figcaption>
@@ -77,7 +77,7 @@
                  Save Students Money
                 </h3>
                 <p>
-                  As the average cost of textbooks can reach nearly $1,200 per year,  many students are looking for cost-effective ways to offset these expenses. Check out these cost-saving options to lower your textbook costs.<a href="save-students-money.html">
+                  As the average cost of textbooks can reach nearly $1,200 per year,  many students are looking for cost-effective ways to offset these expenses. Check out these cost-saving options to lower your textbook costs.<a href="{{URL::to('/p/save_students_money')}}">
                    <strong> Read more...</strong>
                 </a>
                 </p>
@@ -97,7 +97,7 @@
 
 donate books to projects, libraries and other good causes across the country. Check out some of
 
-our current partnerships. <a href="communities.html">
+our current partnerships. <a href="{{URL::to('/p/community')}}">
                   <strong> Read more...</strong>
                 </a>
                 </p>
@@ -113,7 +113,7 @@ our current partnerships. <a href="communities.html">
                 </div>
                 <h3 class="text-center">Build Our Ranks</h3>
                 <p>
-                  Do you remember the frustrations of buying textbooks at inflated costs? Do you want to help do something about it? Well now you can! Earn money while saving money for students by becoming an independant book vendor. <a href="join-our-team.html">
+                  Do you remember the frustrations of buying textbooks at inflated costs? Do you want to help do something about it? Well now you can! Earn money while saving money for students by becoming an independant book vendor. <a href="{{URL::to('/p/join_our_team')}}">
                   <strong> Read more...</strong>
                 </a>
                 </p>
