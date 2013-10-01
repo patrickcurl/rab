@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('hero-start')
-404
+500
 @stop
 
 @section('hero-end')
