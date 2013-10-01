@@ -11,12 +11,12 @@ class PageController extends BaseController {
 	}
 
 	public function postContact(){
-		$data['email'] = 'patrickwcurl@gmail.com';
+		$data['email'] = Input::get('email');
 		$data['name'] = Input::get('name');
 		$data['subject'] = Input::get('subject');
 		$data['message_content'] = Input::get('message_content');
 		Mail::send('emails.contact', $data, function($m) use($data){
-	                        $m->to($data['email'])->subject("RecycleABook Contact Form: " .$data['subject']);
+	                        $m->to('info@recycleabook.com')->subject("RAB Contact: " .$data['subject']);
 
 	    });
 	    return Redirect::to('/p/contact');
