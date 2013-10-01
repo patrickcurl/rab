@@ -150,6 +150,15 @@ body.hyphenated {
   -moz-hyphens: auto;
   hyphens: auto;
 }
+div[class="tooltip-inner"] {
+    text-align: center;
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+    margin-bottom: 6px;
+    background-color: #505050;
+    font-size: 14px;
+}
 
 /* - 1.2 Headers - */
 h1, h2, h3, h4, h5 {

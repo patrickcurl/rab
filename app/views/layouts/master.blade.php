@@ -114,8 +114,8 @@ RecycleABook.com - Sell Textbooks, Buy Textbooks, Discounted Textbooks
                     <img src="{{ URL::asset('images/assets/misc/logo.png')}}" style="display:block;max-width:90%;height:auto;position:relative;bottom:40px;"></a>
                 </div>
                 {{ Form::open(array('action' => 'BookController@postSearch', 'id' => 'price-books-form', 'class' => 'form-inline')) }}
-               <div class="input-append pull-right visible-desktop">
-  <input class="span6" id="appendedInputButton" name="isbns" placeholder="Enter Isbns, separate multiples by comma."type="text">
+               <div class="input-append pull-right visible-desktop ">
+  <input class="span6"   id="appendedInputButton" name="isbns" placeholder="Enter Isbns, separate multiples by comma." type="text">
 
   <button class="btn btn-success" type="submit">Sell Your Books!</button>
 </div> {{ Form::close() }}
@@ -126,7 +126,7 @@ RecycleABook.com - Sell Textbooks, Buy Textbooks, Discounted Textbooks
                     <img src="{{ URL::asset('images/assets/misc/logo.png')}}" style="display:block;max-width:90%;height:auto;position:relative;bottom:40px;"></a>
                 </div>
                <div class="input-append">
-  <input class="span5" id="appendedInputButton" name="isbns" placeholder="Enter Isbns, separate multiples by comma."type="text">
+  <input class="span5" id="appendedInputButton" name="isbns" placeholder="Enter Isbns, separate multiples by comma." type="text" >
   <button class="btn btn-success" type="submit">Sell Your Books!</button>
 
 </div>
@@ -276,13 +276,13 @@ RecycleABook.com - Sell Textbooks, Buy Textbooks, Discounted Textbooks
       </div>
     </div>
   </footer>
-  <script src="javascripts/jquery.min.js" type="text/javascript"></script>
-  <script src="javascripts/bootstrap.js" type="text/javascript"></script>
-  <script src="javascripts/jquery.flexslider-min.js" type="text/javascript"></script>
-  <script src="javascripts/jquery.tweet.js" type="text/javascript"></script>
-  <script src="javascripts/jquery.fancybox.pack.js" type="text/javascript"></script>
-  <script src="javascripts/jquery.fancybox-media.js" type="text/javascript"></script>
-  <script src="javascripts/script.js" type="text/javascript"></script>
+  <script src="{{URL::asset('javascripts/jquery.min.js')}}" type="text/javascript"></script>
+  <script src="{{URL::asset('javascripts/bootstrap.js')}}" type="text/javascript"></script>
+  <script src="{{URL::asset('javascripts/jquery.flexslider-min.js')}}" type="text/javascript"></script>
+  <script src="{{URL::asset('javascripts/jquery.tweet.js')}}" type="text/javascript"></script>
+  <script src="{{URL::asset('javascripts/jquery.fancybox.pack.js')}}" type="text/javascript"></script>
+  <script src="{{URL::asset('javascripts/jquery.fancybox-media.js')}}" type="text/javascript"></script>
+  <script src="{{URL::asset('javascripts/script.js')}}" type="text/javascript"></script>
 
 
 
@@ -320,10 +320,27 @@ RecycleABook.com - Sell Textbooks, Buy Textbooks, Discounted Textbooks
         'collapse.js'
     ))
 }}
+
 <script>
-  $('.dropdown-toggle').dropdown()
+  $('.dropdown-toggle').dropdown();
+  $('.tooltip1').tooltip('tritter':'focus', 'title':'testing123')
+
 </script>
+
 @section('footer')
 @show
+<script type='text/javascript'>//<![CDATA[
+$(window).load(function(){
+
+$('input[type=text][name=isbns]').popover({
+    placement: "bottom",
+    trigger: "hover",
+    title: "Cash 4 Textbooks",
+    content: "Sell your used textbooks now. Enter isbn numbers in box to see how much you can earn!"
+});
+
+});//]]>
+
+</script>
   </body>
 </html>
