@@ -178,13 +178,13 @@ RecycleABook.com - Sell Textbooks, Buy Textbooks, Discounted Textbooks
       </div>
     </div>
   </footer>
-  <script src="javascripts/jquery.min.js" type="text/javascript"></script>
-  <script src="javascripts/bootstrap.js" type="text/javascript"></script>
-  <script src="javascripts/jquery.flexslider-min.js" type="text/javascript"></script>
-  <script src="javascripts/jquery.tweet.js" type="text/javascript"></script>
-  <script src="javascripts/jquery.fancybox.pack.js" type="text/javascript"></script>
-  <script src="javascripts/jquery.fancybox-media.js" type="text/javascript"></script>
-  <script src="javascripts/script.js" type="text/javascript"></script>
+  <script src={{URL::asset("javascripts/jquery.min.js")}} type="text/javascript"></script>
+  <script src={URL::asset("javascripts/bootstrap.js")}} type="text/javascript"></script>
+  <script src={{URL::asset("javascripts/jquery.flexslider-min.js")}} type="text/javascript"></script>
+  <script src={{URL::asset("javascripts/jquery.tweet.js")}} type="text/javascript"></script>
+  <script src={{URL::asset("javascripts/jquery.fancybox.pack.js")}} type="text/javascript"></script>
+  <script src={{URL::asset("javascripts/jquery.fancybox-media.js")}} type="text/javascript"></script>
+  <script src={{URL::asset("javascripts/script.js")}} type="text/javascript"></script>
 
 
 

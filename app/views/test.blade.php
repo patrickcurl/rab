@@ -1,12 +1,20 @@
 <?php
-use Guzzle\Http\Client;
+$book_info = Book::getBook('0440243831');
+$isbns = array('10' => $book_info['isbn10'], '13' => $book_info['isbn13']);
+$book = Book::bookExists($isbns);
+var_dump($book);
+// $book = Book::find_or_create('0440243831');
+// $book = self::bookExists($isbns);
 
-$client = new Client('http://blog.recycleabook.com/api/');
-$request = $client->get('get_recent_posts/?count=6');
-//echo $request->getUrl();
-$response = $request->send();
-$data = $response->json();
-var_dump($data['posts'][0]);
+//echo $book->Items->Item->ItemAttributes->ISBN;
+// use Guzzle\Http\Client;
+
+// $client = new Client('http://blog.recycleabook.com/api/');
+// $request = $client->get('get_recent_posts/?count=6');
+// //echo $request->getUrl();
+// $response = $request->send();
+// $data = $response->json();
+// var_dump($data['posts'][0]);
 // $request = Requests::get('http://blog.recycleabook.com/api/get_recent_posts/?count=6', array('Accept' => 'application/json'));
 
 

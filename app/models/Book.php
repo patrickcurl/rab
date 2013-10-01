@@ -63,7 +63,7 @@ class Book extends Eloquent {
         return null;
       } else {
         $book = array(
-                    'isbn10' => (string) $xml->Items->Item->ASIN,
+                    'isbn10' => (string) $xml->Items->Item->ItemAttributes->ISBN,
                     'isbn13' => (string) $xml->Items->Item->ItemAttributes->EAN,
                     'title' => (string) $xml->Items->Item->ItemAttributes->Title,
                     'author' => (string) $xml->Items->Item->ItemAttributes->Author,
@@ -107,9 +107,13 @@ class Book extends Eloquent {
              $book_info = self::getBook($isbn);
              if (isset($book_info) && $book_info != null)
               {
+                  $isbns = array('10' => $book_info['isbn10'], '13' => $book_info['isbn13']);
+                  $book = self::bookExists($isbns);
 
+                  if($book == null){
+                    $book = new Book();
+                  }
 
-                  $book = new Book();
                  // $book->isbn10 = $book_info['isbn10'];
                   //check if $book_info['isbn10'] exists
                   if(isset($book_info['isbn10']) && $book_info['isbn10'] != null){
@@ -171,4 +175,17 @@ class Book extends Eloquent {
         $x = $x / $denominator;
         return $x;
     }
+
+  public static function bookExists($isbns){
+
+    $book = Book::where('isbn10', '=', $isbns['10'])
+                              ->orWhere('isbn13', '=', $isbns['13'])->first();
+    if (isset($book) && $book != null){
+      return $book;
+    } else {
+      return null;
+    }
+
+
+  }
 }
