@@ -3,7 +3,13 @@
 // $isbns = array('10' => $book_info['isbn10'], '13' => $book_info['isbn13']);
 // $book = Book::bookExists($isbns);
 // var_dump($book);
-var_dump(app()->environment());
+$client = new Guzzle\Http\Client('http://blog.recycleabook.com/api/');
+	    	$request = $client->get('get_post/?slug=bitcoin-friend-or-foe');
+	   		$response = $request->send();
+	    	$data = $response->json();
+
+
+	    var_dump($data);
 // $book = Book::find_or_create('0440243831');
 // $book = self::bookExists($isbns);
 

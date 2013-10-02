@@ -67,54 +67,56 @@
             <ul class="unstyled row-fluid">
               <li class="span3">
                 <div class="round-box round-medium">
+                <a href="{{URL::to('/p/save_students_money')}}">
                   <span class="box-inner">
                     <img alt="some image" class="img-circle" src="{{ URL::asset('images/assets/whatwedobg/stacks-bg.jpg')}}">
 
                            <i class="icon-money"></i>
                   </span>
+                  </a>
                 </div>
-                <h3 class="text-center">
-                 Save Students Money
-                </h3>
+                <a href="{{URL::to('/p/save_students_money')}}"><h3 class="text-center">Save Students Money</h3></a>
                 <p>
                   As the average cost of textbooks can reach nearly $1,200 per year,  many students are looking for cost-effective ways to offset these expenses. Check out these cost-saving options to lower your textbook costs.<a href="{{URL::to('/p/save_students_money')}}">
-                   <strong> Read more...</strong>
+                   <span class="readmore"> Read more...</span>
                 </a>
                 </p>
 
               </li>
               <li class="span3">
                 <div class="round-box round-medium">
+                <a href="{{URL::to('/p/community')}}">
                   <span class="box-inner">
                     <img alt="some image" class="img-circle" src="{{ URL::asset('images/assets/whatwedobg/stacks2-bg.jpg')}}">
 
                     <i class="icon-globe"></i>
-                  </span>
+                  </span></a>
                 </div>
-                <h3 class="text-center">Work With Communities </h3>
+                <a href="{{URL::to('/p/community')}}"><h3 class="text-center">Work With Communities </h3></a>
                 <p>
                   We continually strives to be active and helpful in the community. We proudly
 
 donate books to projects, libraries and other good causes across the country. Check out some of
 
 our current partnerships. <a href="{{URL::to('/p/community')}}">
-                  <strong> Read more...</strong>
+                  <span class="readmore" > Read more...</span>
                 </a>
                 </p>
 
               </li>
               <li class="span3">
                 <div class="round-box round-medium">
+                <a href="{{URL::to('/p/join_our_team')}}">
                   <span class="box-inner">
                     <img alt="some image" class="img-circle" src="{{ URL::asset('images/assets/whatwedobg/money-book-bg.jpg')}}">
 
                      <i class="icon-group"></i>
-                  </span>
+                  </span></a>
                 </div>
-                <h3 class="text-center">Build Our Ranks</h3>
+                <a href="{{URL::to('/p/join_our_team')}}"><h3 class="text-center">Build Our Ranks</h3></a>
                 <p>
                   Do you remember the frustrations of buying textbooks at inflated costs? Do you want to help do something about it? Well now you can! Earn money while saving money for students by becoming an independant book vendor. <a href="{{URL::to('/p/join_our_team')}}">
-                  <strong> Read more...</strong>
+                  <span class="readmore"> Read more...</span>
                 </a>
                 </p>
 

@@ -222,7 +222,7 @@ RecycleABook.com - Sell Textbooks, Buy Textbooks, Discounted Textbooks
               <div class="span7" style="padding-top:10px;">
                   <h3><a href="{{ $post['url'] }}" title="{{ $post['title'] }}" rel="bookmark">{{ $post['title'] }}</a></h3>
                   <p>{{$post['excerpt']}}
-                  <a href="{{ $post['url'] }}" title="Read more on {{ $post['title'] }}" rel="bookmark" style="float:right;">Read more...</a>
+                  <a href="{{ $post['url'] }}" title="Read more on {{ $post['title'] }}" rel="bookmark" class="readmore">Read more...</a>
 
                   </p>
 

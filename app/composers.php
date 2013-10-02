@@ -3,7 +3,7 @@
 
     View::creator(array('layouts.master', 'single.master'), function($view){
     	$client = new Guzzle\Http\Client('http://blog.recycleabook.com/api/');
-	    $request = $client->get('get_recent_posts/?count=6');
+	    $request = $client->get('get_recent_posts/?count=8');
 	    $response = $request->send();
 	    $data = $response->json();
 	    $data = $data['posts'];

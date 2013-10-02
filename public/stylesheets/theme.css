@@ -173,7 +173,13 @@ div[class="tooltip-inner"] {
   width:200px;
   max-height: 160px;
 }
-
+.readmore{
+  float:right;
+  color:green;
+  font-weight:bold;
+  margin-top:15px;
+  margin-right:8px;
+}
 /* - 1.2 Headers - */
 h1, h2, h3, h4, h5 {
   color: green;
