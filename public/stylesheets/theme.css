@@ -159,6 +159,20 @@ div[class="tooltip-inner"] {
     background-color: #505050;
     font-size: 14px;
 }
+.postthumbimg {
+  display: block;
+  margin-left:auto;
+  margin-right:auto;
+  text-align: center;
+  padding: 4px;
+  background: #FFF;
+  border-radius: 4px;
+  -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  border: 1px solid #EEE;
+  width:200px;
+  max-height: 160px;
+}
 
 /* - 1.2 Headers - */
 h1, h2, h3, h4, h5 {

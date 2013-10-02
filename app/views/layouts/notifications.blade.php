@@ -1,14 +1,7 @@
 
 @if (count($errors->all()) > 0)
 <div style="padding-top:10px;">
-<div class="alert alert-error alert-block
-        col-xs-12
-        col-sm-8
-        col-sm-offset-2
-        col-md-8
-        col-md-offset-2
-        col-lg-8
-        col-lg-offset-2">
+<div class="alert alert-error alert-block">
 	<a class="close" data-dismiss="alert">x</a>
 
   @if (Request::path() == "login" || Request::path() == "users/login")
@@ -70,5 +63,5 @@
 
   </div>
 
-</div>
+
 @endif

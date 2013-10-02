@@ -190,10 +190,6 @@ RecycleABook.com - Sell Textbooks, Buy Textbooks, Discounted Textbooks
 
 
 
-@include('layouts.notifications')
-      @if (Session::has('error'))
-    {{ trans(Session::get('reason')) }}
-@endif
 <div id="wrap" style="margin-top:20px;margin-bottom:40px;">
 
     <div

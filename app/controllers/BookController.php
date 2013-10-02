@@ -22,7 +22,7 @@ class BookController extends BaseController {
 
 public function getIndex($slug=null){
         if (empty($slug)){
-            return Redirect::back()->with('message', 'Book not found.');
+            return Redirect::to('/')->with('message', 'Book not found.');
         } else {
             if (isset($slug) && $slug != null)
             {

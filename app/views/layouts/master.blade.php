@@ -210,29 +210,40 @@ RecycleABook.com - Sell Textbooks, Buy Textbooks, Discounted Textbooks
               <small class="light">news?</small>
             </h1>
           </div>
-          <ul class="unstyled row-fluid">
 
-            <!-- Begin Blog Post-->
-    <div class="row-fluid">
-    <div class="container" style="padding: 3px;text-align:center;width:100%;">
+<div class="container" style="margin:15px">
+
+
             @foreach($posts as $post)
+            <div class="row-fluid">
+              <div class="span3 offset1" style="padding:10px;">
+                <a href="{{ $post['url'] }}" title="{{ $post['title'] }}" rel="bookmark"><img src="{{ $post['image'] }}" class="postthumbimg"></a>
+              </div>
+              <div class="span7" style="padding-top:10px;">
+                  <h3><a href="{{ $post['url'] }}" title="{{ $post['title'] }}" rel="bookmark">{{ $post['title'] }}</a></h3>
+                  <p>{{$post['excerpt']}}
+                  <a href="{{ $post['url'] }}" title="Read more on {{ $post['title'] }}" rel="bookmark" style="float:right;">Read more...</a>
 
+                  </p>
 
-              <div class="postbg">
+              </div>
+              </div>
+             <!--  <div class="postbg">
                 <div class="postimage"><a href="{{ $post['url'] }}" title="{{ $post['title'] }}" rel="bookmark"><img src="{{ $post['image'] }}" /></a></div>
                 <div class="postcontent">
-                <h3><a href="{{ $post['url'] }}" title="{{ $post['title'] }}" rel="bookmark">{{ $post['title'] }}</a></h3>
-                <div class="posttext"><p>{{$post['excerpt']}}</p>
+
+                <div class="posttext">
                 </div>
                 </div>
                 <div class="postreadmore"><h5><a href="{{ $post['url'] }}" title="Read more on Worth A Thousand Words" rel="bookmark">Read more</a></h5></div>
+ -->
 
-</div>
 
-            @endforeach
-            </div></div>
 
-            <!-- End Blog Post-->
+            @endforeach</div>
+            </div></center>
+            </div>
+
 
         </div>
       </section>
@@ -288,10 +299,6 @@ RecycleABook.com - Sell Textbooks, Buy Textbooks, Discounted Textbooks
 
 
 
-@include('layouts.notifications')
-      @if (Session::has('error'))
-    {{ trans(Session::get('reason')) }}
-@endif
 <div id="wrap" style="margin-top:20px;margin-bottom:40px;">
 
     <div
