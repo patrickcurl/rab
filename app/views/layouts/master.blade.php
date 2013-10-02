@@ -203,7 +203,7 @@ RecycleABook.com - Sell Textbooks, Buy Textbooks, Discounted Textbooks
        </div>
       </section>
 <section class="section section-padded">
-        <div class="container-fluid">
+        <div class="container-fluid" style="padding: 3px;">
           <div class="section-header">
             <h1>
               Latest
@@ -214,7 +214,7 @@ RecycleABook.com - Sell Textbooks, Buy Textbooks, Discounted Textbooks
 
             <!-- Begin Blog Post-->
     <div class="row-fluid">
-    <div class="container-fluid">
+    <div class="container" style="padding: 3px;text-align:center;width:100%;">
             @foreach($posts as $post)
 
 
