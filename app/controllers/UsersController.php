@@ -148,7 +148,6 @@ catch (Cartalyst\Sentry\Throttling\UserBannedException $e)
                 'city' => $city,
                 'state' => $state,
                 'zip' => $zip,
-                'username' => $username,
                 'payment_method' => $payment_method,
                 'paypal_email' => $paypal_email,
                 'name_on_cheque' => $name_on_cheque,
@@ -165,8 +164,7 @@ catch (Cartalyst\Sentry\Throttling\UserBannedException $e)
                 "address" => "Required",
                 "city" => "Required",
                 "state" => "Required",
-                "zip" => "Required",
-                "username" => "Required|Alpha_Dash"
+                "zip" => "Required"
                 );
 
         $messages = array(
@@ -183,8 +181,7 @@ catch (Cartalyst\Sentry\Throttling\UserBannedException $e)
                 'city.required' => 'City is required.',
                 'state.required' => 'State is required.',
                 'zip.required' => 'Zip is required.',
-                'username.required' => 'Username is required.',
-                'username.alpha_dash' => 'Please use numbers, letters, and underscores only.'
+                'username.required' => 'Username is required.'
                 );
 
         $v = Validator::make($input, $rules, $messages);

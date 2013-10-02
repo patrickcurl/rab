@@ -66,8 +66,8 @@ public function __construct(){
     public function getIndex()
     {
         $orders=array();
-        $orders = Order::with('user')->paginate(2);
-        $users = DB::table('users')->paginate(2);
+        $orders = Order::with('user')->paginate(20);
+        $users = DB::table('users')->paginate(20);
         $totalUsers = DB::table('users')->count();
         $online = new SentryUsersOnline;
         $onlineUsers = $online->getUsersCount();
