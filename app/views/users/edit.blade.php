@@ -225,7 +225,7 @@ Edit Profile
 	<br /><br />
 	<h4 class="offset1" >Authorized Groups</h4>
 
-	    <form class="form-horizontal" action="{{ URL::to('users/updatememberships') }}/{{ $user->id }}" method="post">
+	    <form class="form-horizontal" action="{{ URL::to('users/edit') }}/{{ $user->id }}/auth" method="post">
 	        {{ Form::token() }}
 
 	        <table class="table">

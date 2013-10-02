@@ -450,7 +450,8 @@ public function postEdit($id, $type="profile") {
                     {
                         // Validation has failed
                         return Redirect::to('users/edit/' . $id)->withErrors($v)->withInput();
-                    }       else
+                    }
+                    else
                     {
                         try
                             {
@@ -495,7 +496,7 @@ public function postEdit($id, $type="profile") {
                                         Session::flash('error', 'You don\'t have access to that user.');
                                         return Redirect::to('/');
                                     }
-                                }
+                            }
                             catch (Cartalyst\Sentry\Users\UserExistsException $e)
                             {
                                 Session::flash('error', 'User already exists.');
@@ -511,6 +512,16 @@ public function postEdit($id, $type="profile") {
                 // Set Validation Rules
         }
 
+        if($type=="auth"){
+            $perms = Input::get('permissions');
+
+            foreach($perms as $i => $perm){
+                $group = Sentry::findGroupById($i);
+                $user = Sentry::findUserById($id);
+                $user->addGroup($group);
+            }
+            return Redirect::to('users/edit/'. $id);
+        }
     }
 
     public function postEditPassword($id){
