@@ -134,7 +134,7 @@ RecycleABook.com - Sell Textbooks, Buy Textbooks, Discounted Textbooks
 <div class="container-fluid visible-phone">
 <div class="span12" >
                   <a href="{{URL::to('/')}}">
-                    <img src="{{ URL::asset('images/assets/misc/logo.png')}}" style="display:block;max-width:90%;height:auto;position:relative;bottom:90px;left:120px;"></a>
+                    <img src="{{ URL::asset('images/assets/misc/logo.png')}}" style="display:block;max-width:90%;height:auto;position:relative;bottom:90px;"></a>
                 </div>
 
                <div class="input-append" style="width:80%" >
