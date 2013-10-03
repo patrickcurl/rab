@@ -92,6 +92,7 @@ public function __construct(){
       //return var_dump(Input::get('orders'));
       $orders = Input::get('orders');
         // process/update each order.
+
         foreach($orders as $order){
 
             // grab Order object.
@@ -168,7 +169,7 @@ public function __construct(){
 
             }
             */
-            $o->comments = $order['comments'];
+            //$o->comments = $order['comments'];
             $o->save();
 
 

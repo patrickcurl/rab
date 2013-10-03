@@ -32,6 +32,7 @@ class="container-fluid page-content"
       @foreach($orders as $order)
         <tr>
           <td>
+          <input type="hidden" name ="orders[{{$i}}][id]" value="{{$order->id}}" />
             @if($order->user)
               {? $user = $order->user; ?}
               <dl class="dl-horizontal">
@@ -58,16 +59,18 @@ class="container-fluid page-content"
               <dt>Tracking #</dt>
               <dd>{{$order->tracking_number}}</dd>
               <dt>Date Received:</dt>
-              <dd><input type="date" name="orders[{{$i}}][received_date]"  value="{{$order->received_date}}" />
+              <dd><input type="date" name="orders[{{$i}}][received_date]"  value="{? if($order->received_date) { echo date('m/d/Y', strtotime($order->received_date)); } ?}" />
               <dt>Date Paid:</dt>
-              <dd><input type="date" name="orders[{{$i}}][paid_date]" value="{{$order->paid_date}}" />
+              <dd><input type="date" name="orders[{{$i}}][paid_date]" value="{? if($order->paid_date) { echo date('m/d/Y', strtotime($order->paid_date)); } ?}" />
             </dl>
           </td>
         </tr>
+        {? $i++; ?}
       @endforeach
     @endif
   </tbody>
 </table>
+<button type="submit" class="btn btn-success">Update Orders</button>
 {{ Form::close() }}
 @stop
 @section('footer')
