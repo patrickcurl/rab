@@ -9,6 +9,9 @@ class Item extends Eloquent {
 	}
 
 	public function book(){
-		return $this->hasOne('Book');
+		return $this->belongsTo('Book');
 	}
+	// public function book(){
+	// 	return $this->hasOne('Book');
+	// }
 }

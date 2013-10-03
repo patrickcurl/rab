@@ -17,7 +17,7 @@ Cash
 			<dt>Weight: </dt><dd>{{$book->weight}}</dd>
 			<dt>ISBN10: </dt><dd>{{$book->isbn10}}</dd>
 			<dt>ISBN13: </dt><dd>{{$book->isbn13}}</dd>
-
+			<dt>Current Price: </dt><dd>${{ number_format($book->price, 2)}}</dd>
 
 		</dl>
 	</div>

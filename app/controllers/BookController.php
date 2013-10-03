@@ -27,6 +27,9 @@ public function getIndex($slug=null){
             if (isset($slug) && $slug != null)
             {
                 $book = Book::where('slug', '=', $slug)->first();
+                $price = DB::table('retail_prices')->where('ISBN', '=', $book->isbn13)->first();
+
+                $book->price = $price->Price;
                     return View::make('books.index', array('book' => $book));
             } else
             {

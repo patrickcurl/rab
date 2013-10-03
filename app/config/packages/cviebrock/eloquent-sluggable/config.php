@@ -19,7 +19,7 @@ return array(
 	 * Defaults to null, which uses the toString() method on your model.
 	 *
 	 */
-	'build_from' => null,
+	'build_from' => array('title', 'author', 'isbn10', 'isbn13'),
 
 	/**
 	 * What field to we store the slug in?  Defaults to "slug".

@@ -7,19 +7,22 @@ class Book extends Eloquent {
    // 'isbn10' => 'alpha_num|between:10,10',
    // 'isbn13' => 'alpha_num|between:13,13',
    );
-
+    public function item(){
+      return $this->hasMany('Item');
+    }
     public static $sluggable = array(
-        'build_from' => 'slug',
+        'build_from' => array('title', 'author', 'isbn10', 'isbn13'),
         'save_to'    => 'slug',
     );
-    public function getSlugAttribute(){
-      if($this->isbn13 != null){
-        $isbn = $this->isbn13;
-      } else {
-        $isbn = $this->isbn10;
-      }
-      return $isbn . ' ' . $this->title . ' ' . $this->author . ' '. $this->publisher;
-    }
+
+    // public function getSlugAttribute(){
+    //   if($this->isbn13 != null){
+    //     $isbn = $this->isbn13;
+    //   } else {
+    //     $isbn = $this->isbn10;
+    //   }
+    //   return $isbn . ' ' . $this->title . ' ' . $this->author . ' '. $this->publisher;
+    // }
     public static function getBook($isbn){
       $region = "com";
       $method = 'GET';
