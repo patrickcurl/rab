@@ -59,9 +59,9 @@ class="container-fluid page-content"
               <dt>Tracking #</dt>
               <dd>{{$order->tracking_number}}</dd>
               <dt>Date Received:</dt>
-              <dd><input type="date" name="orders[{{$i}}][received_date]"  value="{? if($order->received_date) { echo date('m/d/Y', strtotime($order->received_date)); } ?}" />
+              <dd><input type="date" name="orders[{{$i}}][received_date]"  value="{? if($order->received_date) { echo $order->received_date; } ?}" />
               <dt>Date Paid:</dt>
-              <dd><input type="date" name="orders[{{$i}}][paid_date]" value="{? if($order->paid_date) { echo date('m/d/Y', strtotime($order->paid_date)); } ?}" />
+              <dd><input type="date" name="orders[{{$i}}][paid_date]" value="{? if($order->paid_date) { echo $order->paid_date; } ?}" />
             </dl>
           </td>
         </tr>

@@ -89,7 +89,7 @@ public function __construct(){
 
 
         public function postUpdateOrders(){
-      //return var_dump(Input::get('orders'));
+
       $orders = Input::get('orders');
         // process/update each order.
 
@@ -100,11 +100,11 @@ public function __construct(){
 
             // grab User object.
             $u = User::where('id', '=', $o->user_id)->first();
-
+           // return var_dump(date('Y-m-d', strtotime($order['received_date'])));
 
             // Received Date
             // check of Received date is set, and not empty. If empty/notset do nothing else update.
-            if (isset($order['received_date']) && !empty($order['received_date'])){
+            if (isset($order['received_date']) && $order['received_date']!=null){
 
                 // convert received date to date object;
                 $received_date = date('Y-m-d', strtotime($order['received_date']));
