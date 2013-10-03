@@ -16,7 +16,7 @@ Please ensure you have searched each title by its ISBN located on the back outsi
 </p>
 <h2>Which shipper do I use?</h2>
 
-UPS is the preferred shipping company. We provide FREE Shipping on all books you sell to recycleabook.com
+UPS is the preferred shipping company. We provide FREE Shipping on all books you sell to recycleabook.com ($20 minimum order).
 <h2>What is the Condition of your Books?</h2>
  <a href="condition.html">Click here for our condition guide</a>.
 
