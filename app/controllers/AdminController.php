@@ -68,18 +68,26 @@ public function __construct(){
         $orders=array();
         $orders = Order::with('user')->paginate(20);
         $users = DB::table('users')->paginate(20);
-        $totalUsers = DB::table('users')->count();
-        $online = new SentryUsersOnline;
-        $onlineUsers = $online->getUsersCount();
+        $data = array('orders' => $orders, 'users' =>$users);
         //return var_dump($orders);
-        return View::make('admin.index', array( 'orders' => $orders,
-                                                    'totalUsers' => $totalUsers,
-                                                    'onlineUsers' => $online->getUsersCount(),
-                                                    'onlineGuests' => $online->getGuestsCount(),
-                                                    'users' => $users
-                                                  ));
+        return View::make('admin.index', $data);
         //return View::make('cart.index', array('cart' => $cart));
     }
+
+    public function getBuyerRequests(){
+        return View::make('admin.buyer_requests');
+     }
+
+    public function getCustomerOrders(){
+        $orders = Order::with('user')->paginate(40);
+        return View::make('admin.customer_orders', array('orders' => $orders));
+    }
+
+    public function getUsers(){
+        return View::make('admin.users');
+    }
+
+
         public function postUpdateOrders(){
       //return var_dump(Input::get('orders'));
       $orders = Input::get('orders');

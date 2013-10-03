@@ -19,7 +19,13 @@ History
     <dt>Total: </dt><dd>${{ number_format($order['total_amount'],2) }}</dd>
     <dt>Received Date:</dt> <dd>@if($order['received_date']) {{ date("n/d/Y", strtotime($order['received_date'])) }} @else Pending @endif</dd>
     <dt>Payment Date:</dt> <dd>@if($order['paid_date']) {{ date("n/d/Y", strtotime($order['paid_date'])) }} @else Pending @endif</dd>
-    <dt>Shipping Label:</dt><dd><a href="#" class="" onClick='document.getElementById("ifr").src="{{URL::to('orders/label/' . $order['id']) }}";'>Click to Print</a></dd>
+    <dt>Shipping Label:</dt><dd>
+    @if($order['total_amount'] > 20)
+    <a href="#" class="" onClick='document.getElementById("ifr").src="{{URL::to('orders/label/' . $order['id']) }}";'>Click to Print</a>
+    @else
+    Order total must be $20 minimum for free shipping.
+    @endif
+    </dd>
 
               <iframe id='ifr' frameborder="0" scrolling="no" width="0" height="0" /></iframe></dl>
   </div>

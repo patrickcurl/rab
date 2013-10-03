@@ -28,4 +28,18 @@
 
     });
 
+    View::creator('layouts.admin', function($view){
+    	$totalUsers = DB::table('users')->count();
+        $online = new SentryUsersOnline;
+        $onlineUsers = $online->getUsersCount();
+        $onlineGuests = $online->getGuestsCount();
+        $view->with(
+                    array(
+                          'totalUsers' => $totalUsers,
+                          'onlineUsers' => $online->getUsersCount(),
+                          'onlineGuests' => $online->getGuestsCount()
+                          )
+                    );
+    });
+
 ?>

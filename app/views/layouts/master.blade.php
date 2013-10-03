@@ -143,7 +143,7 @@ RecycleABook.com - Sell Textbooks, Buy Textbooks, Discounted Textbooks
 
 </div>
 </div>
-         <div class="row-fluid"><p class="text-center"><em style="font-weight:bold;color:green;">Our Mission is simple: To help students receive the most affordable textbooks on the market. Please Join our cause. You can make a difference.</em></p></div>
+         <div class="row-fluid"><p class="text-center"><em style="font-weight:bold;color:green;">Our Mission is simple: To help students receive the most affordable textbooks on the market. Please join our cause. You can make a difference.</em></p></div>
     </header>
 
 @section('hero-unit')

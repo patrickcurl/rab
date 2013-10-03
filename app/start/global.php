@@ -20,6 +20,10 @@ ClassLoader::addDirectories(array(
 
 ));
 
+Blade::extend(function($value) {
+    return preg_replace('/\{\?(.+)\?\}/', '<?php ${1} ?>', $value);
+});
+
 /*
 |--------------------------------------------------------------------------
 | Application Error Logger

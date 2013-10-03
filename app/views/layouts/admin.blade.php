@@ -50,6 +50,19 @@ RecycleABook.com - Sell Textbooks, Buy Textbooks, Discounted Textbooks
   <link href="{{ URL::asset('stylesheets/fonts.css') }}" media="screen" rel="stylesheet" type="text/css" />
     @section('head')
     @show
+    <style>
+      .navbar-inner{ min-height: 0px; }
+      .navbar .brand {
+        float: left;
+        display: block;
+        padding: 20.5px 15px 15px;
+        margin-left: -20px;
+        font-size: 20px;
+        font-weight: 400;
+        color: #5E5E5E;
+        text-shadow: 0 1px 0 #5E5E5E;
+      }
+    </style>
 </head>
 
 <body @section('body_tag')
@@ -164,12 +177,30 @@ RecycleABook.com - Sell Textbooks, Buy Textbooks, Discounted Textbooks
         </div>
 </section>
 @show
+ <div class="row pull-right" style="padding-right:30px;">
+ <div >
+   Total Users: {{{ $totalUsers }}} | Online:  {{{ $onlineUsers }}} | Guests:  {{{ $onlineGuests }}}
+</div>
+  </div>
 <section class="section section-padded">
 <div class="container-fluid">
   @include('layouts.notifications')
       @if (Session::has('error'))
     {{ trans(Session::get('reason')) }}
 @endif
+<div class="navbar">
+  <div class="navbar-inner">
+    <a class="brand" href="#">Dashboard</a>
+    <ul class="nav">
+      <li @if(Request::path() == 'admin') class="active" @endif ><a href="{{URL::to('admin')}}">Home</a></li>
+      <li @if(Request::path() == 'admin/buyer-requests') class="active" @endif ><a href="{{URL::to('admin/buyer-requests')}}">Buyer Requests</a></li>
+      <li @if(Request::path() == 'admin/customer-orders') class="active" @endif ><a href="{{URL::to('admin/customer-orders')}}">Customer Orders</a></li>
+      <li @if(Request::path() == 'admin/users') class="active" @endif ><a href="{{URL::to('admin/users')}}">Users</a></li>
+
+    </ul>
+  </div>
+</div>
+
  @yield('content')
 
 </div>

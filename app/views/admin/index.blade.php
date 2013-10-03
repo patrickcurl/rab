@@ -5,14 +5,10 @@
   <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
   <script>
   $(function() {
-    $( "#datepicker" ).datepicker();
+    $( ".datepicker" ).datepicker();
   });
   </script>
-   <script>
-  $(function() {
-    $( "#datepicker2" ).datepicker();
-  });
-  </script>
+
 @stop
 @section('container_class')
 class="container-fluid page-content"
@@ -21,12 +17,6 @@ class="container-fluid page-content"
 
 
 
-<h1>Dashboard</h1>
- <div class="row">
- <div style="padding-left:30px;">
-   Total Users: {{{ $totalUsers }}} | Online:  {{{ $onlineUsers }}} | Guests:  {{{ $onlineGuests }}}
-</div>
-  </div>
 <ul class="nav nav-tabs admin-tabs" id="myTab">
   <li><a href="#orders" data-toggle="tab">Orders</a></li>
   <li><a href="#users" data-toggle="tab">Users</a></li>
@@ -61,28 +51,20 @@ class="container-fluid page-content"
                   <td>{{ number_format($order->total_amount, 2) }}</td>
                   <td class="col-md-3">
                       <div class="container">
-                      <script>
-                        $(function() {
-                        $( "<?php echo "#orders-{$count}-received_date"; ?>" ).datepicker();
-                        });
-                      </script>
-                      <script>
-                        $(function() {
-                        $( "<?php echo "#orders-{$count}-paid_date"; ?>" ).datepicker();
-                        });
-                      </script>
+
+
                       <div class="input-group">
                         <span class="input-group-btn">
                           <button class="btn btn-default" type="button">Date Received:</button>
                         </span>
-                        <input type="text" class="form-control" id="orders-{{$count}}-received_date" name="orders[{{$count}}][received_date]" readonly>
+                        <input type="text" class="form-control datepicker"  name="orders[{{$count}}][received_date]" readonly>
                         <span class="input-group-addon glyphicon glyphicon-calendar" style="background-color: #488A46;"></span>
                       </div><br />
                       <div class="input-group ">
                         <div class="input-group-btn" >
                           <button class="btn btn-default" type="button" style="padding-right:50px;">Date Paid:</button>
                         </div>
-                        <input type="text" class="form-control col-md-6" id="orders-{{$count}}-paid_date" name="orders[{{$count}}][paid_date]" readonly>
+                        <input type="text" class="form-control datepicker" name="orders[{{$count}}][paid_date]" readonly>
                         <span class="input-group-addon glyphicon glyphicon-calendar" style="background-color: #488A46;"></span>
                       </div>
 
