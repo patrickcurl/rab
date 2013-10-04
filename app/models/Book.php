@@ -14,7 +14,10 @@ class Book extends Eloquent {
         'build_from' => array('title', 'author', 'isbn10', 'isbn13'),
         'save_to'    => 'slug',
     );
-
+    public function getPriceAttribute(){
+      $price = DB::table('retail_prices')->where('ISBN', '=', $this->isbn13)->first();
+      return $price->Price * 1.75;
+    }
     // public function getSlugAttribute(){
     //   if($this->isbn13 != null){
     //     $isbn = $this->isbn13;

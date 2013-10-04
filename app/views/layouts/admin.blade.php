@@ -196,7 +196,7 @@ RecycleABook.com - Sell Textbooks, Buy Textbooks, Discounted Textbooks
       <li @if(Request::path() == 'admin/buyer-requests') class="active" @endif ><a href="{{URL::to('admin/buyer-requests')}}">Buyer Requests</a></li>
       <li @if(Request::path() == 'admin/customer-orders') class="active" @endif ><a href="{{URL::to('admin/customer-orders')}}">Customer Orders</a></li>
       <li @if(Request::path() == 'admin/users') class="active" @endif ><a href="{{URL::to('admin/users')}}">Users</a></li>
-
+      <li @if(Request::path() == 'admin/groups') class="active" @endif ><a href="{{URL::to('admin/groups')}}">Groups</a></li>
     </ul>
   </div>
 </div>

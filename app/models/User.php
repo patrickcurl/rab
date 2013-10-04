@@ -10,6 +10,10 @@ class User extends SentryUserModel {
   	return $this->belongsTo('User', 'referred_by');
   }
 
+  public function getNameAttribute(){
+    return $this->first_name . " " . $this->last_name;
+  }
+
   public function refs(){
   	return $this->hasMany('User', 'referred_by');
   }

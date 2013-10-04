@@ -36,7 +36,14 @@
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
   white-space: normal;
 }
-
+a:hover {
+color: #63DB63;
+text-decoration: none;
+}
+a {
+color: #4E804E;
+text-decoration: none;
+}
 </style>
 @stop
 @section('container_class')
@@ -76,18 +83,23 @@ class="container-fluid page-content"
                 <dt>Name on Cheque</dt>
                 <dd>{{$user->name_on_cheque}}</dd>
 
-
+                <dd><a href="{{URL::to('users/edit')}}/{{$user->id}}">Edit User</a></dd>
               </dl>
+
             @endif
           </td>
           <td>
             <dl class="dl-horizontal">
+              <dt>Order Total: </dt>
+              <dd>${{number_format($order->total_amount, 2)}}</dd>
               <dt>Tracking #</dt>
               <dd>{{$order->tracking_number}}</dd>
               <dt>Date Received:</dt>
               <dd><input type="date" name="orders[{{$i}}][received_date]"  value="{? if($order->received_date) { echo $order->received_date; } ?}" />
               <dt>Date Paid:</dt>
               <dd><input type="date" name="orders[{{$i}}][paid_date]" value="{? if($order->paid_date) { echo $order->paid_date; } ?}" />
+              <dt>Comments:</dt>
+              <dd><textarea name="orders[{{$i}}][comments]">{{$order->comments}}</textarea>
             </dl>
             <h4>Items:</h4>
             @if($order->items)

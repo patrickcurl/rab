@@ -84,11 +84,40 @@ public function __construct(){
     }
 
     public function getUsers(){
-        return View::make('admin.users');
+        $users = User::with('orders')->paginate(40);
+        $groups = Group::all();
+        //$users = Sentry::getUserProvider()->findAll()->with('orders');
+        //php
+
+        // $users->load('orders');
+        return View::make('admin.users', array('users' => $users, 'groups' => $groups));
     }
 
+    public function getGroups(){
+        $groups = Sentry::findAllGroups();
+        return View::make('admin.groups', array('groups' => $groups));
+    }
+    public function postAddGroup(){
+        $grp = Input::get('group_name');
+        try{
+            $group = Sentry::createGroup(array(
+                           'name' => $grp
+                           ));
+            return Redirect::back()->with('message', 'Groups successfully updated.');
 
-        public function postUpdateOrders(){
+        } catch (Cartalyst\Sentry\Groups\NameRequiredException $e)
+        {
+
+            return Redirect::back()->with('message', 'Group name is required');
+        }
+        catch (Cartalyst\Sentry\Groups\GroupExistsException $e)
+        {
+            return Redirect::back()->with('message', 'Group already exists');
+        }
+        return Redirect::back()->with('message', 'Something Else went wrong');
+
+    }
+    public function postUpdateOrders(){
 
       $orders = Input::get('orders');
         // process/update each order.
@@ -169,7 +198,7 @@ public function __construct(){
 
             }
             */
-            //$o->comments = $order['comments'];
+            $o->comments = $order['comments'];
             $o->save();
 
 

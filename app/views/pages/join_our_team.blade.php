@@ -58,8 +58,7 @@ level reps earn between $500-$850+ per week.</p>
 
 <p>For more information, email your resume to:
  </p><p><br>
-Blake Nolan<br>
-Director of Sales & Marketing<br>
+
 <a href="mailto:hiring@recycleabook.com">hiring@recycleabook.com</a>
 </p>
 
