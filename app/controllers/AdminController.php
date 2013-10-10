@@ -83,7 +83,7 @@ public function __construct(){
         if(isset($filter) && $filter == all){
             $orders = Order::with('user')->paginate(40);
         }
-
+        $orders = Order::with('user')->paginate(40);
         return View::make('admin.customer_orders', array('orders' => $orders));
     }
 
