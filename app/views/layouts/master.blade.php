@@ -93,8 +93,8 @@ RecycleABook.com - Sell Textbooks, Buy Textbooks, Discounted Textbooks
                     <li class=""><a href="{{URL::to('/p/join_our_team')}}">Join Our Team</a></li>
                     {{ View::make('partials._login_form_lg') }}
                      <li><a href="{{ URL::to('/cart') }}"><i class="icon-shopping-cart nav-icon"></i> Seller Cart <span class="cart-total badge badge-info"></span></a></li>
-            <?php $user = Sentry::getUser(); ?>
-            @if ($user && $user->hasAccess('admin'))
+
+            @if (Sentry::getUser() && Sentry::getUser()->hasAccess('admin'))
               <li><a href="{{ URL::to('/admin') }}"> <span class="icon-wrench"></span> Admin</a></li>
               @endif
 

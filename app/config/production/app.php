@@ -13,7 +13,7 @@ return array(
 	|
 	*/
 
-	'debug' => false,
+	'debug' => true,
 
 	/*
 	|--------------------------------------------------------------------------
@@ -119,7 +119,7 @@ return array(
 		'CeesVanEgmond\Minify\MinifyServiceProvider',
 		// 'Toddish\Verify\VerifyServiceProvider',
 		// 'VTalbot\Less\LessServiceProvider',
-		'Hailwood\Smartless4laravel\Smartless4laravelServiceProvider',
+		// 'Hailwood\Smartless4laravel\Smartless4laravelServiceProvider',
 		'Juy\Profiler\Providers\ProfilerServiceProvider',
 		'Cviebrock\EloquentSluggable\SluggableServiceProvider',
 		'Intervention\Validation\ValidationServiceProvider',

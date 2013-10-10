@@ -114,6 +114,74 @@ catch (Cartalyst\Sentry\Throttling\UserBannedException $e)
 
     }
 
+    public function postBuyerLogin(){
+        $email = Input::get('email');
+        $password = Input::get('password');
+        $input = array('email' => $email, 'password' => $password);
+        $rules = array(
+            #validation rules.
+                "email" => "Required|Between:3,255|Email",
+                "password" => "Required|Between:5,25"
+                );
+
+        $messages = array();
+         $v = Validator::make($input, $rules, $messages);
+        if ($v->fails()){
+            return Redirect::back()->withErrors($v)->withInput();
+        } else {
+
+            try {
+
+            $user = Sentry::authenticate($input, false);
+            if ($user){
+                if ($user->hasAccess('admin')){
+                    return Redirect::back()->with('success', 'You have logged in successfully.');
+                } else {
+                    return Redirect::back()->with('success', 'You have logged in successfully.');
+                }
+
+            }
+        } catch (Cartalyst\Sentry\Users\LoginRequiredException $e)
+        {
+                return Redirect::back()->with('message', 'Login field is required.');
+            //return 'Login field is required.';
+        }
+        catch (Cartalyst\Sentry\Users\PasswordRequiredException $e)
+        {
+                return Redirect::back()->with('error', 'Password field is required.');
+            //return 'Password field is required.';
+        }
+        catch (Cartalyst\Sentry\Users\WrongPasswordException $e)
+        {
+                return Redirect::back()->with('error', 'Wrong password, try again.');
+            //return 'Wrong password, try again.';
+        }
+        catch (Cartalyst\Sentry\Users\UserNotFoundException $e)
+        {
+                return Redirect::back()->with('error', 'User was not found.');
+            //return 'User was not found.';
+        }
+        catch (Cartalyst\Sentry\Users\UserNotActivatedException $e)
+        {
+                return Redirect::back()->with('error', 'User is not activated.');
+            //return 'User is not activated.';
+        }
+
+        // The following is only required if throttle is enabled
+        catch (Cartalyst\Sentry\Throttling\UserSuspendedException $e)
+        {
+                return Redirect::back()->with('error', 'User is suspended.');
+            //return 'User is suspended.';
+        }
+        catch (Cartalyst\Sentry\Throttling\UserBannedException $e)
+        {
+                return Redirect::back()->with('error', 'User is banned.');
+            //return 'User is banned.';
+        }
+                }
+
+    }
+
     public function postRegister(){
         $first_name = Input::get('first_name');
         $last_name = Input::get('last_name');

@@ -652,6 +652,7 @@ div.postimage:hover {
 
 /* - 2.3 Sections */
 .section {
+  clear:both;
   position: relative;
   -webkit-background-size: cover !important;
   -moz-background-size: cover !important;
