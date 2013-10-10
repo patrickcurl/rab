@@ -82,7 +82,7 @@ class="container-fluid page-content"
 
                 <dt>Name on Cheque</dt>
                 <dd>{{$user->name_on_cheque}}</dd>
-
+                <dt></dt>
                 <dd><a href="{{URL::to('users/edit')}}/{{$user->id}}">Edit User</a></dd>
               </dl>
 
