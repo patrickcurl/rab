@@ -44,6 +44,52 @@ a {
 color: #4E804E;
 text-decoration: none;
 }
+
+@media (min-width: 980px) {
+    tr.visible-desktop {
+        display:table-row !important;
+    }
+    td.visible-desktop,
+    th.visible-desktop {
+        display:table-cell !important;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 979px) {
+    tr.hidden-desktop,
+    tr.visible-tablet {
+        display:table-row !important;
+    }
+    td.hidden-desktop,
+    th.hidden-desktop,
+    td.visible-tablet,
+    th.visible-tablet {
+        display:table-cell !important;
+    }
+}
+
+@media (max-width: 767px) {
+    tr.hidden-desktop,
+    tr.visible-phone {
+        display:table-row !important;
+    }
+    td.hidden-desktop,
+    th.hidden-desktop,
+    td.visible-phone,
+    th.visible-phone {
+        display:table-cell !important;
+    }
+}
+
+@media print {
+    tr.visible-print {
+        display:table-row !important;
+    }
+    td.visible-print,
+    th.visible-print {
+        display:table-cell !important;
+    }
+}
 </style>
 @stop
 @section('container_class')
@@ -93,6 +139,13 @@ class="container-fluid page-content"
               <dd>${{number_format($order->total_amount, 2)}}</dd>
               <dt>Tracking #</dt>
               <dd>{{$order->tracking_number}}</dd>
+              <dt>Shipping Label:</dt><dd>
+    @if($order['total_amount'] > 20)
+    <a href="#" class="" onClick='document.getElementById("ifr").src="{{URL::to('orders/label/' . $order['id']) }}";'>Click to Print</a>
+    @else
+    Order total must be $20 minimum for free shipping.
+    @endif
+    </dd>
               <dt>Date Received:</dt>
               <dd><input type="date" name="orders[{{$i}}][received_date]"  value="{? if($order->received_date) { echo $order->received_date; } ?}" />
               <dt>Date Paid:</dt>
@@ -101,6 +154,7 @@ class="container-fluid page-content"
               <dd><textarea name="orders[{{$i}}][comments]">{{$order->comments}}</textarea>
             </dl>
             <a href="{{ URL::to('orders/delete-order')}}/{{$order->id}}">Delete Order</a>
+            | <a href=""
             <h4>Items:</h4>
             @if($order->items)
               {? $items = $order->items; ?}
