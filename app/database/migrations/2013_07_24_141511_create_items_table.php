@@ -24,8 +24,10 @@ class CreateItemsTable extends Migration {
 			$t->integer('price');
 			$t->timestamps();
 
-			$t->foreign('book_id')->references('id')->on('books');
-			$t->foreign('order_id')->references('id')->on('orders');
+			// $t->foreign('book_id')->references('id')->on('books');
+			// $t->foreign('order_id')->references('id')->on('orders');
+			$t->dropForeign('items_book_id_foreign');
+			$t->dropForeign('items_order_id_foreign');
 		});
 	}
 

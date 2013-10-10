@@ -41,7 +41,10 @@ public function view_orders(){
 				return View::make('user.view_orders', array('orders' => $orderArray));
 		}
 }
-
+	public function getDeleteOrder($id){
+		Order::destroy($id);
+		return Redirect::back()->with('message', 'Order deleted!');
+	}
 	public function getLabel($id){
 		$order = Order::find($id);
 

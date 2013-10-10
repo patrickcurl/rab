@@ -100,6 +100,7 @@ class="container-fluid page-content"
               <dt>Comments:</dt>
               <dd><textarea name="orders[{{$i}}][comments]">{{$order->comments}}</textarea>
             </dl>
+            <a href="{{ URL::to('orders/delete-order')}}/{{$order->id}}">Delete Order</a>
             <h4>Items:</h4>
             @if($order->items)
               {? $items = $order->items; ?}
