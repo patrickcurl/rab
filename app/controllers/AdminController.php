@@ -79,7 +79,11 @@ public function __construct(){
      }
 
     public function getCustomerOrders(){
-        $orders = Order::with('user')->paginate(40);
+        $filter = Input::get('f');
+        if(isset($filter) && $filter == all){
+            $orders = Order::with('user')->paginate(40);
+        }
+
         return View::make('admin.customer_orders', array('orders' => $orders));
     }
 

@@ -138,7 +138,7 @@ class="container-fluid page-content"
     @endif
   </tbody>
 </table>
-{{$users->links()}}
+{{$orders->links()}}
 <button type="submit" class="btn btn-success">Update Orders</button>
 {{ Form::close() }}
 @stop
