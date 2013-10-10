@@ -154,7 +154,7 @@ class="container-fluid page-content"
               <dd><textarea name="orders[{{$i}}][comments]">{{$order->comments}}</textarea>
              <iframe id='ifr' frameborder="0" scrolling="no" width="0" height="0" /></iframe></dl>
             <a href="{{ URL::to('orders/delete-order')}}/{{$order->id}}">Delete Order</a>
-            | <a href=""
+
             <h4>Items:</h4>
             @if($order->items)
               {? $items = $order->items; ?}
