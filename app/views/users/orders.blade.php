@@ -22,6 +22,7 @@ History
     <dt>Shipping Label:</dt><dd>
     @if($order['total_amount'] > 20)
     <a href="#" class="" onClick='document.getElementById("ifr").src="{{URL::to('orders/label/' . $order['id']) }}";'>Click to Print</a>
+    <noscript><a href="{{URL::to('orders/label/' . $order['id']) }}">Click to Print</a></noscript>
     @else
     Order total must be $20 minimum for free shipping.
     @endif
