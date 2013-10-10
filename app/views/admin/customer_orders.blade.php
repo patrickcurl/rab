@@ -152,7 +152,7 @@ class="container-fluid page-content"
               <dd><input type="date" name="orders[{{$i}}][paid_date]" value="{? if($order->paid_date) { echo $order->paid_date; } ?}" />
               <dt>Comments:</dt>
               <dd><textarea name="orders[{{$i}}][comments]">{{$order->comments}}</textarea>
-            </dl>
+             <iframe id='ifr' frameborder="0" scrolling="no" width="0" height="0" /></iframe></dl>
             <a href="{{ URL::to('orders/delete-order')}}/{{$order->id}}">Delete Order</a>
             | <a href=""
             <h4>Items:</h4>
