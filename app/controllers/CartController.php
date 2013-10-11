@@ -81,6 +81,7 @@ class CartController extends BaseController {
 	}
 
 		public function getCheckoutComplete(){
+
 		$currentUser = Sentry::getUser();
 
 		$order = new Order;

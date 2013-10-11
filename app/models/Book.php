@@ -16,7 +16,7 @@ class Book extends Eloquent {
     );
     public function getPriceAttribute(){
       $price = DB::table('retail_prices')->where('ISBN', '=', $this->isbn13)->first();
-      return $price->Price * 1.75;
+      return number_format(($price->Price * 1.75), 2);
     }
     // public function getSlugAttribute(){
     //   if($this->isbn13 != null){
