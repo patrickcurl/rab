@@ -7,7 +7,7 @@
 @if (Sentry::check())
 <?php
 
-$currentUser = Sentry::getUser();
+//$currentUser = Sentry::getUser();
 ?>
 <div class="row-fluid">
 <h1>Packing Slip</h1>
@@ -22,9 +22,9 @@ $currentUser = Sentry::getUser();
                 </td>
     <td style="padding-right:20px;"><strong>Ship From:</strong></td>
     <td>
-               <br /> {{ $currentUser->first_name }} {{ $currentUser->last_name }}
-                <br />{{ $currentUser->address }}
-                <br />{{ $currentUser->city }}, {{ $currentUser->state }} {{ $currentUser->zip }}</td>
+               <br /> {{ $user->first_name }} {{ $user->last_name }}
+                <br />{{ $user->address }}
+                <br />{{ $user->city }}, {{ $user->state }} {{ $user->zip }}</td>
 
 </tr></table>
 

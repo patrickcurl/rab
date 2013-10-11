@@ -47,18 +47,20 @@ public function view_orders(){
 	}
 	public function getLabel($id){
 		$order = Order::find($id);
+		$user = $order->user;
 
 
 		$items = DB::table('items')->join('books', function($join){$join->on('books.id', '=', 'items.book_id');})->where('order_id','=',$id)->get();
 
-		return View::make('orders.label', array('ups_label' => $order->ups_label, 'items' => $items, 'orderTotal' => $order->total_amount));
+		return View::make('orders.label', array('ups_label' => $order->ups_label, 'items' => $items, 'orderTotal' => $order->total_amount, 'user' => $user));
 	}
 
 	public function getPackingSlip($id){
 		$order = Order::find($id);
+		$user = $order->user;
 		$items = DB::table('items')->join('books', function($join){$join->on('books.id', '=', 'items.book_id');})->where('order_id','=',$id)->get();
 
-		return View::make('orders.packingslip', array('items' => $items, 'orderTotal' => $order->total_amount));
+		return View::make('orders.packingslip', array('items' => $items, 'orderTotal' => $order->total_amount, 'user' => $user));
 	}
 
 }
