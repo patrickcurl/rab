@@ -70,7 +70,9 @@ class Book extends Eloquent {
       $xml = simplexml_load_file($url);
       $xml->registerXpathNamespace("xmlns", "http://webservices.amazon.com/AWSECommerceService/2011-08-01");
 
-      if (isset($xml->Items->Request->Errors->Error->Code) && $xml->Items->Request->Errors->Error->Code == 'AWS.InvalidParameterValue'){
+      /* if (isset($xml->Items->Request->Errors->Error->Code) && $xml->Items->Request->Errors->Error->Code == 'AWS.InvalidParameterValue'){
+         return null; } */
+        if(isset($xml->Items->Request->Errors)){
         return null;
       } else {
         $book = array(

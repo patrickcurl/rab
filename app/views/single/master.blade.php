@@ -255,7 +255,7 @@ if(!Modernizr.input.placeholder){
     </div>
   </footer>
   <script src={{URL::asset("javascripts/jquery.min.js")}} type="text/javascript"></script>
-  <script src={URL::asset("javascripts/bootstrap.js")}} type="text/javascript"></script>
+  <script src={{URL::asset("javascripts/bootstrap.js")}} type="text/javascript"></script>
   <script src={{URL::asset("javascripts/jquery.flexslider-min.js")}} type="text/javascript"></script>
   <script src={{URL::asset("javascripts/jquery.tweet.js")}} type="text/javascript"></script>
   <script src={{URL::asset("javascripts/jquery.fancybox.pack.js")}} type="text/javascript"></script>

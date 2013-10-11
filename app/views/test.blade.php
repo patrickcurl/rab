@@ -1,22 +1,90 @@
 
 <?php
-$isbns = array('10' => '0440243831', '13' => '9780440243830');
-foreach($isbns as $iNum)
-                  {
-                    if(isset($iNum))
-                    {
-                      if(strlen($iNum) == 10)
-                      {
-                        // $book->isbn10 = $iNum;
-                        echo $iNum;
-                      } elseif(strlen($iNum) == 13)
-                      {
-                        // $book->isbn13 = $iNum;
-                        echo $iNum;
-                      }
 
-                    }
-                  }
+
+$isbn = "0123744938";
+$isbn2 = "9780131367739";
+$book = getBook($isbn2);
+var_dump($book);
+ function getBook($isbn){
+      $region = "com";
+      $method = 'GET';
+      $host = 'webservices.amazon.'.$region;
+      $uri = '/onca/xml';
+
+      $ass_tag = Config::get('env_vars.amazon_ass_tag');
+      $public_key = Config::get('env_vars.amazon_public_key');
+      $private_key = Config::get('env_vars.amazon_private_key');
+      $params = array(
+                      'Operation'=>"ItemLookup",
+                      'IdType'=>"ISBN",
+                      'Service'=>"AWSECommerceService",
+                      'AWSAccessKeyId'=>$public_key,
+                      'AssociateTag'=>$ass_tag,
+                      'Version'=>"2011-08-01",
+                      'Availability'=>"Available",
+                      'SearchIndex' => "All",
+                      'Condition'=>"All",
+                      'ItemPage'=>"1",
+                      'Timestamp'=> gmdate('Y-m-d\TH:i:s\Z'),
+                      'ResponseGroup'=>"ItemAttributes,Images,OfferFull,Offers,Reviews,EditorialReview,BrowseNodes,SalesRank",
+                      'ItemId'=> $isbn);
+      ksort($params);
+      $canonicalized_query = array();
+      foreach ($params as $param=>$value)
+      {
+         $param = str_replace('%7E', '~', rawurlencode($param));
+         $value = str_replace('%7E', '~', rawurlencode($value));
+         $canonicalized_query[] = $param.'='.$value;
+      }
+      $canonicalized_query = implode('&', $canonicalized_query);
+      $string_to_sign = $method."\n".$host."\n".$uri."\n".$canonicalized_query;
+      $signature = base64_encode(hash_hmac('sha256', $string_to_sign, $private_key, TRUE));
+      $signature = str_replace('%7E', '~', rawurlencode($signature));
+      $url = 'http://'.$host.$uri.'?'.$canonicalized_query.'&Signature='.$signature;
+      $xml = simplexml_load_file($url);
+      $xml->registerXpathNamespace("xmlns", "http://webservices.amazon.com/AWSECommerceService/2011-08-01");
+
+      if(isset($xml->Items->Request->Errors)){
+        return null;
+      }
+      /* if (isset($xml->Items->Request->Errors->Error->Code) && $xml->Items->Request->Errors->Error->Code == 'AWS.InvalidParameterValue'){
+       return null; */
+      else {
+        $book = array(
+                    'isbn10' => (string) $xml->Items->Item->ItemAttributes->ISBN,
+                    'isbn13' => (string) $xml->Items->Item->ItemAttributes->EAN,
+                    'title' => (string) $xml->Items->Item->ItemAttributes->Title,
+                    'author' => (string) $xml->Items->Item->ItemAttributes->Author,
+                    'publisher' => (string) $xml->Items->Item->ItemAttributes->Publisher,
+                    'edition' => (string) $xml->Items->Item->ItemAttributes->Edition,
+                    'image_url' => (string) $xml->Items->Item->LargeImage->URL,
+                    'amazon_url' => (string) $xml->Items->Item->DetailPageURL,
+                    'weight' => (double) number_format($xml->Items->Item->ItemAttributes->ItemDimensions->Weight /100, 2)
+                    );
+
+
+      return $book;
+      }
+
+    }
+// $isbns = array('10' => '0440243831', '13' => '9780440243830');
+// foreach($isbns as $iNum)
+//                   {
+//                     if(isset($iNum))
+//                     {
+//                       if(strlen($iNum) == 10)
+//                       {
+//                         // $book->isbn10 = $iNum;
+//                         echo $iNum;
+//                       } elseif(strlen($iNum) == 13)
+//                       {
+//                         // $book->isbn13 = $iNum;
+//                         echo $iNum;
+//                       }
+
+//                     }
+//                   }
 // $book_info = Book::getBook('0440243831');
 // $isbns = array('10' => $book_info['isbn10'], '13' => $book_info['isbn13']);
 // $book = Book::bookExists($isbns);
