@@ -113,33 +113,50 @@ class Book extends Eloquent {
           $book = Book::where('isbn10', '=', $isbn)
                         ->orWhere('isbn13', '=', $isbn)
                         ->first();
-          if (!isset($book) || $book == null){
+          if (empty($book)){
 
              $book_info = self::getBook($isbn);
-             if (isset($book_info) && $book_info != null)
+             if (isset($book_info))
+              // check to see if amazon returned book data
               {
                   $isbns = array('10' => $book_info['isbn10'], '13' => $book_info['isbn13']);
                   $book = self::bookExists($isbns);
 
                   if($book == null){
+                    // make sure that we have a book object one way or another.
                     $book = new Book();
                   }
 
                  // $book->isbn10 = $book_info['isbn10'];
                   //check if $book_info['isbn10'] exists
-                  if(isset($book_info['isbn10']) && $book_info['isbn10'] != null){
-                    //if it does set attribute.
-                    $book->isbn10 = $book_info['isbn10'];
-                  } else {
-                    // if it doesn't set it equal to first 7 digits of isbn + nax
-                    $book->isbn10 = substr($book_info['isbn13'], 0, 7) . "nax";
-                  }
-                  if(isset($book_info['isbn13']) && $book_info['isbn13'] != null){
-                    $book->isbn13 = $book_info['isbn13'];
-                  } else {
-                    $book->isbn13 = $book_info['isbn10'] . "nax";
-                  }
+                  foreach($isbns as $iNum)
+                  {
+                    if(isset($iNum))
+                    {
+                      if(strlen($iNum) == 10)
+                      {
+                        $isbn10 = $iNum;
+                      } elseif(strlen($iNum) == 13)
+                      {
+                        $isbn13 = $iNum;
+                      }
 
+                    }
+                  }
+                  if(isset($isbn10)){
+                    $book->isbn10 = $isbn10;
+                  } elseif (isset($isbn13)){
+                    $book->isbn10 = substr($isbn13, 0, 7) . "nax";
+                  } else{
+                    return $nullBook;
+                  }
+                  if(isset($isbn13)){
+                    $book->isbn13 = $isbn13;
+                  } elseif (isset($isbn10)){
+                    $book->isbn13 = substr($isbn10, 0, 10) . "nax";
+                  } else{
+                    return $nullBook;
+                  }
                   $book->title = $book_info['title'];
                   $book->author = $book_info['author'];
                   $book->publisher = $book_info['publisher'];
