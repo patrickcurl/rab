@@ -71,3 +71,6 @@ Route::get('wp-admin', function(){
 Route::get('tag/{slug}', function($slug){
     return Redirect::to('http://blog.recycleabook.com/tag/' . $slug);
 });
+Route::get('privacy-policy', function(){
+    return Redirect::to('http://blog.recycleabook.com/privacy-policy');
+});
