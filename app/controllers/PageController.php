@@ -3,7 +3,7 @@ class PageController extends BaseController {
 
 
 	public function getJoinOurTeam(){
-	    return View::make('pages.join-team');
+	    return View::make('pages.join_our_team');
 	}
 
 	public function getIndex($slug=null){
