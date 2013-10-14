@@ -145,20 +145,26 @@ class Book extends Eloquent {
 
                     }
                   }
-                  if(isset($isbn10)){
+                  if(isset($isbn10) && isset($isbn13)){
                     $book->isbn10 = $isbn10;
-                  } elseif (isset($isbn13)){
-                    $book->isbn10 = substr($isbn13, 0, 7) . "nax";
-                  } else{
+                    $book->isbn13 = $isbn13;
+
+                  } elseif (isset($isbn10) && empty($isbn13)){
+                    $book->isbn10 = $isbn10;
+                    $book->isbn13 = null;
+                  } elseif(isset($isbn13 && empty($isbn10){
+                    $book->isbn13 = $isbn13;
+                    $book->isbn10 = null;
                     return $nullBook;
                   }
                   if(isset($isbn13)){
                     $book->isbn13 = $isbn13;
                   } elseif (isset($isbn10)){
-                    $book->isbn13 = substr($isbn10, 0, 10) . "nax";
+                    $book->isbn13 = null;
                   } else{
                     return $nullBook;
                   }
+                  if(isset($isbn13) || isset($isbn10)){
                   $book->title = $book_info['title'];
                   $book->author = $book_info['author'];
                   $book->publisher = $book_info['publisher'];
@@ -167,9 +173,13 @@ class Book extends Eloquent {
                   $book->amazon_url = $book_info['amazon_url'];
                   $book->weight = $book_info['weight'];
                   $book->save();
+              } else{
+                return $nullBook;
               }
+                  }
+
             }
-            if (isset($book) && $book != null){
+            if (isset($book)){
 
               $single = DB::table('single_prices')->where('isbn', '=', $isbn)->first();
               if(isset($single) || $single != null){
