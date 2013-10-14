@@ -37,14 +37,15 @@ Route::get('/', function()
 
     return View::make('index');
 });
+Route::get('p/join-our-team', function(){
+    return Redirect::to('p/join_our_team');
+});
 Route::get('p/{slug}', function($slug){
     return View::make("pages." . $slug);
 });
 Route::get('isbn-results','BookController@getIsbnResults');
 Route::get('search_isbn.php', 'BookController@searchISBN');
-Route::get('p/join-our-team', function(){
-    return Redirect::to('p/join_our_team');
-});
+
 Route::get('test', function(){
         //echo Gremlindash::greeting();
         //phpinfo();
