@@ -33,7 +33,7 @@ class Book extends Eloquent {
             $isbns[10] = $isbn;
             $isbns[13] = isbn10to13($isbn);
             break;
-          case ($iLength == 13)
+          case ($iLength == 13):
             $isbns[10] = isbn13to10($isbn);
             $isbns[13] = $isbn;
             break;
