@@ -5,7 +5,8 @@
 $isbn = "1558102582";
 $isbn2 = "9780131367739";
 
-
+$isbns = Book::getIsbns($isbn);
+var_dump($isbns);
 $book = Book::getBook($isbn);
 var_dump($book);
  function getBook($isbn){

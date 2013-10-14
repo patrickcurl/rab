@@ -24,17 +24,17 @@ class Book extends Eloquent {
 
     }
 
-    public function getIsbns($isbn){
+    public static function getIsbns($isbn){
       $isbns = array();
       $iLength = strlen($isbn);
       if ($iLength == 10 || $iLength == 13){
         switch($isbn){
           case ($iLength == 10):
             $isbns[10] = $isbn;
-            $isbns[13] = isbn10to13($isbn);
+            $isbns[13] = self::isbn10to13($isbn);
             break;
           case ($iLength == 13):
-            $isbns[10] = isbn13to10($isbn);
+            $isbns[10] = self::isbn13to10($isbn);
             $isbns[13] = $isbn;
             break;
           default:
@@ -151,7 +151,7 @@ class Book extends Eloquent {
               // check to see if amazon returned book data
               {
                   // $isbns = array('10' => $book_info['isbn10'], '13' => $book_info['isbn13']);
-                  $isbns = getIsbns($isbn);
+                  $isbns = self::getIsbns($isbn);
                   $book = self::bookExists($isbns);
 
                   if($book == null){
@@ -232,7 +232,7 @@ class Book extends Eloquent {
   * Function accepts either 12 or 13 digit number, and either provides or checks the validity of the 13th checksum digit
   *    Optionally converts to ISBN 10 as well.
   */
-  function isbn13checker($input, $convert = FALSE){
+  public static function isbn13checker($input, $convert = FALSE){
     $output = FALSE;
     if (strlen($input) < 12){
       $output = array('error'=>'ISBN too short.');
@@ -275,7 +275,7 @@ class Book extends Eloquent {
   * Function accepts either 10 or 9 digit number, and either provides or checks the validity of the 10th checksum digit
   *    Optionally converts to ISBN 13 as well.
   */
-  function isbn10checker($input, $convert = FALSE){
+  public static function isbn10checker($input, $convert = FALSE){
     $output = FALSE;
     if (strlen($input) < 9){
       $output = array('error'=>'ISBN too short.');
@@ -317,19 +317,19 @@ class Book extends Eloquent {
     return $output;
   }
 
-  function isbn10to13($isbn10){
+  public static function isbn10to13($isbn10){
 
     $isbnStem = strlen($isbn10) == 10 ? substr($isbn10, 0,9) : $isbn10;
-    $isbn13data = isbn13checker('978' . $isbnStem);
+    $isbn13data = self::isbn13checker('978' . $isbnStem);
     return $isbn13data['isbn13'];
 
   }
 
-  function isbn13to10($isbn13){
+  public static function isbn13to10($isbn13){
 
     $isbnStem = strlen($isbn13) == 13 ? substr($isbn13, 12) : $isbn13;
     $isbnStem = substr($isbn13, -10);
-    $isbn10data = isbn10checker($isbnStem);
+    $isbn10data = self::isbn10checker($isbnStem);
     return $isbn10data['isbn10'];
   }
 }
