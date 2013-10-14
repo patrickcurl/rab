@@ -5,12 +5,9 @@
 $isbn = "1558102582";
 $isbn2 = "9780131367739";
 
-?>
-ISBN 13: {{ isbn10to13($isbn) }}
-ISBN 10: {{ isbn13to10($isbn2) }}
-<?php
-$book = getBook($isbn);
-// var_dump($book->Items);
+
+$book = Book::getBook($isbn);
+var_dump($book);
  function getBook($isbn){
       $region = "com";
       $method = 'GET';

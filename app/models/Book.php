@@ -161,40 +161,10 @@ class Book extends Eloquent {
 
                  // $book->isbn10 = $book_info['isbn10'];
                   //check if $book_info['isbn10'] exists
-                  foreach($isbns as $iNum)
-                  {
-                    if(isset($iNum))
-                    {
-                      if(strlen($iNum) == 10)
-                      {
-                        $isbn10 = $iNum;
-                      } elseif(strlen($iNum) == 13)
-                      {
-                        $isbn13 = $iNum;
-                      }
 
-                    }
-                  }
-                  if(isset($isbn10) && isset($isbn13)){
-                    $book->isbn10 = $isbn10;
-                    $book->isbn13 = $isbn13;
-
-                  } elseif (isset($isbn10) && empty($isbn13)){
-                    $book->isbn10 = $isbn10;
-                    $book->isbn13 = null;
-                  } elseif(isset($isbn13) && empty($isbn10)){
-                    $book->isbn13 = $isbn13;
-                    $book->isbn10 = null;
-                    return $nullBook;
-                  }
-                  if(isset($isbn13)){
-                    $book->isbn13 = $isbn13;
-                  } elseif (isset($isbn10)){
-                    $book->isbn13 = null;
-                  } else{
-                    return $nullBook;
-                  }
-                  if(isset($isbn13) || isset($isbn10)){
+                  if(isset($isbns[13]) || isset($isbns[10])){
+                  if(isset($isbns[13])){ $book->isbn13 = $isbns[13]; } else { $book->isbn13 = null;}
+                  if(isset($isbns[10])){ $book->isbn13 = $isbns[10]; } else { $book->isbn10 = null;}
                   $book->title = $book_info['title'];
                   $book->author = $book_info['author'];
                   $book->publisher = $book_info['publisher'];
