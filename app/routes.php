@@ -69,5 +69,5 @@ Route::get('wp-admin', function(){
     return Redirect::to('http://blog.recycleabook.com/wp-admin');
 });
 Route::get('tag/{slug}', function($slug){
-    return Redirect::to('http://blog.recycleabook.com/tag' . $slug);
+    return Redirect::to('http://blog.recycleabook.com/tag/' . $slug);
 });
