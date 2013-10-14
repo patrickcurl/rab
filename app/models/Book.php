@@ -31,15 +31,15 @@ class Book extends Eloquent {
         switch($isbn){
           case ($iLength == 10):
             $isbns[10] = $isbn;
-            $isbns[13] = isbn10to13($isbn)
+            $isbns[13] = isbn10to13($isbn);
             break;
           case ($iLength == 13)
-            $isbns[10] = isbn13to10($isbn)
-            $isbns[13] = $isbn
+            $isbns[10] = isbn13to10($isbn);
+            $isbns[13] = $isbn;
             break;
           default:
            $isbns[10] = null;
-           $isbns[13] = null
+           $isbns[13] = null;
         }
 
       }
