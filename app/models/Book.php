@@ -152,7 +152,7 @@ class Book extends Eloquent {
                   } elseif (isset($isbn10) && empty($isbn13)){
                     $book->isbn10 = $isbn10;
                     $book->isbn13 = null;
-                  } elseif(isset($isbn13 && empty($isbn10){
+                  } elseif(isset($isbn13) && empty($isbn10)){
                     $book->isbn13 = $isbn13;
                     $book->isbn10 = null;
                     return $nullBook;

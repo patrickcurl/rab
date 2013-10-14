@@ -19,8 +19,8 @@ class CreateBooksTable extends Migration {
 			$table->string('author')->nullable();
 			$table->string('publisher')->nullable();
 			$table->string('image_url')->nullable();
-			$table->string('isbn10')->unique();
-			$table->string('isbn13')->unique();
+			$table->string('isbn10')->unique()->nullable();
+			$table->string('isbn13')->unique()->nullable();
 			$table->string('amazon_url')->nullable();
 			$table->string('edition')->nullable();
 			$table->integer('num_of_pages')->nullable();
