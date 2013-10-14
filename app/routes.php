@@ -63,5 +63,11 @@ Route::controller('admin', 'AdminController');
 
 //Fix 404's
 Route::get('wp-login.php', function(){
-    return Redirect::to('http://blog.recycleabook.com/wp-login');
+    return Redirect::to('http://blog.recycleabook.com/wp-login.php');
+});
+Route::get('wp-admin', function(){
+    return Redirect::to('http://blog.recycleabook.com/wp-admin');
+});
+Route::get('tag/{slug}', function($slug){
+    return Redirect::to('http://blog.recycleabook.com/tag' . $slug);
 });
