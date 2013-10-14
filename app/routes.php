@@ -37,6 +37,7 @@ Route::get('/', function()
 
     return View::make('index');
 });
+
 Route::get('p/join-our-team', function(){
     return Redirect::to('p/join_our_team');
 });
@@ -60,3 +61,7 @@ Route::controller('p','PageController');
 Route::controller('admin', 'AdminController');
 
 
+//Fix 404's
+Route::get('wp-login.php', function(){
+    return Redirect::to('http://blog.recycleabook.com/wp-login');
+});
