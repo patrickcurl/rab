@@ -8,12 +8,25 @@ class PageController extends BaseController {
 
 	public function getIndex($slug=null){
 		$view = "pages.{$slug}";
-		if(View::exists($view)){
+
+		if(View::exists($view)==1){
+
 			return View::make($view);
 		} else{
 			return View::make('errors.404');
 		}
 
+	}
+
+	public function missingMethod($slug=null){
+
+		$view = "pages.{$slug[0]}";
+		if(View::exists($view)==1){
+			return View::make($view);
+		} else
+		{
+			return View::make('errors.404');
+		}
 	}
 
 	public function postContact(){
