@@ -7,7 +7,13 @@ class PageController extends BaseController {
 	}
 
 	public function getIndex($slug=null){
-		return View::make("pages." . $slug);
+		$view = "pages.{$slug}";
+		if(View::exists($view)){
+			return View::make($view);
+		} else{
+			return View::make('errors.404');
+		}
+
 	}
 
 	public function postContact(){
