@@ -124,6 +124,7 @@ class Book extends Eloquent {
 
     public static function find_or_create($isbn){
         // Create a nulled object
+        $isbns = self::getIsbns($isbn);
         $nullBook = new Book();
         $nullBook->isbn10 = '0000000000';
         $nullBook->isbn13 = '0000000000000';
@@ -141,9 +142,13 @@ class Book extends Eloquent {
         if(strlen($isbn) != 13 && strlen($isbn) != 10){
           return $nullBook;
         } else {
+
           $book = Book::where('isbn10', '=', $isbn)
                         ->orWhere('isbn13', '=', $isbn)
                         ->first();
+          $book->isbn10 = $isbns['10'];
+          $book->isbn13 = $isbns['13'];
+          $book->save();
           if (empty($book)){
 
              $book_info = self::getBook($isbn);
@@ -151,7 +156,7 @@ class Book extends Eloquent {
               // check to see if amazon returned book data
               {
                   // $isbns = array('10' => $book_info['isbn10'], '13' => $book_info['isbn13']);
-                  $isbns = self::getIsbns($isbn);
+
                   $book = self::bookExists($isbns);
 
                   if($book == null){
@@ -181,20 +186,22 @@ class Book extends Eloquent {
             }
             if (isset($book)){
 
-              $single = DB::table('single_prices')->where('isbn', '=', $isbn)->first();
+              $single = DB::table('single_prices')->where('isbn', '=', $isbns['13'])->first();
               if(isset($single) || $single != null){
                   $singlePrice = $single->Price;
                   $singlePrice = $singlePrice - ($singlePrice * .1);
                   $singlePrice = self::floorToFraction($singlePrice, 2);
-                  $book->singlePrice = $singlePrice;
+                  $book->singlePrice = number_format($singlePrice, 2);
               } else{
-                $book->singlePrice = 0.00;
+                $book->singlePrice = "0.00";
               }
 
-              $retail = DB::table('retail_prices')->where('isbn', '=', $isbn)->first();
+              $retail = DB::table('retail_prices')->where('isbn', '=', $isbns['13'])->first();
               if(isset($retail) || $retail != null){
               $retailPrice = $retail->Price;
-              $book->retailPrice = $retailPrice;
+              $book->retailPrice = number_format($retailPrice * 1.7, 2);
+              } else {
+                $book->retailPrice = "0.00";
               }
 
 

@@ -35,7 +35,7 @@ class="container-fluid page-content"
 						<div class="col-xs-4">
 							<img src="<?php if ($book->image_url) {echo $book->image_url; } else {echo URL::asset('img/no_image.png'); } ?>"  class="img-thumbnail img-responsive" >
 						</div>
-						<div class="col-xs-7" style="padding-top:40px;"><span style="color:rgb(255, 245, 0);font-size:16px;">Buyback Price:</span> <span style="color:#06FF56;font-size:16px;font-weight:bold;">${{number_format($book->singlePrice,2) }}</span>
+						<div class="col-xs-7" style="padding-top:40px;"><span style="color:rgb(255, 245, 0);font-size:16px;">Buyback Price:</span> <span style="color:#06FF56;font-size:16px;font-weight:bold;">${{$book->singlePrice }}</span>
 						</div>
 					</div>
 					<dl class="dl-horizontal" style="display: inline-block !important; vertical-align: middle !important;">

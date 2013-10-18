@@ -120,13 +120,14 @@ return array(
 		// 'Toddish\Verify\VerifyServiceProvider',
 		// 'VTalbot\Less\LessServiceProvider',
 
-		'Juy\Profiler\Providers\ProfilerServiceProvider',
+		// 'Juy\Profiler\Providers\ProfilerServiceProvider',
 		'Cviebrock\EloquentSluggable\SluggableServiceProvider',
 		'Intervention\Validation\ValidationServiceProvider',
 		'\Gloudemans\Shoppingcart\ShoppingcartServiceProvider',
 		'Cartalyst\Sentry\SentryServiceProvider',
 		'Kmd\Logviewer\LogviewerServiceProvider',
-		//'Way\Generators\GeneratorsServiceProvider',
+		'Way\Generators\GeneratorsServiceProvider',
+		'Barryvdh\Debugbar\ServiceProvider',
 
 
 	),
@@ -196,10 +197,11 @@ return array(
 
 		// Details : https://github.com/Anahkiasen/former
 		// 'Less'         => 'VTalbot\Less\Facades\Less',
-		'Profiler'        => 'Juy\Profiler\Facades\Profiler',
+		// 'Profiler'        => 'Juy\Profiler\Facades\Profiler',
 		'Sluggable'       => 'Cviebrock\EloquentSluggable\Facades\Sluggable',
 		'Cart'            => 'Gloudemans\Shoppingcart\Facades\Cart',
 		'Sentry'          => 'Cartalyst\Sentry\Facades\Laravel\Sentry',
+		'Debugbar' 		  => 'Barryvdh\Debugbar\Facade',
 	),
 
 );

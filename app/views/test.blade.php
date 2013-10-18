@@ -1,6 +1,6 @@
 
 <?php
-
+echo app()->env;
 $client = new Guzzle\Http\Client('http://blog.recycleabook.com/api/');
     $request = $client->get('get_post/?slug=bitcoin-friend-or-foe');
     // e.g. $request = $client->get('get_recent_posts/?count=8');

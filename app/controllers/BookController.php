@@ -135,6 +135,9 @@ public function getIndex($slug=null){
         return View::make('single.search', array('books' => $books) );
     }
     public function searchISBN(){
+        $type = Input::get('type');
+        if(empty($type)){$type='retail';}
+
         $isbn = Input::get('isbn');
        // if(\Intervention\Validation\Validator::isIsbn($isbn)){
             $book = Book::find_or_create($isbn);
@@ -161,7 +164,7 @@ public function getIndex($slug=null){
             $root->appendChild($details);
             $title_text = $dom->createTextNode($book->title);
             $title = $dom->createElement("title");
-            $details->appendChild($title_text);
+            $details->appendChild($title);
             $title->appendChild($title_text);
 
             $author_text = $dom->createTextNode($book->author);
@@ -178,22 +181,30 @@ public function getIndex($slug=null){
             $isbn = $dom->createElement("isbn");
             $details->appendChild($isbn);
             $isbn->appendChild($isbn_text);
-            $tempbook = DB::table('retail_prices')
-                ->where('isbn', '=', $book->isbn13)->first();
+            if($type=='single'){
+                if(isset($book->singlePrice)){
+                    $price = $book->singlePrice;
+                } else {
+                    $price = "0.00";
+                }
+            } else
+            {
+                if(isset($book->retailPrice)){
+                    $price = $book->retailPrice;
+                } else{
+                    $price = "0.00";
+                }
 
-            if($tempbook){
-            $price = number_format(($tempbook->Price * 1.7), 2);
+            }
+
+
+
+
+            //$price = number_format(($tempbook->Price * 1.7), 2);
             $buyback_text = $dom->createTextNode($price);
             $offer = $dom->createElement("buyback");
             $details->appendChild($offer);
             $offer->appendChild($buyback_text);
-            } else {
-                //$price = number_format(($tempbook->Price * 1.7), 2);
-                $buyback_text = $dom->createTextNode("Not Currently Buying");
-                $offer = $dom->createElement("buyback");
-                $details->appendChild($offer);
-                $offer->appendChild($buyback_text);
-            }
             $output = $dom->saveXML();
             $headers['Content-Type'] = 'application/xml';
             return Response::make($output, 200, $headers);

@@ -41,7 +41,7 @@ Cash
 	         </div>
 			    </td>
 
-			    <td><input type="hidden" name="item[{{$index}}][price]" value="{{$book->price}}" />${{ $book->price }}</td>
+			    <td><input type="hidden" name="item[{{$index}}][price]" value="{{$book->price}}" />${{ $book->retailPrice }}</td>
 			    <td><input type="text" name="item[{{$index}}][qty]" value="1" maxlength="3" style="width:25px;" /></td>
 				<td><input type="checkbox" name="item[{{$index}}][add]" value="yes" checked="checked"/></td>
 
