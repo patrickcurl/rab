@@ -46,12 +46,50 @@ a {
 color: #4E804E;
 text-decoration: none;
 }
+#addUser .input-medium{
+  margin-bottom:0px;
+}
 </style>
 @stop
 @section('container_class')
 class="container-fluid page-content"
 @stop
 @section('content')
+<h2>Add User</h2>
+@foreach($errors->get('first_name') as $message)
+              <p class="text-error">{{$message}}</p>
+@endforeach
+@foreach($errors->get('last_name') as $message)
+              <p class="text-error">{{$message}}</p>
+@endforeach
+@foreach($errors->get('email') as $message)
+              <p class="text-error">{{$message}}</p>
+@endforeach
+@foreach($errors->get('password') as $message)
+              <p class="text-error">{{$message}}</p>
+@endforeach
+{{ Form::open(array('action' => 'AdminController@postAddUser', 'id' => 'addUser')) }}
+  {{ Form::text('first_name', null, array('placeholder' => 'First name', 'class' => 'input-medium')) }}
+  {{ Form::text('last_name', null, array('placeholder' => 'Last name', 'class' => 'input-medium')) }}
+  {{ Form::email('email', null, array('placeholder' => 'Email', 'class' => 'input-medium')) }}
+  {{ Form::password('password', array('placeholder' => 'Password', 'class' => 'input-medium')) }}
+  {{ Form::password('password_confirmation', array('placeholder' => 'Confirm Password', 'class' => 'input-medium')) }}
+  <br /><br />
+  <label class="checkbox inline">
+    <input type="checkbox" name="groups[admin]"> Admin
+  </label>
+  <label class="checkbox inline">
+    <input type="checkbox" name="groups[customers]"> Customer
+  </label>
+  <label class="checkbox inline">
+    <input type="checkbox" name="groups[buyers]"> Buyer
+  </label>
+<br /><br />
+
+  {{ Form::button('Add User', array('type' => 'submit', 'class' => 'btn btn-primary')) }}
+
+{{ Form::close() }}
+
 <table class="table table-striped">
     <thead><tr><th>User Details</th><th>Orders</th></tr></thead>
     {? $i = 0; ?}
@@ -66,17 +104,23 @@ class="container-fluid page-content"
                 <dd>{{$user->first_name}} {{$user->last_name}}</dd>
                 <dt>Email</dt>
                 <dd>{{$user->email}}</dd>
-                <dt>Phone</dt>
-                <dd>{{$user->phone}}</dd>
-                <dt>Payment Method</dt>
-                <dd>{{$user->payment_method}}</dd>
+                @if($user->phone)
+                  <dt>Phone</dt>
+                  <dd>{{$user->phone}}</dd>
+                @endif
+                @if($user->payment_method)
+                  <dt>Payment Method</dt>
+                  <dd>{{$user->payment_method}} </dd>
+                @endif
+                @if($user->paypal_email)
                 <dt>PayPal Email</dt>
                 <dd>{{$user->paypal_email}}</dd>
-
+                @endif
+                @if($user->name_on_cheque)
                 <dt>Name on Cheque</dt>
                 <dd>{{$user->name_on_cheque}}</dd>
+                @endif
 
-                <dd><a href="{{URL::to('users/edit')}}/{{$user->id}}">Edit User</a></dd>
                 <dt>Permission Groups</dt>
                 <dd>
                    @foreach($groups as $group)
@@ -86,6 +130,8 @@ class="container-fluid page-content"
                    @endforeach
 
                 </dd>
+                <dd><a href="{{URL::to('users/edit')}}/{{$user->id}}">Edit User</a></dd>
+                <dd><a href="{{URL::to('users/delete')}}/{{$user->id}}">Delete User</a></dd>
               </dl>
 
 

@@ -183,6 +183,9 @@ catch (Cartalyst\Sentry\Throttling\UserBannedException $e)
     }
 
     public function postRegister(){
+        $referred_by = $_COOKIE["referred_by"];
+
+
         $first_name = Input::get('first_name');
         $last_name = Input::get('last_name');
         $email = Input::get('email');
@@ -198,9 +201,10 @@ catch (Cartalyst\Sentry\Throttling\UserBannedException $e)
         $paypal_email = Input::get('paypal_email');
         $name_on_cheque = Input::get('name_on_cheque');
         if(isset($_COOKIE["referred_by"])){
-            $referred_by = $_COOKIE["referred_by"];
-            $ref_id = DB::select('select id from users where username = ?', array($referred_by));
-            $ref_id  = $ref_id['0']->id;
+            $ref = DB::table('users')->where('username', '=', $_COOKIE["referred_by"])->pluck('id');
+            if(isset($ref)){
+                $ref_id = $ref;
+            }
         } else {
             $ref_id = 1;
         }
@@ -869,6 +873,24 @@ public function postEdit($id, $type="profile") {
             }
         }
         return $password;
+    }
+
+    public function getDelete($user_id){
+        if(isset($user_id)){
+            try
+                {
+                    // Find the user using the user id
+                    $user = Sentry::findUserById($user_id);
+
+                    // Delete the user
+                    $user->delete();
+                    return Redirect::back()->with('message', 'User deleted');
+                }
+                catch (Cartalyst\Sentry\Users\UserNotFoundException $e)
+                {
+                    echo 'User was not found.';
+                }
+        }
     }
 
 

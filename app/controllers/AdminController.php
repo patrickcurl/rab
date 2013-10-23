@@ -19,49 +19,6 @@ public function __construct(){
     }
 
 
-//      public function getIndex()
-//     {
-//         try {
-//                 // Get the current active/logged in user
-//                 $user = Sentry::getUser();
-//             }
-//         catch (Cartalyst\Sentry\Users\UserNotFoundException $e)
-//         {
-//             // User wasn't found, should only happen if the user was deleted
-//             // when they were already logged in or had a "remember me" cookie set
-//             // and they were deleted.
-//             return Redirect::to('/')->with('message','User not found, please login and try again');
-//         }
-
-//         if($user->hasAccess('admin')){
-//             return View::make('admin.index');
-//         } else {
-//             return Redirect::to('/')->with('message','Shame, Shame, you do not have permission to access that.');
-//         }
-
-
-//     }
-//     public function postSearchSingle()
-//     {
-//         $isbns =  str_replace("\r", "", Input::get('isbns'));
-//         $isbns = explode(",", $isbns);
-//         $isbns = array_unique($isbns);
-//         $books = array();
-//         //return var_dump($isbns);
-//         foreach($isbns as $isbn){
-//             if(\Intervention\Validation\Validator::isIsbn($isbn)){
-//                 $book = Book::find_or_create($isbn);
-//                 array_push($books, $book);
-//             }
-
-//         }
-
-//         //return $isbn;
-//         return View::make('books.search_single', array('books' => $books) );
-//     }
-
-
-// }
 
     public function getIndex()
     {
@@ -74,8 +31,19 @@ public function __construct(){
         //return View::make('cart.index', array('cart' => $cart));
     }
 
-    public function getBuyerRequests(){
-        return View::make('admin.buyer_requests');
+    public function getBuyers(){
+
+        $data = array(
+                           'supplies' => Supply::all()
+
+                           );
+
+        return View::make('admin.buyers', $data);
+     }
+
+     public function postAddSupply(){
+        $supply = Supply::create(array('name' => Input::get('name'), 'description' => Input::get('description')));
+        return Redirect::to('admin/buyers')->with('message', 'Item added!');
      }
 
     public function getCustomerOrders(){
@@ -242,6 +210,71 @@ public function __construct(){
 
 
     }
+
+    public function postAddUser(){
+        $inputs = array('first_name' => Input::get('first_name'),
+                        'last_name' => Input::get('last_name'),
+                        'email' => Input::get('email'),
+                        'password' => Input::get('password'),
+                        'password_confirmation' => Input::get('password_confirmation')
+                        );
+        $groups = Input::get('groups');
+        // foreach($groups as $index => $g){
+        //             $group = Sentry::findGroupByName($index);
+        //            // $user->addGroup($group);
+        //             return var_dump($group);
+        //         }
+        $rules = array(
+                        'first_name' => 'required',
+                        'last_name' => 'required',
+                        'email' => 'required|email|unique:users,email',
+                        'password' => 'required|confirmed',
+
+
+                       );
+        $v = Validator::make(
+                             $inputs,
+                             $rules
+                             );
+        if($v->fails()){
+            $messages = $v->messages();
+            return Redirect::to('admin/users')->withErrors($v);
+        } else{
+            try{
+                $user = Sentry::register(
+                                           array(
+                                                 'first_name' => $inputs['first_name'],
+                                                 'last_name' => $inputs['last_name'],
+                                                 'email' => $inputs['email'],
+                                                 'password' => $inputs['password'],
+                                                 ), true
+                                           );
+                foreach($groups as $index => $g){
+                    $group = Sentry::findGroupByName($index);
+                    $user->addGroup($group);
+                }
+            }
+            catch (Cartalyst\Sentry\Users\LoginRequiredException $e)
+            {
+                echo 'Login field is required.';
+            }
+            catch (Cartalyst\Sentry\Users\PasswordRequiredException $e)
+            {
+                echo 'Password field is required.';
+            }
+            catch (Cartalyst\Sentry\Users\UserExistsException $e)
+            {
+                echo 'User with this login already exists.';
+            }
+            catch (Cartalyst\Sentry\Groups\GroupNotFoundException $e)
+            {
+                echo 'Group was not found.';
+            }
+            return Redirect::back()->with('message', 'added user');
+        }
+    }
+
+
 
 
 }

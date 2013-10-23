@@ -30,8 +30,13 @@ class CartController extends BaseController {
                                 "edition" => $item['edition']
                                      );
 
-
-                    Cart::add($item['id'], $item['title'], $item['qty'], $item['price'], $options);
+                    $qty = $item['qty'];
+                    if($qty > 5){
+                    	$qty = 5;
+                    } else {
+                    	$qty = $item['qty'];
+                    }
+                    Cart::add($item['id'], $item['title'], $qty, $item['price'], $options);
                 }
             }
         }
@@ -52,6 +57,10 @@ class CartController extends BaseController {
 		$items = Input::get('items');
 		foreach($items as $item)
 		{
+			if($item['qty'] > 5){
+				Cart::update($item['id'], 5);
+        		return Redirect::back()->with('message', 'We can only buyback 5 of the same book, please update your order and try again.');
+        	}
 			Cart::update($item['id'], $item['qty']);
 		}
 

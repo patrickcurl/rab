@@ -1,7 +1,9 @@
 <?php
 class SuppliesController extends BaseController {
 
-
+public function __construct(){
+        $this->beforeFilter("buyers_auth");
+    }
 public function view_orders(){
 		if(!Auth::check()){
 			return Redirect::to('login')->with('message', 'Must be logged in to view page.');
@@ -63,7 +65,16 @@ public function view_orders(){
 		return View::make('orders.packingslip', array('items' => $items, 'orderTotal' => $order->total_amount, 'user' => $user));
 	}
 
-	public function getCreateOrder(){
+	public function getIndex(){
+		return View::make('supplies.create-order');
+	}
+	public function getDelete($id){
+		$supply = Supply::find($id);
+		if(Request::ajax()){
+			return json_encode($supply->delete());
+		} else{
+			return Redirect::to('admin/buyers')->with('message', 'Item removed');
+		}
 
 	}
 

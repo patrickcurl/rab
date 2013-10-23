@@ -1,15 +1,19 @@
-
 <?php
-echo app()->env;
-$client = new Guzzle\Http\Client('http://blog.recycleabook.com/api/');
-    $request = $client->get('get_post/?slug=bitcoin-friend-or-foe');
-    // e.g. $request = $client->get('get_recent_posts/?count=8');
-    $response = $request->send();
-    $data = $response->json();
-    var_dump($data);
+$curl = New Curl;
+var_dump($curl->simple_post(URL::to('api/v1/supplies/store'), array('name' =>'some item', 'description' => 'Item description')));
+var_dump($curl);
+?>
+// <?php
+// echo app()->env;
+// $client = new Guzzle\Http\Client('http://blog.recycleabook.com/api/');
+//     $request = $client->get('get_post/?slug=bitcoin-friend-or-foe');
+//     // e.g. $request = $client->get('get_recent_posts/?count=8');
+//     $response = $request->send();
+//     $data = $response->json();
+//     var_dump($data);
 
-//$isbn = "1558102582";
-$isbn2 = "9780131367739";
+// //$isbn = "1558102582";
+// $isbn2 = "9780131367739";
 
 // $isbns = Book::getIsbns($isbn);
 // var_dump($isbns);

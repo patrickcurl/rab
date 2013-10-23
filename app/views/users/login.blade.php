@@ -142,6 +142,13 @@ Login
 			   	</div>
 
 			  </div>
+			  <div class="control-group">
+			   	<label class="control-label" for="name_on_cheque">Name on Cheque</label>
+			   	<div class="controls">
+			     	<input type="text" id="name_on_cheque" name="name_on_cheque" placeholder="Name on Cheque">
+			   	</div>
+
+			  </div>
 
 			  <div class="control-group">
 			   	<div class="controls">

@@ -61,6 +61,21 @@ Route::filter('admin_auth', function()
 	}
 });
 
+Route::filter('buyer_auth', function()
+{
+	if (!Sentry::check())
+	{
+		// if not logged in, redirect to login
+		return Redirect::to('/')->with('message', 'Not logged in!');
+	}
+
+	if (!Sentry::getUser()->hasAccess('admin') && !Sentry::getUser()->hasAccess('buyers'))
+	{
+		// has no access
+		//return Response::make('Access Forbidden', '403');
+		return Redirect::to('/')->with('message', 'You are not authorized to view this.');
+	}
+});
 /*
 |--------------------------------------------------------------------------
 | Guest Filter

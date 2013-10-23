@@ -44,7 +44,8 @@ Cart
 	         </div>
             </td>
             <td>${{ $item->price }}</td>
-            <td>{{ $item->qty }}</td>
+            <?php if($item->qty > 5){ $qty = 5;} else { $qty = $item->qty; } ?>
+            <td>{{ $qty }}</td>
             <td>${{ number_format($item->subtotal,2) }}</td>
 
 					</tr>

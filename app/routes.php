@@ -50,6 +50,10 @@ Route::get('test', function(){
         //phpinfo();
 	return View::make('test');
 });
+route::group(array('prefix' => 'api/v1'), function(){
+        Route::resource('supplies', 'api\SuppliesController');
+});
+
 Route::controller('users', 'UsersController');
 Route::controller('books', 'BookController');
 Route::controller('book', 'BookController');
@@ -58,7 +62,7 @@ Route::controller('orders', 'OrdersController');
 Route::controller('p','PageController');
 Route::controller('admin', 'AdminController');
 Route::controller('blog', 'BlogController');
-
+Route::controller('supplies', 'SuppliesController');
 
 //Fix 404's
 Route::get('wp-login.php', function(){

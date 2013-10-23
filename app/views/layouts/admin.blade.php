@@ -29,6 +29,7 @@ RecycleABook.com - Sell Textbooks, Buy Textbooks, Discounted Textbooks
 <link rel="apple-touch-icon-precomposed" href="../ico/apple-touch-icon-57-precomposed.png" />
 <link rel="shortcut icon" href="../ico/favicon.png" />
 
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
 
 
 <?php
@@ -67,7 +68,7 @@ RecycleABook.com - Sell Textbooks, Buy Textbooks, Discounted Textbooks
 
 <body @section('body_tag')
 
-@show >
+@show>
 
   <div class="wrapper">
     <header id="masthead">
@@ -193,8 +194,8 @@ RecycleABook.com - Sell Textbooks, Buy Textbooks, Discounted Textbooks
     <a class="brand" href="#">Dashboard</a>
     <ul class="nav">
       <li @if(Request::path() == 'admin') class="active" @endif ><a href="{{URL::to('admin')}}">Home</a></li>
-      <li @if(Request::path() == 'admin/buyer-requests') class="active" @endif ><a href="{{URL::to('admin/buyer-requests')}}">Buyer Requests</a></li>
-      <li @if(Request::path() == 'admin/customer-orders') class="active" @endif ><a href="{{URL::to('admin/customer-orders')}}">Customer Orders</a></li>
+      <li @if(Request::path() == 'admin/buyer-requests') class="active" @endif ><a href="{{URL::to('admin/buyers')}}">Buyers</a></li>
+      <li @if(Request::path() == 'admin/customer-orders') class="active" @endif ><a href="{{URL::to('admin/customers')}}">Customers</a></li>
       <li @if(Request::path() == 'admin/users') class="active" @endif ><a href="{{URL::to('admin/users')}}">Users</a></li>
       <li @if(Request::path() == 'admin/groups') class="active" @endif ><a href="{{URL::to('admin/groups')}}">Groups</a></li>
     </ul>
@@ -274,7 +275,7 @@ RecycleABook.com - Sell Textbooks, Buy Textbooks, Discounted Textbooks
       </div>
     </div>
   </footer>
-  <script src="{{URL::asset('javascripts/jquery.min.js')}}" type="text/javascript"></script>
+
   <script src="{{URL::asset('javascripts/bootstrap.js')}}" type="text/javascript"></script>
   <script src="{{URL::asset('javascripts/jquery.flexslider-min.js')}}" type="text/javascript"></script>
   <script src="{{URL::asset('javascripts/jquery.tweet.js')}}" type="text/javascript"></script>
@@ -307,6 +308,7 @@ RecycleABook.com - Sell Textbooks, Buy Textbooks, Discounted Textbooks
 
 
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script type="text/javascript" src="{{URL::asset('/javascripts/jquery.serializeObject.min.js')}}"></script>
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0-wip/js/bootstrap.min.js"></script>
 
 {{ javascript(array(
@@ -335,6 +337,44 @@ $('input[type=text][name=isbns]').popover({
 
 });//]]>
 
+</script>
+<script>
+jQuery(document).ready(function($) {
+
+    $('button.ajax').on('click', function(event) {
+        event.preventDefault();
+
+        var url = "{{URL::to('/api/v1/supplies')}}";
+
+        var newItem = $('#addSupply').serializeObject();
+        var tbody = $('#supply-list');
+        $.ajax({
+            url: url,
+            data: newItem,
+            type: 'post',
+            dataType: 'json',
+            success: function(ev){
+              $('#supply-list tr:last').after('<tr><td>' + ev.name + '</td><td>' + ev.description +'</td><td><a href="#" class="ajax"  data-id="' + ev.id +'"><i class="icon-remove"></i></a></td></tr>');
+            },
+            error: function(hxr, error, status){ alert('Error'); }
+        });
+    });
+    $('#supply-list').on('click', 'a.ajax', function(event) {
+        event.preventDefault();
+        var id = $(this).data('id');
+        var url = "{{URL::to('/api/v1/supplies/')}}" + "/" + id;
+        var row = $(this).closest('tr');
+        $.ajax({
+            url: url,
+            type: 'delete',
+            dataType: 'json',
+            success: function(ev){
+              row.slideUp('normal', function() { row.remove(); });
+            },
+            error: function(hxr, error, status){ alert('Error'); }
+        });
+    });
+  });
 </script>
   </body>
 </html>

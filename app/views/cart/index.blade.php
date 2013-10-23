@@ -40,13 +40,15 @@ Cart
             </td>
             <td>${{ $item->price }}</div></td>
             <input type="hidden" name="items[{{$count}}][id]" value="{{ $item->rowid }}">
-            <td><input class="form-control" type="text" name="items[{{$count}}][qty]" value="{{ $item->qty }}" style="width:50px;" /></td>
+            <?php if($item->qty > 5){ $qty = 5;} else { $qty = $item->qty; } ?>
+            <td><input class="form-control" type="number" max="5" name="items[{{$count}}][qty]" value="{{ $qty }}" style="width:50px;" /></td>
             <td>${{ number_format($item->subtotal, 2) }}</td>
             <td> <a href="{{ URL::to('cart/remove')}}?itemId={{$item->rowid}}"><img src="img/cross.png" /></a>
 
           </tr>
           <?php $count++; ?>
     @endforeach
+    test
     <tr>
       <td></td>
       <td></td>

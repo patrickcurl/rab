@@ -162,6 +162,7 @@ public function getIndex($slug=null){
 
             $details = $dom->createElement("details");
             $root->appendChild($details);
+
             $title_text = $dom->createTextNode($book->title);
             $title = $dom->createElement("title");
             $details->appendChild($title);

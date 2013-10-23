@@ -61,8 +61,15 @@ RecycleABook.com - Sell Textbooks, Buy Textbooks, Discounted Textbooks
             padding: 10px 15px 10px 15px;
         }
         .navbar .btn, .navbar .btn-group {
-          margin-top: 10.5px;
+          margin-top: 5px;
+          padding: 6px 10px;
+          margin-bottom: 0;
         }
+        .navbar-form input{
+          margin-bottom: none;
+          margin-top:5px;
+        }
+
     </style>
   <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
   <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
@@ -151,9 +158,11 @@ if(!Modernizr.input.placeholder){
 
         {{ Form::close() }}
         @else
+        {? $user = Sentry::getUser(); ?}
         <ul class="nav">
           <li><a href="{{URL::to('/')}}">Home</a></li>
-          <li><a href="#">Link</a></li>
+          <li><a href="{{URL::to('users/edit')}}/{{$user->id}}">Profile</a></li>
+          <li><a href="{{URL::to('supplies/')}}">Supplies</a></li>
           <li><a href="{{URL::to('users/logout')}}">Logout</a></li>
         </ul>
 

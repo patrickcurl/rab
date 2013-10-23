@@ -2,7 +2,7 @@
 class Supply extends Eloquent {
 
 	protected $table = 'supplies';
-	protected $fillable = array('name', 'description', 'processed');
+	protected $fillable = array('name', 'description');
 
 	public function item(){
       return $this->hasMany('SupplyItem');
