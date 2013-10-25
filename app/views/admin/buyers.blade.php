@@ -32,7 +32,7 @@ class="container-fluid page-content"
 @endif
 </tbody>
 </table>
-
+<h2 id="error-code" style="color:red;"></h2>
 {{ Form::open(array('action' => 'api\SuppliesController@store', 'class' => 'form-inline', 'id' => 'addSupply'))}}
   {{Form::text('name', null, array('class' => "input-large", 'placeholder'=> 'Item name')) }}
   {{Form::text('description', null, array('class' => "input-large", 'placeholder'=> 'Item Description')) }}

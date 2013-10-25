@@ -61,6 +61,26 @@ Route::filter('admin_auth', function()
 	}
 });
 
+Route::filter('api_admin_auth', function()
+{
+	if (!Sentry::check())
+	{
+		// if not logged in, redirect to login
+		// return Redirect::to('users/login');
+		$response = array('error' => true,
+			               'message' => 'Not Logged In');
+		return Response::json($response);
+	}
+
+	if (!Sentry::getUser()->hasAccess('admin'))
+	{
+		// has no access
+		//return Response::make('Access Forbidden', '403');
+		$response = array('error' => true,
+			               'message' => 'Not Authorized.');
+		return Response::json($response);
+	}
+});
 Route::filter('buyer_auth', function()
 {
 	if (!Sentry::check())

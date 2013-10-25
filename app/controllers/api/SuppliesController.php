@@ -24,6 +24,12 @@ class SuppliesController extends \Controller {
 		$item->name = \Input::get('name');
 		$item->description = \Input::get('description');
 		$item->save();
+		$item->error = false;
+		$item->message = "Item added.";
 		return $item;
+	}
+
+	public function __construct(){
+		$this->beforeFilter("api_admin_auth", array("on"=>array("post", "put", "patch", "delete")));
 	}
 }

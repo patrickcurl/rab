@@ -354,7 +354,16 @@ jQuery(document).ready(function($) {
             type: 'post',
             dataType: 'json',
             success: function(ev){
-              $('#supply-list tr:last').after('<tr><td>' + ev.name + '</td><td>' + ev.description +'</td><td><a href="#" class="ajax"  data-id="' + ev.id +'"><i class="icon-remove"></i></a></td></tr>');
+              console.log(ev);
+              if(ev.error === false ){
+
+                $('#supply-list tbody').append('<tr><td>' + ev.name + '</td><td>' + ev.description +'</td><td><a href="#" class="ajax"  data-id="' + ev.id +'"><i class="icon-remove"></i></a></td></tr>');
+              } else {
+
+               $('#error-code').text(ev.message).show().fadeOut(1500);
+
+              }
+
             },
             error: function(hxr, error, status){ alert('Error'); }
         });
@@ -369,7 +378,12 @@ jQuery(document).ready(function($) {
             type: 'delete',
             dataType: 'json',
             success: function(ev){
-              row.slideUp('normal', function() { row.remove(); });
+              if(ev.error===false){
+                row.slideUp('normal', function() { row.remove(); });
+              } else {
+                 $('#error-code').text(ev.message).fadeIn(0).fadeOut(1500);
+              }
+
             },
             error: function(hxr, error, status){ alert('Error'); }
         });

@@ -66,7 +66,8 @@ public function view_orders(){
 	}
 
 	public function getIndex(){
-		return View::make('supplies.create-order');
+		$supplies = Supply::all();
+		return View::make('supplies.index', array('supplies' => $supplies));
 	}
 	public function getDelete($id){
 		$supply = Supply::find($id);
@@ -76,6 +77,26 @@ public function view_orders(){
 			return Redirect::to('admin/buyers')->with('message', 'Item removed');
 		}
 
+	}
+	public function postOrder(){
+		$currentUser = Sentry::getUser();
+
+		$order = new SupplyOrder;
+		$order->user_id = $currentUser->id;
+		$order->save();
+
+		$items = Input::get('newItems');
+		foreach($items as $item){
+			if(isset($item['qty']) && $item['qty'] > 0){
+				$newItem = new SupplyItem();
+				$newItem->supply_id = $item['id'];
+				$newItem->order_id = $order->id;
+				$newItem->qty = $item['qty'];
+				$newItem->save();
+
+			}
+			return $order->items;
+		}
 	}
 
 }

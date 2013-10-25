@@ -1,14 +1,14 @@
 <?php
 class SupplyItem extends Eloquent {
 
-	protected $table = 'supply_items';
+	protected $table = 'SupplyItems';
 	protected $fillable = array('supply_id', 'qty', 'price');
 
 	public function order(){
-		return $this->belongsTo('Order');
+		return $this->belongsTo('SupplyOrder', 'order_id');
 	}
 
-	public function book(){
+	public function supply(){
 		return $this->belongsTo('Supply');
 	}
 	// public function book(){
