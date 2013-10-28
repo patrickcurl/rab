@@ -46,7 +46,7 @@ public function __construct(){
         return Redirect::to('admin/buyers')->with('message', 'Item added!');
      }
 
-    public function getCustomer(){
+    public function getCustomers(){
         $filter = Input::get('f');
         if(isset($filter) && $filter == all){
             $orders = Order::with('user')->paginate(40);
