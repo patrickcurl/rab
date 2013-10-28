@@ -52,6 +52,7 @@ Route::get('test', function(){
 });
 route::group(array('prefix' => 'api/v1'), function(){
         Route::resource('supplies', 'api\SuppliesController');
+        Route::resource('sorders', 'api\SupplyOrdersController');
 });
 
 Route::controller('users', 'UsersController');

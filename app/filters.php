@@ -89,7 +89,7 @@ Route::filter('buyer_auth', function()
 		return Redirect::to('/')->with('message', 'Not logged in!');
 	}
 
-	if (!Sentry::getUser()->hasAccess('admin') && !Sentry::getUser()->hasAccess('buyers'))
+	if (!Sentry::getUser()->hasAccess('buyers') && !Sentry::getUser()->hasAccess('buyers'))
 	{
 		// has no access
 		//return Response::make('Access Forbidden', '403');

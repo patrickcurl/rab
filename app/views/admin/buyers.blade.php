@@ -3,11 +3,21 @@
   <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
   <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
   <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.1/css/font-awesome.css" rel="stylesheet">
   <script>
   $(function() {
     $( "#datepicker" ).datepicker();
   });
-  </script>
+   </script>
+   <script type='text/javascript'>//<![CDATA[
+$(window).load(function(){
+    $(".phone").text(function(i, text) {
+        text = text.replace(/(\d{3})(\d{3})(\d{4})/, "($1) $2-$3");
+        return text;
+    });
+});//]]>
+
+</script>
    <script>
   $(function() {
     $( "#datepicker2" ).datepicker();
@@ -39,13 +49,34 @@ class="container-fluid page-content"
   {{Form::button('Add Item', array('class' => 'btn btn-success ajax', 'type' => 'submit') )}}
 {{ Form::close() }}
 
-
+<h2>Supply Orders</h2>
+<table class="table">
+  <thead><tr><th>User Details</th><th>Items</th><th>Action</th></tr></thead>
+<tbody>
+@foreach($orders as $o)
+  <tr>
+    <td>{{$o->user->first_name}} {{$o->user->last_name}} <i class="fa fa-chevron-right"></i> <a href="mailto:{{$o->user->email}}"><i class="fa fa-envelope"></i></a>
+        <br />{{$o->user->address}}
+        <br />{{$o->user->city}}, {{$o->user->state}} {{$o->user->zip}}
+        <br /><p class="phone">{{$o->user->phone }}</p>
+    </td>
+    <td>
+      @foreach($o->items as $i)
+        <strong><u>Item:</u></strong> {{ $i->supply->name }} | <strong><u>Quantity</u></strong>: {{ $i->qty }}
+      @endforeach
+      </td>
+      <td><input type="checkbox" id="#processed" data-id="{{$o->id}}" /></td>
+    </tr>
+@endforeach
+</tbody>
+</table>
 @stop
 @section('footer')
 <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 <script>
   $(function() {
     $( "#datepicker" ).datepicker();
+
   });
 
 @stop

@@ -2,7 +2,7 @@
 class SuppliesController extends BaseController {
 
 public function __construct(){
-        $this->beforeFilter("buyers_auth");
+        $this->beforeFilter("buyer_auth|admin_auth");
     }
 public function view_orders(){
 		if(!Auth::check()){
@@ -81,7 +81,7 @@ public function view_orders(){
 	public function postOrder(){
 		$currentUser = Sentry::getUser();
 
-		$order = new SupplyOrder;
+		$order = new SupplyOrder();
 		$order->user_id = $currentUser->id;
 		$order->save();
 

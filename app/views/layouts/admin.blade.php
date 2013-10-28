@@ -1,15 +1,3 @@
-<?php
-$expire=time()+60*60*24*120;
-$aff = Input::get('aff');
-if ($aff){
-  setcookie('referred_by', $aff, $expire);
-  Session::put('referred_by', $aff);
-} else{
-
-}
-
-
-?>
 <!DOCTYPE html>
 <!--[if IE 8 ]> <html lang="en" class="ie8"> <![endif]-->
 <!--[if (gt IE 8)]><!--> <html lang="en"> <!--<![endif]-->
@@ -388,6 +376,27 @@ jQuery(document).ready(function($) {
             error: function(hxr, error, status){ alert('Error'); }
         });
     });
+    $('#processed').click(function() {
+    var checked = $(this).is(':checked');
+    var id = $(this).data('id');
+    var url = "{{URL::to('/api/v1/sorders/')}}" + "/" + id;
+    $.ajax({
+        type: "patch",
+        url: url,
+        data: { checked : checked },
+        success: function(data) {
+            alert('it worked');
+            console.log(data)
+        },
+        error: function() {
+            alert('it broke');
+            console.log('broke')
+        },
+        complete: function() {
+            alert('it completed');
+        }
+    });
+}
   });
 </script>
   </body>

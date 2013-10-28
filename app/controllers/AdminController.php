@@ -34,8 +34,8 @@ public function __construct(){
     public function getBuyers(){
 
         $data = array(
-                           'supplies' => Supply::all()
-
+                           'supplies' => Supply::all(),
+                           'orders' => SupplyOrder::all()
                            );
 
         return View::make('admin.buyers', $data);

@@ -1,13 +1,12 @@
-def sumSquare(length)
-	sumOfSquares = 0
-	squareOfSums = 0
-	(1..length).each do |x|
-		sumOfSquares = (x * x) + sumOfSquares
-		squareOfSums = squareOfSums + x
-	end
-	squareOfSums = squareOfSums * squareOfSums
-	total = squareOfSums - sumOfSquares
-	return total
-end
+def fib(n)
+	gRatio = 1.61803398875
 
-puts sumSquare(100)
+	if n == 0
+		return 0
+	elsif n == 1
+		return 1
+	else
+		num = (((gRatio)**n) - ((1 - gRatio) ** n)) / Math.sqrt(5)
+		return num.to_i
+	end
+end
