@@ -60,8 +60,8 @@ Cart
  <div class="pull-right clearfix">
    <button type="submit" name="update_cart" class="btn btn-primary">Update Cart</button>
         {{ form::close() }}
-        <a href="{{ URL::to('cart/empty') }}"><button type="button" name="empty_cart" class="btn btn-danger">Empty Cart</button></a>
-        <a href="{{ URL::to('cart/checkout') }}"><button type="button" name="check_out" class="btn btn-success" onClick="javascript:location.href = '{{ URL::to('cart/checkout') }}';">Check Out</button></a>
+        <a href="{{ URL::to('cart/empty') }}" class="btn btn-danger">Empty Cart</a>
+        <a href="{{ URL::to('cart/checkout') }}" class="btn btn-success">Check Out</a>
 
         </div>
 
