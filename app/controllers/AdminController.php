@@ -41,6 +41,11 @@ public function __construct(){
         return View::make('admin.buyers', $data);
      }
 
+     public function getEditBuyer($id){
+        $buyer = User::find($id);
+
+     }
+
      public function postAddSupply(){
         $supply = Supply::create(array('name' => Input::get('name'), 'description' => Input::get('description')));
         return Redirect::to('admin/buyers')->with('message', 'Item added!');
@@ -52,7 +57,7 @@ public function __construct(){
             $orders = Order::with('user')->paginate(40);
         }
         $orders = Order::with('user')->paginate(40);
-        return View::make('admin.customer_orders', array('orders' => $orders));
+        return View::make('admin.customer', array('orders' => $orders));
     }
 
     public function getUsers(){

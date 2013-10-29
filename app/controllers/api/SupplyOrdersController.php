@@ -5,25 +5,25 @@ namespace api;
 
 class SupplyOrdersController extends \Controller {
 	protected static $restful = true;
-	public function index(){
-		$supplies = \Supply::all();
-		return $supplies;
-	}
-	public function destroy($id){
-		$supply = \Supply::find($id);
-		$supply->delete();
-		$response = array('error' => false,
-			               'message' => 'Item deleted.');
+	// public function index(){
+	// 	$supplies = \Supply::all();
+	// 	return $supplies;
+	// }
+	// public function destroy($id){
+	// 	$supply = \Supply::find($id);
+	// 	$supply->delete();
+	// 	$response = array('error' => false,
+	// 		               'message' => 'Item deleted.');
 
-			return \Response::json($response);
+	// 		return \Response::json($response);
 
-	}
+	// }
 
 	public function update($id){
 		$order = \SupplyOrder::find($id);
-		$processed = \Request::get('processed');
-		if($isset($processed) && $processed == "on" ){
-			$order->processed = 1;
+		$checked = \Request::get('processed');
+		if(isset($checked) && $checked == "true" ){
+			$order->processed = true;
 			$order->save();
 			return \Response::json(array(
         		'error' => false,
@@ -49,7 +49,7 @@ class SupplyOrdersController extends \Controller {
 
 
 
-	public function __construct(){
-		$this->beforeFilter("api_admin_auth", array("on"=>array("post", "put", "patch", "delete")));
-	}
+	// public function __construct(){
+	// 	$this->beforeFilter("api_admin_auth", array("on"=>array("post", "put", "patch", "delete")));
+	// }
 }

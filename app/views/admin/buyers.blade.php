@@ -51,7 +51,7 @@ class="container-fluid page-content"
 
 <h2>Supply Orders</h2>
 <table class="table">
-  <thead><tr><th>User Details</th><th>Items</th><th>Action</th></tr></thead>
+  <thead><tr><th>User Details</th><th>Items</th><th>Processed?</th></tr></thead>
 <tbody>
 @foreach($orders as $o)
   <tr>
@@ -65,7 +65,8 @@ class="container-fluid page-content"
         <strong><u>Item:</u></strong> {{ $i->supply->name }} | <strong><u>Quantity</u></strong>: {{ $i->qty }}
       @endforeach
       </td>
-      <td><input type="checkbox" id="#processed" data-id="{{$o->id}}" /></td>
+      <td><input type="checkbox" id="processed-{{$o->id}}" data-id="{{$o->id}}" @if($o->processed == true) checked="checked" @endif disabled="disabled"  style="float:left" />
+      <div id="processed" style="float:left;margin-left:30px;"><a href="#" class="process" data-id="{{$o->id}}" data-bool="true">Yes</a> | <a href="#" class="process" data-id="{{$o->id}}" data-bool="false">no</a></div></td>
     </tr>
 @endforeach
 </tbody>

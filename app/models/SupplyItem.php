@@ -9,8 +9,9 @@ class SupplyItem extends Eloquent {
 	}
 
 	public function supply(){
-		return $this->belongsTo('Supply');
+		return $this->belongsTo('Supply')->withTrashed();
 	}
+
 	// public function book(){
 	// 	return $this->hasOne('Book');
 	// }

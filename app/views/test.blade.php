@@ -1,7 +1,13 @@
 <?php
-$curl = New Curl;
-var_dump($curl->simple_post(URL::to('api/v1/supplies/store'), array('name' =>'some item', 'description' => 'Item description')));
-var_dump($curl);
+
+
+$o = SupplyOrder::find(9);
+foreach($o->items as $i)
+  { var_dump($i); }
+
+// $curl = New Curl;
+// var_dump($curl->simple_post(URL::to('api/v1/supplies/store'), array('name' =>'some item', 'description' => 'Item description')));
+// var_dump($curl);
 ?>
 // <?php
 // echo app()->env;

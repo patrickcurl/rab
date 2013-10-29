@@ -376,27 +376,25 @@ jQuery(document).ready(function($) {
             error: function(hxr, error, status){ alert('Error'); }
         });
     });
-    $('#processed').click(function() {
-    var checked = $(this).is(':checked');
-    var id = $(this).data('id');
-    var url = "{{URL::to('/api/v1/sorders/')}}" + "/" + id;
-    $.ajax({
-        type: "patch",
+    $('div#processed').on('click', 'a.process', function(event){
+      event.preventDefault();
+      var id = $(this).data('id');
+      var bool = $(this).data('bool');
+      var url = "{{URL::to('/api/v1/sorders/')}}" + "/" + id;
+      console.log(id);
+      $.ajax({
         url: url,
-        data: { checked : checked },
-        success: function(data) {
-            alert('it worked');
-            console.log(data)
+        type: 'patch',
+        data: { processed : bool },
+        success: function(ev){
+          $('#processed-' + id).attr('checked', bool);
+
+
         },
-        error: function() {
-            alert('it broke');
-            console.log('broke')
-        },
-        complete: function() {
-            alert('it completed');
-        }
+        error: function(hxr, error, status){ alert('Error'); }
+      });
+      console.log(bool);
     });
-}
   });
 </script>
   </body>

@@ -12,6 +12,9 @@ class SuppliesController extends \Controller {
 	public function destroy($id){
 		$supply = \Supply::find($id);
 		$supply->delete();
+		$items = SupplyItem::where('supply_id', '=', $supply->id)->get();
+		foreach($items)
+
 		$response = array('error' => false,
 			               'message' => 'Item deleted.');
 
@@ -20,7 +23,7 @@ class SuppliesController extends \Controller {
 	}
 	public function store(){
 
-		$item = new \Supply();
+		$item = \Supply::findOrInsert($name);
 		$item->name = \Input::get('name');
 		$item->description = \Input::get('description');
 		$item->save();
@@ -28,6 +31,8 @@ class SuppliesController extends \Controller {
 		$item->message = "Item added.";
 		return $item;
 	}
+
+
 
 	public function __construct(){
 		$this->beforeFilter("api_admin_auth", array("on"=>array("post", "put", "patch", "delete")));
