@@ -57,7 +57,7 @@ public function __construct(){
             $orders = Order::with('user')->paginate(40);
         }
         $orders = Order::with('user')->paginate(40);
-        return View::make('admin.customer', array('orders' => $orders));
+        return View::make('admin.customers', array('orders' => $orders));
     }
 
     public function getUsers(){
