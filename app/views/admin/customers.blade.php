@@ -137,7 +137,7 @@ class="container-fluid page-content"
             <dl class="dl-horizontal">
               <dt>Order Total: </dt>
               <dd>${{number_format($order->total_amount, 2)}}</dd>
-              <dt>Date Ordered: {{$order->created_at}}</dt>
+              <dt>Date Ordered:</dt><dd>{{$order->created_at}}</dd>
               @if($order['total_amount'] > 20)
               <dt>Tracking #</dt>
               <dd>{{$order->tracking_number}}</dd>
