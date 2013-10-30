@@ -144,8 +144,6 @@ class="container-fluid page-content"
                <dt>Shipping Label:</dt><dd>
 
     <a href="#" class="" onClick='document.getElementById("ifr").src="{{URL::to('orders/label/' . $order['id']) }}";'>Click to Print</a>
-    @else
-    Order total must be $20 minimum for free shipping.
     @endif
     </dd>
               <dt>Date Received:</dt>
