@@ -137,9 +137,10 @@ class="container-fluid page-content"
             <dl class="dl-horizontal">
               <dt>Order Total: </dt>
               <dd>${{number_format($order->total_amount, 2)}}</dd>
+              @if($order['total_amount'] > 20)
               <dt>Tracking #</dt>
               <dd>{{$order->tracking_number}}</dd>
-               @if($order['total_amount'] > 20)
+
                <dt>Shipping Label:</dt><dd>
 
     <a href="#" class="" onClick='document.getElementById("ifr").src="{{URL::to('orders/label/' . $order['id']) }}";'>Click to Print</a>
