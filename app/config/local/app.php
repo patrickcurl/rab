@@ -128,7 +128,7 @@ return array(
 		'Kmd\Logviewer\LogviewerServiceProvider',
 		'Way\Generators\GeneratorsServiceProvider',
 		'Barryvdh\Debugbar\ServiceProvider',
-
+		'Barryvdh\DomPDF\ServiceProvider',
 
 	),
 
@@ -202,6 +202,7 @@ return array(
 		'Cart'            => 'Gloudemans\Shoppingcart\Facades\Cart',
 		'Sentry'          => 'Cartalyst\Sentry\Facades\Laravel\Sentry',
 		'Debugbar' 		  => 'Barryvdh\Debugbar\Facade',
+		'PDF' => 'Barryvdh\DomPDF\Facade',
 	),
 
 );

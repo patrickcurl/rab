@@ -174,6 +174,7 @@ class="container-fluid page-content"
                                     <strong>ISBN10</strong>: {{$item->book->isbn10}}<br />
                                     <strong>ISBN13</strong>: {{$item->book->isbn13}}<br />
                                     <strong>Price</strong>: ${{number_format($item->price, 2)}}
+                                    <strong>QTY</strong>: {{$item->qty}}
 
 
 

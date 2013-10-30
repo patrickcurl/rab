@@ -12,7 +12,7 @@ return array(
   |
   */
   'enabled' => \Config::get('app.debug'),
-
+  'inject' => false,
   /*
    |--------------------------------------------------------------------------
    | Vendors

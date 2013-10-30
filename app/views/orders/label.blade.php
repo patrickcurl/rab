@@ -1,6 +1,6 @@
 
 <body onload="window.print();">
-<img src="data:image/gif;base64,{{ $ups_label }}" width="651" style="transform: rotate(90deg);-webkit-transform: rotate(90deg); -ms-transform: rotate(90deg);-moz-transform: rotate(90deg);margin-top:150px;"/>
+<img src="data:image/gif;base64,{{ $ups_label }}" width="651" style="transform: rotate(90deg);-webkit-transform: rotate(90deg); -ms-transform: rotate(90deg);-moz-transform: rotate(90deg);margin-top:150px;text-align:center"/>
 <br />
 <div style="page-break-before: always;">
 </div>
