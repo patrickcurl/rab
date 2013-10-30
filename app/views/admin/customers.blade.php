@@ -184,7 +184,7 @@ class="container-fluid page-content"
                                 </div>
                               </div>"
                 data-title="{{$item->book->slug}}"
-                >{{$item->book->title}}</a></li>
+                >{{$item->book->title}}</a>({{$item->qty}})</li>
 
               @endforeach
               </ul>
