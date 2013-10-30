@@ -173,7 +173,7 @@ class="container-fluid page-content"
                                     <strong>Weight</strong>: {{number_format($item->book->weight, 2) }}<br />
                                     <strong>ISBN10</strong>: {{$item->book->isbn10}}<br />
                                     <strong>ISBN13</strong>: {{$item->book->isbn13}}<br />
-                                    <strong>Price</strong>: ${{number_format($item->price, 2)}}
+                                    <strong>Price</strong>: ${{number_format($item->price, 2)}}<br />
                                     <strong>QTY</strong>: {{$item->qty}}
 
 
