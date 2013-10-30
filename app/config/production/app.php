@@ -127,7 +127,7 @@ return array(
 		'Cartalyst\Sentry\SentryServiceProvider',
 		'Kmd\Logviewer\LogviewerServiceProvider',
 		//'Way\Generators\GeneratorsServiceProvider',
-		'Thujohn\Pdf\PdfServiceProvider',
+		// 'Thujohn\Pdf\PdfServiceProvider',
 
 	),
 
@@ -200,7 +200,7 @@ return array(
 		'Sluggable'       => 'Cviebrock\EloquentSluggable\Facades\Sluggable',
 		'Cart'            => 'Gloudemans\Shoppingcart\Facades\Cart',
 		'Sentry'          => 'Cartalyst\Sentry\Facades\Laravel\Sentry',
-		'PDF' => 'Thujohn\Pdf\PdfFacade',
+		// 'PDF' => 'Thujohn\Pdf\PdfFacade',
 
 	),
 
