@@ -17,10 +17,13 @@
                 <br />Dayton, OH 45459</td>
 
     <td style="padding-left:150px;"><strong>Ship From:</strong>
-               <br /> {{ $user->first_name }} {{ $user->last_name }}
-                <br />{{ $user->address }}
-                <br />{{ $user->city }}, {{ $user->state }} {{ $user->zip }}
-                <br />{{ $user->email }}
+               <br />  @if(isset($user->first_name)) {{ $user->first_name }} @endif
+               		  @if(isset($user->last_name)) {{ $user->last_name }}@endif
+                <br />@if(isset($user->address)) {{ $user->address }}@endif
+                <br />@if(isset($user->city)) {{ $user->city }}@endif,
+                      @if(isset($user->state)) {{ $user->state }} @endif
+                      @if(isset($user->zip)) {{ $user->zip }} @endif
+                <br />@if(isset($user->email)) {{ $user->email }} @endif
 </td>
 </tr></table>
 
@@ -35,17 +38,18 @@
 
                   <tr>
                     <td style="padding-right:20px;">
-
-					@if (strlen($item->title) > 40)
-              			<strong>{{ substr($item->title, 0, 40) }}...</strong>
-              		@else
-              		<strong>{{ $item->title }}</strong>
+					@if(isset($item->title))
+						@if (strlen($item->title) > 40)
+	              			<strong>{{ substr($item->title, 0, 40) }}...</strong>
+	              		@else
+	              		<strong>{{ $item->title }}</strong>
+	              		@endif
               		@endif
                     <br />
-                    ISBN13: {{$item->isbn13}}<br />
-                    Author: {{ $item->author}}</td>
-                    <td>{{ $item->qty}}</td>
-                    <td>${{ number_format($item->price, 2) }}</td>
+                    @if(isset($item->isbn13)) ISBN13: {{$item->isbn13}} @endif<br />
+                    @if(isset($item->author)) Author: {{ $item->author}} @endif</td>
+                    <td>@if(isset($item->qty)) {{ $item->qty}} @endif</td>
+                    <td>@if(isset($item->price)) ${{ number_format($item->price, 2) }} @endif</td>
                   </tr>
                 @endforeach
               </table>
@@ -53,6 +57,8 @@
 </div>
 <div class="well offset6 span2"><strong>Total: </strong>${{ number_format($orderTotal ,2)}}</div>
 <div class="page">
+
+
 <img src="{{URL::to($label)}}" height="1000" style="text-align:center;"/>
 </div>
 </body></html>

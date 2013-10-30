@@ -146,7 +146,7 @@ class="container-fluid page-content"
 
                <dt>Shipping Label:</dt><dd>
 
-    <a href="#" class="" onClick='document.getElementById("ifr").src="{{URL::to('orders/label/' . $order['id']) }}";'>Click to Print</a>
+    <a href="{{URL::to('pdf/' . $order['id']) }}";'>Click to Print</a>
     @endif
     </dd>
               <dt>Date Received:</dt>

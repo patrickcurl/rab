@@ -52,9 +52,14 @@ Route::get('pdf/{id}', function($id){
         imagepng($rotated_imaged, public_path($label_path));
         $data['label'] = $label_path;
 
+
+
+
+
+
         //return View::make('orders.print', $data);
         //download('orderNumber'.$id.'.pdf')
-        return PDF::loadView('orders.print', $data)->stream('test.pdf');
+        return PDF::loadView("orders.print", $data)->stream("OrderNumber_{$order->id}.pdf");
     }
 
 
