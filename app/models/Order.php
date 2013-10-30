@@ -1,4 +1,5 @@
 <?php
+use Carbon\Carbon;
 class Order extends Eloquent {
 
 	protected $table = 'orders';
@@ -7,6 +8,14 @@ class Order extends Eloquent {
 	public function items(){
 		return $this->hasMany('Item');
 	}
+  public static function gDate()
+{ $tmpdate = self::created_at;
+     if ($tmpdate == "0000-00-00" || $tmpdate == "") {
+          return null;
+      } else {
+          return date('m/d/Y',strtotime($tmpdate));
+      }
+}
 
 	public function user(){
 		return $this->belongsTo('User');
@@ -14,7 +23,7 @@ class Order extends Eloquent {
 
   public static function setDate($date, $field){
     if ($date){
-      
+
      $fieldVal = date('Y-m-d', (strtotime($date)));
     } else {
       $fieldVal = '';
