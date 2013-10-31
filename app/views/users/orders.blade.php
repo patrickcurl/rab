@@ -14,7 +14,7 @@ History
   <h4 class="offset2">Order Info</h4>
   <?php $orderNum = $g+1; ?>
   <dl class="dl-horizontal">
-    <dt>Order #:</dt><dd>{{ $orderNum }}</dd>
+    <dt>Order #:</dt><dd>{{ $order['id'] }}</dd>
     <dt>Order Date:</dt><dd>{{$order['created_at']->format("n/d/Y") }}</dd>
     <dt>Total: </dt><dd>${{ number_format($order['total_amount'],2) }}</dd>
     <dt>Received Date:</dt> <dd>@if($order['received_date']) {{ date("n/d/Y", strtotime($order['received_date'])) }} @else Pending @endif</dd>
