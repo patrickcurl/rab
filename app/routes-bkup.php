@@ -11,7 +11,6 @@
 |
 */
 
-
 Route::group(array('domain' => 'single.rab.dev'), function()
 {
 
@@ -138,4 +137,3 @@ Route::get('{slug1}', function($slug1){
     }
 
 });
-

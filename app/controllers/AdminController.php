@@ -129,12 +129,12 @@ public function __construct(){
                     // there is no old_Received_date value, so it's the first time the record is updated, and we will send an email to user.
                     $o->received_date = $received_date;
                     $data['userId'] = $o->user_id;
-                    $data['email'] = $u->email;
+                    $data['email'] = $o->user->email;
 
                     // Email the user on first update of this data field.
                     Mail::send('emails.shipment_received', $data, function($m) use($data)
                     {
-                        $m->from('patrick@recycleabook.com', 'RecycleABook')->to($data['email'])->subject('Shipment Received @ TopBookPrices.com');
+                        $m->from('patrick@recycleabook.com', 'RecycleABook')->replyTo('clmason81@gmail.com')->to($data['email'])->subject('Shipment Received @ RecycleABook.com');
                     });
                 }
             }
@@ -159,13 +159,13 @@ public function __construct(){
                 } else {
                     // there is no old_paid_date value, so it's the first time the record is updated, and we will send an email to user.
                     $o->paid_date = $paid_date;
-                    $data['userId'] = $o->user_id;
-                    $data['email'] = $u->email;
+                    $data['userId'] = $o->user->id;
+                    $data['email'] = $o->user->email;
 
                     // Email the user on first update of this data field.
                     Mail::send('emails.payment_sent', $data, function($m) use($data)
                     {
-                        $m->from('patrick@recycleabook.com', 'RecycleABook')->to($data['email'])->subject('Payment Received from TopBookPrices.com');
+                        $m->from('patrick@recycleabook.com', 'RecycleABook')->replyTo('clmason81@gmail.com')->to($data['email'])->subject('Payment Received from RecycleABook.com');
                     });
                 }
             }
@@ -279,7 +279,61 @@ public function __construct(){
         }
     }
 
+    public function postUpload(){
 
+        //     $destinationPath = base_path(). '/' . "upload" . '/';
+
+        //     if(Input::hasFile('myfile')){
+
+        //         $file = Input::file('myfile'); // your file upload input field in the form should be named 'file'
+
+        //         // Declare the rules for the form validation.
+        //         $rules = array('myfile'  => 'mimes:jpg,jpeg,bmp,png,xls,pdf,csv');
+        //         $data = array('myfile' => Input::file('myfile'));
+
+        //         // Validate the inputs.
+        //         $validation = Validator::make($data, $rules);
+
+        //         if ($validation->fails())
+        //         {
+        //             return Response::json('error', 400);
+        //         }
+
+        //         if(is_array($file))
+        //         {
+        //             foreach($file as $part) {
+        //                 $filename = $part->getClientOriginalName();
+        //                 $part->move($destinationPath, $filename);
+        //             }
+        //         }
+        //         else //single file
+        //         {
+        //             $filename = $file->getClientOriginalName();
+        //             $uploadSuccess = Input::file('myfile')->move($destinationPath, $filename);
+        //         }
+
+        //         if( $uploadSuccess ) {
+        //             return Response::json('success', 200);
+        //         } else {
+        //             return Response::json('error', 400);
+        //         }
+
+        //     }
+        // }
+
+        $file = Input::file('file');
+        $destinationPath = 'uploads/';
+        $filename = date('m-d-Y') . "_" . str_random(8) . "_" .$file->getClientOriginalName();
+        // $extension =$file->getClientOriginalExtension();
+        // $filename = str_random(8) . "." .$extension;
+        $upload_success = Input::file('file')->move($destinationPath, $filename);
+
+        if( $upload_success ) {
+        return Response::json('success', 200);
+        } else {
+            return Response::json('error', 400);
+        }
+    }
 
 
 }

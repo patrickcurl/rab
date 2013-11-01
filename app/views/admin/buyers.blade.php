@@ -4,6 +4,11 @@
   <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
   <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
   <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.1/css/font-awesome.css" rel="stylesheet">
+   <!-- uploadfile -->
+{{ HTML::style('stylesheets/basic.css');}}
+?
+1
+{{ HTML::script('javascripts/dropzone.js') }}
   <script>
   $(function() {
     $( "#datepicker" ).datepicker();
@@ -71,13 +76,49 @@ class="container-fluid page-content"
 @endforeach
 </tbody>
 </table>
+<form action="{{ url('admin/upload')}}" class="dropzone" id="my-awesome-dropzone">
+
+</form>
 @stop
 @section('footer')
-<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+
 <script>
   $(function() {
     $( "#datepicker" ).datepicker();
 
   });
+  $(document).ready(function() {
+
+        var settings = $("#mulitplefileuploader").uploadFile({
+            url: "{{ URL::to('upload') }}",
+            method: "POST",
+            allowedTypes:"jpg,png,gif",
+            fileName: "myfile",
+            autoSubmit:false,
+            showStatusAfterSuccess:false,
+            onSuccess:function(files,data,xhr)
+            {
+                $("#preview_image").attr('value',files); //set uploaded image name
+                $('#myform').submit();
+            },
+            onError: function(files,status,errMsg)
+            {
+                $("#status").html("<font color='green'>Something Wrong</font>");
+            }
+        });
+
+        $('.submit_form').click(function() {
+
+            var validate = $("#myform").validationEngine('validate');
+            var has_file = $(".ajax-file-upload-statusbar").length //check if there files need upload
+
+            if(validate){
+                if(has_file == true){
+                    settings.startUpload();
+                }else{
+                    $('#myform').submit();
+                }
+            }
+        });
 
 @stop

@@ -11,13 +11,6 @@ def fib(n)
 	end
 end
 
-arr=[
-		"Hello,ell",
-		"This is good,is",
-		"CodeEval,C*Eval",
-		"Old,Young",
-	]
-
 def subSearch(str)
 	cArr = str.split(",") # comparison array
 	a = cArr[0];
@@ -39,3 +32,13 @@ end
 def pokerHands(hands)
 
 end
+
+def matrixAddition(a, b)
+  nArr = []
+  a.each_with_index do (x,i)
+    nArr[i] = a[i] + b[i]
+  end
+  return nArr
+end
+
+puts matrixAddition([[1, 2], [1, 2]], [[2, 3], [2, 3]])

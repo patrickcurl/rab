@@ -114,13 +114,8 @@ return array(
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
 
-		// Details: https://github.com/laravelbook/laravel4-powerpack
 
 		'CeesVanEgmond\Minify\MinifyServiceProvider',
-		// 'Toddish\Verify\VerifyServiceProvider',
-		// 'VTalbot\Less\LessServiceProvider',
-
-		// 'Juy\Profiler\Providers\ProfilerServiceProvider',
 		'Cviebrock\EloquentSluggable\SluggableServiceProvider',
 		'Intervention\Validation\ValidationServiceProvider',
 		'\Gloudemans\Shoppingcart\ShoppingcartServiceProvider',
@@ -129,6 +124,7 @@ return array(
 		'Way\Generators\GeneratorsServiceProvider',
 		'Barryvdh\Debugbar\ServiceProvider',
 		'Barryvdh\DomPDF\ServiceProvider',
+		'Codesleeve\Stapler\StaplerServiceProvider',
 
 	),
 
@@ -201,8 +197,8 @@ return array(
 		'Sluggable'       => 'Cviebrock\EloquentSluggable\Facades\Sluggable',
 		'Cart'            => 'Gloudemans\Shoppingcart\Facades\Cart',
 		'Sentry'          => 'Cartalyst\Sentry\Facades\Laravel\Sentry',
-		'Debugbar' 		  => 'Barryvdh\Debugbar\Facade',
-		'PDF' => 'Barryvdh\DomPDF\Facade',
+		'Debugbar'        => 'Barryvdh\Debugbar\Facade',
+		'PDF'             => 'Barryvdh\DomPDF\Facade',
 	),
 
 );
