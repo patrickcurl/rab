@@ -110,9 +110,9 @@ Route::get('wp-admin', function(){
 Route::get('tag/{slug}', function($slug){
     return Redirect::to('http://blog.recycleabook.com/tag/' . $slug);
 });
-Route::get('privacy-policy', function(){
-    return Redirect::to('http://blog.recycleabook.com/privacy-policy');
-});
+// Route::get('privacy-policy', function(){
+//     return Redirect::to('http://blog.recycleabook.com/privacy-policy');
+// });
 Route::get('{slug1}/{slug2}', function($slug1, $slug2){
     if(isset($slug2)){
         $post = BlogController::blogJson("get_post/?slug={$slug2}");
