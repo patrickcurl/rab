@@ -266,7 +266,8 @@ RecycleABook.com - Sell Textbooks, Buy Textbooks, Discounted Textbooks
               <br>
              561 Congress Park Drive. Centerville, OH 45459
               <br>
-             RecycleABook.com, INC &copy; Copyright 2013
+             RecycleABook.com, INC &copy; Copyright 2013<br />
+             <a href="http://recycleabook.com/p/privacy-policy">Privacy Policy</a>
             </p>
           </div>
           <div class="span6">
