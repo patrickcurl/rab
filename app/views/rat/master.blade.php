@@ -130,7 +130,7 @@ if(!Modernizr.input.placeholder){
 
 
 <div class="span10 offset1">
-{{ Form::open(array('action' => 'BookController@postSearchSingle', 'id' => 'price-books-form', 'class' => 'form-inline')) }}
+{{ Form::open(array('action' => 'BookController@postSearchRat', 'id' => 'price-books-form', 'class' => 'form-inline')) }}
                <div class="input-append" style="width:100%" >
   <input  class="input-xxlarge" id="appendedInputButton" name="isbns" placeholder="Enter Isbns, separate multiples by comma." type="tel" style="width: 80%;height:40px;">
   <button class="btn btn-success" type="submit" style="height:50px">Find Books!</button>

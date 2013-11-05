@@ -134,6 +134,25 @@ public function getIndex($slug=null){
         //return $isbn;
         return View::make('single.search', array('books' => $books) );
     }
+    public function postSearchRat()
+    {
+        // $isbns =  str_replace("\r", "", Input::get('isbns'));
+        $isbns = preg_replace('/[^a-z\d,]/i', '', Input::get('isbns'));
+        $isbns = explode(",", $isbns);
+        $isbns = array_unique($isbns);
+        $books = array();
+        //return var_dump($isbns);
+        foreach($isbns as $isbn){
+           // if(\Intervention\Validation\Validator::isIsbn($isbn)){
+                $book = Book::find_or_create($isbn);
+                array_push($books, $book);
+          //  }
+
+        }
+
+        //return $isbn;
+        return View::make('rat.search', array('books' => $books) );
+    }
     public function searchISBN(){
         $type = Input::get('type');
         if(empty($type)){$type='retail';}

@@ -1,4 +1,4 @@
-@extends('single.master')
+@extends('rat.master')
 @section('content')
 
 @foreach ($books as $index => $book)
