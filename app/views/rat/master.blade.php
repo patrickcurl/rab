@@ -106,7 +106,7 @@ if(!Modernizr.input.placeholder){
   <div class="wrapper">
   <div class="row-fluid">
 
-    <img src="http://recycle-a-textbook.com/images/recycle-book-logo.jpg" class="span12" style="padding:20px 100px;"/>
+    <img src="http://recycle-a-textbook.com/images/recycle-book-logo.jpg" class="span10 offset1" style="padding:20px 300px;"/>
   </div>
     <header id="masthead">
 
