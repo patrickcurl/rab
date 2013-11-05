@@ -28,17 +28,7 @@ RecycleABook.com - Sell Textbooks, Buy Textbooks, Discounted Textbooks
 
 
 
-<?php
- /* <link rel="stylesheet" href="{{ URL::asset('css/application.css') }}">
 
-
-
-    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
-    <link href='http://fonts.googleapis.com/css?family=Syncopate' rel='stylesheet' type='text/css'>
- <link href='http://fonts.googleapis.com/css?family=PT+Serif' rel='stylesheet' type='text/css'>
- <link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
- */
-?>
   <link href="{{ URL::asset('stylesheets/bootstrap.css') }}" media="screen" rel="stylesheet" type="text/css" />
   <link href="{{ URL::asset('stylesheets/responsive.css') }}" media="screen" rel="stylesheet" type="text/css" />
   <link href="{{ URL::asset('stylesheets/font-awesome-all.css') }}" media="screen" rel="stylesheet" type="text/css" />
@@ -113,7 +103,7 @@ if(!Modernizr.input.placeholder){
 
   <div class="wrapper">
   <div class="row-fluid">
-    <img src="{{ URL::asset('images/assets/misc/logo.png')}}" class="span12"></a>
+    <img src="{{ URL::asset('images/assets/misc/logo.png')}}" class="span12" style="padding: 20px 350px" ></a>
   </div>
     <header id="masthead">
 
