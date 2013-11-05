@@ -28,17 +28,71 @@ def subSearch(str)
 		puts false
 	end
 end
-
-def pokerHands(hands)
-
-end
-
 def matrixAddition(a, b)
-  nArr = []
-  a.each_with_index do (x,i)
-    nArr[i] = a[i] + b[i]
+
+  a.each_with_index do (x)
+    nArr[i] = x[i] + b[i]
   end
   return nArr
 end
 
-puts matrixAddition([[1, 2], [1, 2]], [[2, 3], [2, 3]])
+def pokerHands(h)
+	hand = []
+	hands = h.split(" ")
+	hands.each_with_index do |x,i|
+		c  = x.split("")
+		case c[1]
+			when "D"
+				c[1] = "Diamonds"
+			when "C"
+				c[1] = "Clubs"
+			when "H"
+				c[1] = "Hearts"
+			when "S"
+				c[1] = "Spades"
+		end
+		hand[i] = {c[1] => c[0]}
+
+	end
+	return hand
+end
+print pokerHands("6D 7H AH 7S QC 6H 2D TD JD AS")
+
+def rFlush(h)
+
+end
+
+def sFlush(h)
+end
+
+def fKind(h)
+end
+
+def fHouse(h)
+end
+
+def flush(h)
+end
+
+def straight(h)
+end
+
+def tKind(h)
+end
+
+def tPairs(h)
+end
+
+def oPair(h)
+end
+
+def highCard(h)
+end
+
+
+
+
+
+
+
+

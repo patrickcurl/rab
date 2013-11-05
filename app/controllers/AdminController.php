@@ -329,6 +329,7 @@ public function __construct(){
         $upload_success = Input::file('file')->move($destinationPath, $filename);
 
         if( $upload_success ) {
+
         return Response::json('success', 200);
         } else {
             return Response::json('error', 400);

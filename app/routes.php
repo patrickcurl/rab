@@ -32,6 +32,26 @@ Route::group(array('domain' => 'single.recycleabook.com'), function()
     });
 
 });
+Route::group(array('domain' => 'rat.rab.dev'), function()
+{
+
+    Route::get('/', function()
+    {
+        return View::make('rat.index');
+        //
+    });
+
+});
+Route::group(array('domain' => 'rat.recycleabook.com'), function()
+{
+
+    Route::get('/', function()
+    {
+        return View::make('rat.index');
+        //
+    });
+
+});
 Route::get('/', function()
 {
 
