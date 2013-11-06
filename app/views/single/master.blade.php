@@ -108,7 +108,7 @@ if(!Modernizr.input.placeholder){
     <header id="masthead">
 
 
-         <div class="row-fluid"><p class="text-center"><em>Our Mission is simple: To help students receive the most affordable textbooks on the market. Please Join our cause. You can make a difference.</em></p></div>
+         <div class="row-fluid"><p class="text-center"><em>Our Mission is simple: To help students receive the most affordable textbooks on the market.</em></p></div>
     </header>
 
 
