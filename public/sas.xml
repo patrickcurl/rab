@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<IMSAS>
+<Order>
+    <API>
+        <Key>xjpNbb0V6i1383584206</Key>
+    </API>
+    <Product>tenant</Product>
+    <Data>
+        <FirstName>Patrick</FirstName>
+        <LastName>Curl</LastName>
+        <SSN>301-74-5126</SSN>
+        <address1>
+            <buildingnum>54</buildingnum>
+            <streetname>Bond St</streetname>
+            <city>Dayton</city>
+            <state>OH</state>
+            <zip>45405</zip>
+        </address1>
+    </Data>
+</Order>
+</IMSAS>

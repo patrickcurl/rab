@@ -1,10 +1,64 @@
 <?php
 
+//this is the POST URL
+$url = 'https://www.imsasllc.com/api/';
 
-$o = SupplyOrder::find(9);
-foreach($o->items as $i)
-  { var_dump($i); }
+//create the XML Request
+define('_PAYLOAD_', '<?xml version="1.0" encoding="utf-8"?>
+<IMSAS>
+<Order>
+    <API>
+        <Key>xjpNbb0V6i1383584206</Key>
+    </API>
+    <Product>tenant</Product>
+    <Data>
+        <FirstName>Patrick</FirstName>
+        <LastName>Curl</LastName>
+        <SSN>301-74-5126</SSN>
+        <address1>
+            <buildingnum>54</buildingnum>
+            <streetname>Bond St</streetname>
+            <city>Dayton</city>
+            <state>OH</state>
+            <zip>45405</zip>
+        </address1>
+    </Data>
+</Order>
+</IMSAS>');
 
+$fields = array(
+            'user'=>urlencode('127690'),
+            'format'=>urlencode('xml'),
+            'input'=>urlencode(_PAYLOAD_)
+        );
+$fields_string="";
+//url-ify the data for the POST
+foreach($fields as $key=>$value) { $fields_string .= $key.'='.$value.'&'; }
+rtrim($fields_string,'&');
+var_dump($fields_string);
+//$header = "Content-Type: application/x-www-form-urlencoded \r\n";
+$header = array("Content-Type: application/x-www-form-urlencoded");
+//open connection
+
+
+$curl = New Curl;
+$curl->create($url);
+$curl->option(CURLOPT_POSTFIELDS, $fields_string);
+$ch = curl_init();
+
+//set the url, number of POST vars, POST data
+curl_setopt($ch,CURLOPT_URL,$url);
+curl_setopt($ch,CURLOPT_POST,count($fields));
+curl_setopt($ch,CURLOPT_POSTFIELDS,$fields_string);
+curl_setopt($ch, CURLOPT_HTTPHEADER, $header);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); // allows for transfer to be put into a string
+
+//execute post
+$result = curl_exec($ch);
+
+//close connection
+curl_close($ch);
+var_dump($result);
 // $curl = New Curl;
 // var_dump($curl->simple_post(URL::to('api/v1/supplies/store'), array('name' =>'some item', 'description' => 'Item description')));
 // var_dump($curl);
