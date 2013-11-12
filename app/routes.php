@@ -101,6 +101,7 @@ Route::get('isbn-results','BookController@getIsbnResults');
 Route::get('search_isbn.php', 'BookController@searchISBN');
 
 Route::get('test', function(){
+
         //echo Gremlindash::greeting();
         //phpinfo();
 	return View::make('test');

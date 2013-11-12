@@ -15,7 +15,9 @@ class BookControllerTest extends TestCase {
 	}
 	public function testIndex()
 	{
-		$this->client->request('GET', 'books');
+		//$this->client->request('GET', 'books');
+		$this->get('books');
+		$this->assertResponseOk();
 	}
 
 }

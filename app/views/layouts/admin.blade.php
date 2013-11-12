@@ -1,44 +1,11 @@
 <!DOCTYPE html>
 <!--[if IE 8 ]> <html lang="en" class="ie8"> <![endif]-->
-<!--[if (gt IE 8)]><!--> <html lang="en"> <!--<![endif]-->
+<!--[if (gt IE 8)]><!--> <html lang="en" {? $__env->startSection('html'); print_r( $__env->yieldSection()); ?}> <!--<![endif]-->
 <head>
-<meta charset="utf-8" />
-<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
-  <title>@section('title')
-RecycleABook.com - Sell Textbooks, Buy Textbooks, Discounted Textbooks
-@show</title>
-  <meta content="Bootsrap based theme" name="description">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <meta content="yes" name="apple-mobile-web-app-capable">
-
-<link rel="apple-touch-icon-precomposed" sizes="144x144" href="../ico/apple-touch-icon-144-precomposed.png" />
-<link rel="apple-touch-icon-precomposed" sizes="114x114" href="../ico/apple-touch-icon-114-precomposed.png" />
-<link rel="apple-touch-icon-precomposed" sizes="72x72" href="../ico/apple-touch-icon-72-precomposed.png" />
-<link rel="apple-touch-icon-precomposed" href="../ico/apple-touch-icon-57-precomposed.png" />
-<link rel="shortcut icon" href="../ico/favicon.png" />
-
-<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
 
 
-<?php
- /* <link rel="stylesheet" href="{{ URL::asset('css/application.css') }}">
+@include('layouts.head')
 
-
-
-    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
-    <link href='http://fonts.googleapis.com/css?family=Syncopate' rel='stylesheet' type='text/css'>
- <link href='http://fonts.googleapis.com/css?family=PT+Serif' rel='stylesheet' type='text/css'>
- <link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
- */
-?>
-  <link href="{{ URL::asset('stylesheets/bootstrap.css') }}" media="screen" rel="stylesheet" type="text/css" />
-  <link href="{{ URL::asset('stylesheets/responsive.css') }}" media="screen" rel="stylesheet" type="text/css" />
-  <link href="{{ URL::asset('stylesheets/font-awesome-all.css') }}" media="screen" rel="stylesheet" type="text/css" />
-  <link href="{{ URL::asset('stylesheets/fancybox.css') }}" media="screen" rel="stylesheet" type="text/css" />
-  <link href="{{ URL::asset('stylesheets/theme.css') }}" media="screen" rel="stylesheet" type="text/css" />
-  <link href="{{ URL::asset('stylesheets/fonts.css') }}" media="screen" rel="stylesheet" type="text/css" />
-    @section('head')
-    @show
     <style>
       .navbar-inner{ min-height: 0px; }
       .navbar .brand {
@@ -53,7 +20,6 @@ RecycleABook.com - Sell Textbooks, Buy Textbooks, Discounted Textbooks
       }
     </style>
 </head>
-
 <body @section('body_tag')
 
 @show>
@@ -226,84 +192,9 @@ RecycleABook.com - Sell Textbooks, Buy Textbooks, Discounted Textbooks
   </div>
 
  <!-- Page Footer -->
-  <footer id="footer" role="contentinfo">
-    <div class="wrapper wrapper-transparent">
-      <div class="container-fluid">
-        <div class="row-fluid">
-          <div class="span6 small-screen-center">
-            <h3>
-              Recycle A
-              <span class="light">
-                Book
-              </span>
-            </h3>
-            <p>
-              Office:(937) 439-4848 <br> Fax:(866) 224-1262   <br>Email:<a href="mailto:info@RecycleABook.com">info@RecycleABook.com</a>
-              <br>
-             561 Congress Park Drive. Centerville, OH 45459
-              <br>
-             RecycleABook.com, INC &copy; Copyright 2013
-            </p>
-          </div>
-          <div class="span6">
-            <ul class="unstyled inline text-right small-screen-center big social-icons">
-              <li>
-                <a data-iconcolor="#00a0d1" href="http://www.twitter.com/recycleabook">
-                  <i class="icon-twitter"></i>
-                </a>
-              </li>
-              <li>
-                <a data-iconcolor="#3b5998" href="https://www.facebook.com/pages/RecycleAbookcom/256102557767102">
-                  <i class="icon-facebook"></i>
-                </a>
-              </li>
-                         </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </footer>
+@include('layouts.footer')
+@include('layouts.scripts')
 
-  <script src="{{URL::asset('javascripts/bootstrap.js')}}" type="text/javascript"></script>
-  <script src="{{URL::asset('javascripts/jquery.flexslider-min.js')}}" type="text/javascript"></script>
-  <script src="{{URL::asset('javascripts/jquery.tweet.js')}}" type="text/javascript"></script>
-  <script src="{{URL::asset('javascripts/jquery.fancybox.pack.js')}}" type="text/javascript"></script>
-  <script src="{{URL::asset('javascripts/jquery.fancybox-media.js')}}" type="text/javascript"></script>
-  <script src="{{URL::asset('javascripts/script.js')}}" type="text/javascript"></script>
-
-
-
-
-
-<div id="wrap" style="margin-top:20px;margin-bottom:40px;">
-
-    <div
-    @section('container_class')
-    class="container page-content clearfix"
-    @show  >
-
-
-      </div>
-
-
-</div>
-
-
-     <!-- /container -->
-
-
-
-
-
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-<script type="text/javascript" src="{{URL::asset('/javascripts/jquery.serializeObject.min.js')}}"></script>
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0-wip/js/bootstrap.min.js"></script>
-
-{{ javascript(array(
-        'dropdown.js',
-        'collapse.js'
-    ))
-}}
 
 <script>
   $('.dropdown-toggle').dropdown();

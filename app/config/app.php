@@ -116,13 +116,13 @@ return array(
 
 		// Details: https://github.com/laravelbook/laravel4-powerpack
 
-		'CeesVanEgmond\Minify\MinifyServiceProvider',
+		//  'CeesVanEgmond\Minify\MinifyServiceProvider',
 		// 'Toddish\Verify\VerifyServiceProvider',
 		// 'VTalbot\Less\LessServiceProvider',
 		// 'Hailwood\Smartless4laravel\Smartless4laravelServiceProvider',
-		'Juy\Profiler\Providers\ProfilerServiceProvider',
+		// 'Juy\Profiler\Providers\ProfilerServiceProvider',
 		'Cviebrock\EloquentSluggable\SluggableServiceProvider',
-		'Intervention\Validation\ValidationServiceProvider',
+		//  'Intervention\Validation\ValidationServiceProvider',
 		'\Gloudemans\Shoppingcart\ShoppingcartServiceProvider',
 		'Cartalyst\Sentry\SentryServiceProvider',
 		'Kmd\Logviewer\LogviewerServiceProvider',

@@ -60,8 +60,15 @@ public function __construct(){
         return View::make('admin.customers', array('orders' => $orders));
     }
 
+    public function getMailbox(){
+
+        $imap = eden('Mail')->imap('imap.secureserver.net', 'patrick@recycleabook.com', 'password', 993, true);
+        $data['emails'] = $imap->getEmails(0, $imap->getEmailTotal());
+        return View::make('admin.mailbox', $data);
+    }
+
     public function getUsers(){
-        $users = User::with('orders')->paginate(40);
+        $users = User::with('orders')->paginate(100);
         $groups = Group::all();
         //$users = Sentry::getUserProvider()->findAll()->with('orders');
         //php
