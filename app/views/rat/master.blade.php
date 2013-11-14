@@ -202,12 +202,9 @@ if(!Modernizr.input.placeholder){
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0-wip/js/bootstrap.min.js"></script>
 
-{{ javascript(array(
-        'dropdown.js',
-        'collapse.js'
-    ))
-}}
-<script>
+{{HTML::script('dropdown.js')}}
+{{HTML::script('collapse.js')
+}}<script>
   $('.dropdown-toggle').dropdown()
 </script>
 @section('footer')
