@@ -35,7 +35,8 @@ public function __construct(){
 
         $data = array(
                            'supplies' => Supply::all(),
-                           'orders' => SupplyOrder::all()
+                           'orders' => SupplyOrder::all(),
+                           'files' => Upload::all()
                            );
 
         return View::make('admin.buyers', $data);
@@ -60,12 +61,34 @@ public function __construct(){
         return View::make('admin.customers', array('orders' => $orders));
     }
 
-    public function getMailbox(){
+    public function getMailbox($m=null){
+        $emails = Cache::get('emails', function(){
+            $imap = eden('Mail')->imap('imap.secureserver.net', 'patrick@recycleabook.com', 'password', 993, true);
+            $imap->setActiveMailbox('INBOX');
+            $e = $imap->getEmails(0, $imap->getEmailTotal());
+            Cache::add('emails', $e, 60);
+            $imap->disconnect();
 
-        $imap = eden('Mail')->imap('imap.secureserver.net', 'patrick@recycleabook.com', 'password', 993, true);
-        $data['emails'] = $imap->getEmails(0, $imap->getEmailTotal());
-        return View::make('admin.mailbox', $data);
+            return $e;
+
+        });
+        $data['emails'] = array();
+        foreach($emails as $i => $em){
+            $data['emails'][$i]['id'] = $em['id'];
+            $data['emails'][$i]['from'] = $em['from']['email'];
+            $data['emails'][$i]['to'] = $em['to'][0]['email'];
+            $data['emails'][$i]['subject'] = $em['subject'];
+            $data['emails'][$i]['date'] = date('m-d-Y', $em['date']);
+        }
+
+        if ($m=="json"){
+            return json_encode($data['emails']);
+        } else {
+            return View::make('admin.mailbox_test', $data);
+        }
+
     }
+
 
     public function getUsers(){
         $users = User::with('orders')->paginate(100);
@@ -331,12 +354,17 @@ public function __construct(){
         $file = Input::file('file');
         $destinationPath = 'uploads/';
         $filename = date('m-d-Y') . "_" . str_random(8) . "_" .$file->getClientOriginalName();
+        $filesize = $file->getSize();
         // $extension =$file->getClientOriginalExtension();
         // $filename = str_random(8) . "." .$extension;
         $upload_success = Input::file('file')->move($destinationPath, $filename);
 
-        if( $upload_success ) {
+        if( $upload_success && isset($filename)) {
 
+            $nfile = new Upload;
+            $nfile->name = $filename;
+            if (isset($filesize)) { $nfile->size = $filesize; }
+            $nfile->save();
         return Response::json('success', 200);
         } else {
             return Response::json('error', 400);

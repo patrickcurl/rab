@@ -6,28 +6,16 @@
   <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.1/css/font-awesome.css" rel="stylesheet">
    <!-- uploadfile -->
 {{ HTML::style('stylesheets/basic.css');}}
-?
-1
+{{ HTML::style('tablesorter/style/blue/style.css')}}
+{{ HTML::style('tablesorter/style/jquery.tablesorter.pager.css')}}
 {{ HTML::script('javascripts/dropzone.js') }}
-  <script>
-  $(function() {
-    $( "#datepicker" ).datepicker();
-  });
-   </script>
-   <script type='text/javascript'>//<![CDATA[
-$(window).load(function(){
-    $(".phone").text(function(i, text) {
-        text = text.replace(/(\d{3})(\d{3})(\d{4})/, "($1) $2-$3");
-        return text;
-    });
-});//]]>
-
-</script>
-   <script>
-  $(function() {
-    $( "#datepicker2" ).datepicker();
-  });
-  </script>
+{{ HTML::script('tablesorter/js/jquery.tablesorter.min.js')}}
+{{ HTML::script('tablesorter/js/jquery.tablesorter.pager.js')}}
+<script>$(document).ready(function() {
+    $("#myTable")
+    .tablesorter({widthFixed: true, widgets: ['zebra']})
+    .tablesorterPager({container: $("#pager")});
+});</script>
 @stop
 @section('container_class')
 class="container-fluid page-content"
@@ -79,14 +67,52 @@ class="container-fluid page-content"
 <form action="{{ url('admin/upload')}}" class="dropzone" id="my-awesome-dropzone">
 
 </form>
+<table id="myTable" class="tablesorter">
+<thead>
+<tr>
+    <th>File Name</th>
+    <th>Size</th>
+    <th>Type</th>
+    <th>Description</th>
+    <th>Users</th>
+    <th>Date Uploaded</th>
+</tr>
+</thead>
+<tbody>
+@foreach($files as $file)
+  <tr>
+    <td>{{$file->name}}</td>
+    <td>{{$file->size}}</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+@endforeach
+</tbody>
+</table>
+<div id="pager" class="pager">
+  <form>
+    <img src="{{asset('tablesorter/style/first.png')}}" class="first"/>
+    <img src="{{asset('tablesorter/style/prev.png')}}" class="prev"/>
+    <input type="text" class="pagedisplay')}}"/>
+    <img src="{{asset('tablesorter/style/next.png')}}" class="next"/>
+    <img src="{{asset('tablesorter/style/last.png')}}" class="last"/>
+    <select class="pagesize">
+      <option selected="selected"  value="10">10</option>
+      <option value="20">20</option>
+      <option value="30">30</option>
+      <option  value="40">40</option>
+    </select>
+  </form>
+</div>
+
+
 @stop
 @section('footer')
 
 <script>
-  $(function() {
-    $( "#datepicker" ).datepicker();
 
-  });
   $(document).ready(function() {
 
         var settings = $("#mulitplefileuploader").uploadFile({
@@ -120,5 +146,77 @@ class="container-fluid page-content"
                 }
             }
         });
+        </script>
+        <script>
+$(document).ready(function($) {
+
+    $('button.ajax').on('click', function(event) {
+        event.preventDefault();
+
+        var url = "{{URL::to('/api/v1/supplies')}}";
+
+        var newItem = $('#addSupply').serializeObject();
+        var tbody = $('#supply-list');
+        $.ajax({
+            url: url,
+            data: newItem,
+            type: 'post',
+            dataType: 'json',
+            success: function(ev){
+              console.log(ev);
+              if(ev.error === false ){
+
+                $('#supply-list tbody').append('<tr><td>' + ev.name + '</td><td>' + ev.description +'</td><td><a href="#" class="ajax"  data-id="' + ev.id +'"><i class="icon-remove"></i></a></td></tr>');
+              } else {
+
+               $('#error-code').text(ev.message).show().fadeOut(1500);
+
+              }
+
+            },
+            error: function(hxr, error, status){ alert('Error'); }
+        });
+    });
+    $('#supply-list').on('click', 'a.ajax', function(event) {
+        event.preventDefault();
+        var id = $(this).data('id');
+        var url = "{{URL::to('/api/v1/supplies/')}}" + "/" + id;
+        var row = $(this).closest('tr');
+        $.ajax({
+            url: url,
+            type: 'delete',
+            dataType: 'json',
+            success: function(ev){
+              if(ev.error===false){
+                row.slideUp('normal', function() { row.remove(); });
+              } else {
+                 $('#error-code').text(ev.message).fadeIn(0).fadeOut(1500);
+              }
+
+            },
+            error: function(hxr, error, status){ alert('Error'); }
+        });
+    });
+    $('div#processed').on('click', 'a.process', function(event){
+      event.preventDefault();
+      var id = $(this).data('id');
+      var bool = $(this).data('bool');
+      var url = "{{URL::to('/api/v1/sorders/')}}" + "/" + id;
+      console.log(id);
+      $.ajax({
+        url: url,
+        type: 'patch',
+        data: { processed : bool },
+        success: function(ev){
+          $('#processed-' + id).attr('checked', bool);
+
+
+        },
+        error: function(hxr, error, status){ alert('Error'); }
+      });
+      console.log(bool);
+    });
+  });
+</script>
 
 @stop

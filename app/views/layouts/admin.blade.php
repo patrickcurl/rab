@@ -196,11 +196,7 @@
 @include('layouts.scripts')
 
 
-<script>
-  $('.dropdown-toggle').dropdown();
-  $('.tooltip1').tooltip('tritter':'focus', 'title':'testing123')
 
-</script>
 
 @section('footer')
 @show
@@ -217,76 +213,6 @@ $('input[type=text][name=isbns]').popover({
 });//]]>
 
 </script>
-<script>
-jQuery(document).ready(function($) {
 
-    $('button.ajax').on('click', function(event) {
-        event.preventDefault();
-
-        var url = "{{URL::to('/api/v1/supplies')}}";
-
-        var newItem = $('#addSupply').serializeObject();
-        var tbody = $('#supply-list');
-        $.ajax({
-            url: url,
-            data: newItem,
-            type: 'post',
-            dataType: 'json',
-            success: function(ev){
-              console.log(ev);
-              if(ev.error === false ){
-
-                $('#supply-list tbody').append('<tr><td>' + ev.name + '</td><td>' + ev.description +'</td><td><a href="#" class="ajax"  data-id="' + ev.id +'"><i class="icon-remove"></i></a></td></tr>');
-              } else {
-
-               $('#error-code').text(ev.message).show().fadeOut(1500);
-
-              }
-
-            },
-            error: function(hxr, error, status){ alert('Error'); }
-        });
-    });
-    $('#supply-list').on('click', 'a.ajax', function(event) {
-        event.preventDefault();
-        var id = $(this).data('id');
-        var url = "{{URL::to('/api/v1/supplies/')}}" + "/" + id;
-        var row = $(this).closest('tr');
-        $.ajax({
-            url: url,
-            type: 'delete',
-            dataType: 'json',
-            success: function(ev){
-              if(ev.error===false){
-                row.slideUp('normal', function() { row.remove(); });
-              } else {
-                 $('#error-code').text(ev.message).fadeIn(0).fadeOut(1500);
-              }
-
-            },
-            error: function(hxr, error, status){ alert('Error'); }
-        });
-    });
-    $('div#processed').on('click', 'a.process', function(event){
-      event.preventDefault();
-      var id = $(this).data('id');
-      var bool = $(this).data('bool');
-      var url = "{{URL::to('/api/v1/sorders/')}}" + "/" + id;
-      console.log(id);
-      $.ajax({
-        url: url,
-        type: 'patch',
-        data: { processed : bool },
-        success: function(ev){
-          $('#processed-' + id).attr('checked', bool);
-
-
-        },
-        error: function(hxr, error, status){ alert('Error'); }
-      });
-      console.log(bool);
-    });
-  });
-</script>
   </body>
 </html>

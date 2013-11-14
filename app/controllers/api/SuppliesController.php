@@ -12,8 +12,7 @@ class SuppliesController extends \Controller {
 	public function destroy($id){
 		$supply = \Supply::find($id);
 		$supply->delete();
-		$items = SupplyItem::where('supply_id', '=', $supply->id)->get();
-		foreach($items)
+		//$item = SupplyItem::where('supply_id', '=', $supply->id)->get();
 
 		$response = array('error' => false,
 			               'message' => 'Item deleted.');
