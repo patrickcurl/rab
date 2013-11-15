@@ -425,7 +425,15 @@ public function postEdit($id, $type="profile") {
                         // Update the user details
                         $user->first_name = $input['first_name'];
                         $user->last_name = $input['last_name'];
-
+                        $user->email = $input['email'];
+                        $user->phone = $input['phone'];
+                        $user->address = $input['address']
+                        $user->city = $input['city'];
+                        $user->state = $input['state'];
+                        $user->zip = $input['zip'];
+                        $user->payment_method = $input['payment_method'];
+                        $user->paypal_email = $input['paypal_email'];
+                        $user->name_on_cheque = $input['name_on_cheque'];
                         // Update the user
                         if ($user->save())
                         {
