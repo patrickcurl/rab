@@ -10,7 +10,7 @@ Home
 @section('content')
 
   @if (Sentry::check())
-  <div class="col-md-6">
+  <div class="span6">
   <h4>Account Profile</h4>
 
     <dl class="cart-dl">
