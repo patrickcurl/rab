@@ -1,21 +1,23 @@
 @extends('layouts.admin')
 @section('head')
+
   <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
-  <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js'></script>
   <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
   <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.1/css/font-awesome.css" rel="stylesheet">
    <!-- uploadfile -->
 {{ HTML::style('stylesheets/basic.css');}}
-{{ HTML::style('tablesorter/style/blue/style.css')}}
-{{ HTML::style('tablesorter/style/jquery.tablesorter.pager.css')}}
 {{ HTML::script('javascripts/dropzone.js') }}
-{{ HTML::script('tablesorter/js/jquery.tablesorter.min.js')}}
-{{ HTML::script('tablesorter/js/jquery.tablesorter.pager.js')}}
-<script>$(document).ready(function() {
-    $("#myTable")
-    .tablesorter({widthFixed: true, widgets: ['zebra']})
-    .tablesorterPager({container: $("#pager")});
-});</script>
+
+<script type='text/javascript' src="http://code.angularjs.org/angular-1.0.0rc1.js"></script>
+{{ HTML::script('javascripts/colResizable-1.3.min.js') }}
+<script type="text/javascript">
+        var sortingOrder = 'name';
+    </script>
+<?php echo $child; // pull in _ang_files_js partial ?>
+@stop
+@section('body_tag')
+ng-app="myapp"
 @stop
 @section('container_class')
 class="container-fluid page-content"
@@ -67,55 +69,17 @@ class="container-fluid page-content"
 <form action="{{ url('admin/upload')}}" class="dropzone" id="my-awesome-dropzone">
 
 </form>
-<table id="myTable" class="tablesorter">
-<thead>
-<tr>
-    <th>File Name</th>
-    <th>Size</th>
-    <th>Type</th>
-    <th>Description</th>
-    <th>Users</th>
-    <th>Date Uploaded</th>
-</tr>
-</thead>
-<tbody>
-@foreach($files as $file)
-  <tr>
-    <td>{{$file->name}}</td>
-    <td>{{$file->size}}</td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-  </tr>
-@endforeach
-</tbody>
-</table>
-<div id="pager" class="pager">
-  <form>
-    <img src="{{asset('tablesorter/style/first.png')}}" class="first"/>
-    <img src="{{asset('tablesorter/style/prev.png')}}" class="prev"/>
-    <input type="text" class="pagedisplay')}}"/>
-    <img src="{{asset('tablesorter/style/next.png')}}" class="next"/>
-    <img src="{{asset('tablesorter/style/last.png')}}" class="last"/>
-    <select class="pagesize">
-      <option selected="selected"  value="10">10</option>
-      <option value="20">20</option>
-      <option value="30">30</option>
-      <option  value="40">40</option>
-    </select>
-  </form>
-</div>
+
+@include('partials._ang_files')
+
 
 
 @stop
 @section('footer')
 
-<script>
 
-  $(document).ready(function() {
-
-        var settings = $("#mulitplefileuploader").uploadFile({
+$(document).ready(function() {
+  var settings = $("#mulitplefileuploader").uploadFile({
             url: "{{ URL::to('upload') }}",
             method: "POST",
             allowedTypes:"jpg,png,gif",
@@ -132,9 +96,7 @@ class="container-fluid page-content"
                 $("#status").html("<font color='green'>Something Wrong</font>");
             }
         });
-
         $('.submit_form').click(function() {
-
             var validate = $("#myform").validationEngine('validate');
             var has_file = $(".ajax-file-upload-statusbar").length //check if there files need upload
 
@@ -146,6 +108,7 @@ class="container-fluid page-content"
                 }
             }
         });
+      });
         </script>
         <script>
 $(document).ready(function($) {
@@ -217,6 +180,5 @@ $(document).ready(function($) {
       console.log(bool);
     });
   });
-</script>
 
 @stop

@@ -1,0 +1,13 @@
+{{HTML::script('http://code.jquery.com/jquery-git.js')}}
+{{HTML::script('tablesorter/js/jquery.tablesorter.js')}}
+{{HTML::script('tablesorter/js/jquery.tablesorter.widgets.js')}}
+{{HTML::style('tablesorter/css/theme.blue.css')}}
+{{HTML::style('tablesorter/css/theme.dark.css')}}
+{{HTML::style('tablesorter/css/theme.default.css')}}
+{{HTML::style('tablesorter/css/theme.dropbox.css')}}
+{{HTML::style('tablesorter/css/theme.green.css')}}
+{{HTML::style('tablesorter/css/theme.grey.css')}}
+{{HTML::style('tablesorter/css/theme.ice.css')}}
+{{HTML::style('tablesorter/css/theme.black-ice.css')}}
+{{HTML::style('tablesorter/addons/pager/jquery.tablesorter.pager.css')}}
+{{HTML::script('tablesorter/addons/pager/jquery.tablesorter.pager.js')}}

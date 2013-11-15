@@ -36,10 +36,10 @@ public function __construct(){
         $data = array(
                            'supplies' => Supply::all(),
                            'orders' => SupplyOrder::all(),
-                           'files' => Upload::all()
+                           'files' => Upload::all()->toJson()
                            );
 
-        return View::make('admin.buyers', $data);
+        return View::make('admin.buyers', $data)->nest('child', 'partials._ang_files_js', $data);
      }
 
      public function getEditBuyer($id){
