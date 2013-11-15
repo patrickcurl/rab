@@ -77,7 +77,7 @@ Home
       <dt>Last payment: </dt><dd>N/A</dd>
     </dl>
   </div>
-  </div>
+
 <div class="span12">
       <em>Account created: {{ $user->created_at }} | </em><em>Last Updated: {{ $user->updated_at }}</em>
     </div>
