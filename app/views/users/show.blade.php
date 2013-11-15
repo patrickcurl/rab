@@ -10,12 +10,11 @@ Home
 @section('content')
 
   @if (Sentry::check())
-  <div class="span6">
+  <div class="container">
   <h4>Account Profile</h4>
 
     <dl class="dl-horizontal">
-
-        @if ($user->first_name)
+      @if ($user->first_name)
         <dt>First Name:</dt><dd>{{ $user->first_name }}</dd>
 
       @endif
@@ -59,15 +58,15 @@ Home
 
       @endif
       </dl>
-        <button class="col-md-12 btn btn-info" onClick="location.href='{{ URL::to('users/edit') }}/{{ $user->id}}'">Edit Profile</button>
+        <button class="span12 btn btn-info" onClick="location.href='{{ URL::to('users/edit') }}/{{ $user->id}}'">Edit Profile</button>
 
-    <div class="col-md-12">
-      <em>Account created: {{ $user->created_at }} | </em><em>Last Updated: {{ $user->updated_at }}</em>
-    </div>
+
   </div>
-  <div class="col-md-6">
+  </div>
+  <div class="container">
+  <div class="span6">
     <h4>Referral Earnings</h4>
-    <dl class="dl-horizontal cart-dl">
+    <dl class="dl-horizontal">
       <dt>Pending Buybacks:</dt><dd>{{ $commissions['orders']['pending']['count'] }}</dd>
       <dt>Pending Buyback Totals:</dt><dd>${{ number_format($commissions['orders']['pending']['amount'], 2)}}</dd>
       <dt>Pending Commissions:</dt><dd>${{ number_format(($commissions['orders']['pending']['amount'] * .06), 2)}}</dd>
@@ -78,7 +77,10 @@ Home
       <dt>Last payment: </dt><dd>N/A</dd>
     </dl>
   </div>
-
+  </div>
+<div class="span12">
+      <em>Account created: {{ $user->created_at }} | </em><em>Last Updated: {{ $user->updated_at }}</em>
+    </div>
 @if ($user->hasAccess('admin'))
   <h4>Group Memberships:</h4>
   <div class="well">
