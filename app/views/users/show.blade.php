@@ -13,7 +13,7 @@ Home
   <div class="span6">
   <h4>Account Profile</h4>
 
-    <dl class="cart-dl">
+    <dl class="dl-horizontal">
 
         @if ($user->first_name)
         <dt>First Name:</dt><dd>{{ $user->first_name }}</dd>
