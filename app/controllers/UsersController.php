@@ -183,7 +183,6 @@ catch (Cartalyst\Sentry\Throttling\UserBannedException $e)
     }
 
     public function postRegister(){
-        $referred_by = $_COOKIE["referred_by"];
 
 
         $first_name = Input::get('first_name');
