@@ -146,10 +146,13 @@ class Book extends Eloquent {
           $book = Book::where('isbn10', '=', $isbn)
                         ->orWhere('isbn13', '=', $isbn)
                         ->first();
-          if(isset($isbns['10'])){$book->isbn10 = $isbns['10'];}
-          if(isset($isbns['13'])){$book->isbn13 = $isbns['13'];}
 
-          $book->save();
+          if(isset($book)){
+            if(isset($isbns['10'])){$book->isbn10 = $isbns['10'];}
+              if(isset($isbns['13'])){$book->isbn13 = $isbns['13'];}
+              $book->save();
+          }
+
           if (empty($book)){
 
              $book_info = self::getBook($isbn);
