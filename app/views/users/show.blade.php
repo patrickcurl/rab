@@ -11,6 +11,7 @@ Home
 
   @if (Sentry::check())
   <div class="container">
+  <div class="span6">
   <h4>Account Profile</h4>
 
     <dl class="dl-horizontal">
@@ -62,8 +63,7 @@ Home
 
 
   </div>
-  </div>
-  <div class="container">
+
   <div class="span6">
     <h4>Referral Earnings</h4>
     <dl class="dl-horizontal">
