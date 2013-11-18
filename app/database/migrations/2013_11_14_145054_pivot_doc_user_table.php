@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class PivotFileUserTable extends Migration {
+class PivotDocUserTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,11 +12,11 @@ class PivotFileUserTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('file_user', function(Blueprint $table) {
+		Schema::create('doc_user', function(Blueprint $table) {
 			$table->increments('id');
-			$table->integer('file_id')->unsigned()->index();
+			$table->integer('doc_id')->unsigned()->index();
 			$table->integer('user_id')->unsigned()->index();
-			$table->foreign('file_id')->references('id')->on('files')->onDelete('cascade');
+			$table->foreign('doc_id')->references('id')->on('docs')->onDelete('cascade');
 			$table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 		});
 	}
@@ -30,7 +30,7 @@ class PivotFileUserTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('file_user');
+		Schema::drop('doc_user');
 	}
 
 }

@@ -36,7 +36,7 @@ public function __construct(){
         $data = array(
                            'supplies' => Supply::all(),
                            'orders' => SupplyOrder::all(),
-                           'files' => Upload::all()->toJson()
+                           'files' => Doc::all()->toJson()
                            );
 
         return View::make('admin.buyers', $data)->nest('child', 'partials._ang_files_js', $data);
@@ -361,7 +361,7 @@ public function __construct(){
 
         if( $upload_success && isset($filename)) {
 
-            $nfile = new Upload;
+            $nfile = new Doc;
             $nfile->name = $filename;
             if (isset($filesize)) { $nfile->size = $filesize; }
             $nfile->save();

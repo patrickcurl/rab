@@ -1,61 +1,15 @@
-<div ng-app="myapp">
-    <div ng-controller="Ctrl">
-        <table ng-grid >
-            <tr ng-repeat="todo in todos">
-                <td >{{todo.id}}</td>
-                <td >{{todo.name}}</td>
-                <td title="Create At">{{todo.created_at | date}}</td>
-                <td data-sort="no" title="Delete">{{todo.id}}</td>
-            </tr>
+
+    <div ng-controller="RootCtrl">
+        <table ez-table="files" data-count="4">
+          <tr ng-repeat="file in items">
+            <td>
+              <input type="checkbox" ng-model="file.selected" />
+            </td>
+            <td data-title="Name">{{ file.name }}</td>
+            <td data-title="Description" data-field="description">{{ file.description }}</td>
+            <td data-title="Date" data-field="date">{{ file.created_at }}</td>
+            <td><a class="btn btn-default" ng-click="edit(file)"><i class="icon-pencil"></i>Edit</a>
+            </td>
+          </tr>
         </table>
     </div>
-</div>
-<div ng-app="list2">
-<div ng-controller="ctrlRead">
-            <div class="input-append">
-                <input type="text" ng-model="query" ng-change="search()" class="input-large search-query" placeholder="Search">
-            <span class="add-on"><i class="icon-search"></i></span>
-            </div>
-            <table class="table table-striped table-condensed table-hover">
-                <thead>
-                    <tr>
-                        <th class="id">Id&nbsp;<a ng-click="sort_by('id')"><i class="icon-sort"></i></a></th>
-                        <th class="name">Name&nbsp;<a ng-click="sort_by('name')"><i class="icon-sort"></i></a></th>
-                        <th class="description">Description&nbsp;<a ng-click="sort_by('description')"><i class="icon-sort"></i></a></th>
-                        <th class="field3">Field 3&nbsp;<a ng-click="sort_by('field3')"><i class="icon-sort"></i></a></th>
-                        <th class="field4">Field 4&nbsp;<a ng-click="sort_by('field4')"><i class="icon-sort"></i></a></th>
-                        <th class="field5">Field 5&nbsp;<a ng-click="sort_by('field5')"><i class="icon-sort"></i></a></th>
-                    </tr>
-                </thead>
-                <tfoot>
-                    <td colspan="6">
-                        <div class="pagination pull-right">
-                            <ul>
-                                <li ng-class="{disabled: currentPage == 0}">
-                                    <a href ng-click="prevPage()">« Prev</a>
-                                </li>
-                                <li ng-repeat="n in range(pagedItems.length)"
-                                    ng-class="{active: n == currentPage}"
-                                ng-click="setPage()">
-                                    <a href ng-bind="n + 1">1</a>
-                                </li>
-                                <li ng-class="{disabled: currentPage == pagedItems.length - 1}">
-                                    <a href ng-click="nextPage()">Next »</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </td>
-                </tfoot>
-                <tbody>
-                    <tr ng-repeat="item in pagedItems[currentPage] | orderBy:sortingOrder:reverse">
-                        <td><a href="tet">{{item.id}}</a></td>
-                        <td>{{item.name}}</td>
-                        <td>{{item.description}}</td>
-                        <td>{{item.field3}}</td>
-                        <td>{{item.field4}}</td>
-                        <td>{{item.field5}}</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        </div>

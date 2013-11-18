@@ -18,6 +18,9 @@ class User extends SentryUserModel {
   	return $this->hasMany('User', 'referred_by');
   }
 
+public function docs(){
+  return $this->belongsToMany('Doc');
+}
 
 
 

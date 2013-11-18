@@ -1,28 +1,47 @@
 @extends('layouts.admin')
 @section('head')
 
-  <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
-<script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js'></script>
-  <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
-  <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.1/css/font-awesome.css" rel="stylesheet">
+<script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
    <!-- uploadfile -->
-{{ HTML::style('stylesheets/basic.css');}}
+{{ HTML::style('stylesheets/basic.css') }}
 {{ HTML::script('javascripts/dropzone.js') }}
+  <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet" />
 
-<script type='text/javascript' src="http://code.angularjs.org/angular-1.0.0rc1.js"></script>
-{{ HTML::script('javascripts/colResizable-1.3.min.js') }}
-<script type="text/javascript">
-        var sortingOrder = 'name';
-    </script>
+
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
+
+
+  <style>
+    a i {
+     padding-right: 5px;
+    }
+    select.input-sm {line-height: 10px;}
+  </style>
+
+  <link rel="stylesheet" href="https://rawgithub.com/jdewit/ez-table/master/dist/ez-table.min.css">
+  <script src="//code.angularjs.org/1.2.0-rc.2/angular.js"></script>
+  <script src="https://rawgithub.com/jdewit/ez-table/master/dist/ez-table.min.js?v1"></script>
+     <!-- x-editable (bootstrap version) -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap-editable/css/bootstrap-editable.css" rel="stylesheet"/>
+<script src="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap-editable/js/bootstrap-editable.min.js"></script>
 <?php echo $child; // pull in _ang_files_js partial ?>
 @stop
 @section('body_tag')
-ng-app="myapp"
+ng-app="myApp"
 @stop
 @section('container_class')
 class="container-fluid page-content"
 @stop
 @section('content')
+<div>
+        <span>Username:</span>
+        <a href="#" id="username" data-type="text" data-placement="right" data-title="Enter username">superuser</a>
+      </div>
+
+      <div>
+        <span>Status:</span>
+        <a href="#" id="status"></a>
+      </div>
 <h2>Supply Items</h2>
 <table class="table table-bordered table-striped" id="supply-list">
 <thead></thead>
@@ -34,6 +53,7 @@ class="container-fluid page-content"
     <td><a href="#" class="ajax"  data-id="{{$supply->id}}"><i class="icon-remove"></i></a></td></tr>
 
   @endforeach
+
 @endif
 </tbody>
 </table>
@@ -77,41 +97,52 @@ class="container-fluid page-content"
 @stop
 @section('footer')
 
+<script>
+// $(document).ready(function() {
+//   var settings = $("#mulitplefileuploader").uploadFile({
+//             url: "{{ URL::to('upload') }}",
+//             method: "POST",
+//             allowedTypes:"jpg,png,gif",
+//             fileName: "myfile",
+//             autoSubmit:false,
+//             showStatusAfterSuccess:false,
+//             onSuccess:function(files,data,xhr)
+//             {
+//                 $("#preview_image").attr('value',files); //set uploaded image name
+//                 $('#myform').submit();
+//             },
+//             onError: function(files,status,errMsg)
+//             {
+//                 $("#status").html("<font color='green'>Something Wrong</font>");
+//             }
+//         });
+//         $('.submit_form').click(function() {
+//             var validate = $("#myform").validationEngine('validate');
+//             var has_file = $(".ajax-file-upload-statusbar").length //check if there files need upload
 
-$(document).ready(function() {
-  var settings = $("#mulitplefileuploader").uploadFile({
-            url: "{{ URL::to('upload') }}",
-            method: "POST",
-            allowedTypes:"jpg,png,gif",
-            fileName: "myfile",
-            autoSubmit:false,
-            showStatusAfterSuccess:false,
-            onSuccess:function(files,data,xhr)
-            {
-                $("#preview_image").attr('value',files); //set uploaded image name
-                $('#myform').submit();
-            },
-            onError: function(files,status,errMsg)
-            {
-                $("#status").html("<font color='green'>Something Wrong</font>");
-            }
-        });
-        $('.submit_form').click(function() {
-            var validate = $("#myform").validationEngine('validate');
-            var has_file = $(".ajax-file-upload-statusbar").length //check if there files need upload
+//             if(validate){
+//                 if(has_file == true){
+//                     settings.startUpload();
+//                 }else{
+//                     $('#myform').submit();
+//                 }
+//             }
+//         });
 
-            if(validate){
-                if(has_file == true){
-                    settings.startUpload();
-                }else{
-                    $('#myform').submit();
-                }
-            }
-        });
-      });
+//       });
+
+// });
         </script>
         <script>
+
 $(document).ready(function($) {
+$('#username').editable({
+    type: 'text',
+    title: 'Enter username',
+    success: function(response, newValue) {
+        userModel.set('username', newValue); //update backbone model
+    }
+});
 
     $('button.ajax').on('click', function(event) {
         event.preventDefault();

@@ -1,6 +1,7 @@
 <?php
-class Upload extends Eloquent {
-	protected $table = 'files';
+
+class Doc extends Eloquent {
+	protected $table = 'docs';
 	protected $fillable = array('name', 'size', 'content_type', 'description');
 
 
