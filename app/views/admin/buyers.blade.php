@@ -1,15 +1,13 @@
 @extends('layouts.admin')
 @section('head')
 
-<script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+{{ HTML::script('javascripts/jquery-1.9.1.js') }}
    <!-- uploadfile -->
 {{ HTML::style('stylesheets/basic.css') }}
+
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css" />
+<link rel="stylesheet" href="https://rawgithub.com/jdewit/ez-table/master/dist/ez-table.min.css">
 {{ HTML::script('javascripts/dropzone.js') }}
-  <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet" />
-
-
-    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
-
 
   <style>
     a i {
@@ -18,12 +16,14 @@
     select.input-sm {line-height: 10px;}
   </style>
 
-  <link rel="stylesheet" href="https://rawgithub.com/jdewit/ez-table/master/dist/ez-table.min.css">
-  <script src="//code.angularjs.org/1.2.0-rc.2/angular.js"></script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
   <script src="https://rawgithub.com/jdewit/ez-table/master/dist/ez-table.min.js?v1"></script>
      <!-- x-editable (bootstrap version) -->
-    <link href="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap-editable/css/bootstrap-editable.css" rel="stylesheet"/>
-<script src="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap-editable/js/bootstrap-editable.min.js"></script>
+
+{{ HTML::style('stylesheets/xeditable.css') }}
+{{ HTML::script('javascripts/xeditable.js') }}
+
 <?php echo $child; // pull in _ang_files_js partial ?>
 @stop
 @section('body_tag')
@@ -33,15 +33,9 @@ ng-app="myApp"
 class="container-fluid page-content"
 @stop
 @section('content')
-<div>
-        <span>Username:</span>
-        <a href="#" id="username" data-type="text" data-placement="right" data-title="Enter username">superuser</a>
-      </div>
-
-      <div>
-        <span>Status:</span>
-        <a href="#" id="status"></a>
-      </div>
+<div ng-controller="Ctrl">
+  <a href="#" editable-text="user.name">user.name</a>
+</div>
 <h2>Supply Items</h2>
 <table class="table table-bordered table-striped" id="supply-list">
 <thead></thead>
