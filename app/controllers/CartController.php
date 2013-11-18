@@ -111,10 +111,14 @@ class CartController extends BaseController {
 			$weight += number_format($item->options->weight,2);
 		}
 		//return var_dump($weight);
-    $ups = getLabel($currentUser, $weight);
-		$order->ups_label = $ups['label'];
+		if($order->total_amount > 20){
+			$ups = getLabel($currentUser, $weight);
+			$order->ups_label = $ups['label'];
     $order->tracking_number = $ups['tracking_number'];
 		$order->save();
+		}
+
+
 		Cart::destroy();
 		return Redirect::to('/users/orders/' . $currentUser->getId());
 
