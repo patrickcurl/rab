@@ -21,7 +21,7 @@ class CartController extends BaseController {
                     $options = array(
                                 'book_id' => $item['id'],
                                 "title" => $item['title'],
-                                "weight" => $item['weight'],
+                                // "weight" => $item['weight'],
                                 "isbn10" => $item['isbn10'],
                                 "isbn13" => $item['isbn13'],
                                 "image_url" => $item['image_url'],
@@ -31,7 +31,7 @@ class CartController extends BaseController {
                                      );
 
                     $qty = $item['qty'];
-                    if($qty > 5){
+                    if($qty >= 5){
                     	$qty = 5;
                     } else {
                     	$qty = $item['qty'];
@@ -96,11 +96,13 @@ class CartController extends BaseController {
 		$order = new Order;
 		$order->user_id = $currentUser->id;
 		$order->total_amount = Cart::total();
+
 		$order->save();
 
 
 		$cart = Cart::content();
-		$weight = 0.0;
+		$weight = Cart::count() * 3.25;
+
 		foreach($cart as $item){
 			$lineitem = new Item;
 			$lineitem->book_id = $item->id;

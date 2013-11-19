@@ -32,11 +32,13 @@ History
   <div class="span8">
     <h4 class="offset1">Items</h4>
     <ul class="unstyled">
+    @if(isset($order['items']))
       @foreach($order['items'] as $i => $item)
         <li><a href="{{URL::to('/book/'. $item['slug'])}}">{{$item['title']}}</a> - <span style="color:#39993D;">${{ number_format($item['price'],2) }}</span></li>
         <li>QTY: {{$item['qty']}}</li>
 <hr />
       @endforeach
+    @endif
     </ul>
     <h4 class="offset1">Comments</h4>
       {{ $order['comments'] }}

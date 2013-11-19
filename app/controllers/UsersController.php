@@ -700,7 +700,7 @@ public function postEdit($id, $type="profile") {
 
                     $data['user'] = Sentry::getUserProvider()->findById($id);
                     $data['orders'] = $orderArray;
-
+                    //return var_dump($data['orders']);
                     return View::make('users.orders', array('orders' => $orderArray))->with($data);
                     }else {
                     Session::flash('error', 'You don\'t have access to that user.');
