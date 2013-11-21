@@ -93,7 +93,7 @@ if ($aff){
           <li><a href="{{URL::to('/')}}">Home</a></li>
           <li><a href="{{URL::to('users/edit')}}/{{$user->id}}">Profile</a></li>
           <li><a href="{{URL::to('supplies/')}}">Supplies</a></li>
-          <li><a href="{{URL::to('docs/')}}">Docs</a></li>
+          <li><a href="{{URL::to('office/docs/')}}">Docs</a></li>
           <li><a href="{{URL::to('users/logout')}}">Logout</a></li>
         </ul>
 
