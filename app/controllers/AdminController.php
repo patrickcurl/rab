@@ -32,20 +32,21 @@ public function __construct(){
     }
 
     public function getBuyers(){
-
+        $group = Sentry::findGroupByName('buyers');
+        $buyers = Sentry::findAllUsersInGroup($group);
         $data = array(
                            'supplies' => Supply::all(),
                            'orders' => SupplyOrder::all(),
-                           'files' => Doc::all()->toJson()
+                           // 'files' => Doc::all()->with('users')->toJson()
+                           'files' => Doc::with('users')->get()->toJson(),
+                           'buyers' => $buyers
                            );
 
         return View::make('admin.buyers', $data)->nest('child', 'partials._ang_files_js', $data);
      }
 
-     public function getEditBuyer($id){
-        $buyer = User::find($id);
 
-     }
+
 
      public function postAddSupply(){
         $supply = Supply::create(array('name' => Input::get('name'), 'description' => Input::get('description')));
@@ -353,23 +354,76 @@ public function __construct(){
 
         $file = Input::file('file');
         $destinationPath = 'uploads/';
-        $filename = date('m-d-Y') . "_" . str_random(8) . "_" .$file->getClientOriginalName();
+        $fullFile = $file->getClientOriginalName();
+        $name = pathinfo($fullFile, PATHINFO_FILENAME);
+        $ext = pathinfo($fullFile, PATHINFO_EXTENSION);
+        $fileName = $name . "-" . str_random(4) . "-" . date('m-d-Y');
+        $fullFile = $fileName . "." . $ext;
+        //$filename = date('m-d-Y') . "_" . str_random(8) . "_" .$file->getClientOriginalName();
         $filesize = $file->getSize();
         // $extension =$file->getClientOriginalExtension();
         // $filename = str_random(8) . "." .$extension;
-        $upload_success = Input::file('file')->move($destinationPath, $filename);
+        $upload_success = Input::file('file')->move($destinationPath, $fullFile);
 
-        if( $upload_success && isset($filename)) {
+        if( $upload_success && isset($fileName) && isset($ext)) {
 
             $nfile = new Doc;
-            $nfile->name = $filename;
+            $nfile->name = $fileName;
+            $nfile->ext = $ext;
             if (isset($filesize)) { $nfile->size = $filesize; }
             $nfile->save();
-        return Response::json('success', 200);
+
+            //return $nfile->toJson();
+            $files = Doc::with('users')->get()->toJson();
+        //return Response::json('success123', 200);
         } else {
             return Response::json('error', 400);
         }
     }
 
+    public function postAjaxUpdateFile(){ // path: /admin/ajax-update-file
+        $id = Input::get('id');
+        $name = Input::get('name');
+        $description = Input::get('description');
+
+        $file = Doc::find($id);
+        if(isset($file)){
+            // Removed as is messy and requires also physically renaming file.
+            // if(isset($name)){
+            //     $file->name = $name;
+            // }
+            if(isset($description))
+                {$file->description = $description;
+            }
+            $file->save();
+            $files = Doc::with('users')->get()->toJson();
+            return $files;
+        } else {
+           return 400;
+        }
+    }
+
+    public function postAjaxAddBuyerToDoc(){
+        $doc = Doc::find(Input::get('doc'));
+        $buyer = User::find(Input::get('buyer'));
+        $doc->users()->attach(Input::get('buyer'));
+        $files = Doc::with('users')->get()->toJson();
+        //return $buyer->toJson();
+        return $files;
+     }
+     public function postAjaxDeleteFiles(){
+        $inFiles = Input::get('files');
+        foreach($inFiles as $infile){
+            Doc::destroy($infile['id']);
+            File::delete(public_path().'/uploads/'.$infile['name'].'.'.$infile['ext']);
+        }
+        $files = Doc::with('users')->get()->toJson();
+        return $files;
+     }
+
+     public function getAjaxGetFiles(){
+        $files = Doc::all()->toJson();
+        return $files;
+     }
 
 }

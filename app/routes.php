@@ -106,6 +106,12 @@ Route::get('test', function(){
         //phpinfo();
 	return View::make('test');
 });
+Route::get('atest', function(){
+
+        //echo Gremlindash::greeting();
+        //phpinfo();
+    return View::make('atest');
+});
 route::group(array('prefix' => 'api/v1'), function(){
         Route::resource('supplies', 'api\SuppliesController');
         Route::resource('sorders', 'api\SupplyOrdersController');
@@ -118,6 +124,7 @@ Route::controller('cart', 'CartController');
 Route::controller('orders', 'OrdersController');
 Route::controller('p','PageController');
 Route::controller('admin', 'AdminController');
+Route::controller('office', 'BuyerController');
 Route::controller('blog', 'BlogController');
 Route::controller('supplies', 'SuppliesController');
 

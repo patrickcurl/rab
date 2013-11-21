@@ -6,7 +6,8 @@
 {{ HTML::style('stylesheets/basic.css') }}
 
 <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css" />
-<link rel="stylesheet" href="https://rawgithub.com/jdewit/ez-table/master/dist/ez-table.min.css">
+
+{{ HTML::style('stylesheets/ez-table.min.css') }}
 {{ HTML::script('javascripts/dropzone.js') }}
 
   <style>
@@ -18,7 +19,7 @@
 
 
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
-  <script src="https://rawgithub.com/jdewit/ez-table/master/dist/ez-table.min.js?v1"></script>
+  {{ HTML::script('javascripts/ez-table.js') }}
      <!-- x-editable (bootstrap version) -->
 
 {{ HTML::style('stylesheets/xeditable.css') }}
@@ -33,9 +34,7 @@ ng-app="myApp"
 class="container-fluid page-content"
 @stop
 @section('content')
-<div ng-controller="Ctrl">
-  <a href="#" editable-text="user.name">user.name</a>
-</div>
+
 <h2>Supply Items</h2>
 <table class="table table-bordered table-striped" id="supply-list">
 <thead></thead>
