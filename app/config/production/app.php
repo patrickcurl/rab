@@ -129,6 +129,7 @@ return array(
 		//'Way\Generators\GeneratorsServiceProvider',
 		// 'Thujohn\Pdf\PdfServiceProvider',
 		'Barryvdh\DomPDF\ServiceProvider',
+		'Thujohn\Analytics\AnalyticsServiceProvider',
 
 	),
 
@@ -203,6 +204,7 @@ return array(
 		'Sentry'          => 'Cartalyst\Sentry\Facades\Laravel\Sentry',
 
 		'PDF' => 'Barryvdh\DomPDF\Facade',
+		'Analytics' => 'Thujohn\Analytics\AnalyticsFacade',
 
 	),
 
