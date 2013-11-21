@@ -12,7 +12,7 @@
 	<tbody>
 		@foreach($files as $file)
 		<tr>
-			<td>{{$file->name}}</td>
+			<td><a href="{{URL::to('/uploads')}}/{{$file->name}}.{{$file->ext}}">{{$file->name}}</a></td>
 			<td>{{$file->ext}}</td>
 			<td>{{$file->created_at}}</td>
 		</tr>
