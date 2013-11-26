@@ -185,7 +185,7 @@ if ($aff){
               <small class="light">news?</small>
             </h1>
           </div>
-
+@if(isset($posts))
 <div class="container" style="margin:15px">
 
 
@@ -216,6 +216,7 @@ if ($aff){
 
 
             @endforeach</div>
+            @endif
             </div></center>
             </div>
 

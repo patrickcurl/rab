@@ -23,10 +23,8 @@
 	            $posts[$i]['excerpt'] = 'Click below to read more...';
 	        }
 
-	    } if(isset($posts)){
-	    	$view->with('posts', $posts);
 	    }
-
+    	$view->with('posts', $posts);
 
     });
 
