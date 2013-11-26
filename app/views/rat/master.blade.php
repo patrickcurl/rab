@@ -98,7 +98,7 @@ if(!Modernizr.input.placeholder){
   <div class="wrapper">
   <div class="row-fluid">
 
-    <img src="http://recycle-a-textbook.com/images/recycle-book-logo.jpg" class="span10 offset1" style="padding:20px 300px;"/>
+    <img src="{{URL::to("/")}}/images/reycle-a-textbook.jpg" class="span10 offset1" style="padding:20px 300px;"/>
   </div>
     <header id="masthead">
 
@@ -199,8 +199,7 @@ if(!Modernizr.input.placeholder){
 
 
 
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0-wip/js/bootstrap.min.js"></script>
+
 
 {{HTML::script('dropdown.js')}}
 {{HTML::script('collapse.js')

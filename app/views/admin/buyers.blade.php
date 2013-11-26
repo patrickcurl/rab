@@ -6,7 +6,7 @@
 {{ HTML::style('stylesheets/basic.css') }}
 
 <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css" />
-
+{{ HTML::style('stylesheets/dropzone.css') }}
 {{ HTML::style('stylesheets/ez-table.min.css') }}
 {{ HTML::script('javascripts/dropzone.js') }}
 
@@ -15,6 +15,30 @@
      padding-right: 5px;
     }
     select.input-sm {line-height: 10px;}
+    SELECT, INPUT[type="text"] {
+    width: 160px;
+    box-sizing: border-box;
+}
+SECTION {
+    padding: 8px;
+    background-color: #f0f0f0;
+    overflow: auto;
+}
+SECTION > DIV {
+    float: left;
+    padding: 4px;
+}
+#btnLeft{
+  width:50px;
+  margin-top:50px;
+}
+#btnRight{
+  width:50px;
+  margin-top:50px;
+}
+SECTION > DIV + DIV {
+    width:130px;
+    text-align: center;
   </style>
 
 
@@ -79,9 +103,7 @@ class="container-fluid page-content"
 @endforeach
 </tbody>
 </table>
-<form action="{{ url('admin/upload')}}" class="dropzone" id="my-awesome-dropzone">
 
-</form>
 
 @include('partials._ang_files')
 
@@ -205,4 +227,6 @@ $('#username').editable({
     });
   });
 
+
+</script>
 @stop

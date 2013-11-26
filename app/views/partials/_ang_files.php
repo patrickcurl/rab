@@ -1,5 +1,12 @@
+<div ng-controller="RootCtrl">
+<a href="#" editable-select="abuyers" e-multiple e-ng-options="a.id as a.first_name for a in abuyers">
+    {{ showStatus() }}
+  </a>
+<form action="<?php echo url('admin/upload'); ?>" class="dropzone" id="my-awesome-dropzone">
 
-    <div ng-controller="RootCtrl">
+<input ng-repeat="nfb in nfBuyers" type="hidden" value="{{nfb.id}}" />
+
+</form>
         <table ez-table="files"  data-count="4">
           <tr ng-repeat="file in items" >
             <td>
@@ -27,3 +34,4 @@
           </tr>
         </table>
     </div>
+

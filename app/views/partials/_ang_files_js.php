@@ -6,6 +6,8 @@ app.controller('RootCtrl', ['$scope', '$filter', '$timeout', '$http',
     $scope.files = [];
     $scope.buyers = <?php echo $buyers; ?>;
     $scope.buyer = [];
+    $scope.abuyers = <?php echo $buyers; ?>;
+    $scope.bbuyers = [];
     $scope.edit = function(file) {
       alert('Edit ' + file.name);
 
@@ -22,16 +24,19 @@ app.controller('RootCtrl', ['$scope', '$filter', '$timeout', '$http',
 
 //    TODO!! ADD TimeOut!
 Dropzone.options.myAwesomeDropzone = {
+
   init: function()
   {
-      this.on("success", function(file, data)
-              {
-                $scope.$apply(function(){
-                    $http.get('/admin/ajax-get-files').success(function(data){
-                        $scope.files = data;
-                    });
-                });
-              });
+
+
+    this.on("success", function(file, data)
+      {
+         $scope.$apply(function(){
+             $http.get('/admin/ajax-get-files').success(function(data){
+                $scope.files += data;
+             });
+         });
+      });
     }
     // this.on("addedfile", function(file) {
     //     $scope.$apply(function(){
@@ -99,6 +104,10 @@ Dropzone.options.myAwesomeDropzone = {
        });
 
     }
+    $scope.addNFBuyer = function(data){
+        $scope.nfBuyers += data;
+        console.log($scope.nfBuyers);
+    };
     $scope.updateDescription = function(data, file){
         $http.post('/admin/ajax-update-file', {id: file.id, description: data}).success(function(data){
             $scope.files = data;
