@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.error')
 @section('hero-start')
 Scheduled
 @stop
