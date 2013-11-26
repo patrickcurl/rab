@@ -1,20 +1,53 @@
 <?php
-$imap = eden('Mail')->imap('imap.secureserver.net', 'patrick@recycleabook.com', 'password', 993, true);
-// $mbox = $imap->getMailBoxes();
-// var_dump(get_class_methods('Eden_Mail_Imap'));
-// var_dump(get_declared_classes());
-$imap->setActiveMailbox('INBOX');
-$count = $imap->getEmailTotal();
 
-$emails = $imap->getEmails(0, $count);
-//var_dump($imap->getUniqueEmails(365, true));
-foreach($emails as $e){
-  echo $e['from']['email'] . " | " .$e['subject'] . "<br />";
-}
+try{
+        $client = new Guzzle\Http\Client('http://blog.recycleabook.com/api/');
+        $request = $client->get('get_recent_posts/?count=8');
+        $response = $request->send();
+        $data = $response->json();
+        $data = $data['posts'];
+        $posts = array();
+
+        foreach($data as $i => $post){
+            $posts[$i]['title'] = $post['title'];
+            $posts[$i]['url'] = $post['url'];
+            if (isset($post['attachments']) && $post['attachments'] != null){
+                $posts[$i]['image'] = $post['attachments'][0]['url'];
+            } else {
+                $posts[$i]['image'] = URL::to('images/assets/landscapes/landscape-2-e-300x300.jpg');
+            }
+            if(isset($post['excerpt'])){
+                $posts[$i]['excerpt'] = $post['excerpt'];
+            } else {
+                $posts[$i]['excerpt'] = 'Click below to read more...';
+            }
+
+        }
+       // $view->with('posts', $posts);
+        var_dump($posts);
+      } catch(ServerErrorResponseException $e){
+        var_dump($e);
+        // foreach($e as $ex){
+        //   echo $ex->getMessage() . "\n";
+        // }
+      }
+// IMAPPP
+// $imap = eden('Mail')->imap('imap.secureserver.net', 'patrick@recycleabook.com', 'password', 993, true);
+// // $mbox = $imap->getMailBoxes();
+// // var_dump(get_class_methods('Eden_Mail_Imap'));
+// // var_dump(get_declared_classes());
+// $imap->setActiveMailbox('INBOX');
+// $count = $imap->getEmailTotal();
+
+// $emails = $imap->getEmails(0, $count);
+// //var_dump($imap->getUniqueEmails(365, true));
+// foreach($emails as $e){
+//   echo $e['from']['email'] . " | " .$e['subject'] . "<br />";
+// }
 
 // $emails = $imap->getEmails(0, 3);
 //var_dump($emails);
-
+// END_IMAPPP
 ?>
  <?php
 // echo app()->env;

@@ -1,30 +1,40 @@
 <?php
-
+use  Guzzle\Http\Exception\ServerErrorResponseException;
 
     View::creator(array('layouts.master', 'single.master'), function($view){
-    	$client = new Guzzle\Http\Client('http://blog.recycleabook.com/api/');
-	    $request = $client->get('get_recent_posts/?count=8');
-	    $response = $request->send();
-	    $data = $response->json();
-	    $data = $data['posts'];
-	    $posts = array();
 
-	    foreach($data as $i => $post){
-	        $posts[$i]['title'] = $post['title'];
-	        $posts[$i]['url'] = $post['url'];
-	        if (isset($post['attachments']) && $post['attachments'] != null){
-	            $posts[$i]['image'] = $post['attachments'][0]['url'];
-	        } else {
-	            $posts[$i]['image'] = URL::to('images/assets/landscapes/landscape-2-e-300x300.jpg');
-	        }
-	        if(isset($post['excerpt'])){
-	            $posts[$i]['excerpt'] = $post['excerpt'];
-	        } else {
-	            $posts[$i]['excerpt'] = 'Click below to read more...';
-	        }
+	    try{
+	    	$client = new Guzzle\Http\Client('http://blog.recycleabook.com/api/');
+	    	$request = $client->get('get_recent_posts/?count=8');
+	    	$response = $request->send();
+	    	$data = $response->json();
+		    $data = $data['posts'];
+		    $posts = array();
 
+		    foreach($data as $i => $post){
+		        $posts[$i]['title'] = $post['title'];
+		        $posts[$i]['url'] = $post['url'];
+		        if (isset($post['attachments']) && $post['attachments'] != null){
+		            $posts[$i]['image'] = $post['attachments'][0]['url'];
+		        } else {
+		            $posts[$i]['image'] = URL::to('images/assets/landscapes/landscape-2-e-300x300.jpg');
+		        }
+		        if(isset($post['excerpt'])){
+		            $posts[$i]['excerpt'] = $post['excerpt'];
+		        } else {
+		            $posts[$i]['excerpt'] = 'Click below to read more...';
+		        }
+
+		    }
+	    	$view->with('posts', $posts);
+	    } catch(ServerErrorResponseException $e){
+	    	//var_dump($e);
+	    	// foreach($e as $ex){
+	    	// 	echo $ex->getMessage() . "\n";
+	    	// }
 	    }
-    	$view->with('posts', $posts);
+
+
 
     });
 

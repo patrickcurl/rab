@@ -178,14 +178,14 @@ if ($aff){
        </div>
       </section>
 <section class="section section-padded">
-        <div class="container-fluid" style="padding: 3px;">
+        <div class="container-fluid" style="padding: 3px;">@if(isset($posts))
           <div class="section-header">
             <h1>
               Latest
               <small class="light">news?</small>
             </h1>
           </div>
-@if(isset($posts))
+
 <div class="container" style="margin:15px">
 
 
