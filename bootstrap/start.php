@@ -28,9 +28,9 @@ $app->redirectIfTrailingSlash();
 
 $env = $app->detectEnvironment(array(
 
-	'local' => array('local*', 'localhost','*.dev', 'PatrickPC', '198.57.158.38*'),
+	'local' => array('local*', 'localhost','*.dev', 'PatrickPC'),
 
-	'production' => array('recycleabook.com','single.recycleabook.com','rat.recycleabook.com')
+	'production' => array('recycleabook.com','single.recycleabook.com','rat.recycleabook.com', '198.57.158.38*')
 ));
 
 
