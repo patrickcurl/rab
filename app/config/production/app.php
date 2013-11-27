@@ -120,17 +120,18 @@ return array(
 		// 'Toddish\Verify\VerifyServiceProvider',
 		// 'VTalbot\Less\LessServiceProvider',
 		// 'Hailwood\Smartless4laravel\Smartless4laravelServiceProvider',
+		// 'Intervention\Validation\ValidationServiceProvider',
+		//'Way\Generators\GeneratorsServiceProvider',
+		// 'Thujohn\Pdf\PdfServiceProvider',
+		/*
 		'Juy\Profiler\Providers\ProfilerServiceProvider',
 		'Cviebrock\EloquentSluggable\SluggableServiceProvider',
-		// 'Intervention\Validation\ValidationServiceProvider',
 		'\Gloudemans\Shoppingcart\ShoppingcartServiceProvider',
 		'Cartalyst\Sentry\SentryServiceProvider',
 		'Kmd\Logviewer\LogviewerServiceProvider',
-		//'Way\Generators\GeneratorsServiceProvider',
-		// 'Thujohn\Pdf\PdfServiceProvider',
 		'Barryvdh\DomPDF\ServiceProvider',
 		'Thujohn\Analytics\AnalyticsServiceProvider',
-
+		*/
 	),
 
 	/*
@@ -196,8 +197,6 @@ return array(
 		'Validator'       => 'Illuminate\Support\Facades\Validator',
 		'View'            => 'Illuminate\Support\Facades\View',
 
-		// Details : https://github.com/Anahkiasen/former
-		// 'Less'         => 'VTalbot\Less\Facades\Less',
 		'Profiler'        => 'Juy\Profiler\Facades\Profiler',
 		'Sluggable'       => 'Cviebrock\EloquentSluggable\Facades\Sluggable',
 		'Cart'            => 'Gloudemans\Shoppingcart\Facades\Cart',
@@ -205,6 +204,9 @@ return array(
 
 		'PDF' => 'Barryvdh\DomPDF\Facade',
 		'Analytics' => 'Thujohn\Analytics\AnalyticsFacade',
+		// Details : https://github.com/Anahkiasen/former
+		// 'Less'         => 'VTalbot\Less\Facades\Less',
+
 
 	),
 
