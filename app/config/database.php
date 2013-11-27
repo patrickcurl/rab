@@ -54,7 +54,8 @@ return array(
 
 		'mysql' => array(
 			'driver'    => 'mysql',
-			'host'      => 'localhost',
+			//'host'      => 'localhost',
+			'host'		=> Config::get('env_vars.db_host'),
 			'database'  => Config::get('env_vars.db_name'),
 			'username'  => Config::get('env_vars.db_user'),
 			'password'  => Config::get('env_vars.db_pass'),
