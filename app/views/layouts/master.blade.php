@@ -1,12 +1,12 @@
 <?php
-// $expire=time()+60*60*24*120;
-// $aff = Input::get('aff');
-// if (isset($aff)){
-//   setcookie('referred_by', $aff, $expire);
-//   Session::put('referred_by', $aff);
-// } else{
+$expire=time()+60*60*24*120;
+$aff = Input::get('aff');
+if (isset($aff)){
+  setcookie('referred_by', $aff, $expire);
+  Session::put('referred_by', $aff);
+} else{
 
-// }
+}
 
 
 ?>
