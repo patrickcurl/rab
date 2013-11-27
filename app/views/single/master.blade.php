@@ -124,7 +124,7 @@ if ($aff){
       </section>
 
 
-
+@if(isset($post))
 <section class="section section-padded">
         <div class="container-fluid">
           <div class="section-header">
@@ -154,6 +154,7 @@ if ($aff){
 
         </div>
       </section>
+      @endif
   </div>
 
 
