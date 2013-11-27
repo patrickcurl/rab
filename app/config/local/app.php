@@ -115,16 +115,15 @@ return array(
 		'Illuminate\Workbench\WorkbenchServiceProvider',
 
 
-		// 'CeesVanEgmond\Minify\MinifyServiceProvider',
 		'Cviebrock\EloquentSluggable\SluggableServiceProvider',
-		// 'Intervention\Validation\ValidationServiceProvider',
+
 		'\Gloudemans\Shoppingcart\ShoppingcartServiceProvider',
 		'Cartalyst\Sentry\SentryServiceProvider',
 		'Kmd\Logviewer\LogviewerServiceProvider',
 		'Way\Generators\GeneratorsServiceProvider',
 		'Barryvdh\Debugbar\ServiceProvider',
 		'Barryvdh\DomPDF\ServiceProvider',
-		// 'Codesleeve\Stapler\StaplerServiceProvider',
+
 
 	),
 

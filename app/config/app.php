@@ -13,7 +13,7 @@ return array(
 	|
 	*/
 
-	'debug' => false,
+	'debug' => true,
 
 	/*
 	|--------------------------------------------------------------------------
@@ -121,15 +121,16 @@ return array(
 		// 'VTalbot\Less\LessServiceProvider',
 		// 'Hailwood\Smartless4laravel\Smartless4laravelServiceProvider',
 		// 'Juy\Profiler\Providers\ProfilerServiceProvider',
-		'Cviebrock\EloquentSluggable\SluggableServiceProvider',
+
 		//  'Intervention\Validation\ValidationServiceProvider',
-		'\Gloudemans\Shoppingcart\ShoppingcartServiceProvider',
-		'Cartalyst\Sentry\SentryServiceProvider',
-		'Kmd\Logviewer\LogviewerServiceProvider',
+
 		// 'Thujohn\Pdf\PdfServiceProvider',
 		//'Way\Generators\GeneratorsServiceProvider',
 
-
+		'Cviebrock\EloquentSluggable\SluggableServiceProvider',
+		'\Gloudemans\Shoppingcart\ShoppingcartServiceProvider',
+		'Cartalyst\Sentry\SentryServiceProvider',
+		'Kmd\Logviewer\LogviewerServiceProvider',
 	),
 
 	/*
