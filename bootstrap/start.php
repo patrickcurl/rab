@@ -30,7 +30,7 @@ $env = $app->detectEnvironment(array(
 
 	'local' => array('local*', 'localhost','*.dev', 'PatrickPC'),
 
-	'production' => array('recycleabook.com','single.recycleabook.com','rat.recycleabook.com', '198.57.158.38*')
+	'production' => array('recycleabook.com','single.recycleabook.com','rat.recycleabook.com')
 ));
 
 
