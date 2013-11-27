@@ -123,7 +123,7 @@ return array(
 		// 'Intervention\Validation\ValidationServiceProvider',
 		//'Way\Generators\GeneratorsServiceProvider',
 		// 'Thujohn\Pdf\PdfServiceProvider',
-		/*
+
 		'Juy\Profiler\Providers\ProfilerServiceProvider',
 		'Cviebrock\EloquentSluggable\SluggableServiceProvider',
 		'\Gloudemans\Shoppingcart\ShoppingcartServiceProvider',
@@ -131,7 +131,7 @@ return array(
 		'Kmd\Logviewer\LogviewerServiceProvider',
 		'Barryvdh\DomPDF\ServiceProvider',
 		'Thujohn\Analytics\AnalyticsServiceProvider',
-		*/
+
 	),
 
 	/*
