@@ -25,7 +25,7 @@
 									<td width="20%"><img src="<?php if ($book->image_url) {echo $book->image_url; } else {echo URL::asset('img/no_image.png'); } ?>"  style="display: block;max-width: 120px;height: auto;"></td>
 									<td>
 									<span style="background-color: #329911;">
-									<span style="color: #F6FF17;">Buyback Price:</span> <span style="color: #0AFD13;font-weight:bold;">${{number_format($book->singlePrice,2) }}</span></span><br />
+									<span style="color: #F6FF17;">Buyback Price:</span> <span style="color: #0AFD13;font-weight:bold;">${{number_format(($book->singlePrice * 2),2) }}</span></span><br />
 									<strong>Author:</strong>{{  $book->author }}<br />
 
 									<strong>Publisher:</strong>{{  $book->publisher }}<br />
