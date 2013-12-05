@@ -11,7 +11,6 @@
 	"require": {
 		"laravel/framework": "4.0.*",
 		"cartalyst/sentry": "2.0.*",
-		"laravel/curl": "dev-master",
 		"cviebrock/eloquent-sluggable": "1.0.*",
 		"gloudemans/shoppingcart": "dev-master",
 		"juy/profiler" : "dev-master",
@@ -42,16 +41,16 @@
 	},
 	"scripts": {
 		"post-install-cmd": [
-			"/opt/php54/bin/php artisan optimize"
+			"php artisan optimize"
 		],
 		"pre-update-cmd": [
-			"/opt/php54/bin/php artisan clear-compiled"
+			"php artisan clear-compiled"
 		],
 		"post-update-cmd": [
-			"/opt/php54/bin/php artisan optimize"
+			"php artisan optimize"
 		],
 		"post-create-project-cmd": [
-			"/opt/php54/bin/php artisan key:generate"
+			"php artisan key:generate"
 		]
 	},
 	"config": {
