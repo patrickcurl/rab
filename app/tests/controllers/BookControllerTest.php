@@ -22,7 +22,7 @@ class BookControllerTest extends TestCase {
 
 	public function testSearch()
 	{
-		$this->
+		//$this->
 	}
 
 }
