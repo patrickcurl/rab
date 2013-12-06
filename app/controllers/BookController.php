@@ -238,4 +238,9 @@ public function getIndex($slug=null){
         }
     }
 
+    public function ntest(){
+        $s = Input::get('something');
+        return $s;
+    }
+
 }

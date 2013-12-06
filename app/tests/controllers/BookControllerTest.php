@@ -20,4 +20,9 @@ class BookControllerTest extends TestCase {
 		$this->assertResponseOk();
 	}
 
+	public function testSearch()
+	{
+		$this->
+	}
+
 }

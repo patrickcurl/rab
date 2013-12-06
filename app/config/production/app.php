@@ -132,6 +132,7 @@ return array(
 		'Barryvdh\DomPDF\ServiceProvider',
 		'Thujohn\Analytics\AnalyticsServiceProvider',
 
+
 	),
 
 	/*
