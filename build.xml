@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<project name="Rab" default="build" basedir=".">
+<project name="Rab" default="build" basedir="/srv/www/recycleabook.com/rab">
 
     <target name="build"
         depends="build-common,phploc,pdepend,phpmd-ci,phpcs-ci,phpcpd,phpcb" />
