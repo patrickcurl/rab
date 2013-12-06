@@ -144,7 +144,7 @@
            <arg value="${basedir}/build/logs/phploc.csv" />
            <arg path="${basedir}/app" />
         </exec>
-    </target>
+     </target>
 
      <target name="phpmd" description="Perform project mess detection using PHPMD and print human readable output. Intended for usage on the command line before committing.">
         <exec executable="phpmd">
