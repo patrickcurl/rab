@@ -11,7 +11,7 @@
       <hudson.plugins.git.UserRemoteConfig>
         <name></name>
         <refspec></refspec>
-        <url>/srv/www/recycleabook.com/rab</url>
+        <url>/srv/www/recycleabook.com/git/rab.git</url>
       </hudson.plugins.git.UserRemoteConfig>
     </userRemoteConfigs>
     <branches>
