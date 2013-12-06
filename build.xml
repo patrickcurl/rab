@@ -37,7 +37,7 @@
     </target>
 
     <target name="clean" depends="clean-build,clean-composer" description="Cleanup build and composer artifacts" />
- 
+
     <target name="clean-build" description="Cleanup build artifacts">
         <echo>Cleaning out the build artifacts</echo>
         <delete dir="${basedir}/build/api" />
@@ -46,7 +46,7 @@
         <delete dir="${basedir}/build/logs" />
         <delete dir="${basedir}/build/pdepend" />
     </target>
- 
+
     <target name="clean-composer" description="Cleanup composer artifacts">
         <echo>Cleaning out the composer artifacts</echo>
         <delete dir="${basedir}/vendor" />
