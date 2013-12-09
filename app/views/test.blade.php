@@ -1,36 +1,40 @@
+
 <?php
+$b = Book::find_or_create('9780131367739');
+?>
+{{ $b->title }}
+<?php
+// try{
+//         $client = new Guzzle\Http\Client('http://blog.recycleabook.com/api/');
+//         $request = $client->get('get_recent_posts/?count=8');
+//         $response = $request->send();
+//         $data = $response->json();
+//         $data = $data['posts'];
+//         $posts = array();
 
-try{
-        $client = new Guzzle\Http\Client('http://blog.recycleabook.com/api/');
-        $request = $client->get('get_recent_posts/?count=8');
-        $response = $request->send();
-        $data = $response->json();
-        $data = $data['posts'];
-        $posts = array();
+//         foreach($data as $i => $post){
+//             $posts[$i]['title'] = $post['title'];
+//             $posts[$i]['url'] = $post['url'];
+//             if (isset($post['attachments']) && $post['attachments'] != null){
+//                 $posts[$i]['image'] = $post['attachments'][0]['url'];
+//             } else {
+//                 $posts[$i]['image'] = URL::to('images/assets/landscapes/landscape-2-e-300x300.jpg');
+//             }
+//             if(isset($post['excerpt'])){
+//                 $posts[$i]['excerpt'] = $post['excerpt'];
+//             } else {
+//                 $posts[$i]['excerpt'] = 'Click below to read more...';
+//             }
 
-        foreach($data as $i => $post){
-            $posts[$i]['title'] = $post['title'];
-            $posts[$i]['url'] = $post['url'];
-            if (isset($post['attachments']) && $post['attachments'] != null){
-                $posts[$i]['image'] = $post['attachments'][0]['url'];
-            } else {
-                $posts[$i]['image'] = URL::to('images/assets/landscapes/landscape-2-e-300x300.jpg');
-            }
-            if(isset($post['excerpt'])){
-                $posts[$i]['excerpt'] = $post['excerpt'];
-            } else {
-                $posts[$i]['excerpt'] = 'Click below to read more...';
-            }
-
-        }
-       // $view->with('posts', $posts);
-        var_dump($posts);
-      } catch(ServerErrorResponseException $e){
-        var_dump($e);
-        // foreach($e as $ex){
-        //   echo $ex->getMessage() . "\n";
-        // }
-      }
+//         }
+//        // $view->with('posts', $posts);
+//         var_dump($posts);
+//       } catch(ServerErrorResponseException $e){
+//         var_dump($e);
+//         // foreach($e as $ex){
+//         //   echo $ex->getMessage() . "\n";
+//         // }
+//       }
 // IMAPPP
 // $imap = eden('Mail')->imap('imap.secureserver.net', 'patrick@recycleabook.com', 'password', 993, true);
 // // $mbox = $imap->getMailBoxes();
