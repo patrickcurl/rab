@@ -88,7 +88,7 @@ if (isset($aff)){
                   <a href="{{URL::to('/')}}">
                     <img src="{{ URL::asset('images/assets/misc/logo.png')}}" style="display:block;max-width:90%;height:auto;position:relative;bottom:40px;"></a>
                 </div>
-                <form method="POST" action="http://textbooks911.com/books/search" id="price-books-form" class="form-inline">
+                <form method="POST" action="http://textbooks911.com/books/search/" id="price-books-form" class="form-inline">
                 {{-- Form::open(array('action' => 'BookController@postSearch', 'id' => 'price-books-form', 'class' => 'form-inline')) --}}
                <div class="input-append pull-right visible-desktop ">
   <input class="span6"   id="appendedInputButton" name="isbns" placeholder="Enter Isbns, separate multiples by comma." type="text">
