@@ -25,12 +25,14 @@ $app->redirectIfTrailingSlash();
 | given environment, then we will automatically detect it for you.
 |
 */
-
+$prodServers = array(
+                     '*.recycleabook.com', '*.textbooks911.com'
+                     );
 $env = $app->detectEnvironment(array(
 
 	'local' => array('local*', 'localhost','*.dev', 'PatrickPC'),
 
-	'production' => array('recycleabook.com','single.recycleabook.com','rat.recycleabook.com', 'textbooks911.com')
+	'production' => $prodServers
 ));
 
 
