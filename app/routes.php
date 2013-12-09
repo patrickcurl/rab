@@ -11,47 +11,69 @@
 |
 */
 
-
-Route::group(array('domain' => 'single.rab.dev'), function()
-{
-
-    Route::get('/', function()
+$domains = array('rab.dev', 'recycleabook.com', 'textbooks911.com');
+foreach($domains as $d){
+    Route::group(array('domain' => 'single.'.$d), function()
     {
-    	return View::make('single.index');
-        //
+
+        Route::get('/', function()
+        {
+            return View::make('single.index');
+            //
+        });
+
     });
-
-});
-Route::group(array('domain' => 'single.recycleabook.com'), function()
-{
-
-    Route::get('/', function()
+    Route::group(array('domain' => 'rat.'.*), function()
     {
-    	return View::make('single.index');
-        //
+
+        Route::get('/', function()
+        {
+            return View::make('rat.index');
+            //
+        });
+
     });
+}
+// Route::group(array('domain' => 'single.rab.dev'), function()
+// {
 
-});
-Route::group(array('domain' => 'rat.rab.dev'), function()
-{
+//     Route::get('/', function()
+//     {
+//     	return View::make('single.index');
+//         //
+//     });
 
-    Route::get('/', function()
-    {
-        return View::make('rat.index');
-        //
-    });
+// });
+// Route::group(array('domain' => 'single.recycleabook.com'), function()
+// {
 
-});
-Route::group(array('domain' => 'rat.recycleabook.com'), function()
-{
+//     Route::get('/', function()
+//     {
+//     	return View::make('single.index');
+//         //
+//     });
 
-    Route::get('/', function()
-    {
-        return View::make('rat.index');
-        //
-    });
+// });
+// Route::group(array('domain' => 'rat.rab.dev'), function()
+// {
 
-});
+//     Route::get('/', function()
+//     {
+//         return View::make('rat.index');
+//         //
+//     });
+
+// });
+// Route::group(array('domain' => 'rat.recycleabook.com'), function()
+// {
+
+//     Route::get('/', function()
+//     {
+//         return View::make('rat.index');
+//         //
+//     });
+
+// });
 Route::get('/', function()
 {
 
