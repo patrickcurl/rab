@@ -124,13 +124,13 @@ return array(
 		//'Way\Generators\GeneratorsServiceProvider',
 		// 'Thujohn\Pdf\PdfServiceProvider',
 
-		'Juy\Profiler\Providers\ProfilerServiceProvider',
+		// 'Juy\Profiler\Providers\ProfilerServiceProvider',
 		'Cviebrock\EloquentSluggable\SluggableServiceProvider',
 		'\Gloudemans\Shoppingcart\ShoppingcartServiceProvider',
 		'Cartalyst\Sentry\SentryServiceProvider',
-		'Kmd\Logviewer\LogviewerServiceProvider',
+		// 'Kmd\Logviewer\LogviewerServiceProvider',
 		'Barryvdh\DomPDF\ServiceProvider',
-		'Thujohn\Analytics\AnalyticsServiceProvider',
+		// 'Thujohn\Analytics\AnalyticsServiceProvider',
 
 
 	),
@@ -198,13 +198,13 @@ return array(
 		'Validator'       => 'Illuminate\Support\Facades\Validator',
 		'View'            => 'Illuminate\Support\Facades\View',
 
-		'Profiler'        => 'Juy\Profiler\Facades\Profiler',
+		// 'Profiler'        => 'Juy\Profiler\Facades\Profiler',
 		'Sluggable'       => 'Cviebrock\EloquentSluggable\Facades\Sluggable',
 		'Cart'            => 'Gloudemans\Shoppingcart\Facades\Cart',
 		'Sentry'          => 'Cartalyst\Sentry\Facades\Laravel\Sentry',
 
 		'PDF' => 'Barryvdh\DomPDF\Facade',
-		'Analytics' => 'Thujohn\Analytics\AnalyticsFacade',
+		// 'Analytics' => 'Thujohn\Analytics\AnalyticsFacade',
 		// Details : https://github.com/Anahkiasen/former
 		// 'Less'         => 'VTalbot\Less\Facades\Less',
 
