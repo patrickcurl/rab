@@ -86,7 +86,6 @@ public function getIndex($slug=null){
     }
     public function postSearch()
     {
-        return Input::get('isbns');
         $books = self::searchBook(Input::get('isbns'));
         if(isset($books) && $books != null){
             return View::make('books.search', array('books' => $books) );
