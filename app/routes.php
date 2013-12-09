@@ -10,8 +10,7 @@
 | and give it the Closure to execute when that URI is requested.
 |
 */
-Route::controller('books', 'BookController');
-Route::controller('book', 'BookController');
+
 $domains = array('rab.dev', 'recycleabook.com', 'textbooks911.com');
 foreach($domains as $d){
     Route::group(array('domain' => 'single.'.$d), function()
@@ -35,6 +34,7 @@ foreach($domains as $d){
 
     });
 }
+Route::post('books/search', 'BookController@postSearch');
 // Route::group(array('domain' => 'single.rab.dev'), function()
 // {
 
