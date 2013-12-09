@@ -23,7 +23,7 @@ foreach($domains as $d){
         });
 
     });
-    Route::group(array('domain' => 'rat.'.*), function()
+    Route::group(array('domain' => 'rat.'.$d), function()
     {
 
         Route::get('/', function()
