@@ -61,13 +61,7 @@ Dropzone.options.myAwesomeDropzone = {
 
   }
 
-  $scope.showBuyers = function() {
-    var selected = [];
-    angular.forEach($scope.statuses, function(s) {
-      if ($scope.user.status.indexOf(s.value) >= 0) {
-        selected.push(s.text);
-      }
-    });
+
     $scope.toJsDate = function(str){
         if(!str)return null;
         return new Date(str);
@@ -130,7 +124,7 @@ Dropzone.options.myAwesomeDropzone = {
 
 
 
-);
+]);
 app.controller('OnbeforesaveCtrl', function($scope, $http, $timeout){
     $scope.count = 0;
     $scope.buyers = <?php echo $buyers; ?>;
