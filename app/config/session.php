@@ -120,6 +120,6 @@ return array(
 	|
 	*/
 
-	'domain' => '.textbooks911.com',
+	'domain' => null,
 
 );
