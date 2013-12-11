@@ -114,9 +114,10 @@ class CartController extends BaseController {
 		}
 		//return var_dump($weight);
 		if($order->total_amount > 20){
-			$ups = getLabel($currentUser, $weight);
+			//$ups = getLabel($currentUser, $weight);
+			$ups = Order::createLabel($currentUser, $weight);
 			$order->ups_label = $ups['label'];
-    $order->tracking_number = $ups['tracking_number'];
+    		$order->tracking_number = $ups['tracking_number'];
 		$order->save();
 		}
 
