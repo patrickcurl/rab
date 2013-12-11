@@ -120,6 +120,6 @@ return array(
 	|
 	*/
 
-	'domain' => '.recycleabook.com, .textbooks911.com',
+	'domain' => '.textbooks911.com',
 
 );
