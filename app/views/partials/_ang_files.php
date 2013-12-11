@@ -13,7 +13,7 @@
               <input type="checkbox" ng-model="file.selected" />
             </td>
             <td data-title="Name" #>
-               {{file.name}}
+               <a href="<?php URL::to('/uploads') ?>/{{file.name}}.{{file.ext}}">{{file.name}}</a>
             </td>
 
             <td data-title="Description" data-field="description">
