@@ -130,7 +130,7 @@ Dropzone.options.myAwesomeDropzone = {
 
 
 
-]);
+);
 app.controller('OnbeforesaveCtrl', function($scope, $http, $timeout){
     $scope.count = 0;
     $scope.buyers = <?php echo $buyers; ?>;
