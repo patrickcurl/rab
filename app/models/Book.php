@@ -193,7 +193,7 @@ class Book extends Eloquent {
               $single = DB::table('single_prices')->where('isbn', '=', $isbns['13'])->first();
               if(isset($single) || $single != null){
                   $singlePrice = $single->Price;
-                  $singlePrice = $singlePrice - ($singlePrice * .1);
+                  //$singlePrice = $singlePrice - ($singlePrice * .1);
                   $singlePrice = self::floorToFraction($singlePrice, 2);
                   $book->singlePrice = number_format($singlePrice, 2);
               } else{
