@@ -1,5 +1,5 @@
 class User
-
+fffff
   def initialize(rank=-8, progress=0)
       @rank = rank
       @progress = progress
