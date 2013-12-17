@@ -25,7 +25,7 @@ define('DB_USER', 'chrish_rab');
 define('DB_PASSWORD', 'FartNugget!@#');
 
 /** MySQL hostname */
-define('DB_HOST', 'localhost');
+define('DB_HOST', '23.239.17.5');
 
 /** Database Charset to use in creating database tables. */
 define('DB_CHARSET', 'utf8');
