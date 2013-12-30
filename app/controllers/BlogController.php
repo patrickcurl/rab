@@ -37,7 +37,7 @@ class BlogController extends BaseController {
 	}
 
 
-	public function missingMethod($method, $slug=null){
+	public function missingMethod(/*$method,*/ $slug=null){
 		if(isset($slug)){
 			$slug = $slug[0];
 			$post = self::blogJson("get_post/?slug={$slug}");
