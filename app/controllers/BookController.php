@@ -14,10 +14,10 @@ class BookController extends BaseController {
     |   Route::get('/', 'HomeController@showWelcome');
     |
     */
-    public function missingMethod($params)
+    public function missingMethod($method, $parameters = array())
 {
     //return $params;
-    return call_user_func_array( array($this, 'getIndex'), $params );
+    return call_user_func_array( array($this, 'getIndex'), $parameters );
 }
 
 public function getIndex($slug=null){

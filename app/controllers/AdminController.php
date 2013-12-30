@@ -22,10 +22,13 @@ public function __construct(){
 
     public function getIndex()
     {
-        $orders=array();
-        $orders = Order::with('user')->paginate(20);
-        $users = DB::table('users')->paginate(20);
-        $data = array('orders' => $orders, 'users' =>$users);
+        $data = array();
+        $data['o']['total'] = Order::all()->count();
+        $data['o']['unpaid'] = Order::where('paid_date', '=', null)->count();
+        $data['o']['paid'] = $data['o']['total'] - $data['o']['unpaid'];
+        $data['o']['no-rec'] = Order::where('received_date', '=', null)->count();
+        $data['o']['rec'] = $data['o']['total'] - $data['o']['no-rec'];
+
         //return var_dump($orders);
         return View::make('admin.index', $data);
         //return View::make('cart.index', array('cart' => $cart));
@@ -60,6 +63,20 @@ public function __construct(){
         }
         $orders = Order::with('user')->paginate(40);
         return View::make('admin.customers', array('orders' => $orders));
+    }
+    public function getOrders(){
+        // $filter = Input::get('f');
+        // if(isset($filter) && $filter == all){
+        //     $orders = Order::with('user')->paginate(40);
+        // }
+        $data = array();
+        $orders  = Order::with('user')->get();
+        $orders = $orders->toJson();
+
+        $data['orders'] = $orders;
+
+        return View::make('admin.orders.ordersMain', $data)->nest('angJS', 'admin.orders._angJS', $data)->nest('angView', 'admin.orders._angView', $data);
+
     }
 
     public function getMailbox($m=null){
@@ -424,6 +441,12 @@ public function __construct(){
      public function getAjaxGetFiles(){
         $files = Doc::all()->toJson();
         return $files;
+     }
+     public function postAjaxUpdateOrder(){
+
+        return Response::json(Input::get('order'));
+        // $order = Order::find(Input::get('order'));
+        // $order->received_date = ();
      }
 
 }

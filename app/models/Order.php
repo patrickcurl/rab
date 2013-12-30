@@ -9,6 +9,10 @@ class Order extends Eloquent {
 	public function items(){
 		return $this->hasMany('Item');
 	}
+  public function user(){
+    return $this->belongsTo('User');
+  }
+
   public static function gDate()
 { $tmpdate = self::created_at;
      if ($tmpdate == "0000-00-00" || $tmpdate == "") {
@@ -18,9 +22,24 @@ class Order extends Eloquent {
       }
 }
 
-	public function user(){
-		return $this->belongsTo('User');
-	}
+public function getCreatedAtAttribute($v){
+  //$date = date("m/d/y", strtotime($v));
+  $date = (strtotime($v)*1000) + 18000000;
+  return $date;
+}
+public function getReceivedDateAttribute($v){
+  //$date = date("m/d/y", strtotime($v));
+  if(isset($v)){
+    $date = (strtotime($v)*1000) + 18000000;
+    return $date;
+  } else{
+    return null;
+  }
+
+
+}
+
+
 
   public static function setDate($date, $field){
     if ($date){

@@ -119,7 +119,7 @@ return array(
 	| available to in your application. A sensible default has been set.
 	|
 	*/
-
+	'expire_on_close' => false,
 	'domain' => null,
 
 );

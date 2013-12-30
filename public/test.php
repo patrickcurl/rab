@@ -1,8 +1,10 @@
 <?php
- echo "test1234go2hellokitty";
-var_dump($_POST);
+
+$val = 10;
+$val2 = 20;
+function helloworld($a){
+$val2 = $a * 30;
+}
+helloworld($val);
+echo $val2;
 ?>
-<form method="POST" action="http://textbooks911.com/test.php">
-<input type="text" name="test" />
-<input type="submit">
-</form>

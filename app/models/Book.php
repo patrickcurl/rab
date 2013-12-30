@@ -138,22 +138,23 @@ class Book extends Eloquent {
         $nullBook->singlePrice = 0.00;
         $nullBook->retailPrice = 0.00;
 
-        // First we check if isbn is right size.
-        if(strlen($isbn) != 13 && strlen($isbn) != 10){
-          return $nullBook;
-        } else {
+        if(strlen($isbn) == 13) // Check if ISBN is 13.
+        {
+              $book = Book::where('isbn13', '=', $isbn)->first();
+        } elseif(strlen($isbn) == 10) // If not is it a10?
+        {
+            $book = Book::where('isbn10', '=', $isbn)->first();
+        } else
+        {
+              return nullBook;
+        }
 
-          $book = Book::where('isbn10', '=', $isbn)
-                        ->orWhere('isbn13', '=', $isbn)
-                        ->first();
-
-          if(isset($book)){
+        if(isset($book)){
             if(isset($isbns['10'])){$book->isbn10 = $isbns['10'];}
               if(isset($isbns['13'])){$book->isbn13 = $isbns['13'];}
               $book->save();
-          }
-
-          if (empty($book)){
+          } elseif (empty($book))
+          {
 
              $book_info = self::getBook($isbn);
              if (isset($book_info))
@@ -216,7 +217,7 @@ class Book extends Eloquent {
                 return $nullBook;
               }
 
-        }
+
 
     }
   public static function floorToFraction($number, $denominator = 1)

@@ -1,8 +1,8 @@
 angular.module('ez.table', [])
 
 .constant('EzTableConfig', {
-  limit: 25,
-  limits: [10, 25, 50, 100],
+  limit: 100,
+  limits: [25, 50, 100, 250],
   sortField: null,
   sortAscending: false
 })

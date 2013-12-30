@@ -150,6 +150,7 @@
       <li @if(Request::path() == 'admin') class="active" @endif ><a href="{{URL::to('admin')}}">Home</a></li>
       <li @if(Request::path() == 'admin/buyer-requests') class="active" @endif ><a href="{{URL::to('admin/buyers')}}">Buyers</a></li>
       <li @if(Request::path() == 'admin/customer-orders') class="active" @endif ><a href="{{URL::to('admin/customers')}}">Customers</a></li>
+      <li @if(Request::path() == 'admin/customer-orders') class="active" @endif ><a href="{{URL::to('admin/orders')}}">Orders</a></li>
       <li @if(Request::path() == 'admin/users') class="active" @endif ><a href="{{URL::to('admin/users')}}">Users</a></li>
       <li @if(Request::path() == 'admin/groups') class="active" @endif ><a href="{{URL::to('admin/groups')}}">Groups</a></li>
     </ul>
