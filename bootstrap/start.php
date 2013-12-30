@@ -28,13 +28,18 @@ $app = new Illuminate\Foundation\Application;
 $prodServers = array(
                      '*.recycleabook.com', '*.textbooks911.com'
                      );
+// $env = $app->detectEnvironment(array(
+
+// 	'local' => array('local*', 'localhost','*.dev', 'PatrickPC'),
+
+// 	'production' => $prodServers
+// ));
 $env = $app->detectEnvironment(array(
 
-	'local' => array('local*', 'localhost','*.dev', 'PatrickPC'),
+ 	'local' => array('PatrickPC'),
 
-	'production' => $prodServers
-));
-
+	'production' => array('apollo','chronos')
+ ));
 
 /*
 |--------------------------------------------------------------------------
