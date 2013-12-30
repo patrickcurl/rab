@@ -18,16 +18,16 @@ class PageController extends BaseController {
 
 	}
 
-	public function missingMethod($method, $slug=null){
+	// public function missingMethod($method, $slug=null){
 
-		$view = "pages.{$slug[0]}";
-		if(View::exists($view)==1){
-			return View::make($view);
-		} else
-		{
-			return View::make('errors.404');
-		}
-	}
+	// 	$view = "pages.{$slug[0]}";
+	// 	if(View::exists($view)==1){
+	// 		return View::make($view);
+	// 	} else
+	// 	{
+	// 		return View::make('errors.404');
+	// 	}
+	// }
 
 	public function postContact(){
 		$data['email'] = Input::get('email');
