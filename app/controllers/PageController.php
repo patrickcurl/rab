@@ -18,7 +18,7 @@ class PageController extends BaseController {
 
 	}
 
-	public function missingMethod($method, $slug=null){
+	public function missingMethod($slug=null){
 
 		$view = "pages.{$slug[0]}";
 		if(View::exists($view)==1){
