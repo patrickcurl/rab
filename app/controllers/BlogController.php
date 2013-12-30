@@ -37,17 +37,17 @@ class BlogController extends BaseController {
 	}
 
 
-	// public function missingMethod($method, $slug=null){
-	// 	if(isset($slug)){
-	// 		$slug = $slug[0];
-	// 		$post = self::blogJson("get_post/?slug={$slug}");
-	// 		if(isset($post['status']) &&  $post['status'] == "error"){
-	// 			View::make('errors.404');
-	// 		} else{
-	// 			return View::make("pages.blog_single", array('post' => $post['post']));
-	// 		}
+	public function missingMethod($slug=null){
+		if(isset($slug)){
+			$slug = $slug[0];
+			$post = self::blogJson("get_post/?slug={$slug}");
+			if(isset($post['status']) &&  $post['status'] == "error"){
+				View::make('errors.404');
+			} else{
+				return View::make("pages.blog_single", array('post' => $post['post']));
+			}
 
-	// 	}
-	// 	return $slug;
-	// }
+		}
+		return $slug;
+	}
 }
