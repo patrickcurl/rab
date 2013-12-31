@@ -39,7 +39,15 @@ public function getReceivedDateAttribute($v){
 
 }
 
-
+public function short_date($attr)
+  {
+      $date = $this->get_attribute($attr);
+      if (is_string($date)){
+        $dateObject = DateTime::createFromFormat('Y-m-d H:i:s', $date);
+        return $dateObject->format('Y-m-d');
+      }
+      return $date;
+  }
 
   public static function setDate($date, $field){
     if ($date){
