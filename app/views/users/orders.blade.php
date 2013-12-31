@@ -15,7 +15,7 @@ History
   <?php $orderNum = $g+1; ?>
   <dl class="dl-horizontal">
     <dt>Order #:</dt><dd>{{ $order['id'] }}</dd>
-    <dt>Order Date:</dt><dd>@if($order['created_at']) {{ date("n/d/Y", strtotime($order['created_at'])) }} @else ... @endif</dd>
+    <dt>Order Date:</dt><dd>{{$order['created_at']->format("n/d/Y") }}</dd>
     <dt>Total: </dt><dd>${{ number_format($order['total_amount'],2) }}</dd>
     <dt>Received Date:</dt> <dd>@if($order['received_date']) {{ date("n/d/Y", strtotime($order['received_date'])) }} @else Pending @endif</dd>
     <dt>Payment Date:</dt> <dd>@if($order['paid_date']) {{ date("n/d/Y", strtotime($order['paid_date'])) }} @else Pending @endif</dd>

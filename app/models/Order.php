@@ -22,11 +22,11 @@ class Order extends Eloquent {
       }
 }
 
-public function getCreatedAtAttribute($v){
-  //$date = date("m/d/y", strtotime($v));
-  $date = (strtotime($v)*1000) + 18000000;
-  return $date;
-}
+// public function getCreatedAtAttribute($v){
+//   //$date = date("m/d/y", strtotime($v));
+//   $date = (strtotime($v)*1000) + 18000000;
+//   return $date;
+// }
 public function getReceivedDateAttribute($v){
   //$date = date("m/d/y", strtotime($v));
   if(isset($v)){
