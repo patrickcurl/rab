@@ -3,10 +3,10 @@
 //$b = Book::find_or_create('9780131367739');
 
 phpinfo();
-$u = User::find(1);
-$u = $u->toArray();
-$o = Order::createLabel($u, 3.5);
-var_dump($o);
+// $u = User::find(1);
+// $u = $u->toArray();
+// $o = Order::createLabel($u, 3.5);
+// var_dump($o);
 
 
 ?>
