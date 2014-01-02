@@ -237,14 +237,14 @@ public function short_date($attr)
         curl_setopt($ch, CURLOPT_TIMEOUT, 3600);
         $ups_accept_response = new SimpleXMLElement(curl_exec($ch));
         return $ups_accept_response;
-        // if (isset($ups_accept_response)){
-        //   $tracking_number = $ups_accept_response->ShipmentResults->PackageResults->TrackingNumber;
-        //   $label = $ups_accept_response->ShipmentResults->PackageResults->LabelImage->GraphicImage;
-        //   $data = array('tracking_number' => $tracking_number, 'label' => $label);
-        // return $data;
-        // } else {
-        //   return null;
-        // }
+        if (isset($ups_accept_response)){
+          $tracking_number = $ups_accept_response->ShipmentResults->PackageResults->TrackingNumber;
+          $label = $ups_accept_response->ShipmentResults->PackageResults->LabelImage->GraphicImage;
+          $data = array('tracking_number' => $tracking_number, 'label' => $label);
+        return $data;
+        } else {
+          return null;
+        }
 
 
 
