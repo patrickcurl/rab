@@ -4,10 +4,15 @@ use  Guzzle\Http\Exception\ServerErrorResponseException;
     View::creator(array('layouts.master', 'single.master'), function($view){
 
 	    try{
-	    	$client = new Guzzle\Http\Client('http://blog.recycleabook.com/api/');
-	    	$request = $client->get('get_recent_posts/?count=8');
-	    	$response = $request->send();
-	    	$data = $response->json();
+	    	if Cache::has('blogJson'){
+	    		$data = Cache::get('blogJson');
+	    	} else {
+	    		$client = new Guzzle\Http\Client('http://blog.recycleabook.com/api/');
+	    		$request = $client->get('get_recent_posts/?count=8');
+	    		$response = $request->send();
+	    		$data = $response->json();
+	    	}
+
 		    $data = $data['posts'];
 		    $posts = array();
 

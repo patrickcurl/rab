@@ -38,9 +38,9 @@ class BlogController extends BaseController {
 			$data = $response->json();
 			$expiresAt = Carbon::now()->addMinutes(1440)
 			Cache::put('blogJson', $data, $expiresAt);
+			return Cache::get('blogJson');
 		}
 
-		return $data;
 	}
 
 
