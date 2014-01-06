@@ -1,10 +1,11 @@
 
 <?php
-//$b = Book::find_or_create('9780131367739');
-$u = User::find(1);
-$u = $u->toArray();
-$o = Order::createLabel($u, 3.5);
-var_dump($o);
+echo app()->environment();
+// $b = Book::find_or_create('9780131367739');
+// $u = User::find(1);
+// $u = $u->toArray();
+// $o = Order::createLabel($u, 3.5);
+// var_dump($o);
 //$b = Book::find_or_create('9780131367739');
 
 //phpinfo();
@@ -15,14 +16,7 @@ phpinfo();
 // $u = User::find(1);
 // $u = $u->toArray();
 // $o = Order::createLabel($u, 3.5);
-// var_dump($o);
-
-
-<<<<<<< HEAD
-=======
-?>
->>>>>>> 0e0dafa3e08d128b83eed66edf52cc9701753b90
-
+// var_dump($o
 // try{
 //         $client = new Guzzle\Http\Client('http://blog.recycleabook.com/api/');
 //         $request = $client->get('get_recent_posts/?count=8');
