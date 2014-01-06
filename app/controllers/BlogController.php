@@ -36,7 +36,7 @@ class BlogController extends BaseController {
 			// e.g. $request = $client->get('get_recent_posts/?count=8');
 			$response = $request->send();
 			$data = $response->json();
-			$expiresAt = Carbon::now()->addMinutes(1440)
+			$expiresAt = Carbon::now()->addMinutes(1440);
 			Cache::put('blogJson', $data, $expiresAt);
 			return Cache::get('blogJson');
 		}
