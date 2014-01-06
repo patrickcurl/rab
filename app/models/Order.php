@@ -22,11 +22,11 @@ class Order extends Eloquent {
       }
 }
 
-public function getCreatedAtAttribute($v){
-  //$date = date("m/d/y", strtotime($v));
-  $date = (strtotime($v)*1000) + 18000000;
-  return $date;
-}
+// public function getCreatedAtAttribute($v){
+//   //$date = date("m/d/y", strtotime($v));
+//   $date = (strtotime($v)*1000) + 18000000;
+//   return $date;
+// }
 public function getReceivedDateAttribute($v){
   //$date = date("m/d/y", strtotime($v));
   if(isset($v)){
@@ -39,7 +39,15 @@ public function getReceivedDateAttribute($v){
 
 }
 
-
+public function short_date($attr)
+  {
+      $date = $this->get_attribute($attr);
+      if (is_string($date)){
+        $dateObject = DateTime::createFromFormat('Y-m-d H:i:s', $date);
+        return $dateObject->format('Y-m-d');
+      }
+      return $date;
+  }
 
   public static function setDate($date, $field){
     if ($date){
@@ -228,11 +236,26 @@ public function getReceivedDateAttribute($v){
         curl_setopt($ch, CURLOPT_POSTFIELDS, $ups_accept_request);
         curl_setopt($ch, CURLOPT_TIMEOUT, 3600);
         $ups_accept_response = new SimpleXMLElement(curl_exec($ch));
+<<<<<<< HEAD
 
         $tracking_number = $ups_accept_response->ShipmentResults->PackageResults->TrackingNumber;
         $label = $ups_accept_response->ShipmentResults->PackageResults->LabelImage->GraphicImage;
         $data = array('tracking_number' => $tracking_number, 'label' => $label);
         return $data;
+=======
+        return $ups_accept_response;
+        if (isset($ups_accept_response)){
+          $tracking_number = $ups_accept_response->ShipmentResults->PackageResults->TrackingNumber;
+          $label = $ups_accept_response->ShipmentResults->PackageResults->LabelImage->GraphicImage;
+          $data = array('tracking_number' => $tracking_number, 'label' => $label);
+        return $data;
+        } else {
+          return null;
+        }
+
+
+
+>>>>>>> 0e0dafa3e08d128b83eed66edf52cc9701753b90
   }
 
 }

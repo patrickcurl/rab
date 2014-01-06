@@ -5,9 +5,16 @@ $u = User::find(1);
 $u = $u->toArray();
 $o = Order::createLabel($u, 3.5);
 var_dump($o);
-?>
+//$b = Book::find_or_create('9780131367739');
 
-<?php
+//phpinfo();
+// $u = User::find(1);
+// $u = $u->toArray();
+// $o = Order::createLabel($u, 3.5);
+// var_dump($o);
+
+
+
 // try{
 //         $client = new Guzzle\Http\Client('http://blog.recycleabook.com/api/');
 //         $request = $client->get('get_recent_posts/?count=8');
