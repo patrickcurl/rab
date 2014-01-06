@@ -4,7 +4,7 @@ use  Guzzle\Http\Exception\ServerErrorResponseException;
     View::creator(array('layouts.master', 'single.master'), function($view){
 
 	    try{
-	    	if Cache::has('blogJson'){
+	    	if(Cache::has('blogJson')){
 	    		$data = Cache::get('blogJson');
 	    	} else {
 	    		$client = new Guzzle\Http\Client('http://blog.recycleabook.com/api/');
