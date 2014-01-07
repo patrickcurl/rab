@@ -129,7 +129,7 @@ return array(
 		'cluster' => true,
 
 		'default' => array(
-			'host'     => 'atlas',
+			'host'     => '192.168.160.232',
 			'port'     => 6379,
 			'database' => 0,
 		),
