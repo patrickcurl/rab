@@ -14,7 +14,7 @@ use Carbon\Carbon;
 	    		$expiresAt = Carbon::now()->addMinutes(1440);
 				Cache::put('blogJson', $data, $expiresAt);
 	    	}
-	    	$data = Cache::get('blogJson');
+	    	// $data = Cache::get('blogJson');
 		    $data = $data['posts'];
 		    $posts = array();
 
