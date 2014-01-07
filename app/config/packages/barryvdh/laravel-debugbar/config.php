@@ -56,10 +56,10 @@ return array(
        'db' => true,                // Show database (PDO) queries and bindings
        'views' => true,             // Views with their data
        'route' => true,             // Current route information
-       'laravel' => false,          // Laravel version and environment
-       'events' => false,           // All events fired
+       'laravel' => true,          // Laravel version and environment
+       'events' => true,           // All events fired
        'twig' => false,             // Twig, requires barryvdh/laravel-twigbridge
-       'default_request'=> false,   // Regular or special Symfony request logger
+       'default_request'=> true,   // Regular or special Symfony request logger
        'symfony_request'=> true,    // Only one can be enabled..
        'mail' => true,              // Catch mail messages
        'mail_log' => false,         // Display full mail log in messages
