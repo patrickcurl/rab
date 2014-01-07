@@ -113,7 +113,7 @@ return array(
 		'\Gloudemans\Shoppingcart\ShoppingcartServiceProvider',
 		'Cartalyst\Sentry\SentryServiceProvider',
 		'Kmd\Logviewer\LogviewerServiceProvider',
-		'Way\Generators\GeneratorsServiceProvider',
+		// 'Way\Generators\GeneratorsServiceProvider',
 		'Barryvdh\Debugbar\ServiceProvider',
 		'Barryvdh\DomPDF\ServiceProvider',
 

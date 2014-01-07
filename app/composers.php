@@ -1,6 +1,6 @@
 <?php
 use  Guzzle\Http\Exception\ServerErrorResponseException;
-
+use Carbon\Carbon;
     View::creator(array('layouts.master', 'single.master'), function($view){
 
 	    try{
@@ -11,8 +11,10 @@ use  Guzzle\Http\Exception\ServerErrorResponseException;
 	    		$request = $client->get('get_recent_posts/?count=8');
 	    		$response = $request->send();
 	    		$data = $response->json();
+	    		$expiresAt = Carbon::now()->addMinutes(1440);
+				Cache::put('blogJson', $data, $expiresAt);
 	    	}
-
+	    	$data = Cache::get('blogJson');
 		    $data = $data['posts'];
 		    $posts = array();
 
