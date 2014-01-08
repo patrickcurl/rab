@@ -236,38 +236,25 @@ public function short_date($attr)
         curl_setopt($ch, CURLOPT_POSTFIELDS, $ups_accept_request);
         curl_setopt($ch, CURLOPT_TIMEOUT, 3600);
         $ups_accept_response = new SimpleXMLElement(curl_exec($ch));
-<<<<<<< HEAD
-<<<<<<< HEAD
 
-        $tracking_number = $ups_accept_response->ShipmentResults->PackageResults->TrackingNumber;
-        $label = $ups_accept_response->ShipmentResults->PackageResults->LabelImage->GraphicImage;
-        $data = array('tracking_number' => $tracking_number, 'label' => $label);
-        return $data;
-=======
-        return $ups_accept_response;
+        // $tracking_number = $ups_accept_response->ShipmentResults->PackageResults->TrackingNumber;
+        // $label = $ups_accept_response->ShipmentResults->PackageResults->LabelImage->GraphicImage;
+        // $data = array('tracking_number' => $tracking_number, 'label' => $label);
+        // return $data;
+        // return $ups_accept_response;
         if (isset($ups_accept_response)){
           $tracking_number = $ups_accept_response->ShipmentResults->PackageResults->TrackingNumber;
           $label = $ups_accept_response->ShipmentResults->PackageResults->LabelImage->GraphicImage;
           $data = array('tracking_number' => $tracking_number, 'label' => $label);
         return $data;
-=======
-        return $ups_accept_response;
-        if (isset($ups_accept_response)){
-          $tracking_number = $ups_accept_response->ShipmentResults->PackageResults->TrackingNumber;
-          $label = $ups_accept_response->ShipmentResults->PackageResults->LabelImage->GraphicImage;
-          $data = array('tracking_number' => $tracking_number, 'label' => $label);
-        return $data;
->>>>>>> 0e0dafa3e08d128b83eed66edf52cc9701753b90
+
         } else {
           return null;
         }
 
 
 
-<<<<<<< HEAD
->>>>>>> 0e0dafa3e08d128b83eed66edf52cc9701753b90
-=======
->>>>>>> 0e0dafa3e08d128b83eed66edf52cc9701753b90
+
   }
 
 }

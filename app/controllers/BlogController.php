@@ -28,12 +28,19 @@ class BlogController extends BaseController {
 
 
 	public static function blogJson($req){
-		$client = new Guzzle\Http\Client('http://blog.recycleabook.com/api/');
-		$request = $client->get($req);
-		// e.g. $request = $client->get('get_recent_posts/?count=8');
-		$response = $request->send();
-		$data = $response->json();
-		return $data;
+		if (Cache::has('blogJson')){
+			return Cache::get('blogJson');
+		} else {
+			$client = new Guzzle\Http\Client('http://blog.recycleabook.com/api/');
+			$request = $client->get($req);
+			// e.g. $request = $client->get('get_recent_posts/?count=8');
+			$response = $request->send();
+			$data = $response->json();
+			$expiresAt = Carbon::now()->addMinutes(1440);
+			Cache::put('blogJson', $data, $expiresAt);
+			return Cache::get('blogJson');
+		}
+
 	}
 
 
