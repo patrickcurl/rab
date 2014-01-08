@@ -17,7 +17,7 @@ Posts
 
 
 
-
+<?php // print_r($post); ?>
 
 	<div class="row-fluid">
 		<div class="span3">
@@ -26,7 +26,7 @@ Posts
 		@endif
 		</div>
 		<div class="span8">
-		<h3><a href="{{URL::to('blog')}}/{{$post['slug']}}" style="color:#008000">{{ $post['title'] }}</a></h3>
+		<h3><a href="{{URL::to('blog')}}/{{$post['slug']}}" style="color:#008000">{{ $post['title_plain'] }}</a></h3>
 
 		<?php
 			$str = $post['content'];

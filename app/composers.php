@@ -21,6 +21,7 @@ use Carbon\Carbon;
 		    foreach($data as $i => $post){
 		        $posts[$i]['title'] = $post['title'];
 		        $posts[$i]['url'] = $post['url'];
+		        $posts[$i]['slug'] = $post['slug'];
 		        if (isset($post['attachments']) && $post['attachments'] != null){
 		            $posts[$i]['image'] = $post['attachments'][0]['url'];
 		        } else {

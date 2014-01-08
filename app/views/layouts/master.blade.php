@@ -196,7 +196,8 @@
                 <a href="{{ $post['url'] }}" title="{{ $post['title'] }}" rel="bookmark"><img src="{{ $post['image'] }}" class="postthumbimg"></a>
               </div>
               <div class="span7" style="padding-top:10px;">
-                  <h3><a href="{{ $post['url'] }}" title="{{ $post['title'] }}" rel="bookmark">{{ $post['title'] }}</a></h3>
+
+                  <h3><a href="{{ URL::to('/blog') }}/{{ $post['slug'] }}" title="{{ $post['title'] }}" rel="bookmark">{{ $post['title'] }}</a></h3>
                   <p>{{$post['excerpt']}}
                   <a href="{{ $post['url'] }}" title="Read more on {{ $post['title'] }}" rel="bookmark" class="readmore">Read more...</a>
 

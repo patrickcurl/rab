@@ -1,4 +1,5 @@
 <?php
+use Carbon\Carbon;
 class BlogController extends BaseController {
 
 
@@ -43,11 +44,34 @@ class BlogController extends BaseController {
 
 	}
 
+	public static function singlePostJson($slug){
+		if(isset($slug)){
+			if (Cache::has("post-{$slug}")){
+			return Cache::get("post-{$slug}");
+		} else {
+			$client = new Guzzle\Http\Client('http://blog.recycleabook.com/api/');
+			$request = $client->get("get_post?slug={$slug}");
+			// e.g. $request = $client->get('get_recent_posts/?count=8');
+			$response = $request->send();
+			$data = $response->json();
+			$expiresAt = Carbon::now()->addMinutes(43200);
+			Cache::put("post-{$slug}", $data, $expiresAt);
+			//return Cache::get('blogJson');
+			return $data;
+		}
+	} else {
+		return null;
+	}
+
+
+	}
+
 
 	public function missingMethod($slug=null){
+
 		if(isset($slug)){
 			$slug = $slug[0];
-			$post = self::blogJson("get_post/?slug={$slug}");
+			$post = self::singlePostJson($slug);
 			if(isset($post['status']) &&  $post['status'] == "error"){
 				View::make('errors.404');
 			} else{
