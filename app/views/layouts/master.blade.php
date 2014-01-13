@@ -91,7 +91,7 @@
 
                 {{ Form::open(array('action' => 'BookController@postSearch', 'id' => 'price-books-form', 'class' => 'form-inline')) }}
                <div class="input-append pull-right visible-desktop ">
-  <input class="span6"   id="appendedInputButton" name="isbns" placeholder="Enter Isbns, separate multiples by comma." type="text">
+  <input class="span6"   id="appendedInputButton" name="isbns" placeholder="Enter Isbns, separate multiples by comma." type="text" style="padding:16px;">
 
   <button class="btn btn-success" type="submit">Sell Your Books!</button>
 </div> {{ Form::close() }}

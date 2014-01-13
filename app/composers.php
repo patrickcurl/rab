@@ -23,7 +23,11 @@ use Carbon\Carbon;
 		        $posts[$i]['url'] = $post['url'];
 		        $posts[$i]['slug'] = $post['slug'];
 		        if (isset($post['attachments']) && $post['attachments'] != null){
-		            $posts[$i]['image'] = $post['attachments'][0]['url'];
+		        	// $img = Image::cache(function($image){
+		        	// 	return $image->make($post['attachments'][0]['url'])->resize(300, 300);
+		        	// });
+		             $posts[$i]['image'] = $post['attachments'][0]['url'];
+		            // $posts[$i]['image'] = $img;
 		        } else {
 		            $posts[$i]['image'] = URL::to('images/assets/landscapes/landscape-2-e-300x300.jpg');
 		        }

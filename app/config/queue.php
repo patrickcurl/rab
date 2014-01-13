@@ -15,7 +15,7 @@ return array(
 	|
 	*/
 
-	'default' => 'sync',
+	'default' => 'iron',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -50,9 +50,9 @@ return array(
 
 		'iron' => array(
 			'driver'  => 'iron',
-			'project' => 'your-project-id',
-			'token'   => 'your-token',
-			'queue'   => 'your-queue-name',
+			'project' => '52cdc16c6b333c0005000085',
+			'token'   => 'DnoMJ6dWcKpFb8xqH3aRep-Xdjk',
+			'queue'   => 'RecycleABook',
 		),
 
 	),

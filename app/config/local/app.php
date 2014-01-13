@@ -116,7 +116,7 @@ return array(
 		// 'Way\Generators\GeneratorsServiceProvider',
 		'Barryvdh\Debugbar\ServiceProvider',
 		'Barryvdh\DomPDF\ServiceProvider',
-
+		'Intervention\Image\ImageServiceProvider',
 
 	),
 
@@ -193,6 +193,7 @@ return array(
 		'Sentry'          => 'Cartalyst\Sentry\Facades\Laravel\Sentry',
 		'Debugbar'        => 'Barryvdh\Debugbar\Facade',
 		'PDF'             => 'Barryvdh\DomPDF\Facade',
+		'Image'           => 'Intervention\Image\Facades\Image',
 	),
 
 );
