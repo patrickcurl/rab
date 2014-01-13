@@ -75,7 +75,7 @@ class CartController extends BaseController {
 
 	public function getCheckout(){
 		$cart = Cart::content();
-
+		// return var_dump($cart);
 		if (Sentry::check()){
 			return View::make('cart.checkout',
 			                  			array(
@@ -89,14 +89,15 @@ class CartController extends BaseController {
 
 	}
 
-		public function getCheckoutComplete(){
+	public function getCheckoutComplete(){
 
 		$currentUser = Sentry::getUser();
 
 		$order = new Order;
 		$order->user_id = $currentUser->id;
+		//return var_dump($order->user_id);
 		$order->total_amount = Cart::total();
-
+		// return var_dump($order->total_amount);
 		$order->save();
 
 

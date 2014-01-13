@@ -11,9 +11,9 @@ return array(
   | Debugbar is enabled by default, when debug is set to true in app.php.
   |
   */
-  //'enabled' => \Config::get('app.debug'),
-  'enabled' => true,
-  'inject' => true,
+  'enabled' => \Config::get('app.debug'),
+  // 'enabled' => true,
+  'inject' => \Config::get('app.debug'),
   /*
    |--------------------------------------------------------------------------
    | Vendors

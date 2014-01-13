@@ -6,8 +6,8 @@ public function view_orders(){
 		if(!Auth::check()){
 			return Redirect::to('login')->with('message', 'Must be logged in to view page.');
 		} else {
-
-			$orders = Order::where('user_id','=',Auth::user()->id)->get(); // find all orders from currently logged in user.
+			$user = Sentry::getUser();
+			$orders = Order::where('user_id','=',$user->id)->get(); // find all orders from currently logged in user.
 			$orderArray = array(); // init order array
 			$i = 0;
 			//Put all orders into arrays for easy enumeration.
