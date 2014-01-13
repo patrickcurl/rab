@@ -125,7 +125,7 @@ return array(
 		'Barryvdh\DomPDF\ServiceProvider',
 		'Barryvdh\Debugbar\ServiceProvider',
 		// 'Thujohn\Analytics\AnalyticsServiceProvider',
-
+		'Intervention\Image\ImageServiceProvider',
 
 	),
 
@@ -198,7 +198,7 @@ return array(
 		'Sluggable'       => 'Cviebrock\EloquentSluggable\Facades\Sluggable',
 		'Cart'            => 'Gloudemans\Shoppingcart\Facades\Cart',
 		'Sentry'          => 'Cartalyst\Sentry\Facades\Laravel\Sentry',
-
+		'Image' => 'Intervention\Image\Facades\Image',
 		'PDF' => 'Barryvdh\DomPDF\Facade',
 		// 'Analytics' => 'Thujohn\Analytics\AnalyticsFacade',
 		// Details : https://github.com/Anahkiasen/former
