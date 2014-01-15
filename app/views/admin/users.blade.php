@@ -89,6 +89,8 @@ class="container-fluid page-content"
   {{ Form::button('Add User', array('type' => 'submit', 'class' => 'btn btn-primary')) }}
 
 {{ Form::close() }}
+
+<!-- TEST -->
 <h4><a href="{{URL::to('/admin/users/admin')}}">Admins</a> | <a href="{{URL::to('/admin/users/buyers')}}">Buyers</a> | <a href="{{URL::to('/admin/users/customers')}}">Customers</a>
 <table class="table table-striped">
     <thead><tr><th>User Details</th><th>Orders</th></tr></thead>
