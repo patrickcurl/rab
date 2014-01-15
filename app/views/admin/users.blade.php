@@ -179,8 +179,9 @@ class="container-fluid page-content"
 
     </tbody>
     </table>
-    {{$users->links()}}
+
 @stop
+{{$users->links()}}
 @section('footer')
 <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 <script>
