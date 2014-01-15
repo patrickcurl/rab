@@ -109,7 +109,7 @@ public function __construct(){
 
 
     public function getUsers($type=null){
-        $type = Input::get('type');
+        //$type = Input::get('type');
         if(isset($type)){
             $group = Sentry::findGroupByName($type);
             $users = Sentry::findAllUsersInGroup($group);
