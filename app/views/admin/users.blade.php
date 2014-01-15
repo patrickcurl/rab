@@ -91,7 +91,11 @@ class="container-fluid page-content"
 {{ Form::close() }}
 
 <!-- TEST -->
-<h4><a href="{{URL::to('/admin/users/admin')}}">Admins</a> | <a href="{{URL::to('/admin/users/buyers')}}">Buyers</a> | <a href="{{URL::to('/admin/users/customers')}}">Customers</a>
+<h4>
+    <a href="{{URL::to('/admin/users/admin')}}">Admins</a> |
+    <a href="{{URL::to('/admin/users/buyers')}}">Buyers</a> |
+    <a href="{{URL::to('/admin/users/customers')}}">Customers</a> |
+    <a href="{{URL::to('/admin/users/all')}}">All</a>
 <table class="table table-striped">
     <thead><tr><th>User Details</th><th>Orders</th></tr></thead>
     {? $i = 0; ?}
