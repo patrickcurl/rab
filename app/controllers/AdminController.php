@@ -111,10 +111,16 @@ public function __construct(){
     public function getUsers($type=null){
         //$type = Input::get('type');
         if(isset($type)){
+            if($type=='all'){
+                $users = User::with('orders')->paginate(100);
+            } else {
             $group = Sentry::findGroupByName($type);
             $users = Sentry::findAllUsersInGroup($group);
+            }
+
         } else {
-            $users = User::with('orders')->paginate(100);
+            $group = Sentry::findGroupByName('buyer');
+            $users = Sentry::findAllUsersInGroup($group);
         }
         //$users = User::with('orders')->paginate(100);
         $groups = Group::all();
