@@ -89,7 +89,7 @@ class="container-fluid page-content"
   {{ Form::button('Add User', array('type' => 'submit', 'class' => 'btn btn-primary')) }}
 
 {{ Form::close() }}
-<h3>Filter <a href="/admin">Admins</a> | <a href="/buyers">Buyers</a> | <a href="/customers">Customers</a>
+<h4><a href="/admin">Admins</a> | <a href="/buyers">Buyers</a> | <a href="/customers">Customers</a>
 <table class="table table-striped">
     <thead><tr><th>User Details</th><th>Orders</th></tr></thead>
     {? $i = 0; ?}
