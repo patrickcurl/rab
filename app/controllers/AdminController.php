@@ -119,7 +119,7 @@ public function __construct(){
             }
 
         } else {
-            $group = Sentry::findGroupByName('buyer');
+            $group = Sentry::findGroupByName('buyers');
             $users = Sentry::findAllUsersInGroup($group);
         }
         //$users = User::with('orders')->paginate(100);
