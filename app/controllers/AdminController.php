@@ -108,8 +108,15 @@ public function __construct(){
     }
 
 
-    public function getUsers(){
-        $users = User::with('orders')->paginate(100);
+    public function getUsers($type=null){
+        $type = Input::get('type');
+        if(isset($type)){
+            $group = Sentry::findGroupByName($type);
+            $users = Sentry::findAllUsersInGroup($group);
+        } else {
+            $users = User::with('orders')->paginate(100);
+        }
+        //$users = User::with('orders')->paginate(100);
         $groups = Group::all();
         //$users = Sentry::getUserProvider()->findAll()->with('orders');
         //php
