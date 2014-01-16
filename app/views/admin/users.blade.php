@@ -183,7 +183,7 @@ class="container-fluid page-content"
 
     </tbody>
     </table>
-{{$users->links()}}
+
 @stop
 
 @section('footer')

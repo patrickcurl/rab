@@ -112,7 +112,7 @@ public function __construct(){
         //$type = Input::get('type');
         if(isset($type) && $type != null){
             if($type=='all'){
-                $users = User::with('orders')->paginate(100);
+                $users = User::with('orders');
             } else {
             $group = Sentry::findGroupByName($type);
             $users = Sentry::findAllUsersInGroup($group);
