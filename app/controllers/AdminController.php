@@ -15,9 +15,11 @@ class AdminController extends BaseController {
     |
     */
 
+
 //    if($_SERVER['REMOTE_ADDR'] == '24.123.4.222'){
 //        Config::set('app.debug', true);
 //    }
+
 public function __construct(){
         $this->beforeFilter("admin_auth");
     }
