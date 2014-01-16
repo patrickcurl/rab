@@ -112,6 +112,7 @@ class="container-fluid page-content"
         <tr>
           <td>
           <input type="hidden" name ="orders[{{$i}}][id]" value="{{$order->id}}" />
+          Order: {{$order->id}}
             @if($order->user)
               {? $user = $order->user; ?}
               <dl class="dl-horizontal">

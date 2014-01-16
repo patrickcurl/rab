@@ -62,9 +62,9 @@ public function __construct(){
     public function getCustomers(){
         $filter = Input::get('f');
         if(isset($filter) && $filter == all){
-            $orders = Order::with('user')->paginate(40);
+            $orders = Order::with('user')->paginate(100);
         }
-        $orders = Order::with('user')->paginate(40);
+        $orders = Order::with('user')->paginate(100);
         return View::make('admin.customers', array('orders' => $orders));
     }
     public function getOrders(){
