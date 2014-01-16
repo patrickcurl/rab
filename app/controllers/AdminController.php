@@ -110,7 +110,7 @@ public function __construct(){
 
     public function getUsers($type=null){
         //$type = Input::get('type');
-        if(isset($type)){
+        if(isset($type) && $type != null){
             if($type=='all'){
                 $users = User::with('orders')->paginate(100);
             } else {
