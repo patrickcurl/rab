@@ -33,13 +33,18 @@ Filter: <input class="form-control input-lg" type="text" ng-model="filter.$" sty
                     <dd>{{d.total_amount | currency:"$"}}</dd>
                     <dt ng-hide="!d.tracking_number">Tracking #: </dt>
                     <dd>{{d.tracking_number}}</dd>
-                    <dt>Shipping Label</dt>
-                    <dd><a href="<?php echo URL::to('/users/pdf/'); ?>/{{d.id}}">Click to Print</a></dd>
-                    <a href="#" editable-bsdate="d.received_date" e-datepicker-popup="MMMM-dd-yyyy" onbeforesave="updateOrder($data, d.id)">
-                      {{ (d.received_date | date:"MM/dd/yyyy") || 'empty' }}
-                      {{test}}
+                    <dt>Shipping Label:</dt>
+                    <dd><a href="<?php echo URL::to('/pdf/'); ?>/{{d.id}}">Click to Print</a></dd>
+                    <dt>Date Received:</dt>
+                    <dd><a href="#" editable-bsdate="d.received_date" e-datepicker-popup="MMMM-dd-yyyy" onbeforesave="changeReceivedDate($data, d.id)">
+                      {{ (d.received_date | date:"MM-dd-yyyy") || 'empty' }}</a></dd>
+                    <dt>Date Paid:</dt>
+                    <dd><a href="#" editable-bsdate="d.paid_date" e-datepicker-popup="MMMM-dd-yyyy" onbeforesave="changePaidDate($data, d.id)">
+                      {{ (d.paid_date | date:"MM-dd-yyyy") || 'empty' }}</a></dd>
+
                   </a>
                 </td>
             </tr>
         </table>
+        {{ $data }}
     </div>

@@ -461,11 +461,49 @@ public function __construct(){
         $files = Doc::all()->toJson();
         return $files;
      }
-     public function postAjaxUpdateOrder(){
+     // public function postAjaxUpdateOrder($id=null){
+     //    if (isset($id) && $id != null){
+     //        $order = Order::find($id);
+     //        $d = date("Y-m-d", strtotime(Input::get('order')));
+     //        $order->received_date = $d;
+     //        $order->save();
+     //    }
+     //    //return Response::json(Input::get('order'));
 
-        return Response::json(Input::get('order'));
-        // $order = Order::find(Input::get('order'));
-        // $order->received_date = ();
+
+     //    $o = 5;
+     //    return Response::json("{data:$d},{order:$o}");
+
+     //    // $order = Order::find(Input::get('order'));
+     //    // $order->received_date = ();
+     // }
+
+     public function postChangeReceivedDate($id=null){
+        if (isset($id) && $id != null){
+            $order = Order::find($id);
+            //$d = date("Y-m-d", strtotime(Input::get('date')));
+            $d = Input::get('date');
+            $order->received_date = $d;
+            $order->save();
+            $orders = Order::all();
+            return Response::json($orders);
+        } else {
+            return null;
+        }
+     }
+
+     public function postChangePaidDate($id=null){
+        if (isset($id) && $id != null){
+            $order = Order::find($id);
+            //$d = date("Y-m-d", strtotime(Input::get('date')));
+            $d = Input::get('date');
+            $order->paid_date = $d;
+            $order->save();
+            $orders = Order::all();
+            return Response::json("{'data' : $orders}");
+        } else {
+            return null;
+        }
      }
 
 }
