@@ -1,4 +1,4 @@
-<script src="{{URL::asset('javascripts/moment.min.js')}}"></script>
+
 <script>
 var app = angular.module('main', ['ngTable', 'xeditable', 'ui.bootstrap']).
 controller('DemoCtrl', function($scope, $filter, ngTableParams, $http) {

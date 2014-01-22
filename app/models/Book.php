@@ -15,9 +15,10 @@ class Book extends Eloquent {
         'save_to'    => 'slug',
     );
     public function getPriceAttribute(){
-      $price = DB::table('retail_prices')->where('ISBN', '=', $this->isbn13)->first();
+      //$price = DB::table('retail_prices')->where('ISBN', '=', $this->isbn13)->first();
+      $price = DB::table('prices')->where('ISBN', '=', $this->isbn13)->first();
       if(isset($price) && $price != null){
-        return number_format(($price->Price * 1.75), 2);
+        return number_format(($price->RetailPrice * 1.75), 2);
       }else {
         return (0.00);
       }
@@ -191,23 +192,33 @@ class Book extends Eloquent {
             }
             if (isset($book)){
 
-              $single = DB::table('single_prices')->where('isbn', '=', $isbns['13'])->first();
-              if(isset($single) || $single != null){
-                  $singlePrice = $single->Price;
-                  //$singlePrice = $singlePrice - ($singlePrice * .1);
-                  $singlePrice = self::floorToFraction($singlePrice, 2);
-                  $book->singlePrice = number_format($singlePrice, 2);
-              } else{
+              // $single = DB::table('single_prices')->where('isbn', '=', $isbns['13'])->first();
+              // if(isset($single) || $single != null){
+              //     $singlePrice = $single->Price;
+              //     //$singlePrice = $singlePrice - ($singlePrice * .1);
+              //     $singlePrice = self::floorToFraction($singlePrice, 2);
+              //     $book->singlePrice = number_format($singlePrice, 2);
+              // } else{
+              //   $book->singlePrice = "0.00";
+              // }
+
+              // $retail = DB::table('retail_prices')->where('isbn', '=', $isbns['13'])->first();
+              // if(isset($retail) || $retail != null){
+              // $retailPrice = $retail->Price;
+              // $book->retailPrice = number_format($retailPrice * 1.7, 2);
+              // } else {
+              //   $book->retailPrice = "0.00";
+              // }
+
+              $prices = DB::table('prices')->where('isbn','=',$isbns['13'])->first();
+              if(isset($prices) && $prices != null){
+                $book->retailPrice = number_format($prices->RetailPrice * 1.7, 2);
+                $book->singlePrice = number_format($prices->SinglePrice, 2);
+              } else {
+                $book->retailPrice = "0.00";
                 $book->singlePrice = "0.00";
               }
 
-              $retail = DB::table('retail_prices')->where('isbn', '=', $isbns['13'])->first();
-              if(isset($retail) || $retail != null){
-              $retailPrice = $retail->Price;
-              $book->retailPrice = number_format($retailPrice * 1.7, 2);
-              } else {
-                $book->retailPrice = "0.00";
-              }
 
 
                  return $book;

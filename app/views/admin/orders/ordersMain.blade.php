@@ -1,17 +1,7 @@
 @extends('layouts.admin')
 @section('head')
   <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
-  <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
-  <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
-  <script src="{{URL::asset('javascripts/modernizr.custom.min.js')}}"></script>
-  <script src="{{URL::asset('javascripts/moment.min.js')}}"></script>
-  <script>
-    $(function() {
-      if (!Modernizr.inputtypes['date']) {
-        $('input[type=date]').datepicker();
-      }
-    });
-  </script>
+
 <style>
 .popover {
   position: absolute;
@@ -97,26 +87,38 @@ dl dt{
 	margin-right:20px;
 }
 </style>
-<script data-require="angular.js@*" data-semver="1.2.0-rc3-nonmin" src="http://code.angularjs.org/1.2.0-rc.3/angular.js"></script>
-    <script data-require="ng-table@*" data-semver="0.3.1" src="http://bazalt-cms.com/assets/ng-table/0.3.1/ng-table.js"></script>
 
     <link data-require="ng-table@*" data-semver="0.3.1" rel="stylesheet" href="http://bazalt-cms.com/assets/ng-table/0.3.1/ng-table.css" />
     <link data-require="bootstrap-css@*" data-semver="3.0.0" rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" />
 
-    <link rel="stylesheet" href="style.css" />
-      <script type='text/javascript' src="http://vitalets.github.io/angular-xeditable/dist/js/xeditable.js"></script>
+
+
 
 
 
       <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css">
-
-
-
       <link rel="stylesheet" type="text/css" href="http://vitalets.github.io/angular-xeditable/dist/css/xeditable.css">
+  <script data-require="angular.js@*" data-semver="1.2.0-rc3-nonmin" src="http://code.angularjs.org/1.2.0-rc.3/angular.js"></script>
+  <script type='text/javascript' src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.6.0/ui-bootstrap-tpls.min.js"></script>
+  <script type='text/javascript' src="http://vitalets.github.io/angular-xeditable/dist/js/xeditable.js"></script>
+  <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+  <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+  <script src="{{URL::asset('javascripts/modernizr.custom.min.js')}}"></script>
+  <script src="{{URL::asset('javascripts/moment.min.js')}}"></script>
+
+  <script data-require="ng-table@*" data-semver="0.3.1" src="http://bazalt-cms.com/assets/ng-table/0.3.1/ng-table.js"></script>
+  <script>
+    $(function() {
+      if (!Modernizr.inputtypes['date']) {
+        $('input[type=date]').datepicker();
+      }
+    });
+  </script>
 
 
 
-      <script type='text/javascript' src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.6.0/ui-bootstrap-tpls.min.js"></script>
+
+
     <?php echo $angJS; // pull in admin.orders._angJS.php ?>
 @stop
 @section('container_class')
