@@ -11,7 +11,8 @@
 |
 */
 
-$domains = array('rab.dev', 'recycleabook.com', 'textbooks911.com');
+$domains = array('rab.dev', 'recycleabook.com', 'textbooks911.com', 'chronos.recycleabook.com');
+
 foreach($domains as $d){
     Route::group(array('domain' => 'single.'.$d), function()
     {

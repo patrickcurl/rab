@@ -46,5 +46,5 @@ Filter: <input class="form-control input-lg" type="text" ng-model="filter.$" sty
                 </td>
             </tr>
         </table>
-        {{ $data }}
+
     </div>
