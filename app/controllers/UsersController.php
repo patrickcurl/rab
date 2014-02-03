@@ -75,7 +75,7 @@ class UsersController extends BaseController {
 
                 }
 
-            }
+            } //
         } catch (Cartalyst\Sentry\Users\LoginRequiredException $e)
 {
         return Redirect::back()->with('message', 'Login field is required.');
