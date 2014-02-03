@@ -82,6 +82,9 @@ Route::get('/', function()
 
     return View::make('index');
 });
+Route::get('/login', function(){
+    return Redirect::to('/users/login');
+});
 Route::get('pdf/{id}', function($id){
     Config::set('laravel-debugbar::enabled', false);
         $order =  Order::find($id);
