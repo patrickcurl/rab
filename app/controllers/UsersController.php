@@ -66,7 +66,13 @@ class UsersController extends BaseController {
                 if ($user->hasAccess('admin')){
                     return Redirect::to('admin')->with('success', 'You have logged in successfully.');
                 } else {
-                    return Redirect::to('users/orders')->with('success', 'You have logged in successfully.');
+                    $cart = Cart::content();
+                    if(isset($cart)){
+                        return Redirect::to('cart/checkout')->with('success', 'You are logged in now complete your order...');
+                    } else {
+                        return Redirect::to('users/orders')->with('success', 'You have logged in successfully.');
+                    }
+
                 }
 
             }

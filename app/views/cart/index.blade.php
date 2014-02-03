@@ -48,7 +48,7 @@ Cart
           </tr>
           <?php $count++; ?>
     @endforeach
-    test
+
     <tr>
       <td></td>
       <td></td>
