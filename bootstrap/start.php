@@ -38,7 +38,7 @@ $env = $app->detectEnvironment(array(
 
  	'local' => array('PatrickPC'),
 
-	'production' => array('apollo','chronos')
+	'production' => array('apollo','chronos','apollo.recycleabook.com','chronos.recycleabook.com')
  ));
 
 /*
