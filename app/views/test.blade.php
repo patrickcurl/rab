@@ -10,8 +10,9 @@ echo app()->environment();
 
 //phpinfo();
 
-
-phpinfo();
+$redis = Predis::connection();
+$redis->set('name', 'Taylor');
+// phpinfo();
 
 // $u = User::find(1);
 // $u = $u->toArray();

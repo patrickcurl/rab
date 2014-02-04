@@ -2,7 +2,6 @@
 /bootstrap/compiled.php
 /vendor
 /.ignore
-composer.json
 composer.lock
 .DS_Store
 /bootstrap/paths.php
