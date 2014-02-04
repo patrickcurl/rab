@@ -123,7 +123,7 @@ return array(
 		'Cartalyst\Sentry\SentryServiceProvider',
 		// 'Kmd\Logviewer\LogviewerServiceProvider',
 		'Barryvdh\DomPDF\ServiceProvider',
-		'Barryvdh\Debugbar\ServiceProvider',
+		//'Barryvdh\Debugbar\ServiceProvider',
 		// 'Thujohn\Analytics\AnalyticsServiceProvider',
 		'Intervention\Image\ImageServiceProvider',
 
