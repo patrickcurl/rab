@@ -168,29 +168,29 @@ Route::get('tag/{slug}', function($slug){
 Route::get('privacy-policy', function(){
      return Redirect::to('p/privacy-policy');
  });
-Route::get('{slug1}/{slug2}', function($slug1, $slug2){
-    if(isset($slug2)){
-        $post = BlogController::blogJson("get_post/?slug={$slug2}");
-            if(isset($post['status']) &&  $post['status'] == "error"){
-                View::make('errors.404');
-            } else{
-                return View::make("pages.blog_single", array('post' => $post['post']));
-            }
-    } else {
-        return View::make('index');
-    }
-});
-Route::get('{slug1}', function($slug1){
-    if(isset($slug1)){
-        $post = BlogController::blogJson("get_post/?slug={$slug1}");
-            if(isset($post['status']) &&  $post['status'] == "error"){
-                View::make('errors.404');
-            } else{
-                return View::make("pages.blog_single", array('post' => $post['post']));
-            }
-    } else {
-        return View::make('index');
-    }
+// Route::get('{slug1}/{slug2}', function($slug1, $slug2){
+//     if(isset($slug2)){
+//         $post = BlogController::blogJson("get_post/?slug={$slug2}");
+//             if(isset($post['status']) &&  $post['status'] == "error"){
+//                 View::make('errors.404');
+//             } else{
+//                 return View::make("pages.blog_single", array('post' => $post['post']));
+//             }
+//     } else {
+//         return View::make('index');
+//     }
+// });
+// Route::get('{slug1}', function($slug1){
+//     if(isset($slug1)){
+//         $post = BlogController::blogJson("get_post/?slug={$slug1}");
+//             if(isset($post['status']) &&  $post['status'] == "error"){
+//                 View::make('errors.404');
+//             } else{
+//                 return View::make("pages.blog_single", array('post' => $post['post']));
+//             }
+//     } else {
+//         return View::make('index');
+//     }
 
-});
+// });
 
