@@ -52,12 +52,13 @@ return array(
 			'prefix'   => '',
 		),
 		'mysql' => array(
-		    'read' => array(
-		        'host' => 'localhost',
-		    ),
-		    'write' => array(
-		        'host' => 'atlas',
-		    ),
+		    // 'read' => array(
+		    //     'host' => 'localhost',
+		    // ),
+		    // 'write' => array(
+		    //     'host' => 'atlas',
+		    // ),
+		    'host' 		=> 'atlas',
 		    'driver'    => 'mysql',
 			'database'  => Config::get('env_vars.db_name'),
 			'username'  => Config::get('env_vars.db_user'),
