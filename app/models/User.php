@@ -19,7 +19,7 @@ class User extends SentryUserModel {
   }
 
 public function docs(){
-  return $this->belongsToMany('Doc');
+  return $this->hasMany('Doc');
 }
 
 
